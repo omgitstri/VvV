@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Prototype
+  - Enemy
+  - Test
+  - WeakPoint
   layers:
   - Default
   - TransparentFX
@@ -14,6 +16,10 @@ TagManager:
   - UI
   - 
   - 
+  - PostProcessing
+  - Weapon
+  - Enemy
+  - Effect
   - 
   - 
   - 
@@ -32,11 +38,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Locked
   - 
   m_SortingLayers:
   - name: Default

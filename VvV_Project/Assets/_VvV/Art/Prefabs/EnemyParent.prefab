@@ -888,7 +888,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651300599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: a1d1bcd746077ec4d832a7e4bde03a8c, type: 3}
   m_Controller: {fileID: 9100000, guid: 1e86156e23befe842ba22b8faddc1807, type: 2}
   m_CullingMode: 0
@@ -906,7 +906,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 651300599}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03d431ffcfd2cc14c9dbd143312702f7, type: 3}
   m_Name: 
@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65a9ba1ff3b24462a81af42f070c0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weakPoint: {fileID: 2480746034421082842}
+  weakPoint: {fileID: 2480746034421081902}
   white: {fileID: 2100000, guid: 6cc967600f92c2042992282325754214, type: 2}
   red: {fileID: 2100000, guid: feddd9e3ac7fc4b998a38533dce21ad7, type: 2}
   direction: 0
