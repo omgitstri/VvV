@@ -121,16 +121,17 @@ public class PlayerController : MonoBehaviour
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
 
         myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
-
-        if(gunController.isFineSightMode || isNearEnemy)
+        if (aimer != null)
         {
-            aimer.enabled = false;
+            if (gunController.isFineSightMode || isNearEnemy)
+            {
+                aimer.enabled = false;
+            }
+            else
+            {
+                aimer.enabled = true;
+            }
         }
-        else
-        {
-            aimer.enabled = true;
-        }
-
         if((Input.GetButton("Horizontal") || Input.GetButton("Vertical"))&& !audioSource.isPlaying)
         {
             audioSource.Play();
