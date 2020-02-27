@@ -51,5 +51,7 @@ public class WeightTableScriptableObjectEditorWindow : EditorWindow
         {
             weightTable.enemyWeights.Add(new WeightTableScriptableObject.EnemyWeights());
         }
+
+        EditorUtility.SetDirty(weightTable);
     }
 }
