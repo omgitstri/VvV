@@ -5,15 +5,15 @@ using UnityEngine;
 public class PlayerHandController : MonoBehaviour
 {
     [SerializeField]
-    private PlayerHand currentHand;
+    private PlayerHand currentHand = null;
 
     private bool isAttack = false;
-    private bool isSwing = false;
+    //private bool isSwing = false;
 
-    private RaycastHit hitInfo;
-    private Camera cam;
+    private RaycastHit hitInfo = new RaycastHit();
+    private Camera cam = null;
 
-    private AudioSource audioSource;
+    private AudioSource audioSource = null;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class PlayerHandController : MonoBehaviour
     private void OnEnable()
     {
         isAttack = false;
-        isSwing = false;
+        //isSwing = false;
     }
 
     void Update()
@@ -47,14 +47,14 @@ public class PlayerHandController : MonoBehaviour
     {
         isAttack = true;
         currentHand.anim.SetTrigger("Attack");
-        isSwing = true;
+        //isSwing = true;
 
         StartCoroutine(HitCoroutine());
 
         PlaySE(currentHand.hand_Sound);
         yield return new WaitForSeconds(currentHand.attackDelay);
 
-        isSwing = false;
+        //isSwing = false;
         isAttack = false;
     }
 

@@ -5,25 +5,25 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     [SerializeField]
-    private Gun currentGun;
+    private Gun currentGun=null;
 
     [SerializeField]
-    private PlayerController player;
+    private PlayerController player = null;
 
-    private float currentFireRate;
+    private float currentFireRate = 1;
     private bool isReload = false;
 
     [HideInInspector]
     public bool isFineSightMode = false;
 
-    private Vector3 originPos;
-    private RaycastHit hitInfo;
-    private Camera cam;
+    private Vector3 originPos = Vector3.zero;
+    private RaycastHit hitInfo = new RaycastHit();
+    private Camera cam = null;
 
-    private AudioSource audioSource;
+    private AudioSource audioSource = null;
 
     [SerializeField]
-    private GameObject hitEffectPrefab;
+    private GameObject hitEffectPrefab = null;
 
     void Start()
     {

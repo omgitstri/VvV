@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private WaypointSystem waypointSystem = null;
     //fix this later
     [SerializeField] private Transform player = null;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask layerMask = 0;
     private Vector3 initPos = Vector3.zero;
     private int posIndex = 0;
     bool playerInRange = false;

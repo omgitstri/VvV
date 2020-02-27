@@ -7,12 +7,12 @@ public class PlayerMovementPD : MonoBehaviour
     public float Speed = 70f;
     public float MouseSensitivity = 3f;
 
-    Rigidbody rigidbody = null;
+    Rigidbody rigidBody = null;
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        rigidbody.freezeRotation = true;
+        rigidBody = GetComponent<Rigidbody>();
+        rigidBody.freezeRotation = true;
     }
 
     private void FixedUpdate()
@@ -25,7 +25,7 @@ public class PlayerMovementPD : MonoBehaviour
 
         Vector3 targetVelocity = transform.TransformDirection(moveDirection) * Speed;
 
-        rigidbody.AddForce(targetVelocity * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        rigidBody.AddForce(targetVelocity * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
         float mouseDelta = 0;
         mouseDelta = Input.GetAxis("Mouse X");

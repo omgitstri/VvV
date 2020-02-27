@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="WeightTable", menuName ="Create Weight Table")]
 public class WeightTableScriptableObject : ScriptableObject
 {
-    [SerializeField] private int points = 500;
     public List<EnemyWeights> enemyWeights;
 
     [System.Serializable]

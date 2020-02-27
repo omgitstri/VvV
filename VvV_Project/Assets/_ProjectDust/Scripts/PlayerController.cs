@@ -6,40 +6,40 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float walkSpeed;
+    private float walkSpeed = 0;
     [SerializeField]
-    private float runSpeed;
+    private float runSpeed = 0;
 
-    private float applySpeed;
+    private float applySpeed = 0;
 
     [SerializeField]
-    private float jumpForce;
+    private float jumpForce = 0;
 
-    private bool isRun = false;
+    //private bool isRun = false;
     private bool isGround = true;
 
-    private CapsuleCollider capsuleCollider;
+    private CapsuleCollider capsuleCollider = null;
 
     [SerializeField]
-    private float lookSensitivity;
+    private float lookSensitivity = 1;
 
     [SerializeField]
-    private float cameraRotationLimit;
+    private float cameraRotationLimit = 1;
     private float currentCameraRotationX = 0;
 
     [SerializeField]
-    private Camera theCamera;
-    private Rigidbody myRigid;
-    private GunController gunController;
+    private Camera theCamera = null;
+    private Rigidbody myRigid = null;
+    private GunController gunController = null;
 
-    GameObject gunPrefab;
-    GameObject handPrefab;
+    GameObject gunPrefab = null;
+    GameObject handPrefab = null;
 
-    public Image aimer;
+    public Image aimer = null;
 
     bool isNearEnemy = false;
 
-    private AudioSource audioSource;
+    private AudioSource audioSource = null;
 
     void Start()
     {
@@ -100,13 +100,13 @@ public class PlayerController : MonoBehaviour
     {
 //        gunController.CancelFineSight();
 
-        isRun = true;
+        //isRun = true;
         applySpeed = runSpeed;
     }
 
     public void RunningCancel()
     {
-        isRun = false;
+        //isRun = false;
         applySpeed = walkSpeed;
     }
 

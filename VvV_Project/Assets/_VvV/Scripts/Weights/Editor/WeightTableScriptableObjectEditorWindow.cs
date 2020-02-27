@@ -32,7 +32,7 @@ public class WeightTableScriptableObjectEditorWindow : EditorWindow
             {
                 EditorGUILayout.BeginHorizontal();
                 {
-                    weightTable.enemyWeights[i].enemyType = (EnemyScriptableObject)EditorGUILayout.ObjectField(weightTable.enemyWeights[i].enemyType, typeof(EnemyScriptableObject), GUILayout.Width((Screen.width / 2) - 20));
+                    weightTable.enemyWeights[i].enemyType = (EnemyScriptableObject)EditorGUILayout.ObjectField(weightTable.enemyWeights[i].enemyType, typeof(EnemyScriptableObject), false, GUILayout.Width((Screen.width / 2) - 20));
                     weightTable.enemyWeights[i].weight = EditorGUILayout.FloatField(weightTable.enemyWeights[i].weight, GUILayout.Width((Screen.width / 4) - 20));
 
                     EditorGUILayout.LabelField((weightTable.enemyWeights[i].weight / weightTable.ReturnTotalWeight()).ToString(), GUILayout.Width((Screen.width / 4) - 20));

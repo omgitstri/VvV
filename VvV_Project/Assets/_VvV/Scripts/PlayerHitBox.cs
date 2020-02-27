@@ -17,21 +17,21 @@ public class PlayerHitBox : MonoBehaviour
             {
                 other.transform.GetComponent<IndividualCube>().DestroyParent();
                 return;
-                //Have fun~ ( ￣ 3￣)y▂ξ
-                //hitInfo.transform.gameObject.GetComponent<IndividualCube>().AddRigidbodyToNeighbours();
-                //print(hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().weekPoint.GetComponent<IndividualCube>().voxelPosition);
+                ////Have fun~ ( ￣ 3￣)y▂ξ
+                ////hitInfo.transform.gameObject.GetComponent<IndividualCube>().AddRigidbodyToNeighbours();
+                ////print(hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().weekPoint.GetComponent<IndividualCube>().voxelPosition);
 
-                GameObject weakPoint = null;
-                weakPoint = other.transform.root.GetComponent<CreateAdjacencyGraph>().GetWeakPoint();
+                //GameObject weakPoint = null;
+                //weakPoint = other.transform.root.GetComponent<CreateAdjacencyGraph>().GetWeakPoint();
 
-                other.transform.GetComponent<IndividualCube>().MarkAsHit(2);
-                weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyHit();
+                //other.transform.GetComponent<IndividualCube>().MarkAsHit(2);
+                //weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyHit();
 
-                //hitInfo.transform.GetComponent<IndividualCube>().DestroyCube();
-                //Destroy(hitInfo.transform.gameObject);
+                ////hitInfo.transform.GetComponent<IndividualCube>().DestroyCube();
+                ////Destroy(hitInfo.transform.gameObject);
 
-                weakPoint.GetComponent<IndividualCube>().CheckDetached();
-                weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyDetached();
+                //weakPoint.GetComponent<IndividualCube>().CheckDetached();
+                //weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyDetached();
             }
         }
 

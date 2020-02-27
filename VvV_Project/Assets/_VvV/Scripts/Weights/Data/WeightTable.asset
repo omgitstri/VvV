@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397c47f4bc8ce384c8bc22259c2e34ce, type: 3}
   m_Name: WeightTable
   m_EditorClassIdentifier: 
-  points: 500
   enemyWeights:
   - name: EnemyData_Full
     enemyType: {fileID: 11400000, guid: a16bfb43d5df7a1489b3c9f4b3e63bb1, type: 2}
