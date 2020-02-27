@@ -2,45 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointDistribution : MonoBehaviour
+[CreateAssetMenu(fileName ="WeightTable", menuName ="Create Weight Table")]
+public class WeightTableScriptableObject : ScriptableObject
 {
     [SerializeField] private int points = 500;
+    public List<EnemyWeights> enemyWeights;
 
     [System.Serializable]
     public class EnemyWeights
     {
         [HideInInspector] public string name;
-        public EnemyTypeEnum enemyType;
+        public EnemyScriptableObject enemyType;
         public float weight;
-        public int cost;
     }
 
-    private void OnValidate()
+
+    private void OnEnable()
     {
-        if (enemyWeights.Count > 0)
+        foreach (var item in enemyWeights)
         {
-            foreach (var item in enemyWeights)
-            {
-                item.name = item.enemyType.ToString();
-            }
+            item.name = item.enemyType?.name;
         }
     }
-
-    public List<EnemyWeights> enemyWeights;
 
     [ContextMenu("debug")]
     public void PrintSelection()
     {
-        print(PickFromWeight().ToString());
+        Debug.Log(PickFromWeight().name);
     }
 
-    public EnemyTypeEnum PickFromWeight()
+    public float ReturnTotalWeight()
     {
-        EnemyTypeEnum selected = EnemyTypeEnum.EnemyA;
+        float totalWeight = 0;
 
+        for (int i = 0; i < enemyWeights.Count; i++)
+        {
+            if (enemyWeights[i].weight >= 0)
+            {
+                totalWeight += enemyWeights[i].weight;
+            }
+        }
+
+        return totalWeight;
+    }
+
+    public GameObject PickFromWeight()
+    {
+        GameObject selected = null;
+
+        float totalWeight = 0;
         float rand = Random.value;
         float percentage = 0;
-        float totalWeight = 0;
 
         for (int i = 0; i < enemyWeights.Count; i++)
         {
@@ -56,13 +68,14 @@ public class PointDistribution : MonoBehaviour
             {
                 percentage += enemyWeights[i].weight / totalWeight;
             }
-            
-            if(rand <= percentage && enemyWeights[i].weight >= 0)
+
+            if (rand <= percentage && enemyWeights[i].weight >= 0)
             {
-                selected = enemyWeights[i].enemyType;
+                selected = enemyWeights[i].enemyType.prefab;
                 return selected;
             }
         }
         return selected;
     }
+
 }

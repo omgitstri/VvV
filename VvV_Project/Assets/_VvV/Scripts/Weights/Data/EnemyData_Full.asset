@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4250e0dc9f3ab64681106ef89370fb2, type: 3}
+  m_Name: EnemyData_Full
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98, type: 3}
+  cost: 5
