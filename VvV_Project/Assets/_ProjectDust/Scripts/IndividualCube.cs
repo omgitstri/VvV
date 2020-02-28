@@ -27,16 +27,12 @@ public class IndividualCube : MonoBehaviour
     //instantiate prefab
     [SerializeField] private GameObject instantiateCube = null;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //detached = false;
         visit = 0;
         layer = 0;
         hit = false;
-        //transform.rotation = Random.rotation;
     }
-
 
     public List<IndividualCube> GetNeighbours()
     {

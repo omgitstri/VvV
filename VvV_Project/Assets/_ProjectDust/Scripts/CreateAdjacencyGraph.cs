@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreateAdjacencyGraph : MonoBehaviour
 {
-    public Dictionary<Vector3, IndividualCube> Children;
+    public Dictionary<Vector3, IndividualCube> Children = new Dictionary<Vector3, IndividualCube>();
 
     private IndividualCube weakPoint = null;
 
@@ -21,7 +21,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
         var cubes = GetComponentsInChildren<IndividualCube>();
         weakPoint = cubes[Random.Range(0, cubes.Length)];
 
-        Children = new Dictionary<Vector3, IndividualCube>();
+        //Children = new Dictionary<Vector3, IndividualCube>();
         CreateDictionary(transform);
         CreateAG();
         InvokeRepeating(nameof(WeakPointFreeWalking), 0f, 0.3f);
@@ -37,7 +37,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
     [ContextMenu("Create Adjacency Graph")]
     void InitSetupAdjacency()
     {
-        Children = new Dictionary<Vector3, IndividualCube>();
+        //Children = new Dictionary<Vector3, IndividualCube>();
         CreateDictionary(transform);
         CreateAG();
     }

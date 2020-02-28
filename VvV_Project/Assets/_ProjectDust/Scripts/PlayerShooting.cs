@@ -28,19 +28,16 @@ public class PlayerShooting : MonoBehaviour
 
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, maxDistance))
         {
-            var individualCube = hitInfo.transform.GetComponent<IndividualCube>();
-            var adjacencyGraph = hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>();
-
-            if (hitInfo.transform.tag == "WeakPoint")
+            if (hitInfo.transform.CompareTag("WeakPoint"))
             {
                 if (line != null)
                 {
                     line.SetPositions(new Vector3[2] { cam.transform.position + cam.transform.right * 0.2f, hitInfo.point });
                 }
-                individualCube.DestroyParent();
+                hitInfo.transform.GetComponent<IndividualCube>().DestroyParent();
             }
 
-            if (hitInfo.transform.tag == "Enemy")
+            if (hitInfo.transform.CompareTag("Enemy"))
             {
                 if (line != null)
                 {
@@ -49,13 +46,13 @@ public class PlayerShooting : MonoBehaviour
                 //Have fun~ ( ￣ 3￣)y▂ξ
 
                 IndividualCube weakPoint = null;
-                weakPoint = adjacencyGraph.GetWeakPoint();
+                weakPoint = hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().GetWeakPoint();
 
-                weakPoint.MarkAsHit(2);
-                adjacencyGraph.DestroyHit();
+                hitInfo.transform.GetComponent<IndividualCube>().MarkAsHit(2);
+                weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyHit();
 
-                weakPoint.CheckDetached();
-                adjacencyGraph.DestroyDetached();
+                weakPoint.GetComponent<IndividualCube>().CheckDetached();
+                weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyDetached();
             }
         }
         if (line != null)

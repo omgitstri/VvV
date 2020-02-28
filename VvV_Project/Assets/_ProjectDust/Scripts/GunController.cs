@@ -91,30 +91,30 @@ public class GunController : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, currentGun.range))
         {
             GameObject hitEffect = Instantiate(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
-
-            var individualCube = hitInfo.transform.GetComponent<IndividualCube>();
-            var adjacencyGraph = hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>();
-
             Destroy(hitEffect, 2f);
 
-            if (hitInfo.transform.tag == "WeakPoint")
+            if (hitInfo.transform.CompareTag("WeakPoint"))
             {
-                individualCube.DestroyParent();
+                hitInfo.transform.GetComponent<IndividualCube>().DestroyParent();
             }
 
-            if (hitInfo.transform.tag == "Enemy")
+            if (hitInfo.transform.CompareTag("Enemy"))
             {
                 //Have fun~ ( ￣ 3￣)y▂ξ
+                //hitInfo.transform.gameObject.GetComponent<IndividualCube>().AddRigidbodyToNeighbours();
+                //print(hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().weekPoint.GetComponent<IndividualCube>().voxelPosition);
 
                 IndividualCube weakPoint = null;
+                weakPoint = hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().GetWeakPoint();
 
-                weakPoint = adjacencyGraph.GetWeakPoint();
+                hitInfo.transform.GetComponent<IndividualCube>().MarkAsHit(2);
+                weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyHit();
 
-                weakPoint.MarkAsHit(2);
-                adjacencyGraph.DestroyHit();
+                //hitInfo.transform.GetComponent<IndividualCube>().DestroyCube();
+                //Destroy(hitInfo.transform.gameObject);
 
-                weakPoint.CheckDetached();
-                adjacencyGraph.DestroyDetached();
+                weakPoint.GetComponent<IndividualCube>().CheckDetached();
+                weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyDetached();
             }
         }
     }
