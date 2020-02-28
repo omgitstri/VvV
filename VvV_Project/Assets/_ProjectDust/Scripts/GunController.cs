@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     [SerializeField]
-    private Gun currentGun=null;
+    private Gun currentGun = null;
 
     [SerializeField]
     private PlayerController player = null;
@@ -91,30 +91,30 @@ public class GunController : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, currentGun.range))
         {
             GameObject hitEffect = Instantiate(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
+
+            var individualCube = hitInfo.transform.GetComponent<IndividualCube>();
+            var adjacencyGraph = hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>();
+
             Destroy(hitEffect, 2f);
 
             if (hitInfo.transform.tag == "WeakPoint")
             {
-                hitInfo.transform.GetComponent<IndividualCube>().DestroyParent();
+                individualCube.DestroyParent();
             }
 
             if (hitInfo.transform.tag == "Enemy")
             {
                 //Have fun~ ( ￣ 3￣)y▂ξ
-                //hitInfo.transform.gameObject.GetComponent<IndividualCube>().AddRigidbodyToNeighbours();
-                //print(hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().weekPoint.GetComponent<IndividualCube>().voxelPosition);
 
-                GameObject weakPoint = null;
-                weakPoint = hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().GetWeakPoint();
+                IndividualCube weakPoint = null;
 
-                hitInfo.transform.GetComponent<IndividualCube>().MarkAsHit(2);
-                weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyHit();
+                weakPoint = adjacencyGraph.GetWeakPoint();
 
-                //hitInfo.transform.GetComponent<IndividualCube>().DestroyCube();
-                //Destroy(hitInfo.transform.gameObject);
+                weakPoint.MarkAsHit(2);
+                adjacencyGraph.DestroyHit();
 
-                weakPoint.GetComponent<IndividualCube>().CheckDetached();
-                weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyDetached();
+                weakPoint.CheckDetached();
+                adjacencyGraph.DestroyDetached();
             }
         }
     }

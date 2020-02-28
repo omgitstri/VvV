@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CreateAdjacencyGraph : MonoBehaviour
 {
-    public Dictionary<Vector3, GameObject> Children;
+    public Dictionary<Vector3, IndividualCube> Children;
 
-    public GameObject weakPoint;
+    private IndividualCube weakPoint = null;
 
-    public Material white;
-    public Material red;
+    [SerializeField] private Material white = null;
+    [SerializeField] private Material red = null;
+
     //public string test = "found";
 
     public int direction;
@@ -17,16 +18,13 @@ public class CreateAdjacencyGraph : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Children = new Dictionary<Vector3, GameObject>();
+        var cubes = GetComponentsInChildren<IndividualCube>();
+        weakPoint = cubes[Random.Range(0, cubes.Length)];
+
+        Children = new Dictionary<Vector3, IndividualCube>();
         CreateDictionary(transform);
         CreateAG();
         InvokeRepeating(nameof(WeakPointFreeWalking), 0f, 0.3f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void SetupAdjacency()
@@ -39,7 +37,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
     [ContextMenu("Create Adjacency Graph")]
     void InitSetupAdjacency()
     {
-        Children = new Dictionary<Vector3, GameObject>();
+        Children = new Dictionary<Vector3, IndividualCube>();
         CreateDictionary(transform);
         CreateAG();
     }
@@ -47,7 +45,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
     void CreateAG()
     {
         //---------Assign neighbours
-        foreach (KeyValuePair<Vector3, GameObject> kvp in Children)
+        foreach (KeyValuePair<Vector3, IndividualCube> kvp in Children)
         {
             Vector3 currCubeKey = kvp.Key;
             Vector3 frontCubeKey = currCubeKey + Vector3.forward;
@@ -59,33 +57,29 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
             if (Children.ContainsKey(frontCubeKey))
             {
-                kvp.Value.GetComponent<IndividualCube>().frontCube = Children[frontCubeKey];
+                kvp.Value.frontCube = Children[frontCubeKey];
             }
             if (Children.ContainsKey(backCubeKey))
             {
-                kvp.Value.GetComponent<IndividualCube>().backCube = Children[backCubeKey];
+                kvp.Value.backCube = Children[backCubeKey];
             }
             if (Children.ContainsKey(leftCubeKey))
             {
-                kvp.Value.GetComponent<IndividualCube>().leftCube = Children[leftCubeKey];
+                kvp.Value.leftCube = Children[leftCubeKey];
             }
             if (Children.ContainsKey(rightCubeKey))
             {
-                kvp.Value.GetComponent<IndividualCube>().rightCube = Children[rightCubeKey];
+                kvp.Value.rightCube = Children[rightCubeKey];
             }
             if (Children.ContainsKey(topCubeKey))
             {
-                kvp.Value.GetComponent<IndividualCube>().topCube = Children[topCubeKey];
+                kvp.Value.topCube = Children[topCubeKey];
             }
             if (Children.ContainsKey(bottomCubeKey))
             {
-                kvp.Value.GetComponent<IndividualCube>().bottomCube = Children[bottomCubeKey];
+                kvp.Value.bottomCube = Children[bottomCubeKey];
             }
-
         }
-
-
-
     }
 
     void CreateDictionary(Transform curr)
@@ -97,6 +91,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
         for (int i = 0; i < curr.childCount; i++)
         {
+            var individualCube = curr.GetChild(i).GetComponent<IndividualCube>();
+
             //-----------Recursion
             if (curr.GetChild(i).childCount > 0)
             {
@@ -105,7 +101,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
             }
 
             //---------Turn its name into a Vecter3
-            if (curr.GetChild(i).GetComponent<IndividualCube>() != null)
+            if (individualCube != null)
             {
                 string name = curr.GetChild(i).name;
                 string[] result = name.Split(new char[] { '_' });
@@ -113,9 +109,9 @@ public class CreateAdjacencyGraph : MonoBehaviour
                 int y = int.Parse(result[result.Length - 2]);
                 int z = int.Parse(result[result.Length - 1]);
 
-                curr.GetChild(i).GetComponent<IndividualCube>().voxelPosition = new Vector3(x, y, z);
-                Vector3 key = curr.GetChild(i).GetComponent<IndividualCube>().voxelPosition;
-                GameObject child = curr.GetChild(i).gameObject;
+                individualCube.voxelPosition = new Vector3(x, y, z);
+                Vector3 key = individualCube.voxelPosition;
+                IndividualCube child = individualCube;
 
                 /*print(key);
                 if (child == null)
@@ -136,28 +132,28 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
     public void DestroyDetached()
     {
-        foreach (KeyValuePair<Vector3, GameObject> kvp in Children)
+        foreach (KeyValuePair<Vector3, IndividualCube> kvp in Children)
         {
-            if (kvp.Value != null && kvp.Value.GetComponent<IndividualCube>().visit != weakPoint.GetComponent<IndividualCube>().visit)
+            if (kvp.Value != null && kvp.Value.visit != weakPoint.visit)
             {
                 //Children.Remove(kvp.Key);
-                kvp.Value.GetComponent<IndividualCube>().DestroyCube();
+                kvp.Value.DestroyCube();
             }
         }
     }
 
     public void DestroyHit()
     {
-        foreach (KeyValuePair<Vector3, GameObject> kvp in Children)
+        foreach (KeyValuePair<Vector3, IndividualCube> kvp in Children)
         {
-            if (kvp.Value != null && kvp.Value.GetComponent<IndividualCube>().hit == true && kvp.Value.tag == "Enemy")
+            if (kvp.Value != null && kvp.Value.hit == true && kvp.Value.tag == "Enemy")
             {
-                kvp.Value.GetComponent<IndividualCube>().DestroyCube();
+                kvp.Value.DestroyCube();
             }
         }
     }
 
-    public GameObject GetWeakPoint()
+    public IndividualCube GetWeakPoint()
     {
         if (weakPoint != null)
         {
@@ -171,41 +167,37 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
     public void WeakPointFreeWalking()
     {
-        GameObject destination = null;
+        IndividualCube destination = null;
 
         switch (direction)
         {
             case 1:
-                destination = weakPoint.GetComponent<IndividualCube>().frontCube;
+                destination = weakPoint.frontCube;
                 break;
             case 2:
-                destination = weakPoint.GetComponent<IndividualCube>().backCube;
+                destination = weakPoint.backCube;
                 break;
             case 3:
-                destination = weakPoint.GetComponent<IndividualCube>().leftCube;
+                destination = weakPoint.leftCube;
                 break;
             case 4:
-                destination = weakPoint.GetComponent<IndividualCube>().rightCube;
+                destination = weakPoint.rightCube;
                 break;
             case 5:
-                destination = weakPoint.GetComponent<IndividualCube>().topCube;
+                destination = weakPoint.topCube;
                 break;
             case 6:
-                destination = weakPoint.GetComponent<IndividualCube>().bottomCube;
+                destination = weakPoint.bottomCube;
                 break;
 
         }
 
         weakPoint.GetComponent<Renderer>().material = white;
         weakPoint.gameObject.tag = "Enemy";
-        weakPoint.GetComponent<IndividualCube>().UnsetNeighboursToWeakPoint(2, white);
+        weakPoint.UnsetNeighboursToWeakPoint(2, white);
 
         if (distance > 0 && destination != null)
         {
-            /*if (direction == 1 && weakPoint.GetComponent<IndividualCube>().frontCube != null)
-            {
-                weakPoint = weakPoint.GetComponent<IndividualCube>().frontCube;
-            }*/
             weakPoint = destination;
 
             distance--;
@@ -213,8 +205,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
         else
         {
             distance = Random.Range(3, 8);
-            List<int> neighbourIndex = weakPoint.GetComponent<IndividualCube>().GetNeighbourIndices();
-            List<GameObject> neighbours = weakPoint.GetComponent<IndividualCube>().GetNeighbours();
+            List<int> neighbourIndex = weakPoint.GetNeighbourIndices();
+            List<IndividualCube> neighbours = weakPoint.GetNeighbours();
             int randIndex = Random.Range(0, neighbours.Count);
             weakPoint = neighbours[randIndex];
             direction = neighbourIndex[randIndex];
@@ -223,7 +215,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
         weakPoint.GetComponent<Renderer>().material = red;
         weakPoint.gameObject.tag = "WeakPoint";
-        weakPoint.GetComponent<IndividualCube>().SetNeighboursToWeakPoint(2, red);
+        weakPoint.SetNeighboursToWeakPoint(2, red);
 
     }
 }

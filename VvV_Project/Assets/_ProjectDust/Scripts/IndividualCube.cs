@@ -6,14 +6,14 @@ public class IndividualCube : MonoBehaviour
 {
     public Vector3 voxelPosition;
 
-    List<GameObject> neighbours = new List<GameObject>();
+    List<IndividualCube> neighbours = new List<IndividualCube>();
 
-    public GameObject frontCube;
-    public GameObject backCube;
-    public GameObject leftCube;
-    public GameObject rightCube;
-    public GameObject topCube;
-    public GameObject bottomCube;
+    public IndividualCube frontCube;
+    public IndividualCube backCube;
+    public IndividualCube leftCube;
+    public IndividualCube rightCube;
+    public IndividualCube topCube;
+    public IndividualCube bottomCube;
 
     //public bool detached;
 
@@ -37,16 +37,11 @@ public class IndividualCube : MonoBehaviour
         //transform.rotation = Random.rotation;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    public List<GameObject> GetNeighbours()
+    public List<IndividualCube> GetNeighbours()
     {
         neighbours.Clear();
-        if(frontCube != null)
+        if (frontCube != null)
         {
             neighbours.Add(frontCube);
         }
@@ -108,34 +103,35 @@ public class IndividualCube : MonoBehaviour
     {
         //Destroy(gameObject);
         neighbours = GetNeighbours();
-        foreach (GameObject neighbour in neighbours)
+        foreach (IndividualCube neighbour in neighbours)
         {
-            neighbour.GetComponent<IndividualCube>().DestroyCube();
+            neighbour.DestroyCube();
         }
     }
 
-    public void AddRigidbodyToNeighbours()
-    {
-        //gameObject.AddComponent<Rigidbody>();
-        neighbours = GetNeighbours();
-        foreach (GameObject neighbour in neighbours)
-        {
-            neighbour.AddComponent<Rigidbody>();
-        }
-    }
+    //public void AddRigidbodyToNeighbours()
+    //{
+    //    //gameObject.AddComponent<Rigidbody>();
+    //    neighbours = GetNeighbours();
+    //    foreach (IndividualCube neighbour in neighbours)
+    //    {
+    //        neighbour.gameObject.AddComponent<Rigidbody>();
+    //    }
+    //}
 
+    [ContextMenu(nameof(CheckDetached))]
     public void CheckDetached()
     {
         visit++;
         //print(visit);
         neighbours = GetNeighbours();
-        if(neighbours.Count > 0)
+        if (neighbours.Count > 0)
         {
-            foreach (GameObject neighbour in neighbours)
+            foreach (IndividualCube neighbour in neighbours)
             {
-                if(neighbour.GetComponent<IndividualCube>().visit != visit)
+                if (neighbour.visit != visit)
                 {
-                    neighbour.GetComponent<IndividualCube>().CheckDetached();
+                    neighbour.CheckDetached();
                 }
             }
         }
@@ -145,27 +141,27 @@ public class IndividualCube : MonoBehaviour
     {
         if (frontCube != null)
         {
-            frontCube.GetComponent<IndividualCube>().backCube = null;
+            frontCube.backCube = null;
         }
         if (backCube != null)
         {
-            backCube.GetComponent<IndividualCube>().frontCube = null;
+            backCube.frontCube = null;
         }
         if (leftCube != null)
         {
-            leftCube.GetComponent<IndividualCube>().rightCube = null;
+            leftCube.rightCube = null;
         }
         if (rightCube != null)
         {
-            rightCube.GetComponent<IndividualCube>().leftCube = null;
+            rightCube.leftCube = null;
         }
         if (topCube != null)
         {
-            topCube.GetComponent<IndividualCube>().bottomCube = null;
+            topCube.bottomCube = null;
         }
         if (bottomCube != null)
         {
-            bottomCube.GetComponent<IndividualCube>().topCube = null;
+            bottomCube.topCube = null;
         }
         //transform.root.GetComponent<CreateAdjacencyGraph>().Children.Remove(voxelPosition);
         Destroy(gameObject);
@@ -174,7 +170,7 @@ public class IndividualCube : MonoBehaviour
     public void SetNeighboursToWeakPoint(int layer, Material mat)
     {
         neighbours = ExpandNeighbours(layer);
-        foreach (GameObject neighbour in neighbours)
+        foreach (IndividualCube neighbour in neighbours)
         {
             neighbour.GetComponent<Renderer>().material = mat;
             //neighbour.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
@@ -185,7 +181,7 @@ public class IndividualCube : MonoBehaviour
     public void UnsetNeighboursToWeakPoint(int layer, Material mat)
     {
         neighbours = ExpandNeighbours(layer);
-        foreach (GameObject neighbour in neighbours)
+        foreach (IndividualCube neighbour in neighbours)
         {
             neighbour.GetComponent<Renderer>().material = mat;
             //neighbour.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
@@ -200,77 +196,42 @@ public class IndividualCube : MonoBehaviour
 
     public void MarkAsHit(int layersOfNei)
     {
-        List<GameObject> nei = ExpandNeighbours(layersOfNei);
-        //print(nei.Count);
+        List<IndividualCube> nei = ExpandNeighbours(layersOfNei);
+
         if (nei.Count > 0)
         {
-            foreach (GameObject neighbour in nei)
+            foreach (IndividualCube neighbour in nei)
             {
-                //print(neighbour.name);
-                //neighbour.GetComponent<IndividualCube>().layer = 0;
-                if(neighbour.tag == "WeakPoint")
+                if (neighbour.tag == "WeakPoint")
                 {
                     DestroyParent();
                 }
-                neighbour.GetComponent<IndividualCube>().hit = true;
+                neighbour.hit = true;
             }
         }
     }
 
-    public List<GameObject> ExpandNeighbours(int layersOfNei)
+    public List<IndividualCube> ExpandNeighbours(int layersOfNei)
     {
-        List<GameObject> curr = new List<GameObject>();
-        //if (layer < 1)
-        //{
-        //layer++;
-            curr.Add(gameObject);
+        List<IndividualCube> curr = new List<IndividualCube>();
 
-        //}
-         
+        curr.Add(this);
+
         if (layersOfNei == 0)
         {
             return curr;
         }
         neighbours = GetNeighbours();
-        foreach (GameObject neighbour in neighbours)
+        foreach (IndividualCube neighbour in neighbours)
         {
-            //if (neighbour.GetComponent<IndividualCube>().layer != layer)
-            //{
-                List<GameObject> recurse = neighbour.GetComponent<IndividualCube>().ExpandNeighbours(layersOfNei - 1);
+            List<IndividualCube> recurse = neighbour.ExpandNeighbours(layersOfNei - 1);
 
-                foreach (GameObject go in recurse)
-                {
-                    curr.Add(go);
-                }
-            //}
-        }
-        return curr;
-
-        /*
-        print("In");
-        if (layer != layersOfNei)
-        {
-            layer++;
-            print(layer);
-            expNei.Add(gameObject);
-            neighbours = GetNeighbours();
-            if (neighbours.Count > 0)
+            foreach (IndividualCube individualCubes in recurse)
             {
-                foreach (GameObject neighbour in neighbours)
-                {
-                    if (neighbour.GetComponent<IndividualCube>().layer != layer)
-                    {
-                        neighbour.GetComponent<IndividualCube>().ExpendNeighbours(layersOfNei);
-                    }
-                }
+                curr.Add(individualCubes);
             }
         }
-
-        layer = 0;
-        List<GameObject> temp = new List<GameObject>();
-        temp = expNei;
-        expNei.Clear();
-        return temp;*/
+        return curr;
     }
 
     private void OnDestroy()
@@ -284,7 +245,7 @@ public class IndividualCube : MonoBehaviour
         {
             instantiateCube = Instantiate<GameObject>(instantiateCube, transform);
             instantiateCube.transform.SetPositionAndRotation(transform.position, transform.rotation);
-            instantiateCube.transform.localScale = Vector3.one;
+            //instantiateCube.transform.localScale = Vector3.one;
             instantiateCube.transform.SetParent(null);
             Destroy(instantiateCube, Random.Range(0f, 3f));
         }

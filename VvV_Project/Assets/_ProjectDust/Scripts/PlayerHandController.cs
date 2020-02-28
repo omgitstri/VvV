@@ -62,25 +62,23 @@ public class PlayerHandController : MonoBehaviour
     {
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, currentHand.range))
         {
+            var individualCube = hitInfo.transform.GetComponent<IndividualCube>();
+            var adjacencyGraph = hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>();
+
             if (hitInfo.transform.tag == "WeakPoint")
             {
-                hitInfo.transform.GetComponent<IndividualCube>().DestroyParent();
+                individualCube.DestroyParent();
             }
 
             if (hitInfo.transform.tag == "Enemy")
             {
                 //Have fun~ ( ￣ 3￣)y▂ξ
-                //hitInfo.transform.gameObject.GetComponent<IndividualCube>().AddRigidbodyToNeighbours();
-                //print(hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().weekPoint.GetComponent<IndividualCube>().voxelPosition);
 
-                GameObject weakPoint = null;
-                weakPoint = hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().GetWeakPoint();
+                IndividualCube weakPoint = null;
+                weakPoint = adjacencyGraph.GetWeakPoint();
 
                 hitInfo.transform.GetComponent<IndividualCube>().MarkAsHit(2);
                 weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyHit();
-
-                //hitInfo.transform.GetComponent<IndividualCube>().DestroyCube();
-                //Destroy(hitInfo.transform.gameObject);
 
                 weakPoint.GetComponent<IndividualCube>().CheckDetached();
                 weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyDetached();
