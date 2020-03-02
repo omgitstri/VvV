@@ -11,7 +11,7 @@ public class Toolbox : MonoBehaviour
     {
         if (Toolbox._instance == null)
         {
-            var goToolbox = new GameObject("Toolbox");
+            var goToolbox = new GameObject(nameof(Toolbox));
             //DontDestroyOnLoad(goToolbox);
             Toolbox._instance = goToolbox.AddComponent<Toolbox>();
         }
@@ -37,20 +37,17 @@ public class Toolbox : MonoBehaviour
 
 
         if (manager == null) {
-            var go = new GameObject("Manager");
+            var go = new GameObject(nameof(manager));
             go.transform.parent = this.gameObject.transform;
 
         
         }
 
-        if (soundManager == null) {
-            soundManager = Instantiate(Resources.Load("SoundManager", typeof(GameObject)) as GameObject);
+        if (soundManager == null)
+        {
+            soundManager = Instantiate(Resources.Load(nameof(SoundManager), typeof(GameObject)) as GameObject);
             soundManager.transform.parent = this.gameObject.transform;
         }
-
-
-
-
 
     }
 

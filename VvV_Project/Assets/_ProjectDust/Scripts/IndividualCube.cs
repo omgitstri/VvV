@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class IndividualCube : MonoBehaviour
 {
+    //begin refactor
     public Vector3 voxelPosition;
 
-    List<IndividualCube> neighbours = new List<IndividualCube>();
+    public bool weakpoint { get; private set; }
+
+    //end refactor
+    private List<IndividualCube> neighbours = new List<IndividualCube>();
 
     public IndividualCube frontCube;
     public IndividualCube backCube;

@@ -10,6 +10,30 @@ public class EnemySFX : MonoBehaviour
     public AudioSource audioSource2;
     public AudioSource audioSource3;
 
+    List<AudioSource> audioSources = new List<AudioSource>();
+
+    private void Grunt()
+    {
+        //randomize grunts
+        var gruntIndex = Random.Range(0, soundManager.eGrunts.Count);
+
+        if(audioSources.Count <= 0)
+        {
+            for (int i = 0; i < audioSources.Count; i++)
+            {
+                if(!audioSources[i].isPlaying)
+                {
+                    audioSources[i].clip = soundManager.eGrunts[gruntIndex];
+                    break;
+                }
+                else if(i == audioSources.Count)
+                {
+                    audioSources.Add(new AudioSource());
+                }
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
