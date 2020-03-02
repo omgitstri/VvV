@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &171064526923808778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171064526923808788}
+  - component: {fileID: 171064526923808779}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &171064526923808788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171064526923808778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.11125, z: -0.027894333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &171064526923808779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171064526923808778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1000cc7d696a9454cb6a0cb39a640590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuScroll: {fileID: 0}
+  menuConfirm: {fileID: 0}
+  menuCancel: {fileID: 0}
+  start: {fileID: 0}
+  pause: {fileID: 0}
+  shoot: {fileID: 0}
+  empty: {fileID: 0}
+  hit: {fileID: 0}
+  reload: {fileID: 0}
+  step: {fileID: 0}
+  hurt: {fileID: 0}
+  death: {fileID: 0}
+  melee: {fileID: 0}
+  vault: {fileID: 0}
+  eGrunt1: {fileID: 0}
+  eGrunt2: {fileID: 0}
+  eGrunt3: {fileID: 0}
+  eMelee: {fileID: 8300000, guid: f471cba79ade50d4db4ecc790688d7ce, type: 3}
+  eStep: {fileID: 8300000, guid: fd7973d8e78e98144bf071f7a9f3ca2d, type: 3}
+  eRun: {fileID: 8300000, guid: 988f9040edbd946498ec3ad56ac4de42, type: 3}
+  eSprint: {fileID: 0}
+  eCrawl: {fileID: 0}
+  eDrop: {fileID: 0}
+  eHurt: {fileID: 0}
+  eDeath: {fileID: 0}
+  startWave: {fileID: 0}
+  endWave: {fileID: 0}
+  trapNormal: {fileID: 0}
+  trapFire: {fileID: 0}
+  trapElect: {fileID: 0}
+  npcGrunt: {fileID: 0}
+  pickup1: {fileID: 0}
+  pickup2: {fileID: 0}
+  pickup3: {fileID: 0}
+  gameOver: {fileID: 0}
+  main: {fileID: 0}
+  wave: {fileID: 0}
+  down: {fileID: 0}
