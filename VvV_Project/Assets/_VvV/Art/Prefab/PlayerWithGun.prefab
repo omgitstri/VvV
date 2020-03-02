@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5359807735999837970}
   - component: {fileID: 401031707}
   - component: {fileID: 401031708}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlayerWithGun
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 5359807736155540103}
   - component: {fileID: 5359807736155540097}
   - component: {fileID: 5359807736155540096}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: MuzzleFlash_center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5066,7 +5066,7 @@ GameObject:
   - component: {fileID: 5359807736425004061}
   - component: {fileID: 5359807736425004063}
   - component: {fileID: 1673757631}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Weapon Camera
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5146,7 +5146,6 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -5158,6 +5157,7 @@ MonoBehaviour:
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -5172,7 +5172,7 @@ GameObject:
   - component: {fileID: 5359807736436513824}
   - component: {fileID: 5359807736436513831}
   - component: {fileID: 5359807736436513830}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9985,7 +9985,7 @@ GameObject:
   - component: {fileID: 5359807736738455700}
   - component: {fileID: 5359807736738455701}
   - component: {fileID: 1647487269}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: HandHolder
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10019,7 +10019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62bcc05766ee0fc42bfccfaf4b9df259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHand: {fileID: 0}
+  currentHand: {fileID: 6166317290292484775}
 --- !u!82 &1647487269
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10128,9 +10128,9 @@ GameObject:
   - component: {fileID: 5359807736815310358}
   - component: {fileID: 5359807736815310357}
   - component: {fileID: 1705008184}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Camera
-  m_TagString: Player
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10219,7 +10219,6 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -10231,6 +10230,7 @@ MonoBehaviour:
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -10245,7 +10245,7 @@ GameObject:
   - component: {fileID: 5359807737270142829}
   - component: {fileID: 5359807737270142830}
   - component: {fileID: 1491908476}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: GunHolder
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10389,7 +10389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030720}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DownArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10420,7 +10420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030722}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DownArm.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10450,7 +10450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030724}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DownArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10481,7 +10481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030726}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DownArm.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10511,7 +10511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030728}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10546,7 +10546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5359807737352030730}
   - component: {fileID: 5359807737357474600}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10635,7 +10635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5359807737352030732}
   - component: {fileID: 5359807737357474602}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10724,7 +10724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5359807737352030734}
   - component: {fileID: 5359807737357474604}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10811,7 +10811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030736}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Magazine_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10841,7 +10841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030738}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: UpArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10872,7 +10872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030740}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: UpArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10903,7 +10903,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030744}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10937,7 +10937,7 @@ GameObject:
   - component: {fileID: 5359807737352030746}
   - component: {fileID: 5359807737361655272}
   - component: {fileID: 5359807737458100319}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11017,7 +11017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030748}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Gun_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11047,7 +11047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5359807737352030750}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11079,7 +11079,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6166317290292512386}
   - component: {fileID: 6166317290303985572}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11165,7 +11165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6166317290292512388}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11199,7 +11199,7 @@ GameObject:
   - component: {fileID: 6166317290292512390}
   - component: {fileID: 6166317290299779428}
   - component: {fileID: 6166317290292484775}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11253,10 +11253,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df25dcf6f5da7754ab6f704736d4cef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0
-  attackDelay: 0
-  anim: {fileID: 0}
-  hand_Sound: {fileID: 0}
+  range: 2
+  attackDelay: 1
+  anim: {fileID: 6166317290299779428}
+  hand_Sound: {fileID: 8300000, guid: f471cba79ade50d4db4ecc790688d7ce, type: 3}
 --- !u!1 &6166317290292484776
 GameObject:
   m_ObjectHideFlags: 0
@@ -11266,7 +11266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6166317290292512392}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DownArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11297,7 +11297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6166317290292512394}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DownArm.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11327,7 +11327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6166317290292512396}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DownArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11358,7 +11358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6166317290292512398}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DownArm.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11388,7 +11388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6166317290292512404}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: UpArm.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11419,7 +11419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6166317290292512406}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: UpArm.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}

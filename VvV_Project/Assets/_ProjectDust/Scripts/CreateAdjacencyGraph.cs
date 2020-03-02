@@ -11,11 +11,9 @@ public class CreateAdjacencyGraph : MonoBehaviour
     [SerializeField] private Material white = null;
     [SerializeField] private Material red = null;
 
-    //public string test = "found";
-
     public int direction;
     public int distance;
-    // Start is called before the first frame update
+
     void Start()
     {
         var cubes = GetComponentsInChildren<IndividualCube>();
@@ -113,19 +111,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
                 Vector3 key = individualCube.voxelPosition;
                 IndividualCube child = individualCube;
 
-                /*print(key);
-                if (child == null)
-                {
-                    print("null");
-                }*/
-
                 Children.Add(key, child);
-
-                /*print("Length" + result.Length);
-                for(int j = 0; j < result.Length; j++)
-                {
-                    print(result[j]);
-                }*/
             }
         }
     }
@@ -146,7 +132,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
     {
         foreach (KeyValuePair<Vector3, IndividualCube> kvp in Children)
         {
-            if (kvp.Value != null && kvp.Value.hit == true && kvp.Value.tag == "Enemy")
+            if (kvp.Value != null && kvp.Value.hit == true && kvp.Value.CompareTag("Enemy"))
             {
                 kvp.Value.DestroyCube();
             }
@@ -189,7 +175,6 @@ public class CreateAdjacencyGraph : MonoBehaviour
             case 6:
                 destination = weakPoint.bottomCube;
                 break;
-
         }
 
         weakPoint.GetComponent<Renderer>().material = white;

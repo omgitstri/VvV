@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8500755892022715976}
   - component: {fileID: 4740257873873792393}
   - component: {fileID: 7545294981597089399}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: SkeletonCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
