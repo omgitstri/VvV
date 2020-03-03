@@ -161,6 +161,8 @@ public class IndividualCube : MonoBehaviour
         }
         //transform.root.GetComponent<CreateAdjacencyGraph>().Children.Remove(voxelPosition);
         Destroy(gameObject);
+        //transform.GetComponent<Rigidbody>().isKinematic = false;
+        //transform.SetParent(null);
     }
 
     public void SetNeighboursToWeakPoint(int layer, Material mat)
