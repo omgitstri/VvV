@@ -64,7 +64,7 @@ namespace Unity.Physics.Extensions
                 int numRows = (Request.ImageResolution + Results.ForEachCount - 1) / Results.ForEachCount;
 
                 const float sphereRadius = 0.005f;
-                BlobAssetReference<Collider> sphere;
+                BlobAssetReference<Collider> sphere = new BlobAssetReference<Collider>();
                 if (Request.CastSphere)
                 {
                     sphere = SphereCollider.Create(new SphereGeometry

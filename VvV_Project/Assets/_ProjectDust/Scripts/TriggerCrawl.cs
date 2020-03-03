@@ -18,7 +18,5 @@ public class TriggerCrawl : MonoBehaviour
         {
             animator.SetBool("Leg", true);
         }
-
-        transform.root.GetComponent<Enemy>().PlayerInRange();
     }
 }

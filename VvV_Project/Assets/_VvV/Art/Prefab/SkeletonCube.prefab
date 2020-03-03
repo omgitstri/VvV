@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8500755892022715976}
   - component: {fileID: 4740257873873792393}
   - component: {fileID: 7545294981597089399}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: SkeletonCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.02}
+  m_Size: {x: 0.03, y: 0.03, z: 0.03}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7545294981597089399
 Rigidbody:
