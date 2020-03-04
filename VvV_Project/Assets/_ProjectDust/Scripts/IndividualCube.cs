@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class IndividualCube : MonoBehaviour
 {
-    public Vector3 voxelPosition;
+    //refactor
+    public Vector3 voxelLocalPosition;
+    private Renderer meshRenderer = null;
+    private Collider myCollider = null;
+    private bool destroyed = false;
 
     List<IndividualCube> neighbours = new List<IndividualCube>();
 
@@ -29,6 +33,8 @@ public class IndividualCube : MonoBehaviour
 
     void Start()
     {
+        myCollider = GetComponent<Collider>();
+        meshRenderer = GetComponent<Renderer>();
         visit = 0;
         layer = 0;
         hit = false;
@@ -101,19 +107,9 @@ public class IndividualCube : MonoBehaviour
         neighbours = GetNeighbours();
         foreach (IndividualCube neighbour in neighbours)
         {
-            neighbour.DestroyCube();
+            neighbour.DeactivateNeighbours();
         }
     }
-
-    //public void AddRigidbodyToNeighbours()
-    //{
-    //    //gameObject.AddComponent<Rigidbody>();
-    //    neighbours = GetNeighbours();
-    //    foreach (IndividualCube neighbour in neighbours)
-    //    {
-    //        neighbour.gameObject.AddComponent<Rigidbody>();
-    //    }
-    //}
 
     [ContextMenu(nameof(CheckDetached))]
     public void CheckDetached()
@@ -133,36 +129,37 @@ public class IndividualCube : MonoBehaviour
         }
     }
 
-    public void DestroyCube()
+    public void DeactivateNeighbours()
     {
-        if (frontCube != null)
+        if (!destroyed)
         {
-            frontCube.backCube = null;
+            if (frontCube != null)
+            {
+                frontCube.backCube = null;
+            }
+            if (backCube != null)
+            {
+                backCube.frontCube = null;
+            }
+            if (leftCube != null)
+            {
+                leftCube.rightCube = null;
+            }
+            if (rightCube != null)
+            {
+                rightCube.leftCube = null;
+            }
+            if (topCube != null)
+            {
+                topCube.bottomCube = null;
+            }
+            if (bottomCube != null)
+            {
+                bottomCube.topCube = null;
+            }
+
+            DeactivateCube();
         }
-        if (backCube != null)
-        {
-            backCube.frontCube = null;
-        }
-        if (leftCube != null)
-        {
-            leftCube.rightCube = null;
-        }
-        if (rightCube != null)
-        {
-            rightCube.leftCube = null;
-        }
-        if (topCube != null)
-        {
-            topCube.bottomCube = null;
-        }
-        if (bottomCube != null)
-        {
-            bottomCube.topCube = null;
-        }
-        //transform.root.GetComponent<CreateAdjacencyGraph>().Children.Remove(voxelPosition);
-        Destroy(gameObject);
-        //transform.GetComponent<Rigidbody>().isKinematic = false;
-        //transform.SetParent(null);
     }
 
     public void SetNeighboursToWeakPoint(int layer, Material mat)
@@ -189,7 +186,8 @@ public class IndividualCube : MonoBehaviour
 
     public void DestroyParent()
     {
-        Destroy(transform.root.gameObject);
+        transform.root.GetComponent<CreateAdjacencyGraph>().DestroyAll();
+        //Destroy(transform.root.gameObject);
     }
 
     public void MarkAsHit(int layersOfNei)
@@ -200,7 +198,7 @@ public class IndividualCube : MonoBehaviour
         {
             foreach (IndividualCube neighbour in nei)
             {
-                if (neighbour.tag == "WeakPoint")
+                if (neighbour.CompareTag( "WeakPoint"))
                 {
                     DestroyParent();
                 }
@@ -232,20 +230,39 @@ public class IndividualCube : MonoBehaviour
         return curr;
     }
 
-    private void OnDestroy()
+    public void DeactivateCube()
     {
+        meshRenderer.enabled = false;
+        myCollider.enabled = false;
+
         if (transform.GetComponentInParent<TriggerCrawl>() != null)
         {
             transform.GetComponentInParent<TriggerCrawl>().Crawl();
         }
 
-        if (instantiateCube != null)
+        if (instantiateCube != null && !destroyed)
         {
-            instantiateCube = Instantiate<GameObject>(instantiateCube, transform);
+            instantiateCube = Instantiate<GameObject>(instantiateCube);
             instantiateCube.transform.SetPositionAndRotation(transform.position, transform.rotation);
-            //instantiateCube.transform.localScale = Vector3.one;
-            instantiateCube.transform.SetParent(null);
             Destroy(instantiateCube, Random.Range(0f, 3f));
+            destroyed = true;
         }
     }
+
+    //private void OnDestroy()
+    //{
+    //    if (transform.GetComponentInParent<TriggerCrawl>() != null)
+    //    {
+    //        transform.GetComponentInParent<TriggerCrawl>().Crawl();
+    //    }
+
+    //    if (instantiateCube != null)
+    //    {
+    //        instantiateCube = Instantiate<GameObject>(instantiateCube, transform);
+    //        instantiateCube.transform.SetPositionAndRotation(transform.position, transform.rotation);
+    //        //instantiateCube.transform.localScale = Vector3.one;
+    //        instantiateCube.transform.SetParent(null);
+    //        Destroy(instantiateCube, Random.Range(0f, 3f));
+    //    }
+    //}
 }
