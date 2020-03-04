@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Physics.Authoring;
 
 public class IndividualCube : MonoBehaviour
 {
     //refactor
     public Vector3 voxelLocalPosition;
-    private Renderer meshRenderer = null;
     private Collider myCollider = null;
+    private Renderer visualMesh = null;
+    private Rigidbody physicMesh = null;
     private bool destroyed = false;
 
     List<IndividualCube> neighbours = new List<IndividualCube>();
@@ -24,8 +26,6 @@ public class IndividualCube : MonoBehaviour
     public int visit;
     public int layer;
 
-    List<GameObject> expNei = new List<GameObject>();
-
     public bool hit;
 
     //instantiate prefab
@@ -33,8 +33,11 @@ public class IndividualCube : MonoBehaviour
 
     void Start()
     {
+        visualMesh = transform.GetChild(0).GetComponent<Renderer>();
+        physicMesh = transform.GetChild(1).GetComponent<Rigidbody>();
+        physicMesh.gameObject.SetActive(false);
         myCollider = GetComponent<Collider>();
-        meshRenderer = GetComponent<Renderer>();
+
         visit = 0;
         layer = 0;
         hit = false;
@@ -133,6 +136,7 @@ public class IndividualCube : MonoBehaviour
     {
         if (!destroyed)
         {
+            GetComponentInParent<CreateAdjacencyGraph>().alive = false;
             if (frontCube != null)
             {
                 frontCube.backCube = null;
@@ -230,22 +234,60 @@ public class IndividualCube : MonoBehaviour
         return curr;
     }
 
+    public IEnumerator Regen()
+    {
+        float elapsedTime = 0f;
+        float waitTime = Random.Range(0f, 5f);
+        Vector3 initPos = physicMesh.transform.localPosition;
+        neighbours.Clear();
+        //physicMesh.transform.localPosition = Vector3.zero;
+        physicMesh.isKinematic = true;
+
+        hit = false;
+
+        while (elapsedTime < waitTime)
+        {
+            physicMesh.transform.position = Vector3.Slerp(initPos, transform.position, (elapsedTime / waitTime));
+            elapsedTime += Time.deltaTime;
+
+            // Yield here
+            yield return null;
+        }
+        // Make sure we got there
+        physicMesh.transform.localPosition = Vector3.zero;
+        physicMesh.transform.SetParent(this.transform);
+
+        physicMesh.gameObject.SetActive(false);
+        myCollider.enabled = true;
+        visualMesh.enabled = true;
+        StopCoroutine(nameof(Regen));
+    }
+
     public void DeactivateCube()
     {
-        meshRenderer.enabled = false;
-        myCollider.enabled = false;
-
-        if (transform.GetComponentInParent<TriggerCrawl>() != null)
+        if (!destroyed)
         {
-            transform.GetComponentInParent<TriggerCrawl>().Crawl();
-        }
+            myCollider.enabled = false;
+            visualMesh.enabled = false;
+            physicMesh.gameObject.SetActive(true);
+            physicMesh.isKinematic = false;
+            physicMesh.AddExplosionForce(100, Vector3.one, 10);
 
-        if (instantiateCube != null && !destroyed)
-        {
-            instantiateCube = Instantiate<GameObject>(instantiateCube);
-            instantiateCube.transform.SetPositionAndRotation(transform.position, transform.rotation);
-            Destroy(instantiateCube, Random.Range(0f, 3f));
-            destroyed = true;
+
+            if (transform.GetComponentInParent<TriggerCrawl>() != null)
+            {
+                transform.GetComponentInParent<TriggerCrawl>().Crawl();
+            }
+
+            physicMesh.transform.SetParent(null);
+
+            //if (instantiateCube != null && !destroyed)
+            //{
+            //    instantiateCube = Instantiate<GameObject>(instantiateCube);
+            //    instantiateCube.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            //    Destroy(instantiateCube, Random.Range(0f, 3f));
+            //    destroyed = true;
+            //}
         }
     }
 

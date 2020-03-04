@@ -25,7 +25,23 @@ public class CreateAdjacencyGraph : MonoBehaviour
         //Children = new Dictionary<Vector3, IndividualCube>();
         CreateDictionary(transform);
         CreateAG();
-        InvokeRepeating(nameof(WeakPointFreeWalking), 0f, 0.3f);
+        //InvokeRepeating(nameof(WeakPointFreeWalking), 0f, 0.3f);
+    }
+
+    float timer = 0;
+    public bool alive = true;
+
+    private void Update()
+    {
+        if (timer <= 0 && alive)
+        {
+            WeakPointFreeWalking();
+            timer = Random.Range(0f, 0.3f);
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+        }
     }
 
     void SetupAdjacency()
@@ -221,19 +237,39 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
     }
 
-    //[SerializeField] GameObject prefab = null;
-    //[ContextMenu(nameof(CreateChild))]
-    //public void CreateChild()
-    //{
-    //    var cubes = new List<IndividualCube>();
+    [ContextMenu(nameof(Regen))]
+    public void Regen()
+    {
+        Children.Clear();
+        InitSetupAdjacency();
+        var cubes = new List<IndividualCube>();
 
-    //    cubes.AddRange(GetComponentsInChildren<IndividualCube>());
+        cubes.AddRange(GetComponentsInChildren<IndividualCube>());
 
-    //    foreach (var item in cubes)
-    //    {
-    //        //var go = Instantiate<GameObject>(prefab, item.transform);
-    //        var go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, item.transform);
-    //        go.transform.localPosition = Vector3.zero;
-    //    }
-    //}
+        foreach (var item in cubes)
+        {
+            item.visit = 0;
+            item.StartCoroutine(nameof(Regen));
+        }
+        alive = true;
+    }
+
+
+#if UNITY_EDITOR
+    [SerializeField] GameObject prefab = null;
+    [ContextMenu(nameof(CreateChild))]
+    public void CreateChild()
+    {
+        var cubes = new List<IndividualCube>();
+
+        cubes.AddRange(GetComponentsInChildren<IndividualCube>());
+
+        foreach (var item in cubes)
+        {
+            //var go = Instantiate<GameObject>(prefab, item.transform);
+            var go = (GameObject)PrefabUtility.InstantiatePrefab(prefab, item.transform);
+            go.transform.localPosition = Vector3.zero;
+        }
+    }
+#endif
 }

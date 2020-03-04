@@ -15,7 +15,13 @@ MonoBehaviour:
   enemyWeights:
   - name: EnemyData_Full
     enemyType: {fileID: 11400000, guid: a16bfb43d5df7a1489b3c9f4b3e63bb1, type: 2}
-    weight: 10
+    weight: 1
   - name: EnemyData_One_Arm
     enemyType: {fileID: 11400000, guid: 6f420a64d02926f46918dbb97e63343c, type: 2}
     weight: 5
+  - name: 
+    enemyType: {fileID: 0}
+    weight: 7
+  - name: 
+    enemyType: {fileID: 0}
+    weight: 3
