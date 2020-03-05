@@ -210,9 +210,9 @@ public class CreateAdjacencyGraph : MonoBehaviour
                 break;
         }
 
-        //weakPoint.GetComponent<Renderer>().material = white;
+        weakPoint.transform.GetChild(0).GetComponent<Renderer>().material = white;
         weakPoint.gameObject.tag = "Enemy";
-        //weakPoint.UnsetNeighboursToWeakPoint(2, white);
+        weakPoint.UnsetNeighboursToWeakPoint(2, white);
 
         if (distance > 0 && destination != null)
         {
@@ -231,9 +231,9 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
         }
 
-        //weakPoint.GetComponent<Renderer>().material = red;
+        weakPoint.transform.GetChild(0).GetComponent<Renderer>().material = red;
         weakPoint.gameObject.tag = "WeakPoint";
-        //weakPoint.SetNeighboursToWeakPoint(2, red);
+        weakPoint.SetNeighboursToWeakPoint(2, red);
 
     }
 

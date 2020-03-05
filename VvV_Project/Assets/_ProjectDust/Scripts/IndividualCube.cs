@@ -28,9 +28,6 @@ public class IndividualCube : MonoBehaviour
 
     public bool hit;
 
-    //instantiate prefab
-    [SerializeField] private GameObject instantiateCube = null;
-
     void Start()
     {
         visualMesh = transform.GetChild(0).GetComponent<Renderer>();
@@ -171,7 +168,7 @@ public class IndividualCube : MonoBehaviour
         neighbours = ExpandNeighbours(layer);
         foreach (IndividualCube neighbour in neighbours)
         {
-            neighbour.GetComponent<Renderer>().material = mat;
+            neighbour.transform.GetChild(0).GetComponent<Renderer>().material = mat;
             //neighbour.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
             neighbour.gameObject.tag = "WeakPoint";
         }
@@ -182,7 +179,7 @@ public class IndividualCube : MonoBehaviour
         neighbours = ExpandNeighbours(layer);
         foreach (IndividualCube neighbour in neighbours)
         {
-            neighbour.GetComponent<Renderer>().material = mat;
+            neighbour.transform.GetChild(0).GetComponent<Renderer>().material = mat;
             //neighbour.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
             neighbour.gameObject.tag = "Enemy";
         }
@@ -239,12 +236,13 @@ public class IndividualCube : MonoBehaviour
         float elapsedTime = 0f;
         float waitTime = Random.Range(0f, 5f);
         Vector3 initPos = physicMesh.transform.localPosition;
+
         neighbours.Clear();
         //physicMesh.transform.localPosition = Vector3.zero;
         physicMesh.isKinematic = true;
 
         hit = false;
-
+        
         while (elapsedTime < waitTime)
         {
             physicMesh.transform.position = Vector3.Slerp(initPos, transform.position, (elapsedTime / waitTime));
@@ -254,13 +252,22 @@ public class IndividualCube : MonoBehaviour
             yield return null;
         }
         // Make sure we got there
-        physicMesh.transform.localPosition = Vector3.zero;
         physicMesh.transform.SetParent(this.transform);
-
+        physicMesh.transform.localPosition = Vector3.zero;
+        physicMesh.velocity = Vector3.zero;
+        physicMesh.Sleep();
+        physicMesh.GetComponent<Collider>().enabled = true;
         physicMesh.gameObject.SetActive(false);
         myCollider.enabled = true;
         visualMesh.enabled = true;
-        StopCoroutine(nameof(Regen));
+        StopAllCoroutines();
+    }
+
+    public IEnumerator DelaySetKinematic()
+    {
+        yield return new WaitForSeconds(2);
+        physicMesh.isKinematic = true;
+        physicMesh.GetComponent<Collider>().enabled = false;
     }
 
     public void DeactivateCube()
@@ -271,8 +278,6 @@ public class IndividualCube : MonoBehaviour
             visualMesh.enabled = false;
             physicMesh.gameObject.SetActive(true);
             physicMesh.isKinematic = false;
-            physicMesh.AddExplosionForce(100, Vector3.one, 10);
-
 
             if (transform.GetComponentInParent<TriggerCrawl>() != null)
             {
@@ -280,7 +285,7 @@ public class IndividualCube : MonoBehaviour
             }
 
             physicMesh.transform.SetParent(null);
-
+            StartCoroutine(nameof(DelaySetKinematic));
             //if (instantiateCube != null && !destroyed)
             //{
             //    instantiateCube = Instantiate<GameObject>(instantiateCube);
