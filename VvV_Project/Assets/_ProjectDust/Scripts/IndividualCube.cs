@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Physics.Authoring;
 
 public class IndividualCube : MonoBehaviour
 {
-    //begin refactor
-    public Vector3 voxelPosition;
+    //refactor
+    public Vector3 voxelLocalPosition;
+    private Collider myCollider = null;
+    private Renderer visualMesh = null;
+    private Rigidbody physicMesh = null;
+    private bool destroyed = false;
 
-    public bool weakpoint { get; private set; }
-
-    //end refactor
-    private List<IndividualCube> neighbours = new List<IndividualCube>();
+    List<IndividualCube> neighbours = new List<IndividualCube>();
 
     public IndividualCube frontCube;
     public IndividualCube backCube;
@@ -24,15 +26,15 @@ public class IndividualCube : MonoBehaviour
     public int visit;
     public int layer;
 
-    List<GameObject> expNei = new List<GameObject>();
-
     public bool hit;
-
-    //instantiate prefab
-    [SerializeField] private GameObject instantiateCube = null;
 
     void Start()
     {
+        visualMesh = transform.GetChild(0).GetComponent<Renderer>();
+        physicMesh = transform.GetChild(1).GetComponent<Rigidbody>();
+        physicMesh.gameObject.SetActive(false);
+        myCollider = GetComponent<Collider>();
+
         visit = 0;
         layer = 0;
         hit = false;
@@ -105,19 +107,9 @@ public class IndividualCube : MonoBehaviour
         neighbours = GetNeighbours();
         foreach (IndividualCube neighbour in neighbours)
         {
-            neighbour.DestroyCube();
+            neighbour.DeactivateNeighbours();
         }
     }
-
-    //public void AddRigidbodyToNeighbours()
-    //{
-    //    //gameObject.AddComponent<Rigidbody>();
-    //    neighbours = GetNeighbours();
-    //    foreach (IndividualCube neighbour in neighbours)
-    //    {
-    //        neighbour.gameObject.AddComponent<Rigidbody>();
-    //    }
-    //}
 
     [ContextMenu(nameof(CheckDetached))]
     public void CheckDetached()
@@ -137,34 +129,38 @@ public class IndividualCube : MonoBehaviour
         }
     }
 
-    public void DestroyCube()
+    public void DeactivateNeighbours()
     {
-        if (frontCube != null)
+        if (!destroyed)
         {
-            frontCube.backCube = null;
+            GetComponentInParent<CreateAdjacencyGraph>().alive = false;
+            if (frontCube != null)
+            {
+                frontCube.backCube = null;
+            }
+            if (backCube != null)
+            {
+                backCube.frontCube = null;
+            }
+            if (leftCube != null)
+            {
+                leftCube.rightCube = null;
+            }
+            if (rightCube != null)
+            {
+                rightCube.leftCube = null;
+            }
+            if (topCube != null)
+            {
+                topCube.bottomCube = null;
+            }
+            if (bottomCube != null)
+            {
+                bottomCube.topCube = null;
+            }
+
+            DeactivateCube();
         }
-        if (backCube != null)
-        {
-            backCube.frontCube = null;
-        }
-        if (leftCube != null)
-        {
-            leftCube.rightCube = null;
-        }
-        if (rightCube != null)
-        {
-            rightCube.leftCube = null;
-        }
-        if (topCube != null)
-        {
-            topCube.bottomCube = null;
-        }
-        if (bottomCube != null)
-        {
-            bottomCube.topCube = null;
-        }
-        //transform.root.GetComponent<CreateAdjacencyGraph>().Children.Remove(voxelPosition);
-        Destroy(gameObject);
     }
 
     public void SetNeighboursToWeakPoint(int layer, Material mat)
@@ -172,7 +168,7 @@ public class IndividualCube : MonoBehaviour
         neighbours = ExpandNeighbours(layer);
         foreach (IndividualCube neighbour in neighbours)
         {
-            neighbour.GetComponent<Renderer>().material = mat;
+            neighbour.transform.GetChild(0).GetComponent<Renderer>().material = mat;
             //neighbour.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
             neighbour.gameObject.tag = "WeakPoint";
         }
@@ -183,7 +179,7 @@ public class IndividualCube : MonoBehaviour
         neighbours = ExpandNeighbours(layer);
         foreach (IndividualCube neighbour in neighbours)
         {
-            neighbour.GetComponent<Renderer>().material = mat;
+            neighbour.transform.GetChild(0).GetComponent<Renderer>().material = mat;
             //neighbour.GetComponent<Renderer>().material.SetColor("_Color", Color.white);
             neighbour.gameObject.tag = "Enemy";
         }
@@ -191,7 +187,8 @@ public class IndividualCube : MonoBehaviour
 
     public void DestroyParent()
     {
-        Destroy(transform.root.gameObject);
+        transform.root.GetComponent<CreateAdjacencyGraph>().DestroyAll();
+        //Destroy(transform.root.gameObject);
     }
 
     public void MarkAsHit(int layersOfNei)
@@ -202,7 +199,7 @@ public class IndividualCube : MonoBehaviour
         {
             foreach (IndividualCube neighbour in nei)
             {
-                if (neighbour.tag == "WeakPoint")
+                if (neighbour.CompareTag( "WeakPoint"))
                 {
                     DestroyParent();
                 }
@@ -234,20 +231,85 @@ public class IndividualCube : MonoBehaviour
         return curr;
     }
 
-    private void OnDestroy()
+    public IEnumerator Regen()
     {
-        if (transform.GetComponentInParent<TriggerCrawl>() != null)
-        {
-            transform.GetComponentInParent<TriggerCrawl>().Crawl();
-        }
+        float elapsedTime = 0f;
+        float waitTime = Random.Range(0f, 5f);
+        Vector3 initPos = physicMesh.transform.localPosition;
 
-        if (instantiateCube != null)
+        neighbours.Clear();
+        //physicMesh.transform.localPosition = Vector3.zero;
+        physicMesh.isKinematic = true;
+
+        hit = false;
+        
+        while (elapsedTime < waitTime)
         {
-            instantiateCube = Instantiate<GameObject>(instantiateCube, transform);
-            instantiateCube.transform.SetPositionAndRotation(transform.position, transform.rotation);
-            //instantiateCube.transform.localScale = Vector3.one;
-            instantiateCube.transform.SetParent(null);
-            Destroy(instantiateCube, Random.Range(0f, 3f));
+            physicMesh.transform.position = Vector3.Slerp(initPos, transform.position, (elapsedTime / waitTime));
+            elapsedTime += Time.deltaTime;
+
+            // Yield here
+            yield return null;
+        }
+        // Make sure we got there
+        physicMesh.transform.SetParent(this.transform);
+        physicMesh.transform.localPosition = Vector3.zero;
+        physicMesh.velocity = Vector3.zero;
+        physicMesh.Sleep();
+        physicMesh.GetComponent<Collider>().enabled = true;
+        physicMesh.gameObject.SetActive(false);
+        myCollider.enabled = true;
+        visualMesh.enabled = true;
+        StopAllCoroutines();
+    }
+
+    public IEnumerator DelaySetKinematic()
+    {
+        yield return new WaitForSeconds(2);
+        physicMesh.isKinematic = true;
+        physicMesh.GetComponent<Collider>().enabled = false;
+    }
+
+    public void DeactivateCube()
+    {
+        if (!destroyed)
+        {
+            myCollider.enabled = false;
+            visualMesh.enabled = false;
+            physicMesh.gameObject.SetActive(true);
+            physicMesh.isKinematic = false;
+
+            if (transform.GetComponentInParent<TriggerCrawl>() != null)
+            {
+                transform.GetComponentInParent<TriggerCrawl>().Crawl();
+            }
+
+            physicMesh.transform.SetParent(null);
+            StartCoroutine(nameof(DelaySetKinematic));
+            //if (instantiateCube != null && !destroyed)
+            //{
+            //    instantiateCube = Instantiate<GameObject>(instantiateCube);
+            //    instantiateCube.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            //    Destroy(instantiateCube, Random.Range(0f, 3f));
+            //    destroyed = true;
+            //}
         }
     }
+
+    //private void OnDestroy()
+    //{
+    //    if (transform.GetComponentInParent<TriggerCrawl>() != null)
+    //    {
+    //        transform.GetComponentInParent<TriggerCrawl>().Crawl();
+    //    }
+
+    //    if (instantiateCube != null)
+    //    {
+    //        instantiateCube = Instantiate<GameObject>(instantiateCube, transform);
+    //        instantiateCube.transform.SetPositionAndRotation(transform.position, transform.rotation);
+    //        //instantiateCube.transform.localScale = Vector3.one;
+    //        instantiateCube.transform.SetParent(null);
+    //        Destroy(instantiateCube, Random.Range(0f, 3f));
+    //    }
+    //}
 }
