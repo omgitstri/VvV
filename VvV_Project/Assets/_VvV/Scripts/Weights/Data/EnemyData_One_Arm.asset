@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyData_One_Arm
   m_EditorClassIdentifier: 
   prefab: {fileID: 5699373324934050579, guid: d7339ec3f6feb0c43a7bc142a2dfe63b, type: 3}
-  cost: 10
+  cost: 3

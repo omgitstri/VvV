@@ -93,29 +93,30 @@ public class GunController : MonoBehaviour
             GameObject hitEffect = Instantiate(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             Destroy(hitEffect, 2f);
 
-            if (hitInfo.transform.CompareTag("WeakPoint"))
+            var hit = hitInfo.transform.GetComponent<Damagable>();
+
+            if(hit != null)
             {
-                hitInfo.transform.GetComponent<IndividualCube>().DestroyParent();
+                hit.GetDamaged();
             }
 
-            if (hitInfo.transform.CompareTag("Enemy"))
-            {
-                //Have fun~ ( ￣ 3￣)y▂ξ
-                //hitInfo.transform.gameObject.GetComponent<IndividualCube>().AddRigidbodyToNeighbours();
-                //print(hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().weekPoint.GetComponent<IndividualCube>().voxelPosition);
+            //if (hitInfo.transform.CompareTag("WeakPoint"))
+            //{
+            //    hitInfo.transform.GetComponent<IndividualCube>().DestroyParent();
+            //}
 
-                IndividualCube weakPoint = null;
-                weakPoint = hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().GetWeakPoint();
+            //if (hitInfo.transform.CompareTag("Enemy"))
+            //{
+            //    //Have fun~ ( ￣ 3￣)y▂ξ
+            //    IndividualCube weakPoint = null;
+            //    weakPoint = hitInfo.transform.root.GetComponent<CreateAdjacencyGraph>().GetWeakPoint();
 
-                hitInfo.transform.GetComponent<IndividualCube>().MarkAsHit(2);
-                weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyHit();
+            //    hitInfo.transform.GetComponent<IndividualCube>().MarkAsHit(2);
+            //    weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyHit();
 
-                //hitInfo.transform.GetComponent<IndividualCube>().DestroyCube();
-                //Destroy(hitInfo.transform.gameObject);
-
-                weakPoint.GetComponent<IndividualCube>().CheckDetached();
-                weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyDetached();
-            }
+            //    weakPoint.GetComponent<IndividualCube>().CheckDetached();
+            //    weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyDetached();
+            //}
         }
     }
 

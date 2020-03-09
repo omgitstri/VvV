@@ -19,8 +19,8 @@ TagManager:
   - PostProcessing
   - Weapon
   - Enemy
-  - Effect
-  - 
+  - Player
+  - Cube
   - 
   - 
   - 

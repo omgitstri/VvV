@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerCrawl : MonoBehaviour
 {
     private Animator animator = null;
-    [SerializeField] bool crawl = false;
+    [SerializeField] private bool crawl = false;
 
     private void Start()
     {
@@ -18,7 +18,5 @@ public class TriggerCrawl : MonoBehaviour
         {
             animator.SetBool("Leg", true);
         }
-
-        transform.root.GetComponent<Enemy>().PlayerInRange();
     }
 }
