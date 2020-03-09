@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Toolbox : MonoBehaviour
+public class ToolboxTri : MonoBehaviour
 {
     public delegate void GenericAction();
 
@@ -45,5 +45,4 @@ public class Toolbox : MonoBehaviour
             yield return null;
         }
     }
-
 }

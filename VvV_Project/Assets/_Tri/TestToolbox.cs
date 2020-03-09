@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class TestToolbox : MonoBehaviour
 {
-    Toolbox go;
+    ToolboxTri go;
     // Start is called before the first frame update
     void Start()
     {
-            go = new  GameObject("").AddComponent<Toolbox>();
+            go = new  GameObject("").AddComponent<ToolboxTri>();
 
     }
-    float test = 0f;
+
     // Update is called once per frame
     void Update()
     {
