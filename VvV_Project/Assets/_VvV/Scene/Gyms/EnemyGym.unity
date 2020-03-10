@@ -1028,13 +1028,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea485db118dca64f8262abb985f3337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalizedMovement: 0
   entities:
   - {fileID: 574125775}
   - {fileID: 500335011}
   - {fileID: 919524293}
   chaseDistance: 4
   player: {fileID: 1487654810}
-  speed: 3
+  speed: 1
 --- !u!4 &703747887
 Transform:
   m_ObjectHideFlags: 0
@@ -2864,13 +2865,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea485db118dca64f8262abb985f3337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalizedMovement: 0
   entities:
   - {fileID: 574125775}
   - {fileID: 500335011}
   - {fileID: 919524293}
   chaseDistance: 4
   player: {fileID: 1487654810}
-  speed: 3
+  speed: 1
 --- !u!4 &1681652552
 Transform:
   m_ObjectHideFlags: 0
