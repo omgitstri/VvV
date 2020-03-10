@@ -34,11 +34,10 @@ public class Toolbox : MonoBehaviour
 
         //manager = GameObject.FindGameObjectWithTag("Manager");
 
-
-
         if (manager == null) {
             var go = new GameObject(nameof(manager));
             go.transform.parent = this.gameObject.transform;
+            go.AddComponent<SceneLoader>();
 
         
         }
@@ -51,6 +50,10 @@ public class Toolbox : MonoBehaviour
 
     }
 
+    public SceneLoader GetScene()
+    {
+        return manager.GetComponent<SceneLoader>();
+    }
 
     
     public SoundManager GetSound()
