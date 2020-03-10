@@ -5,27 +5,47 @@ using UnityEditor;
 
 public class GymEnemy_AttackClosest : MonoBehaviour
 {
+    [SerializeField] private bool normalizedMovement = false;
     [SerializeField] private List<Transform> entities = new List<Transform>();
     public float chaseDistance = 2f;
     [SerializeField] private Transform player = null;
     [SerializeField] private float speed = 5f;
+    float losePlayer = 2f;
 
-    private Transform currentTarget = null;
+    public Transform currentTarget { get; private set; }
+
+    private void Start()
+    {
+        currentTarget = FindClosestTarget();
+    }
 
     void Update()
     {
         if (Vector3.Distance(transform.position, player.position) <= chaseDistance)
         {
             currentTarget = player;
+            losePlayer = 2f;
         }
-        else
+        else if (losePlayer < 0)
         {
             currentTarget = FindClosestTarget();
         }
+        else
+        {
+            losePlayer -= Time.deltaTime;
+        }
 
-
-        transform.position += (currentTarget.position - transform.position) * speed * Time.deltaTime;
-
+        if (currentTarget != null && Vector3.Distance(currentTarget.position, transform.position) > 0.01f)
+        {
+            if (normalizedMovement)
+            {
+                transform.position += (currentTarget.position - transform.position).normalized * speed * Time.deltaTime;
+            }
+            else
+            {
+                transform.position += (currentTarget.position - transform.position) * speed * Time.deltaTime;
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
