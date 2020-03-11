@@ -11,11 +11,11 @@ public class BatteryBar : MonoBehaviour
 {
 	//**** Variables
 	[SerializeField]
-	private Slider batterySlider;
+	private Slider batterySlider = null;
 	[SerializeField]
-	private Gradient gradientColour;
+	private Gradient gradientColour = null;
 	[SerializeField]
-	private Image fill;
+	private Image fill = null;
 
 
 	void Start()

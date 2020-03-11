@@ -11,17 +11,18 @@ public class OnStartUp : MonoBehaviour
 	//**** Variables
 	[Header("Grey Colour Material")]
 	[SerializeField]
-	private Material disabledColour;
-	public List<GameObject> disabledColourOnStartUp;
+	private Material disabledColour = null;
+    public List<GameObject> disabledColourOnStartUp;
 
 	[Header("Disabled Mesh")]
 	[SerializeField]
-	private Material changeMaterial;
+	private Material changeMaterial = null;
 	public List<GameObject> changeMaterialOnStartUp;
 
 
 	void Start()
 	{
+        changeMaterial = null;
 		OnStartDeclaration();
 		OnStartFunction();
 	}

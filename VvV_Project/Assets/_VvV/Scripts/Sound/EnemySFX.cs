@@ -10,7 +10,7 @@ public class EnemySFX : MonoBehaviour
     public AudioSource audioSource2;
     public AudioSource audioSource3;
 
-    List<AudioSource> audioSources = new List<AudioSource>();
+    private List<AudioSource> audioSources = new List<AudioSource>();
 
     private void Grunt()
     {
