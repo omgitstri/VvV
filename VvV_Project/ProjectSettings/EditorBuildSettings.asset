@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_VvV/Scene/Gyms/EnemyAttackGym.unity
     guid: 4f5ca4c614818fa468e1e62093091327
+  - enabled: 1
+    path: Assets/_VvV/Scene/StartMenu.unity
+    guid: 18a0c9289d59188458a68ce750099627
+  - enabled: 1
+    path: Assets/_VvV/Scene/Gyms/SceneLoadingGym.unity
+    guid: f1b0513cc28b0c1489a5966e77a41511
+  - enabled: 1
+    path: Assets/_VvV/Scene/LevelDesign 2.unity
+    guid: b8417270bfad1014d9c6fe5f0cc4cb2f
+  - enabled: 1
+    path: Assets/_VvV/Scene/Gyms/AudioGym.unity
+    guid: aa247c6363ada7543b4c2f68609267cb
   m_configObjects: {}

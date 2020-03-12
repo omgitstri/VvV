@@ -38,7 +38,7 @@ public class Toolbox : MonoBehaviour
             var go = new GameObject(nameof(manager));
             go.transform.parent = this.gameObject.transform;
             go.AddComponent<SceneLoader>();
-
+            manager = go;
         
         }
 
@@ -60,5 +60,11 @@ public class Toolbox : MonoBehaviour
     {
         return soundManager.GetComponent<SoundManager>();
     }
-    
+
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            manager.GetComponent<SceneLoader>().LoadScene("SceneLoadingGym");
+        }    
+    }
 }

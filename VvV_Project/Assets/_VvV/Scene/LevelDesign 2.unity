@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1023,6 +1023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 167608764}
   - component: {fileID: 167608765}
+  - component: {fileID: 167608766}
   m_Layer: 0
   m_Name: Toolbox
   m_TagString: Untagged
@@ -1061,6 +1062,20 @@ MonoBehaviour:
   disabledColourOnStartUp: []
   changeMaterial: {fileID: 0}
   changeMaterialOnStartUp: []
+--- !u!114 &167608766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167608763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d753fbf3ae3f5204da90586ce0fbcfe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!1 &176157407
 GameObject:
   m_ObjectHideFlags: 0
@@ -6453,7 +6468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83b830ea674061a71e85f64ee7661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voxelPosition: {x: -1, y: -26, z: -1}
+  voxelLocalPosition: {x: 0, y: 0, z: 0}
   frontCube: {fileID: 0}
   backCube: {fileID: 0}
   leftCube: {fileID: 0}
@@ -6463,8 +6478,6 @@ MonoBehaviour:
   visit: 0
   layer: 0
   hit: 0
-  instantiateCube: {fileID: 5999780364518693242, guid: bd65e5b366530dc4890f5cf9b0f161ce,
-    type: 3}
 --- !u!65 &1427515547
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8027,7 +8040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83b830ea674061a71e85f64ee7661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  voxelPosition: {x: -1, y: -26, z: -1}
+  voxelLocalPosition: {x: 0, y: 0, z: 0}
   frontCube: {fileID: 0}
   backCube: {fileID: 0}
   leftCube: {fileID: 0}
@@ -8037,8 +8050,6 @@ MonoBehaviour:
   visit: 0
   layer: 0
   hit: 0
-  instantiateCube: {fileID: 5999780364518693242, guid: bd65e5b366530dc4890f5cf9b0f161ce,
-    type: 3}
 --- !u!65 &1665725569
 BoxCollider:
   m_ObjectHideFlags: 0
