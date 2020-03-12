@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damagable : MonoBehaviour
+public abstract class Damagable : MonoBehaviour
 {
-    public virtual void GetDamaged()
-    {
-
-    }
+    public abstract void GetDamaged();
+    
 }

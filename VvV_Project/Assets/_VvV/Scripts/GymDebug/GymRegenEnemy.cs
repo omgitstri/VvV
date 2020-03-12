@@ -11,11 +11,6 @@ public class GymRegenEnemy : Damagable
         //base.GetDamaged();
 
         StartCoroutine(nameof(Regen));
-
-        //for (int i = 0; i < graph.Count; i++)
-        //{
-        //    graph[i].Regen();
-        //}
     }
 
     public IEnumerator Regen()
@@ -23,9 +18,8 @@ public class GymRegenEnemy : Damagable
         int i = 0;
         while (i < graph.Count)
         {
-            i++;
             graph[i].Regen();
-
+            i++;
             yield return new WaitForSeconds(Random.Range(0, 2));
         }
     }

@@ -16,13 +16,12 @@ public class OnStartUp : MonoBehaviour
 
 	[Header("Disabled Mesh")]
 	[SerializeField]
-	private Material changeMaterial = null;
+	private Material changeMaterial;
 	public List<GameObject> changeMaterialOnStartUp;
 
 
 	void Start()
 	{
-        changeMaterial = null;
 		OnStartDeclaration();
 		OnStartFunction();
 	}

@@ -8,7 +8,10 @@ public class EnemyDamagable : Damagable
 
     private void Start()
     {
-        individualCube = GetComponent<IndividualCube>();
+        if (TryGetComponent<IndividualCube>(out IndividualCube cube))
+        {
+            individualCube = cube;
+        }
     }
 
     public override void GetDamaged()
@@ -22,13 +25,16 @@ public class EnemyDamagable : Damagable
         if (transform.CompareTag("Enemy"))
         {
             //Have fun~ ( ￣ 3￣)y▂ξ
-            var weakPoint = transform.root.GetComponent<CreateAdjacencyGraph>();
-
+            
             individualCube.MarkAsHit(2);
-            weakPoint.DestroyHit();
 
-            weakPoint.GetWeakPoint().CheckDetached();
-            weakPoint.DestroyDetached();
+            if (transform.root.TryGetComponent<CreateAdjacencyGraph>(out CreateAdjacencyGraph weakPoint))
+            {
+                weakPoint.DestroyHit();
+
+                weakPoint.GetWeakPoint().CheckDetached();
+                weakPoint.DestroyDetached();
+            }
         }
 
     }
