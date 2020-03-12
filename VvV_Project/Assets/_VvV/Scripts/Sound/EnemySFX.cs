@@ -82,7 +82,7 @@ public class EnemySFX : MonoBehaviour
 
     void PlayRun()
     {
-        audioSource1.clip = soundManager.eRun;
+        audioSource3.clip = soundManager.eRun;
         audioSource1.Play();
     }
 }
