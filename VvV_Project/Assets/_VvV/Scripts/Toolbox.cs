@@ -63,7 +63,9 @@ public class Toolbox : MonoBehaviour
 
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.F1)) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             manager.GetComponent<SceneLoader>().LoadScene("SceneLoadingGym");
         }    
     }

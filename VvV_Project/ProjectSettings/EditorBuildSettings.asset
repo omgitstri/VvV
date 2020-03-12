@@ -6,24 +6,36 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_VvV/Scene/Gyms/EnemyRegenGym.unity
-    guid: 056e205e24aff3f4db2f944375db7e12
+    path: Assets/_VvV/Scene/Gyms/SceneLoadingGym.unity
+    guid: f1b0513cc28b0c1489a5966e77a41511
+  - enabled: 1
+    path: Assets/_VvV/Scene/StartMenu.unity
+    guid: 18a0c9289d59188458a68ce750099627
+  - enabled: 1
+    path: Assets/_VvV/Scene/Gyms/AudioGym.unity
+    guid: aa247c6363ada7543b4c2f68609267cb
   - enabled: 1
     path: Assets/_VvV/Scene/Gyms/EnemyAttackGym.unity
     guid: 4f5ca4c614818fa468e1e62093091327
   - enabled: 1
-    path: Assets/_ProjectDust/Scenes/GymDemo.unity
-    guid: 881bf4500355c58499061cd30b1373dc
+    path: Assets/_VvV/Scene/Gyms/EnemyAggroGym.unity
+    guid: 454f9d182d2888140886108d3820a7d9
+  - enabled: 1
+    path: Assets/_VvV/Scene/Gyms/EnemyRegenGym.unity
+    guid: 056e205e24aff3f4db2f944375db7e12
   - enabled: 1
     path: Assets/_VvV/Scene/Gyms/EMPGym.unity
     guid: 1ec154bc498c7fd45bbdc788fea0fd83
   - enabled: 1
-    path: Assets/_VvV/Scene/Gyms/EnemyAggroGym.unity
-    guid: 454f9d182d2888140886108d3820a7d9
+    path: Assets/_VvV/Scene/Statistics.unity
+    guid: f6135c8f38f445941bffb8099320ce82
   - enabled: 1
     path: Assets/_VvV/Scene/Gyms/PlayerGym.unity
     guid: 9cc7d0bb83c30c342a16a57e9fa49d19
   - enabled: 1
     path: Assets/_VvV/Scene/LevelDesign 2.unity
     guid: b8417270bfad1014d9c6fe5f0cc4cb2f
+  - enabled: 1
+    path: Assets/_VvV/Scene/Options.unity
+    guid: aca6b21c115158d488c9fcf39902d60f
   m_configObjects: {}
