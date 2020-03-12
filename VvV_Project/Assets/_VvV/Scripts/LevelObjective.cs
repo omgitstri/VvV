@@ -76,15 +76,76 @@ public class LevelObjective : MonoBehaviour
 		}
 	}
 
+	//-- Bool building activate state
+	void BatteryBuildingsActive()
+	{
+		//-- Testing the Charge
+		if (Input.GetKeyDown(KeyCode.W))
+		{
+			BatteryOnjective();
+		}
+	}
+
+	//-- Bool building activate state
+	void ElectricityBuildingsActive()
+	{
+		//-- Testing the Charge
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			ElectricityOnjective();
+		}
+	}
+
+	//-- Bool building activate state
+	void ServerBuildingsActive()
+	{
+		//-- Testing the Charge
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			ServerOnjective();
+		}
+	}
+
+	//-- Bool building activate state
+	void EMPBuildingsActive()
+	{
+		//-- Testing the Charge
+		if (Input.GetKeyDown(KeyCode.T))
+		{
+			EmpOnjective();
+		}
+	}
+
 	private void BoolOnjective()
 	{
 		batteryActive = !batteryActive;
 		serverActive = !serverActive;
 		electricityActive = !electricityActive;
 		empActive = !empActive;
-
-		print("Bool Check");
 	}
+
+	private void BatteryOnjective()
+	{
+		batteryActive = !batteryActive;
+	}
+
+
+	private void ServerOnjective()
+	{
+		serverActive = !serverActive;
+	}
+
+
+	private void ElectricityOnjective()
+	{
+		electricityActive = !electricityActive;
+	}
+	
+	private void EmpOnjective()
+	{
+		empActive = !empActive;
+	}
+
 
 	//-- Testing the battery charge
 	void ChargingBattery(float iCharge)
