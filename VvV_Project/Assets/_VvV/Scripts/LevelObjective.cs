@@ -67,7 +67,7 @@ public class LevelObjective : MonoBehaviour
 	#region <-- TOP 
 
 	//-- Bool building activate state
-	void AllBuildingsActive()
+	public void AllBuildingsActive()
 	{
 		//-- Testing the Charge
 		if (Input.GetKeyDown(KeyCode.Q))
@@ -77,7 +77,7 @@ public class LevelObjective : MonoBehaviour
 	}
 
 	//-- Bool building activate state
-	void BatteryBuildingsActive()
+	public void BatteryBuildingsActive()
 	{
 		//-- Testing the Charge
 		if (Input.GetKeyDown(KeyCode.W))
@@ -87,7 +87,7 @@ public class LevelObjective : MonoBehaviour
 	}
 
 	//-- Bool building activate state
-	void ElectricityBuildingsActive()
+	public void ElectricityBuildingsActive()
 	{
 		//-- Testing the Charge
 		if (Input.GetKeyDown(KeyCode.E))
@@ -97,7 +97,7 @@ public class LevelObjective : MonoBehaviour
 	}
 
 	//-- Bool building activate state
-	void ServerBuildingsActive()
+	public void ServerBuildingsActive()
 	{
 		//-- Testing the Charge
 		if (Input.GetKeyDown(KeyCode.R))
@@ -107,7 +107,7 @@ public class LevelObjective : MonoBehaviour
 	}
 
 	//-- Bool building activate state
-	void EMPBuildingsActive()
+	public void EMPBuildingsActive()
 	{
 		//-- Testing the Charge
 		if (Input.GetKeyDown(KeyCode.T))
@@ -116,7 +116,7 @@ public class LevelObjective : MonoBehaviour
 		}
 	}
 
-	private void BoolOnjective()
+	public void BoolOnjective()
 	{
 		batteryActive = !batteryActive;
 		serverActive = !serverActive;
@@ -124,13 +124,13 @@ public class LevelObjective : MonoBehaviour
 		empActive = !empActive;
 	}
 
-	private void BatteryOnjective()
+	public void BatteryOnjective()
 	{
 		batteryActive = !batteryActive;
 	}
 
 
-	private void ServerOnjective()
+	public void ServerOnjective()
 	{
 		serverActive = !serverActive;
 	}
@@ -140,28 +140,28 @@ public class LevelObjective : MonoBehaviour
 	{
 		electricityActive = !electricityActive;
 	}
-	
-	private void EmpOnjective()
+
+	public void EmpOnjective()
 	{
 		empActive = !empActive;
 	}
 
 
 	//-- Testing the battery charge
-	void ChargingBattery(float iCharge)
+	public void ChargingBattery(float iCharge)
 	{
 		currentBatteryCharge += iCharge;
 	}
 
 	//-- Testing battery charge
-	void ChargeBatteryByTime()
+	public void ChargeBatteryByTime()
 	{
 		//-- Testing the Charge
 		currentBatteryCharge++;
 	}
 
 	//-- Setting up bypass statements for alpha testing
-	void TestBuildingStatus()
+	public void TestBuildingStatus()
 	{
 		batteryBar.SetEMPCharge(currentBatteryCharge);
 

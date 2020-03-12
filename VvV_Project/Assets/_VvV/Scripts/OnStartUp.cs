@@ -60,17 +60,4 @@ public class OnStartUp : MonoBehaviour
 			
 	}
 	#endregion <-- BOTTOM
-
-
-	//**** Empty_Section
-	//-- Summary
-	#region <-- TOP 
-	//-- Summary
-	void Empty()
-	{
-		
-	}
-
-	#endregion <-- BOTTOM
-
 }
