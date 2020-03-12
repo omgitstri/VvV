@@ -5,7 +5,7 @@ using UnityEngine;
 public class Toolbox : MonoBehaviour
 {
 
-    private static Toolbox _instance;
+    private static Toolbox _instance = null;
 
     public static Toolbox GetInstance()
     {
@@ -18,8 +18,8 @@ public class Toolbox : MonoBehaviour
         return Toolbox._instance;
     }
 
-    [SerializeField] private GameObject manager;
-    [SerializeField] private GameObject soundManager;
+    [SerializeField] private GameObject manager = null;
+    [SerializeField] private GameObject soundManager = null;
 
 
 
