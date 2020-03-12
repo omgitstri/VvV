@@ -16,40 +16,30 @@ public class CustomTriggerEventEditor : Editor
     {
         editObject = (CustomTriggerEvent)target;
 
-        if (GUILayout.Button(enter))
-        {
-            if (editObject.ToggleOnTriggerEnter)
-            {
-                enter = "Activate Enter";
-            }
-            else
-            {
-                enter = "Deactivate Enter";
-            }
-        }
 
-        if (GUILayout.Button(exit))
+        if (!editObject.ToggleOnTriggerEnter)
         {
-            if (editObject.ToggleOnTriggerExit)
-            {
-                exit = "Activate Exit";
-            }
-            else
-            {
-                exit = "Deactivate Exit";
-            }
+            enter = "Activate Enter";
         }
-
-        if (GUILayout.Button(stay))
+        else
         {
-            if (editObject.ToggleOnTriggerStay)
-            {
-                stay = "Activate Stay";
-            }
-            else
-            {
-                stay = "Deactivate Stay";
-            }
+            enter = "Deactivate Enter";
+        }
+        if (!editObject.ToggleOnTriggerExit)
+        {
+            exit = "Activate Exit";
+        }
+        else
+        {
+            exit = "Deactivate Exit";
+        }
+        if (!editObject.ToggleOnTriggerStay)
+        {
+            stay = "Activate Stay";
+        }
+        else
+        {
+            stay = "Deactivate Stay";
         }
     }
 
