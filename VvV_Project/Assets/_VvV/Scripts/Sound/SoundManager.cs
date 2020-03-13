@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+
     [Header("SYSTEM SFX")]
     #region - - - - - SYSTEM SFX - - - - -
 
@@ -34,10 +35,7 @@ public class SoundManager : MonoBehaviour
     [Header("ENEMY SFX")]
     #region - - - - - ENEMY SFX - - - - -
     public List<AudioClip> eGrunts;
-    //public AudioClip eGrunt1;
-    //public AudioClip eGrunt2;
-    //public AudioClip eGrunt3;
-    public AudioClip eMelee;
+    public AudioClip eAttack;
     public AudioClip eStep;
     public AudioClip eRun;
     public AudioClip eSprint;
@@ -45,6 +43,9 @@ public class SoundManager : MonoBehaviour
     public AudioClip eDrop;
     public AudioClip eHurt;
     public AudioClip eDeath;
+
+    public List<AudioClip> eSounds;
+
     [Space]
     #endregion
 
@@ -71,7 +72,5 @@ public class SoundManager : MonoBehaviour
     public AudioClip wave;
     public AudioClip down;
     #endregion
-
-
 
 }

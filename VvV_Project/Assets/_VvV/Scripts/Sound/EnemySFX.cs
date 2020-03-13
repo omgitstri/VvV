@@ -6,33 +6,8 @@ public class EnemySFX : MonoBehaviour
 {
     public SoundManager soundManager;
 
-    public AudioSource audioSource1;
-    public AudioSource audioSource2;
-    public AudioSource audioSource3;
 
-    private List<AudioSource> audioSources = new List<AudioSource>();
-
-    private void Grunt()
-    {
-        //randomize grunts
-        var gruntIndex = Random.Range(0, soundManager.eGrunts.Count);
-
-        if(audioSources.Count <= 0)
-        {
-            for (int i = 0; i < audioSources.Count; i++)
-            {
-                if(!audioSources[i].isPlaying)
-                {
-                    audioSources[i].clip = soundManager.eGrunts[gruntIndex];
-                    break;
-                }
-                else if(i == audioSources.Count)
-                {
-                    audioSources.Add(new AudioSource());
-                }
-            }
-        }
-    }
+    private List<AudioSource> audioSources = new List<AudioSource>();     // [0] Movement sounds // [1] Active sounds // [2] Passive sounds
 
     // Start is called before the first frame update
     void Start()
@@ -42,47 +17,89 @@ public class EnemySFX : MonoBehaviour
 
     void Update()
     {
-
-        // - - - TEST CODE - - -
+        // 1 = walk, 3 = run
+        #region  - - - MOVEMENT AUDIO TEST CODE - - -
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            PlayWalk();
+            Walk();
+        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            Run();
+        } else {
+            StopSound(1);
         }
+        #endregion
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            PlayMelee();
-        }
-
+        // 2 = attack
+        #region - - - ACTIVE AUDIO TEST CODE - - - 
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            PlayRun();
+            Attack();
+        }
+        #endregion
+
+        // 3 = grunt
+        #region - - - PASSIVE AUDIO TEST CODE - - - 
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            Grunt();
+        }
+        #endregion
+
+    }
+
+
+    void PlaySound (int source, AudioClip sound) {
+
+        audioSources[source].clip = soundManager.eStep;
+        audioSources[source].Play();
+    }
+
+    void StopSound (int source) {
+        audioSources[source].Pause();
+    }
+
+    // MOVEMENT SOUNDS FUNCTIONS - SOURCE 0
+    public void Walk() { PlaySound(0, soundManager.eStep);    }
+    public void Run()  { PlaySound(0, soundManager.eRun);     }
+    public void Sprint() { PlaySound(0, soundManager.eSprint);}
+    public void Crawl() { PlaySound(0, soundManager.eCrawl);  }
+
+
+    // ACTIVE SOUNDS FUNCTIONS - SOURCE 1
+    public void Attack() { PlaySound(1, soundManager.eAttack); }
+
+
+
+    // PASSIVE SOUNDS FUNCTIONS - SOURCE 2
+    public void Grunt()
+    {
+        //randomize grunts
+        var gruntIndex = Random.Range(0, soundManager.eGrunts.Count);
+
+        if (audioSources.Count <= 0)
+        {
+            for (int i = 0; i < audioSources.Count; i++)
+            {
+                if (!audioSources[i].isPlaying)
+                {
+                    audioSources[i].clip = soundManager.eGrunts[gruntIndex];
+                    break;
+                }
+                else if (i == audioSources.Count)
+                {
+                    audioSources.Add(new AudioSource());
+                }
+            }
         }
     }
-
-
-            /* - - - - - - - - CODE TEMPLATE - - - - - - - - 
-            public void FunctionName() {
-        
-                audioSource.clip = //[soundmanagerpath].[audioClipname];
-                audioSource.Play();
-            } */
-
-
-
-    // - - - TEST FUNCTIONS - - -
-    void PlayWalk()
-    {
-        audioSource1.clip = soundManager.eStep;
-        audioSource1.Play();
+    public void Hurt() { PlaySound(1, soundManager.eHurt); }
+    public void Death() { 
+        // Pause ALL Sounds
+        for (int i=0; i<audioSources.Count; i++) {
+            audioSources[i].Pause();
+        }
+        // Play DEATH CRY & CUBE DROP
+        PlaySound(0, soundManager.eDeath);
+        PlaySound(1, soundManager.eDrop);
     }
 
-    void PlayMelee()
-    {
-        audioSource2.clip = soundManager.eMelee;
-        audioSource2.Play();
-    }
 
-    void PlayRun()
-    {
-        audioSource3.clip = soundManager.eRun;
-        audioSource1.Play();
-    }
 }
