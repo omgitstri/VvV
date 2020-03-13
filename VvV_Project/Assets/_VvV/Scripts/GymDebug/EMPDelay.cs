@@ -8,6 +8,7 @@ public class EMPDelay : MonoBehaviour
     public float target = 4f;
     public float multipler = 0;
     [SerializeField] private GameObject text;
+    public KillAllEnemiesHACK boss;
 
     private void OnGUI()
     {
@@ -32,8 +33,8 @@ public class EMPDelay : MonoBehaviour
         {
             text.SetActive(true);
             render.material.SetColor("_BaseColor", Color.green);
-            multipler = 0;
-            delay = 4;
+            ResetTimer();
+            boss.TriggerActivated();
         }
     }
 }

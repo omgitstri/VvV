@@ -6,6 +6,7 @@ public class EMPDamagable : Damagable
 {
     private int totalHit = 3;
     [SerializeField] GameObject text;
+    public KillAllEnemiesHACK boss;
 
     public override void GetDamaged()
     {
@@ -18,6 +19,7 @@ public class EMPDamagable : Damagable
             if (TryGetComponent<Renderer>(out Renderer render))
             {
                 text.SetActive(true);
+                boss.TriggerActivated();
                 render.material.SetColor("_BaseColor", Color.green);
             }
         }

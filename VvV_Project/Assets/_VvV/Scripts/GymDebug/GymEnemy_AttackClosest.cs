@@ -48,10 +48,11 @@ public class GymEnemy_AttackClosest : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.2f);
         Gizmos.DrawSphere(transform.position, chaseDistance);
+
     }
 
     private Transform FindClosestTarget()
