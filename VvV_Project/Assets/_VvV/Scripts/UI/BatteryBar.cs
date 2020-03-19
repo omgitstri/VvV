@@ -40,19 +40,19 @@ public class BatteryBar : MonoBehaviour
 
 	void OnStartFunction()
 	{
-		
+
 	}
 
 	void OnUpdateFunction()
 	{
-		
+
 	}
 
 
 	//-- Summary
 	void EmptyFunctionDeclaration()
 	{
-		
+
 	}
 	#endregion <-- BOTTOM
 
