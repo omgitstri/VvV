@@ -24,10 +24,11 @@ public class SoundManager : MonoBehaviour
     public AudioClip hit;
     public AudioClip reload;
     public AudioClip step;
-    public AudioClip hurt;
+    public AudioClip sprint;
+    public List<AudioClip> hurt;
     public AudioClip death;
     public AudioClip melee;
-    public AudioClip vault;
+    //public AudioClip vault;
     [Space]
     #endregion
 

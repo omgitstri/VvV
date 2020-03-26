@@ -4,6 +4,34 @@ using UnityEngine;
 
 public class EnemySFX : MonoBehaviour
 {
+
+    /* - - - - - - - - INSTRUCTIONS - HOW TO USE THE CODE - - - - - - 
+     
+        Call the intended sound using Toolbox.GetInstance().GetSound().[FUNCTION_NAME()]
+
+        - Walking --- Walk()
+        - Running --- Run()
+        - Sprinting - Sprint()
+        - Crawling -- Crawl()
+
+        - Attack ----- Attack()
+
+        - Grunting -- Grunt();
+        - Hurting  -- Hurt();
+        - Dying ----- Death();
+
+      
+        - - - STOP Movement Sounds - - - 
+        StopMove();
+
+        - - - STOP Attack 
+        StopAttack();
+
+        - - - STOP Other Sounds - - - 
+        StopOther();
+
+     */
+
     public SoundManager soundManager;
 
 
@@ -15,6 +43,8 @@ public class EnemySFX : MonoBehaviour
         soundManager = Toolbox.GetInstance().GetSound();
     }
 
+
+    // - - - - - REMINDER TO SELF: DO NOT FORGET TO DELETE THIS - - - - - 
     void Update()
     {
         // 1 = walk, 3 = run
@@ -45,28 +75,25 @@ public class EnemySFX : MonoBehaviour
 
     }
 
+    void PlaySound(int source, AudioClip sound) {
 
-    void PlaySound (int source, AudioClip sound) {
-
-        audioSources[source].clip = soundManager.eStep;
+        audioSources[source].clip = sound;
         audioSources[source].Play();
     }
-
-    void StopSound (int source) {
+    void StopSound(int source) {
         audioSources[source].Pause();
     }
 
     // MOVEMENT SOUNDS FUNCTIONS - SOURCE 0
-    public void Walk() { PlaySound(0, soundManager.eStep);    }
-    public void Run()  { PlaySound(0, soundManager.eRun);     }
-    public void Sprint() { PlaySound(0, soundManager.eSprint);}
+    public void Walk() { PlaySound(0, soundManager.eStep); }
+    public void Run()   { PlaySound(0, soundManager.eRun);    }
+    public void Sprint(){ PlaySound(0, soundManager.eSprint); }
     public void Crawl() { PlaySound(0, soundManager.eCrawl);  }
-
+    public void StopMove() { StopSound(0); }
 
     // ACTIVE SOUNDS FUNCTIONS - SOURCE 1
-    public void Attack() { PlaySound(1, soundManager.eAttack); }
-
-
+    public void Attack(){ PlaySound(1, soundManager.eAttack); }
+    public void StopAttack() { StopSound(1); }
 
     // PASSIVE SOUNDS FUNCTIONS - SOURCE 2
     public void Grunt()
@@ -81,6 +108,7 @@ public class EnemySFX : MonoBehaviour
                 if (!audioSources[i].isPlaying)
                 {
                     audioSources[i].clip = soundManager.eGrunts[gruntIndex];
+                    PlaySound(2, audioSources[i].clip);
                     break;
                 }
                 else if (i == audioSources.Count)
@@ -100,6 +128,7 @@ public class EnemySFX : MonoBehaviour
         PlaySound(0, soundManager.eDeath);
         PlaySound(1, soundManager.eDrop);
     }
+    public void StopOther() { StopSound(2); }
 
 
 }

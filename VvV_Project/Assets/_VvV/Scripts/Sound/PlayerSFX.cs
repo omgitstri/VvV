@@ -1,0 +1,103 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerSFX : MonoBehaviour
+{
+
+    /* - - - - - - - - INSTRUCTIONS - - - - - - 
+     
+        Call the intended sound using Toolbox.GetInstance().GetSound().[FUNCTION_NAME()]
+
+        - Walking --- Walk()
+        - Sprinting - Sprint()
+
+        - Melee ----- Attack()
+        - Shooting -- Shoot()
+        - Empty Clip- Empty();
+        - Reloading - Reload();
+
+        - Hurting  -- Hurt();
+        - Dying ----- Death();
+
+
+        - - - STOP Movement Sounds - - - 
+        StopMove();
+
+        - - - STOP Attack/Gun Sounds - - -
+        StopAttack();
+
+        - - - STOP Other Sounds - - - 
+        StopOther();
+
+     */
+
+    public SoundManager soundManager;
+
+
+    private List<AudioSource> audioSources = new List<AudioSource>();     // [0] Movement sounds // [1] Active sounds // [2] Passive sounds
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        soundManager = Toolbox.GetInstance().GetSound();
+    }
+
+    void PlaySound(int source, AudioClip sound)
+    {
+        audioSources[source].clip = sound;
+        audioSources[source].Play();
+    }
+    void StopSound(int source)
+    {
+        audioSources[source].Pause();
+    }
+
+    // MOVEMENT SOUNDS FUNCTIONS - SOURCE 0
+    public void Walk()   { PlaySound(0, soundManager.step);   }
+    public void Sprint() { PlaySound(0, soundManager.sprint); }
+    public void StopMove() { StopSound(0); }
+
+    // ACTIVE SOUNDS FUNCTIONS - SOURCE 1
+    public void Attack() { PlaySound(1, soundManager.melee);  }
+    public void Shoot()  { PlaySound(1, soundManager.shoot);  }
+    public void Reload() { PlaySound(1, soundManager.reload); }
+    public void Empty()  { PlaySound(1, soundManager.empty);  }
+    public void StopAttack() { StopSound(1); }
+
+    // PASSIVE SOUNDS FUNCTIONS - SOURCE 2
+    public void Hurt()
+    {
+        //randomize grunts
+        var hurtIndex = Random.Range(0, soundManager.hurt.Count);
+
+        if (audioSources.Count <= 0)
+        {
+            for (int i = 0; i < audioSources.Count; i++)
+            {
+                if (!audioSources[i].isPlaying)
+                {
+                    audioSources[i].clip = soundManager.hurt[hurtIndex];
+                    PlaySound(2, audioSources[i].clip);
+                    break;
+                }
+                else if (i == audioSources.Count)
+                {
+                    audioSources.Add(new AudioSource());
+                }
+            }
+        }
+    }
+    public void Death()
+    {
+        // Pause ALL Sounds
+        for (int i = 0; i < audioSources.Count; i++)
+        {
+            audioSources[i].Pause();
+        }
+        // Play DEATH CRY & CUBE DROP
+        PlaySound(0, soundManager.death);
+    }
+    public void StopOther() { StopSound(2); }
+
+}
