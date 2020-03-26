@@ -63,15 +63,6 @@ public class SoundManager : MonoBehaviour
     public AudioClip pickup2;
     public AudioClip pickup3;
     public AudioClip gameOver;
-    [Space]
-    #endregion
-
-
-    [Header("MUSIC SFX")]
-    #region - - - - - MUSIC - - - - - 
-    public AudioClip main;
-    public AudioClip wave;
-    public AudioClip down;
     #endregion
 
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EMPDamagable : Damagable
 {
     private int totalHit = 3;
-    [SerializeField] GameObject text;
+    [SerializeField] GameObject text = null;
     public KillAllEnemiesHACK boss;
 
     public override void GetDamaged()

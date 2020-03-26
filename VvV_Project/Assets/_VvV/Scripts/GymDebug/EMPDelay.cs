@@ -7,7 +7,7 @@ public class EMPDelay : MonoBehaviour
     public float delay = 0f;
     public float target = 4f;
     public float multipler = 0;
-    [SerializeField] private GameObject text;
+    [SerializeField] private GameObject text = null;
     public KillAllEnemiesHACK boss;
 
     private void OnGUI()

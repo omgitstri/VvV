@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerSFX : MonoBehaviour
 {
 
-    /* - - - - - - - - INSTRUCTIONS - - - - - - 
+    /* - - - - - - - - INSTRUCTIONS - HOW TO USE THE CODE - - - - - - 
      
         Call the intended sound using Toolbox.GetInstance().GetSound().[FUNCTION_NAME()]
 
@@ -33,23 +33,22 @@ public class PlayerSFX : MonoBehaviour
      */
 
     public SoundManager soundManager;
-
-
     private List<AudioSource> audioSources = new List<AudioSource>();     // [0] Movement sounds // [1] Active sounds // [2] Passive sounds
 
-    // Start is called before the first frame update
     void Start()
     {
         soundManager = Toolbox.GetInstance().GetSound();
     }
 
-    void PlaySound(int source, AudioClip sound)
-    {
-        audioSources[source].clip = sound;
-        audioSources[source].Play();
+    void PlaySound(int source, AudioClip sound) {
+            audioSources[source].clip = sound;
+
+        if (audioSources[source] != null && !audioSources[source].isPlaying)
+            audioSources[source].Play();
     }
     void StopSound(int source)
     {
+        if (audioSources[source] != null && audioSources[source].isPlaying) 
         audioSources[source].Pause();
     }
 

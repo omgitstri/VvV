@@ -33,14 +33,15 @@ public class EnemySFX : MonoBehaviour
      */
 
     public SoundManager soundManager;
+    [SerializeField]private List<AudioSource> audioSources = new List<AudioSource>();     // [0] Movement sounds // [1] Active sounds // [2] Passive sounds
+
+    float minMaxStart = 0f;
 
 
-    private List<AudioSource> audioSources = new List<AudioSource>();     // [0] Movement sounds // [1] Active sounds // [2] Passive sounds
-
-    // Start is called before the first frame update
     void Start()
     {
         soundManager = Toolbox.GetInstance().GetSound();
+        minMaxStart = Random.Range(0f, 5f);
     }
 
 
@@ -53,8 +54,8 @@ public class EnemySFX : MonoBehaviour
             Walk();
         } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
             Run();
-        } else {
-            StopSound(1);
+        } else if (Input.GetKeyUp(KeyCode.Alpha1) || Input.GetKeyUp(KeyCode.Alpha2)) {
+            StopMove();
         }
         #endregion
 
@@ -75,24 +76,35 @@ public class EnemySFX : MonoBehaviour
 
     }
 
-    void PlaySound(int source, AudioClip sound) {
+    void PlaySound(int source, AudioClip sound, float start) {
+
+        //TESTING VALUES
+        float minMaxVol = Random.Range(0.20f, 0.80f);
+        float minMaxPitch = Random.Range(0.75f, 1.25f);
+
+        //audioSources[source].time = start;
+
+        audioSources[source].volume = minMaxVol;
+        audioSources[source].pitch = minMaxPitch;
 
         audioSources[source].clip = sound;
         audioSources[source].Play();
     }
+
     void StopSound(int source) {
-        audioSources[source].Pause();
+        if (audioSources[source] != null && audioSources[source].isPlaying)
+            audioSources[source].Pause();
     }
 
     // MOVEMENT SOUNDS FUNCTIONS - SOURCE 0
-    public void Walk() { PlaySound(0, soundManager.eStep); }
-    public void Run()   { PlaySound(0, soundManager.eRun);    }
-    public void Sprint(){ PlaySound(0, soundManager.eSprint); }
-    public void Crawl() { PlaySound(0, soundManager.eCrawl);  }
+    public void Walk() { PlaySound(0, soundManager.eStep, minMaxStart);    }
+    public void Run()   { PlaySound(0, soundManager.eRun, minMaxStart);    }
+    public void Sprint(){ PlaySound(0, soundManager.eSprint, minMaxStart); }
+    public void Crawl() { PlaySound(0, soundManager.eCrawl, minMaxStart);  }
     public void StopMove() { StopSound(0); }
 
     // ACTIVE SOUNDS FUNCTIONS - SOURCE 1
-    public void Attack(){ PlaySound(1, soundManager.eAttack); }
+    public void Attack(){ PlaySound(1, soundManager.eAttack, 0f); }
     public void StopAttack() { StopSound(1); }
 
     // PASSIVE SOUNDS FUNCTIONS - SOURCE 2
@@ -108,7 +120,7 @@ public class EnemySFX : MonoBehaviour
                 if (!audioSources[i].isPlaying)
                 {
                     audioSources[i].clip = soundManager.eGrunts[gruntIndex];
-                    PlaySound(2, audioSources[i].clip);
+                    PlaySound(2, audioSources[i].clip, Random.Range(0f, 0.5F));
                     break;
                 }
                 else if (i == audioSources.Count)
@@ -118,15 +130,15 @@ public class EnemySFX : MonoBehaviour
             }
         }
     }
-    public void Hurt() { PlaySound(1, soundManager.eHurt); }
+    public void Hurt() { PlaySound(1, soundManager.eHurt, 0F); }
     public void Death() { 
         // Pause ALL Sounds
         for (int i=0; i<audioSources.Count; i++) {
             audioSources[i].Pause();
         }
         // Play DEATH CRY & CUBE DROP
-        PlaySound(0, soundManager.eDeath);
-        PlaySound(1, soundManager.eDrop);
+        PlaySound(0, soundManager.eDeath, 0F);
+        PlaySound(1, soundManager.eDrop, 0F);
     }
     public void StopOther() { StopSound(2); }
 

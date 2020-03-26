@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 171064526923808788}
   - component: {fileID: 171064526923808779}
+  - component: {fileID: -7723183715914216494}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -53,14 +54,18 @@ MonoBehaviour:
   hit: {fileID: 0}
   reload: {fileID: 0}
   step: {fileID: 0}
-  hurt: {fileID: 0}
+  sprint: {fileID: 0}
+  hurt:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   death: {fileID: 0}
   melee: {fileID: 0}
-  vault: {fileID: 0}
-  eGrunt1: {fileID: 0}
-  eGrunt2: {fileID: 0}
-  eGrunt3: {fileID: 0}
-  eMelee: {fileID: 8300000, guid: f471cba79ade50d4db4ecc790688d7ce, type: 3}
+  eGrunts:
+  - {fileID: 8300000, guid: 30d991bfee06f7b4b8a7afff0365d5c3, type: 3}
+  - {fileID: 8300000, guid: 6f98be7d344c6ab4f9945807c65b90fa, type: 3}
+  - {fileID: 8300000, guid: f471cba79ade50d4db4ecc790688d7ce, type: 3}
+  eAttack: {fileID: 8300000, guid: f471cba79ade50d4db4ecc790688d7ce, type: 3}
   eStep: {fileID: 8300000, guid: fd7973d8e78e98144bf071f7a9f3ca2d, type: 3}
   eRun: {fileID: 8300000, guid: 988f9040edbd946498ec3ad56ac4de42, type: 3}
   eSprint: {fileID: 0}
@@ -68,6 +73,7 @@ MonoBehaviour:
   eDrop: {fileID: 0}
   eHurt: {fileID: 0}
   eDeath: {fileID: 0}
+  eSounds: []
   startWave: {fileID: 0}
   endWave: {fileID: 0}
   trapNormal: {fileID: 0}
@@ -78,6 +84,23 @@ MonoBehaviour:
   pickup2: {fileID: 0}
   pickup3: {fileID: 0}
   gameOver: {fileID: 0}
+--- !u!114 &-7723183715914216494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171064526923808778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07a62a72b210654da506e046a41c610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetAudio: {fileID: 0}
+  plusVol: 0.01
+  targetVolume: 1
+  decrease: 0
   main: {fileID: 0}
+  begin: {fileID: 0}
   wave: {fileID: 0}
   down: {fileID: 0}

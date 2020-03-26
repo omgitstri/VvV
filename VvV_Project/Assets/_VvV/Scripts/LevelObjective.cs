@@ -14,7 +14,7 @@ public class LevelObjective : MonoBehaviour
 	public float batteryChargeOverTime = 0f;
 
 	[SerializeField]
-	private BatteryBar batteryBar;
+	private BatteryBar batteryBar = null;
 
 	[SerializeField]
 	private bool batteryActive = false;
@@ -25,7 +25,7 @@ public class LevelObjective : MonoBehaviour
 	[SerializeField]
 	public bool empActive = false;
 
-	private float handOffBatteryCharge;
+	private float handOffBatteryCharge = 0f;
 
 
 	void Start()
