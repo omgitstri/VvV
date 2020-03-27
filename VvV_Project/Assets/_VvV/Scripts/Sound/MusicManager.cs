@@ -28,16 +28,18 @@ public class MusicManager : MonoBehaviour
 
 
     #region - - - - MUSIC FUNCTIONS - - - -
-    public void FadeIn(float delay, float timer, float maxVol, AudioClip clip) {
+    public void FadeIn(float delay, float maxVol, AudioClip clip) {
+        // delay is for how long the fadein takes until it reaches maximum volume
+        // 
+
         targetAudio.clip = clip;
-        timer += plusVol;
     }
 
-    public void FadeOut(float delay, float timer) {
-
+    public void FadeOut(float delay ) {
+        // delay is for how long the fadein takes until it reaches minimum volume
     }
 
-    public void StopMusic(float delay, float timer) {
+    public void StopMusic(float delay) {
 
     }
     #endregion

@@ -120,7 +120,7 @@ public class EnemySFX : MonoBehaviour
                 if (!audioSources[i].isPlaying)
                 {
                     audioSources[i].clip = soundManager.eGrunts[gruntIndex];
-                    PlaySound(2, audioSources[i].clip, Random.Range(0f, 0.5F));
+                    PlaySound(2, audioSources[i].clip, minMaxStart);
                     break;
                 }
                 else if (i == audioSources.Count)

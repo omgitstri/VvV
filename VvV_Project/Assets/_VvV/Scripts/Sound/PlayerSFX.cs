@@ -34,17 +34,24 @@ public class PlayerSFX : MonoBehaviour
 
     public SoundManager soundManager;
     private List<AudioSource> audioSources = new List<AudioSource>();     // [0] Movement sounds // [1] Active sounds // [2] Passive sounds
+    float minMaxStart = 0f;
 
     void Start()
     {
         soundManager = Toolbox.GetInstance().GetSound();
+        minMaxStart = Random.Range(0f, 5f);
     }
 
-    void PlaySound(int source, AudioClip sound) {
-            audioSources[source].clip = sound;
+    void PlaySound(int source, AudioClip sound, float start) {
+        //TESTING VALUES
+        float minMaxVol = Random.Range(0.20f, 0.80f);
+        float minMaxPitch = Random.Range(0.75f, 1.25f);
 
-        if (audioSources[source] != null && !audioSources[source].isPlaying)
-            audioSources[source].Play();
+        audioSources[source].volume = minMaxVol;
+        audioSources[source].pitch = minMaxPitch;
+
+        audioSources[source].clip = sound;
+        audioSources[source].Play();
     }
     void StopSound(int source)
     {
@@ -53,15 +60,15 @@ public class PlayerSFX : MonoBehaviour
     }
 
     // MOVEMENT SOUNDS FUNCTIONS - SOURCE 0
-    public void Walk()   { PlaySound(0, soundManager.step);   }
-    public void Sprint() { PlaySound(0, soundManager.sprint); }
+    public void Walk()   { PlaySound(0, soundManager.step, minMaxStart);   }
+    public void Sprint() { PlaySound(0, soundManager.sprint, minMaxStart); }
     public void StopMove() { StopSound(0); }
 
     // ACTIVE SOUNDS FUNCTIONS - SOURCE 1
-    public void Attack() { PlaySound(1, soundManager.melee);  }
-    public void Shoot()  { PlaySound(1, soundManager.shoot);  }
-    public void Reload() { PlaySound(1, soundManager.reload); }
-    public void Empty()  { PlaySound(1, soundManager.empty);  }
+    public void Attack() { PlaySound(1, soundManager.melee, 0f);  }
+    public void Shoot()  { PlaySound(1, soundManager.shoot, 0f);  }
+    public void Reload() { PlaySound(1, soundManager.reload, 0f); }
+    public void Empty()  { PlaySound(1, soundManager.empty, 0f);  }
     public void StopAttack() { StopSound(1); }
 
     // PASSIVE SOUNDS FUNCTIONS - SOURCE 2
@@ -77,7 +84,7 @@ public class PlayerSFX : MonoBehaviour
                 if (!audioSources[i].isPlaying)
                 {
                     audioSources[i].clip = soundManager.hurt[hurtIndex];
-                    PlaySound(2, audioSources[i].clip);
+                    PlaySound(2, audioSources[i].clip, 0f);
                     break;
                 }
                 else if (i == audioSources.Count)
@@ -95,7 +102,7 @@ public class PlayerSFX : MonoBehaviour
             audioSources[i].Pause();
         }
         // Play DEATH CRY & CUBE DROP
-        PlaySound(0, soundManager.death);
+        PlaySound(0, soundManager.death, 0f);
     }
     public void StopOther() { StopSound(2); }
 
