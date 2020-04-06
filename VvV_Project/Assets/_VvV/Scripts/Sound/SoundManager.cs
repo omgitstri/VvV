@@ -37,6 +37,7 @@ public class SoundManager : MonoBehaviour
     #region - - - - - ENEMY SFX - - - - -
     public List<AudioClip> eGrunts;
     public AudioClip eAttack;
+    public AudioClip eAggro;
     public AudioClip eStep;
     public AudioClip eRun;
     public AudioClip eSprint;

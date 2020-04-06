@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource targetAudio;
-    [SerializeField] private float plusVol = 0.01f;
-    [SerializeField] private float targetVolume = 1f;
-    [SerializeField] private bool decrease = false;
+    //[SerializeField] private AudioSource targetAudio;
+    //[SerializeField] private float plusVol = 0.01f;
+    //[SerializeField] private float targetVolume = 1f;
+    //[SerializeField] private bool decrease = false;
 
     [Header("MUSIC SFX")]
     #region - - - - - MUSIC - - - - - 
-    public AudioClip main;
-    public AudioClip begin;
-    public AudioClip wave;
-    public AudioClip down;
+    public AudioClip main = null;
+    public AudioClip begin = null;
+    public AudioClip wave = null;
+    public AudioClip down = null;
     #endregion
 
     void Start() {
@@ -32,7 +32,7 @@ public class MusicManager : MonoBehaviour
         // delay is for how long the fadein takes until it reaches maximum volume
         // 
 
-        targetAudio.clip = clip;
+        //targetAudio.clip = clip;
     }
 
     public void FadeOut(float delay ) {

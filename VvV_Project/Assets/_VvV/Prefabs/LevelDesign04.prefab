@@ -17646,7 +17646,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4551221734865688251}
   m_Layer: 0
-  m_Name: Building01
+  m_Name: LevelDesign04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -17,12 +17,20 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
 
     public bool attack = false;
     public bool reverse = false;
+    public BoxCollider box = null;
+
+
+    public float dmg = 1f;
+
 
     [ContextMenu(nameof(Start))]
     private void Start()
     {
+        box = this.GetComponent<BoxCollider>();
         radius = (Random.insideUnitSphere * 0.25f);
     }
+
+
 
     //private void OnEnable()
     //{
@@ -66,17 +74,27 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
     public void Return()
     {
         transform.localPosition = Vector3.Slerp(transform.localPosition, Vector3.zero, root.a);
+        StartCoroutine(ActivateHitbox());
+    }
+
+    public IEnumerator ActivateHitbox() {
+        yield return new WaitForSeconds(1f);
+        box.enabled = true;
+        GetComponent<Renderer>().material.SetColor("_BaseColor", Color.white);
+        GetComponent<Renderer>().material.SetColor("_Color", Color.white);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Damagable>(out Damagable player))
         {
+
             Debug.Log("damaged");
-            player.GetDamaged();
+            GetComponent<Renderer>().material.SetColor("_BaseColor", Color.red);
+            GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+            box.enabled = false;
+            player.GetDamaged(dmg);
+
         }
-
     }
-
-
 }

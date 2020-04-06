@@ -62,9 +62,9 @@ public class Toolbox : MonoBehaviour
     }
 
 
-    public MusicManager GetMusic() {
+    /*public MusicManager GetMusic() {
         return soundManager.GetComponent<MusicManager>();
-    }
+    }*/
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.F1)) {

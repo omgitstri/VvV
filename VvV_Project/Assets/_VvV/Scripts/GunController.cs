@@ -97,7 +97,7 @@ public class GunController : MonoBehaviour
 
             if(hit != null)
             {
-                hit.GetDamaged();
+                hit.GetDamaged(0);
             }
 
             //if (hitInfo.transform.CompareTag("WeakPoint"))
