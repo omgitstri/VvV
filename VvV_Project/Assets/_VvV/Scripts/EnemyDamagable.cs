@@ -14,7 +14,7 @@ public class EnemyDamagable : Damagable
         }
     }
 
-    public override void GetDamaged()
+    public override void GetDamaged(float dmg)
     {
         //base.Hit();
         if (transform.CompareTag("WeakPoint"))
