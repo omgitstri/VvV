@@ -9,8 +9,8 @@ public class GymEnemy_AttackLerp : MonoBehaviour
     public float a;
     [SerializeField] List<Vector3> radius = new List<Vector3>();
     [SerializeField]
+    [Header("Modify power with dmg var in GymEnemyAttack_CubeLerp")]
     public List<IndividualCube> attackCubes = new List<IndividualCube>();
-
 
     [ContextMenu(nameof(start))]
     private void Start()
