@@ -1564,7 +1564,7 @@ GameObject:
   - component: {fileID: 4551221733411354299}
   - component: {fileID: 4551221733411354298}
   m_Layer: 0
-  m_Name: SphereDome
+  m_Name: Dome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

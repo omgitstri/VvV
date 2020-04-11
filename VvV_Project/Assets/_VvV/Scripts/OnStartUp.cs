@@ -8,69 +8,59 @@ using UnityEngine;
 
 public class OnStartUp : MonoBehaviour
 {
-	//**** Variables
-	[Header("Grey Colour Material")]
-	[SerializeField]
-	private Material disabledColour = null;
-    public List<GameObject> disabledColourOnStartUp;
+	////**** Variables
+	//[Header("Grey Colour Material")]
+	//[SerializeField]
+	//private Material disabledColour = null;
+ //   public List<GameObject> disabledColourOnStartUp;
 
-	[Header("Disabled Mesh")]
-	[SerializeField]
-	private Material changeMaterial;
-	public List<GameObject> changeMaterialOnStartUp;
-
-
-	void Start()
-	{
-		OnStartDeclaration();
-		OnStartFunction();
-	}
-
-	void Update()
-	{
-		OnUpdateFunction();
-
-	}
+	//[Header("Disabled Mesh")]
+	//[SerializeField]
+	//private Material changeMaterial;
+	//public List<GameObject> changeMaterialOnStartUp;
 
 
-	//**** OnFrame Functions
-	#region <-- TOP
-	//-- One Time Functions
-	void OnStartDeclaration()
-	{
+	//void Start()
+	//{
+	//	OnStartDeclaration();
+	//	OnStartFunction();
+	//}
+
+	//void Update()
+	//{
+	//	OnUpdateFunction();
+
+	//}
+
+
+	////**** OnFrame Functions
+	//#region <-- TOP
+	////-- One Time Functions
+	//void OnStartDeclaration()
+	//{
 		
-	}
+	//}
 
-	void OnStartFunction()
-	{
-		ChangeColourOnStartUp();
-	}
+	//void OnStartFunction()
+	//{
+	//	ChangeColourOnStartUp();
+	//}
 
-	void OnUpdateFunction()
-	{
+	//void OnUpdateFunction()
+	//{
 		
-	}
+	//}
 
 
-	//-- Change Material reference
-	void ChangeColourOnStartUp()
-	{
-		foreach (var obj in disabledColourOnStartUp)
-			obj.GetComponent<Renderer>().material = disabledColour;
+	////-- Change Material reference
+	//void ChangeColourOnStartUp()
+	//{
+	//	foreach (var obj in disabledColourOnStartUp)
+	//		obj.GetComponent<Renderer>().material = disabledColour;
 			
-	}
-	#endregion <-- BOTTOM
+	//}
+	//#endregion <-- BOTTOM
 
 
-	//**** Empty_Section
-	//-- Summary
-	#region <-- TOP 
-	//-- Summary
-	void Empty()
-	{
-		
-	}
-
-	#endregion <-- BOTTOM
 
 }
