@@ -14,6 +14,7 @@ public class EnemySFX : MonoBehaviour
         - Sprinting - Sprint()
         - Crawling -- Crawl()
 
+        - Aggro ------ Aggro()
         - Attack ----- Attack()
 
         - Grunting -- Grunt();
@@ -106,6 +107,7 @@ public class EnemySFX : MonoBehaviour
     // ACTIVE SOUNDS FUNCTIONS - SOURCE 1
     public void Attack(){ PlaySound(1, soundManager.eAttack, 0f); }
     public void StopAttack() { StopSound(1); }
+    public void Aggro() { PlaySound(1, soundManager.eAggro, 0f); }
 
     // PASSIVE SOUNDS FUNCTIONS - SOURCE 2
     public void Grunt()
