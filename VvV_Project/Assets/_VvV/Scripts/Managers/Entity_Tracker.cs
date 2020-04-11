@@ -25,7 +25,7 @@ public class Entity_Tracker : MonoBehaviour
         PlayerEntity = _transform;
     }
 
-    public List<Transform> InteractableEntity { get; private set; } = null;
+    public List<Transform> InteractableEntity { get; private set; } = new List<Transform>();
 
     public void AddInteractable(Transform _transform)
     {
