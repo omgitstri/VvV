@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Physics.Authoring;
 
 public class IndividualCube : MonoBehaviour
 {

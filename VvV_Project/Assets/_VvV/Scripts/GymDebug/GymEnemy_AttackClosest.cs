@@ -1,51 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEditor;
 
 public class GymEnemy_AttackClosest : MonoBehaviour
 {
-    [SerializeField] private bool normalizedMovement = false;
-    [SerializeField] private List<Transform> entities = new List<Transform>();
-    public float chaseDistance = 2f;
-    [SerializeField] private Transform player = null;
-    [SerializeField] private float speed = 5f;
-    float losePlayer = 2f;
+    public Transform currentTarget { get; private set; } = null;
+    [SerializeField] private float chaseDistance = 10f;
+    [SerializeField] private float losePlayer = 2f;
 
-    public Transform currentTarget { get; private set; }
+    private NavMeshAgent navMeshAgent = null;
+    private List<Transform> entities = new List<Transform>();
+    private Transform player = null;
+
+    private void Awake()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
 
     private void Start()
     {
-        currentTarget = FindClosestTarget();
+        player = Entity_Tracker.Instance.PlayerEntity;
+        entities = new List<Transform>(Entity_Tracker.Instance.InteractableEntity);
+        currentTarget = player;
     }
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.position) <= chaseDistance)
-        {
-            currentTarget = player;
-            losePlayer = 2f;
-        }
-        else if (losePlayer < 0)
-        {
-            currentTarget = FindClosestTarget();
-        }
-        else
-        {
-            losePlayer -= Time.deltaTime;
-        }
-
-        if (currentTarget != null && Vector3.Distance(currentTarget.position, transform.position) > 0.01f)
-        {
-            if (normalizedMovement)
-            {
-                transform.position += (currentTarget.position - transform.position).normalized * speed * Time.deltaTime;
-            }
-            else
-            {
-                transform.position += (currentTarget.position - transform.position) * speed * Time.deltaTime;
-            }
-        }
+        ChaseTarget();
     }
 
     private void OnDrawGizmos()
@@ -55,7 +38,33 @@ public class GymEnemy_AttackClosest : MonoBehaviour
 
     }
 
-    private Transform FindClosestTarget()
+    private void ChaseTarget()
+    {
+        if (player != null)
+        {
+            if (Vector3.Distance(transform.position, player.position) <= chaseDistance)
+            {
+                Debug.Log("player");
+                currentTarget = player;
+                losePlayer = 2f;
+            }
+            else if (losePlayer < 0)
+            {
+                currentTarget = ReturnClosestTarget();
+            }
+            else
+            {
+                losePlayer -= Time.deltaTime;
+            }
+        }
+
+        if (currentTarget != null && Vector3.Distance(currentTarget.position, transform.position) > 0.01f)
+        {
+            navMeshAgent.SetDestination(currentTarget.position);
+        }
+    }
+
+    private Transform ReturnClosestTarget()
     {
         float shortestDistance = 1000000;
         Transform currentTransform = null;
