@@ -23,7 +23,7 @@ public class GymEnemy_AttackClosest : MonoBehaviour
     {
         player = Entity_Tracker.Instance.PlayerEntity;
         entities = new List<Transform>(Entity_Tracker.Instance.InteractableEntity);
-        currentTarget = ReturnClosestTarget();
+        currentTarget = player;
     }
 
     void Update()
@@ -40,23 +40,26 @@ public class GymEnemy_AttackClosest : MonoBehaviour
 
     private void ChaseTarget()
     {
-        if (Vector3.Distance(transform.position, player.position) <= chaseDistance)
+        if (player != null)
         {
-            currentTarget = player;
-            losePlayer = 2f;
-        }
-        else if (losePlayer < 0)
-        {
-            currentTarget = ReturnClosestTarget();
-        }
-        else
-        {
-            losePlayer -= Time.deltaTime;
+            if (Vector3.Distance(transform.position, player.position) <= chaseDistance)
+            {
+                Debug.Log("player");
+                currentTarget = player;
+                losePlayer = 2f;
+            }
+            else if (losePlayer < 0)
+            {
+                currentTarget = ReturnClosestTarget();
+            }
+            else
+            {
+                losePlayer -= Time.deltaTime;
+            }
         }
 
         if (currentTarget != null && Vector3.Distance(currentTarget.position, transform.position) > 0.01f)
         {
-            currentTarget = ReturnClosestTarget();
             navMeshAgent.SetDestination(currentTarget.position);
         }
     }
