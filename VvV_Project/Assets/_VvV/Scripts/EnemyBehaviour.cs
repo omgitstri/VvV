@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEditor;
 
-public class GymEnemy_AttackClosest : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour
 {
     public Transform currentTarget { get; private set; } = null;
     [SerializeField] private float chaseDistance = 10f;
