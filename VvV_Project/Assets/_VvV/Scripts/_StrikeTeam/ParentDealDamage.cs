@@ -11,19 +11,21 @@ public class ParentDealDamage : MonoBehaviour
 	// Variables
 	[Header("Parent")]
 	[Tooltip("Applies to all children")]
-	public GameObject player;   /// Loaded with PlayerWithGun prefab but not used in script)
+	public GameObject player;   /// should be loaded with PlayerWithGun prefab)
 	public GameObject enemy;
+	internal GameObject target;
+	private float damageDelt;
 
 
 	///***  Parent functions
 	/// Damage function
 	public virtual void OnHit(ControllerColliderHit hitting, float damageDelt)
 	{
-		if (hitting.gameObject.tag == player.gameObject.tag)
+		if (hitting.gameObject == target)
 		{
-			if (hitting.gameObject.GetComponent<Damagable>() != null)
+			if (player.GetComponent<Damagable>() != null)
 			{
-				hitting.gameObject.GetComponent<Damagable>().GetDamaged(damageDelt);
+				player.GetComponent<Damagable>().GetDamaged(damageDelt);
 			}
 		}
 	}
