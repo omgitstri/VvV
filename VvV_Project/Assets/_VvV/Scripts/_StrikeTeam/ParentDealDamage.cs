@@ -23,6 +23,14 @@ public class ParentDealDamage : MonoBehaviour
 	{
 		if (hitting.gameObject == target)
 		{
+
+            //new c# script
+            if(player.TryGetComponent<Damagable>(out Damagable component))
+            {
+                component.GetDamaged(damageDelt);
+            }
+
+            //2018
 			if (player.GetComponent<Damagable>() != null)
 			{
 				player.GetComponent<Damagable>().GetDamaged(damageDelt);
