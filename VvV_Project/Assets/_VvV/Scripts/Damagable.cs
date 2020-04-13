@@ -4,6 +4,12 @@ using UnityEngine;
 
 public abstract class Damagable : MonoBehaviour
 {
-    public abstract void GetDamaged(float dmg);
+    public float getDamageParent = 1f;
+
+
+    public virtual void GetDamaged(float dmg)
+    {
+        print("Parent of GetDamage()");
+    }
     
 }

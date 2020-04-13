@@ -3,7 +3,9 @@ guid: 84ce112713ca9e74b8fc2fc1939c7f2f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - batteryBar: {fileID: 109388507063242402, guid: 1b99da9883acc614597e0563778c5658,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

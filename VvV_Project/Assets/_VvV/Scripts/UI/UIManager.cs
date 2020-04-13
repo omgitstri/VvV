@@ -30,17 +30,19 @@ public class UIManager : MonoBehaviour
 
 	void Start()
 	{
+		GetUI();
 		OnStartDeclaration();
-		OnStartFunction();
 	}
 
 	void Update()
 	{
-		OnUpdateFunction();
+		AllBuildingsActive();
+		TestBuildingStatus();
 	}
 
 
-	//**** OnFrame Call Functions
+	//**** OnFrame declaration or functions
+
 	#region <-- TOP
 	//-- One Time Functions
 	void OnStartDeclaration()
@@ -48,22 +50,10 @@ public class UIManager : MonoBehaviour
 		batteryBar.SetMaxEMPCharge(maxBatteryCharge);
 	}
 
-	void OnStartFunction()
-	{
-
-	}
-
-	void OnUpdateFunction()
-	{
-		AllBuildingsActive();
-		TestBuildingStatus();
-	}
-
 	#endregion <-- BOTTOM
 
 
 	//**** ALPHA TESTING AREA
-	//-- Temp setup for in-game testing and bypassing statements		//-- To delete afterwards
 	#region <-- TOP 
 
 	//-- Bool building activate state
@@ -182,5 +172,10 @@ public class UIManager : MonoBehaviour
 	}
 
 	#endregion <-- BOTTOM
+
+	private void GetUI()
+	{
+
+	}
 
 }
