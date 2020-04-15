@@ -12,6 +12,8 @@ public class EnemyDealDamage : ParentDealDamage
 	[Header("Child")]
 	[Tooltip("Variables not found in the parent class")]
 	[SerializeField]
+	public GameObject player;   /// should be loaded with PlayerWithGun prefab)
+	[SerializeField]
 	private float damageVar;
 
 
@@ -19,7 +21,6 @@ public class EnemyDealDamage : ParentDealDamage
 	///  Damage function
 	public override void OnHit(ControllerColliderHit hitting, float damageDelt)
 	{
-		damageDelt = damageVar;
 		target = player;
 		base.OnHit(hitting, damageDelt);
 	}
