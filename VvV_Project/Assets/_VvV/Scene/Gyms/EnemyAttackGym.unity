@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -145,6 +145,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e83b830ea674061a71e85f64ee7661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &24032610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
+    type: 3}
+  m_PrefabInstance: {fileID: 321259528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &24032611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24032610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef1c3c14df512348b0fd7f9b8c9bf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aggroRadius: 3
 --- !u!114 &26989355 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 653394473113384586, guid: fbcf259689b68944c9005a0812e5ad98,
@@ -1739,6 +1758,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7619000118445535002, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: hit
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7631491156004868608, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: m_IsActive
@@ -1837,7 +1861,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 321259528}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 24032610}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6373e5c0b3e52774ea740b19fa7d5b68, type: 3}
@@ -3220,6 +3244,7 @@ GameObject:
   - component: {fileID: 2006326347}
   - component: {fileID: 2006326346}
   - component: {fileID: 2006326351}
+  - component: {fileID: 2006326352}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Player
@@ -3241,7 +3266,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!136 &2006326347
 CapsuleCollider:
@@ -3330,6 +3355,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702cff6405ec78e4d855d9a1ae798984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitpoints: {fileID: 2006326352}
+  damageable: 15
+  totalDamageable: 15
+  invulDelay: 0.06
+  invulTime: 1
+--- !u!114 &2006326352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006326345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b05eb90fbf09746aca65fe9ac3babd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
 --- !u!114 &2031548898 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1758641208402997159, guid: fbcf259689b68944c9005a0812e5ad98,

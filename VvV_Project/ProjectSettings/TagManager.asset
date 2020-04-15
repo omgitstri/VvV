@@ -37,9 +37,9 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - EnemyAttack
   - Locked
-  - 
+  - Invincibility
   m_SortingLayers:
   - name: Default
     uniqueID: 0

@@ -53,6 +53,8 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
         if (middle.Count > 0 && start != null && stop != null && root != null)
         {
 
+            if (attack) { ActivateHitbox(); }
+
             List<Vector3> lerps = new List<Vector3>();
             for (int i = 0; i < middle.Count; i++)
             {
@@ -74,27 +76,41 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
     public void Return()
     {
         transform.localPosition = Vector3.Slerp(transform.localPosition, Vector3.zero, root.a);
-        StartCoroutine(ActivateHitbox());
+        DeactivateHitbox();
     }
 
-    public IEnumerator ActivateHitbox() {
-        yield return new WaitForSeconds(1f);
+    public IEnumerator ReactivateHitbox() {
+        yield return new WaitForSeconds(2f);
+        ActivateHitbox();
+    }
+
+    public void ActivateHitbox() {
+
+        gameObject.layer = 29;
         box.enabled = true;
-        GetComponent<Renderer>().material.SetColor("_BaseColor", Color.white);
-        GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+    }
+
+    public void DeactivateHitbox() {
+        if (box != null) {
+            box.enabled = false;
+        }
+        gameObject.layer = 10;
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Damagable>(out Damagable player))
-        {
+        //Only damage the player if the cubes are in attack mode, this prevents the player from walking into the enemy & losing health
+        if (gameObject.layer == 29) {
+            if (other.TryGetComponent<Damagable>(out Damagable player)) {
+                DeactivateHitbox();
+                player.GetDamaged(dmg);
 
-            Debug.Log("damaged");
-            GetComponent<Renderer>().material.SetColor("_BaseColor", Color.red);
-            GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-            box.enabled = false;
-            player.GetDamaged(dmg);
+            }
+        }
 
+        else {
+            return;
         }
     }
 }

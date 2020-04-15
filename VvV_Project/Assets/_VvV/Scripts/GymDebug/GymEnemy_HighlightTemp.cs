@@ -16,7 +16,7 @@ public class GymEnemy_HighlightTemp : MonoBehaviour
 
             foreach (var item in enemies)
             {
-                if(item.TryGetComponent<GymEnemy_AttackClosest>(out var attackClosest))
+                if(item.TryGetComponent<EnemyBehaviour>(out var attackClosest))
                 {
                     highlights.Add(attackClosest.currentTarget);
                 }
