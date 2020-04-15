@@ -19,6 +19,7 @@ public class Toolbox : MonoBehaviour
     }
 
     [SerializeField] private GameObject manager = null;
+    [SerializeField] private GameObject statsManager = null;
     [SerializeField] private GameObject soundManager = null;
 
 
@@ -42,6 +43,13 @@ public class Toolbox : MonoBehaviour
         
         }
 
+        if (statsManager == null) {
+            var go = new GameObject(nameof(statsManager));
+            go.transform.parent = this.gameObject.transform;
+            go.AddComponent<StatsManager>();
+            statsManager = go;
+        }
+
         if (soundManager == null)
         {
             soundManager = Instantiate(Resources.Load(nameof(SoundManager), typeof(GameObject)) as GameObject);
@@ -55,12 +63,15 @@ public class Toolbox : MonoBehaviour
         return manager.GetComponent<SceneLoader>();
     }
 
-    
+    public StatsManager GetStats() {
+        return statsManager.GetComponent<StatsManager>();
+    }
+
+
     public SoundManager GetSound()
     {
         return soundManager.GetComponent<SoundManager>();
     }
-
 
     /*public MusicManager GetMusic() {
         return soundManager.GetComponent<MusicManager>();
