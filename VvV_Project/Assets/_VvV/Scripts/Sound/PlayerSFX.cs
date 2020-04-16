@@ -38,7 +38,7 @@ public class PlayerSFX : MonoBehaviour
 
     void Start()
     {
-        soundManager = Toolbox.GetInstance().GetSound();
+        soundManager = Toolbox.GetInstance.GetSound();
         minMaxStart = Random.Range(0f, 5f);
     }
 

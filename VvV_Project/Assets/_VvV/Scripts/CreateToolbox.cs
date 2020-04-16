@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CreateToolbox : MonoBehaviour
 {
+    /*
     void Awake()
     {
         Toolbox.GetInstance();
         Destroy(this.gameObject);
-    }
+    } */
 
-}
+} 

@@ -7,19 +7,19 @@ public class Toolbox : MonoBehaviour
 
     private static Toolbox _instance = null;
 
-    public static Toolbox GetInstance()
-    {
-        if (Toolbox._instance == null)
-        {
-            var goToolbox = new GameObject(nameof(Toolbox));
-            //DontDestroyOnLoad(goToolbox);
-            Toolbox._instance = goToolbox.AddComponent<Toolbox>();
+    public static Toolbox GetInstance {
+        get {
+            if (Toolbox._instance == null) {
+                var goToolbox = new GameObject(nameof(Toolbox));
+                //DontDestroyOnLoad(goToolbox);
+                Toolbox._instance = goToolbox.AddComponent<Toolbox>();
+            }
+            return Toolbox._instance;
         }
-        return Toolbox._instance;
     }
 
-    [SerializeField] private GameObject manager = null;
-    [SerializeField] private GameObject statsManager = null;
+    [SerializeField] private SceneLoader manager = null;
+    [SerializeField] private EnemyStatsManager statsManager = null;
     [SerializeField] private GameObject soundManager = null;
 
 
@@ -38,16 +38,14 @@ public class Toolbox : MonoBehaviour
         if (manager == null) {
             var go = new GameObject(nameof(manager));
             go.transform.parent = this.gameObject.transform;
-            go.AddComponent<SceneLoader>();
-            manager = go;
+            manager = go.AddComponent<SceneLoader>();
         
         }
 
         if (statsManager == null) {
             var go = new GameObject(nameof(statsManager));
             go.transform.parent = this.gameObject.transform;
-            go.AddComponent<StatsManager>();
-            statsManager = go;
+            statsManager = go.AddComponent<EnemyStatsManager>();
         }
 
         if (soundManager == null)
@@ -60,11 +58,11 @@ public class Toolbox : MonoBehaviour
 
     public SceneLoader GetScene()
     {
-        return manager.GetComponent<SceneLoader>();
+        return manager;
     }
 
-    public StatsManager GetStats() {
-        return statsManager.GetComponent<StatsManager>();
+    public EnemyStatsManager GetStats() {
+        return statsManager;
     }
 
 
