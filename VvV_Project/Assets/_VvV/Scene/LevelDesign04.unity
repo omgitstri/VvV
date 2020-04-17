@@ -11228,6 +11228,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_v3_Full
       objectReference: {fileID: 0}
+    - target: {fileID: 1272707331540877774, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: crawlTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405360406427797144, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: crawlTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5738099910806368267, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11282,6 +11292,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6086291174806342893, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: crawlTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6568109155843011366, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: crawlTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8013629108180937104, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: crawlTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939687503438015920, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: crawlTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbcf259689b68944c9005a0812e5ad98, type: 3}

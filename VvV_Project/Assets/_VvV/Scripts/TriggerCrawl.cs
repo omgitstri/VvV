@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerCrawl : MonoBehaviour
 {
     private Animator animator = null;
-    [SerializeField] private bool crawl = false;
+    [SerializeField] private bool crawlTrigger = false;
 
     private void Start()
     {
@@ -14,9 +14,9 @@ public class TriggerCrawl : MonoBehaviour
 
     public void Crawl()
     {
-        if (crawl)
+        if (crawlTrigger)
         {
-            animator.SetBool("Leg", true);
+            animator.SetBool("isCrawling", true);
         }
     }
 }
