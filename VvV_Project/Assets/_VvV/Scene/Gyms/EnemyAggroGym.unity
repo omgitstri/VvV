@@ -670,7 +670,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20570
+  m_Name: pb_Mesh723648
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -839,6 +839,8 @@ GameObject:
   - component: {fileID: 500335014}
   - component: {fileID: 500335013}
   - component: {fileID: 500335012}
+  - component: {fileID: 500335016}
+  - component: {fileID: 500335015}
   m_Layer: 0
   m_Name: EMP
   m_TagString: Untagged
@@ -921,6 +923,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500335010}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &500335015
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500335010}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &500335016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500335010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8329998a0d7e24ab0ab716de62e836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 1
 --- !u!1 &574125774
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,6 +964,8 @@ GameObject:
   - component: {fileID: 574125778}
   - component: {fileID: 574125777}
   - component: {fileID: 574125776}
+  - component: {fileID: 574125780}
+  - component: {fileID: 574125779}
   m_Layer: 0
   m_Name: EMP
   m_TagString: Untagged
@@ -1015,6 +1048,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574125774}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &574125779
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574125774}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &574125780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574125774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8329998a0d7e24ab0ab716de62e836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 1
 --- !u!1 &703747882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,6 +1090,7 @@ GameObject:
   - component: {fileID: 703747885}
   - component: {fileID: 703747884}
   - component: {fileID: 703747883}
+  - component: {fileID: 703747888}
   m_Layer: 2
   m_Name: Enemy
   m_TagString: Untagged
@@ -1107,14 +1170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea485db118dca64f8262abb985f3337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalizedMovement: 0
-  entities:
-  - {fileID: 574125775}
-  - {fileID: 500335011}
-  - {fileID: 919524293}
   chaseDistance: 4
-  player: {fileID: 1487654810}
-  speed: 1
+  losePlayer: 2
 --- !u!4 &703747887
 Transform:
   m_ObjectHideFlags: 0
@@ -1130,6 +1187,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &703747888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703747882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8329998a0d7e24ab0ab716de62e836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 2
 --- !u!1 &794469312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,6 +1830,8 @@ GameObject:
   - component: {fileID: 919524296}
   - component: {fileID: 919524295}
   - component: {fileID: 919524294}
+  - component: {fileID: 919524298}
+  - component: {fileID: 919524297}
   m_Layer: 0
   m_Name: EMP
   m_TagString: Untagged
@@ -1842,6 +1914,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919524292}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &919524297
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919524292}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &919524298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919524292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8329998a0d7e24ab0ab716de62e836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 1
 --- !u!1 &968988146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2543,6 +2644,7 @@ GameObject:
   - component: {fileID: 1487654808}
   - component: {fileID: 1487654807}
   - component: {fileID: 1487654812}
+  - component: {fileID: 1487654813}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -2853,6 +2955,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!114 &1487654813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487654806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8329998a0d7e24ab0ab716de62e836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 0
 --- !u!1 &1539391563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,6 +3024,7 @@ GameObject:
   - component: {fileID: 1681652550}
   - component: {fileID: 1681652549}
   - component: {fileID: 1681652548}
+  - component: {fileID: 1681652553}
   m_Layer: 2
   m_Name: Enemy
   m_TagString: Untagged
@@ -2988,14 +3104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea485db118dca64f8262abb985f3337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalizedMovement: 0
-  entities:
-  - {fileID: 574125775}
-  - {fileID: 500335011}
-  - {fileID: 919524293}
   chaseDistance: 4
-  player: {fileID: 1487654810}
-  speed: 1
+  losePlayer: 2
 --- !u!4 &1681652552
 Transform:
   m_ObjectHideFlags: 0
@@ -3011,6 +3121,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1681652553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681652547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8329998a0d7e24ab0ab716de62e836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityType: 2
 --- !u!1 &1698620427
 GameObject:
   m_ObjectHideFlags: 0
