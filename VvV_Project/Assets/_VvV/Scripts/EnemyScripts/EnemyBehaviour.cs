@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using UnityEditor;
 
 [ExecuteAlways]
+
 public class EnemyBehaviour : MonoBehaviour
 {
     //[SerializeField] private float chaseDistance = 10f;
@@ -15,11 +16,13 @@ public class EnemyBehaviour : MonoBehaviour
     private List<Transform> entities = new List<Transform>();
     private Transform player = null;
     private EnemyStats eStats = null;
+    private float attackCooldown = 1f;
 
     [Space]
 
     [SerializeField] private bool customColorDisplay = true;
     [SerializeField] private Color gizmoColor = new Color(1f, 0f, 0f, 0.2f);
+
 
     private void Awake()
     {
@@ -33,11 +36,13 @@ public class EnemyBehaviour : MonoBehaviour
         player = Entity_Tracker.Instance.PlayerEntity;
         entities = new List<Transform>(Entity_Tracker.Instance.InteractableEntity);
         currentTarget = player;
+        attackCooldown = eStats.atkSpd;
     }
 
     void Update()
     {
         ChaseTarget();
+        AttackTarget();
     }
 
     private void OnDrawGizmos()
@@ -49,6 +54,9 @@ public class EnemyBehaviour : MonoBehaviour
             Gizmos.DrawSphere(transform.position, eStats.aggroRng);
         }
     }
+
+
+
 
     private void ChaseTarget()
     {
@@ -96,4 +104,26 @@ public class EnemyBehaviour : MonoBehaviour
         }
         return currentTransform;
     }
+
+    public void AttackTarget()
+    {
+        if (Application.isPlaying == true)
+        {
+            // distance
+            if (Vector3.Distance(currentTarget.position, transform.position) <= eStats.attRng)
+            {
+                if (attackCooldown <= 0)
+                {
+                    Debug.Log("player");
+                    attackCooldown = eStats.atkSpd;
+                }
+                else
+                {
+                    attackCooldown -= Time.deltaTime;
+                }
+            }
+        }
+
+    }
+
 }

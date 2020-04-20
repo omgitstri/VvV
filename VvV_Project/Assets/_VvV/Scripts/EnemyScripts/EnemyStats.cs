@@ -11,7 +11,8 @@ public class EnemyStats {
     public int hp = 1;
     [Space]
     public float regSpd = 1;
-    public float atkSpd = 1;
+    public float atkSpd = 3;
+    public float attRng = 2;
     public float crawlSpd = 1;
     public float moveSpd = 2;
     public float aggroRng = 10;

@@ -6,6 +6,11 @@ using UnityEditor;
 // - - - - - SCRIPT TO MANAGE ENEMY STATS - - - - - 
 public class EnemyStatsManager : MonoBehaviour {
 
+    /// Handlers
+    private EnemyMovementState enemyMovement;
+
+
+
     public void PowerUp(EnemyStats eStats) {
         // Increase RegenSpeed, AttackSpeed, MoveSpeed, & AggroRange according to Regen count
         eStats.regen += 1; // int regen

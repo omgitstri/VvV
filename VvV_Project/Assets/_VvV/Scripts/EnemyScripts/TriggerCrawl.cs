@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class TriggerCrawl : MonoBehaviour
 {
-    private Animator animator = null;
+    ///  Handers
+    private EnemyStats eStats;
+    private EnemyMovementState enemyMovement = null;
     [SerializeField] private bool crawlTrigger = false;
 
     private void Start()
     {
-        animator = transform.root.GetComponent<Animator>();
+        enemyMovement = transform.root.GetComponent<EnemyMovementState>();
+        eStats = transform.root.GetComponent<EnemyStatsContainer>().eStats;
+
     }
 
     public void Crawl()
     {
         if (crawlTrigger)
         {
-            animator.SetBool("isCrawling", true);
+            eStats.isCrawling = true;
+            enemyMovement.ActivateCrawl();
         }
     }
 }

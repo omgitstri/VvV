@@ -8,7 +8,13 @@ using UnityEngine.AI;
 public class EnemyMovementState : MonoBehaviour
 {
 	// Variables
-	///  Enemy switch variables
+	/// Handler reference
+    private EnemyStats eStats;
+	[SerializeField] private float currentLevel = 0;
+	[SerializeField] private float nextLevel = 0;
+	private Animator animator = null;
+
+	/// Enemy switch variables
 	public enum MoveState
 	{
 		Walk,
@@ -19,34 +25,40 @@ public class EnemyMovementState : MonoBehaviour
 	public MoveState currentMoveState;
 
 	///  Enemy movement variables
-	public float speed = 1f;
+	[SerializeField]
+	private float speed = 1f;
 	private NavMeshAgent navMesh;
 
-
-	// On frame
-	void Start()
+	 // On frame
+	void Awake()
 	{
-		#region		<-- TOP
-
-		currentMoveState = MoveState.Walk;
-
+		/// Enemy level
+		eStats = transform.root.GetComponent<EnemyStatsContainer>().eStats;
+		
 		///  NavMesh component
 		navMesh = GetComponent<NavMeshAgent>();
 
-		#endregion		<-- BOTTOM
+		animator = GetComponent<Animator>();
 	}
 
+	void Start()
+	{
+		nextLevel = eStats.moveSpd;
+
+		currentMoveState = MoveState.Walk;
+
+	}
 
 	void Update()
 	{
-		#region		<-- TOP
-
-		navMesh.speed = speed;
-
-		#endregion		<-- BOTTOM
-
+		if (Input.GetKeyDown(KeyCode.E))
+		{
+			DeactivateCrawl();
+		}
 		MoveStateSwitch();
+		navMesh.speed = speed;
 	}
+
 
 	// Switch statement
 	#region		<-- TOP
@@ -82,26 +94,40 @@ public class EnemyMovementState : MonoBehaviour
 
 	public void EnemyWalk()
 	{
-		speed = 3.0f;
+		speed = eStats.moveSpd;
+		animator.SetBool("isCrawling", false);
+
 	}
 
 	public  void EnemyCrawl()
 	{
-		speed = 5f;
+		speed = eStats.crawlSpd;
+		animator.SetBool("isCrawling", true);
+
 	}
 
 	public  void EnemyRun()
 	{
-		speed = 10f;
+		speed = eStats.moveSpd * 2;
 	}
 
 	public  void EnemyIdle()
 	{
-		speed = 0.0f;
+		speed = 0; /* eStats.moveSpd; */
+
 	}
 
 	#endregion		<-- BOTTOM
 
 	#endregion		<-- BOTTOM
 
+	public void ActivateCrawl()
+	{
+		currentMoveState = MoveState.Crawl;
+	}
+
+	public void DeactivateCrawl()
+	{
+		currentMoveState = MoveState.Walk;
+	}
 }
