@@ -10,15 +10,15 @@ public class GymRegenEnemy : Damagable
     {
         //base.GetDamaged();
 
-        StartCoroutine(nameof(Regen));
+        StartCoroutine(nameof(RegenTrigger));
     }
 
-    public IEnumerator Regen()
+    public IEnumerator RegenTrigger()
     {
         int i = 0;
         while (i < graph.Count)
         {
-            graph[i].Regen();
+            graph[i].RegenManager();
             i++;
             yield return new WaitForSeconds(Random.Range(0, 2));
         }

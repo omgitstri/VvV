@@ -11,8 +11,14 @@ public class GymEnemy_AttackLerp : MonoBehaviour
     [SerializeField]
     [Header("Modify power with dmg var in GymEnemyAttack_CubeLerp")]
     public List<IndividualCube> attackCubes = new List<IndividualCube>();
+    private EnemyStats eStats = null;
 
-    [ContextMenu(nameof(start))]
+
+    private void Awake()
+    {
+        eStats = GetComponent<EnemyStatsContainer>().eStats;
+    }
+
     private void Start()
     {
 
@@ -56,6 +62,7 @@ public class GymEnemy_AttackLerp : MonoBehaviour
     [ContextMenu(nameof(StartAttack))]
     public void StartAttacking()
     {
+
         foreach (var item in attackCubes)
         {
             cubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>());
@@ -66,18 +73,35 @@ public class GymEnemy_AttackLerp : MonoBehaviour
             item.attack = true;
         }
 
+        foreach (var item in attackCubes)
+        {
+            var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>();
+            //cube.enabled = true;
+
+            item.transform.GetChild(0).gameObject.SetActive(false);
+
+            cube.startPos = cube.transform.position;
+            cube.start = start;
+            cube.stop = stop;
+            cube.root = this;
+            cube.middle.Clear();
+            cube.middle.AddRange(middle);
+        }
+
+        //SetupCube();
         StartCoroutine(nameof(StartAttack));
     }
     private IEnumerator StartAttack()
     {
         float elapsedTime = 0f;
-        float _waitTime = 1f;
+        float _waitTime = eStats.atkSpd * 0.5f;
         while (elapsedTime < _waitTime)
         {
             elapsedTime += Time.deltaTime;
             a = elapsedTime;
             yield return null;
         }
+
         a = 1;
 
         foreach (var item in cubes)

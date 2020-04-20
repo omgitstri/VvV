@@ -19,6 +19,7 @@ public class EnemyDamagable : Damagable
         //base.Hit();
         if (transform.CompareTag("WeakPoint"))
         {
+            //transform.root.GetComponent<CreateAdjacencyGraph>().RegenManager();
             individualCube.DestroyParent();
         }
 
@@ -35,6 +36,7 @@ public class EnemyDamagable : Damagable
                 weakPoint.GetWeakPoint().CheckDetached();
                 weakPoint.DestroyDetached();
             }
+
         }
 
     }
