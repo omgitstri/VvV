@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 872fed217f7800743bb5e2869013fb3c, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &43717666
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &43717667
 Transform:
@@ -670,7 +670,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh110620
+  m_Name: pb_Mesh723648
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -930,7 +930,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500335010}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
@@ -1055,7 +1055,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574125774}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
@@ -1092,7 +1092,6 @@ GameObject:
   - component: {fileID: 703747883}
   - component: {fileID: 703747888}
   - component: {fileID: 703747889}
-  - component: {fileID: 703747890}
   m_Layer: 2
   m_Name: Enemy
   m_TagString: Untagged
@@ -1174,7 +1173,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 4
   losePlayer: 2
-  statsContainer: {fileID: 0}
+  customColorDisplay: 0
+  colorR: 2
+  colorG: 2
+  colorB: 2
+  colorA: 2
 --- !u!4 &703747887
 Transform:
   m_ObjectHideFlags: 0
@@ -1225,27 +1228,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &703747890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703747882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2ff95884d437424c8abaee99ee65ef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eStats:
-    regen: 0
-    hp: 1
-    regSpd: 1
-    atkSpd: 1
-    moveSpd: 1
-    aggroRng: 1
-    lostRngDur: 1
-  entityReg: {fileID: 0}
 --- !u!1 &794469312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,7 +1949,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919524292}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
@@ -2693,7 +2675,7 @@ GameObject:
   - component: {fileID: 1487654813}
   m_Layer: 2
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3072,7 +3054,6 @@ GameObject:
   - component: {fileID: 1681652548}
   - component: {fileID: 1681652553}
   - component: {fileID: 1681652554}
-  - component: {fileID: 1681652555}
   m_Layer: 2
   m_Name: Enemy
   m_TagString: Untagged
@@ -3154,7 +3135,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chaseDistance: 4
   losePlayer: 2
-  statsContainer: {fileID: 0}
+  customColorDisplay: 0
+  colorR: 2
+  colorG: 2
+  colorB: 2
+  colorA: 2
 --- !u!4 &1681652552
 Transform:
   m_ObjectHideFlags: 0
@@ -3205,27 +3190,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1681652555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681652547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2ff95884d437424c8abaee99ee65ef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  eStats:
-    regen: 0
-    hp: 1
-    regSpd: 1
-    atkSpd: 1
-    moveSpd: 1
-    aggroRng: 1
-    lostRngDur: 1
-  entityReg: {fileID: 0}
 --- !u!1 &1698620427
 GameObject:
   m_ObjectHideFlags: 0
