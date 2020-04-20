@@ -20,7 +20,7 @@ public class GymEnemy_AttackLerp : MonoBehaviour
     }
 
     [ContextMenu("Test")]
-    void Test()
+    public void Test()
     {
         foreach (var item in GetComponentsInChildren<GymEnemyAttack_CubeLerp>())
         {

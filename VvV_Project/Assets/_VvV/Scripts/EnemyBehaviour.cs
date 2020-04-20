@@ -8,15 +8,18 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public Transform currentTarget { get; private set; } = null;
     [SerializeField] private float chaseDistance = 10f;
-    [SerializeField] private float losePlayer = 2f;
+    [SerializeField] private float losePlayer = 1f;
 
     private NavMeshAgent navMeshAgent = null;
     private List<Transform> entities = new List<Transform>();
     private Transform player = null;
+    private EnemyStatsContainer statsContainer;
+    [SerializeField] private GymEnemy_AttackLerp attackLerp;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        statsContainer = GetComponent<EnemyStatsContainer>();
     }
 
     private void Start()
@@ -28,6 +31,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Update()
     {
+        RunStates();
+    }
+
+    void RunStates() {
         ChaseTarget();
     }
 
@@ -45,8 +52,9 @@ public class EnemyBehaviour : MonoBehaviour
             if (Vector3.Distance(transform.position, player.position) <= chaseDistance)
             {
                 Debug.Log("player");
+
                 currentTarget = player;
-                losePlayer = 2f;
+                losePlayer = 1f * statsContainer.eStats.lostRngDur;
             }
             else if (losePlayer < 0)
             {
@@ -62,6 +70,15 @@ public class EnemyBehaviour : MonoBehaviour
         {
             navMeshAgent.SetDestination(currentTarget.position);
         }
+    }
+
+    private void AttackTarget() {
+        // Call the Attack Function
+
+        // if ( this gets at x range of player) {
+        // stop movement
+        attackLerp.rawr();
+        //}
     }
 
     private Transform ReturnClosestTarget()
@@ -84,4 +101,6 @@ public class EnemyBehaviour : MonoBehaviour
         }
         return currentTransform;
     }
+
+
 }

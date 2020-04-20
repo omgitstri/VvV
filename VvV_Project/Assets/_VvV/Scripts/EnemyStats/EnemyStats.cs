@@ -8,11 +8,11 @@ using UnityEngine;
 public class EnemyStats {
     [Header("Enemy Stats")]
     public int regen = 0;
-    public int hp = 0;
+    public int hp = 1;
     [Space]
-    public float regSpd = 0;
-    public float atkSpd = 0;
-    public float moveSpd = 0;
-    public float aggroRng = 0;
-    public float lostRngDur = 0;
+    public float regSpd = 1;
+    public float atkSpd = 1;
+    public float moveSpd = 1;
+    public float aggroRng = 1;
+    public float lostRngDur = 1;
 }
