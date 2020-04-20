@@ -12,7 +12,10 @@ public class EnemyStats {
     [Space]
     public float regSpd = 1;
     public float atkSpd = 1;
-    public float moveSpd = 1;
-    public float aggroRng = 1;
-    public float lostRngDur = 1;
+    public float crawlSpd = 1;
+    public float moveSpd = 2;
+    public float aggroRng = 10;
+    public float lostRngDur = 2;
+    [Space]
+    public bool isCrawling = false;
 }

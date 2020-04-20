@@ -4,28 +4,32 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEditor;
 
+[ExecuteAlways]
 public class EnemyBehaviour : MonoBehaviour
 {
-    public Transform currentTarget { get; private set; } = null;
-    [SerializeField] private float chaseDistance = 10f;
-    [SerializeField] private float losePlayer = 2f;
-    [SerializeField] private bool customColorDisplay = false;
-    [SerializeField] [Range(0f,1f)] private float colorR = 2f;
-    [SerializeField] [Range(0f, 1f)] private float colorG = 2f;
-    [SerializeField] [Range(0f, 1f)] private float colorB = 2f;
-    [SerializeField] [Range(0f, 1f)] private float colorA = 2f;
+    //[SerializeField] private float chaseDistance = 10f;
+    [SerializeField] private float losePlayer = 0f;
 
+    public Transform currentTarget { get; private set; } = null;
     private NavMeshAgent navMeshAgent = null;
     private List<Transform> entities = new List<Transform>();
     private Transform player = null;
+    private EnemyStats eStats = null;
+
+    [Space]
+
+    [SerializeField] private bool customColorDisplay = true;
+    [SerializeField] private Color gizmoColor = new Color(1f, 0f, 0f, 0.2f);
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        eStats = transform.root.GetComponent<EnemyStatsContainer>().eStats;
     }
 
     private void Start()
     {
+        losePlayer = eStats.lostRngDur;
         player = Entity_Tracker.Instance.PlayerEntity;
         entities = new List<Transform>(Entity_Tracker.Instance.InteractableEntity);
         currentTarget = player;
@@ -38,24 +42,23 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = gizmoColor;
+
         if (customColorDisplay == true)
-            Gizmos.color = new Color(colorR, colorG, colorB, colorA);
-        else
-            Gizmos.color = new Color(1, 0, 0, 0.2f);
-
-        Gizmos.DrawSphere(transform.position, chaseDistance);
-
+        {
+            Gizmos.DrawSphere(transform.position, eStats.aggroRng);
+        }
     }
 
     private void ChaseTarget()
     {
         if (player != null)
         {
-            if (Vector3.Distance(transform.position, player.position) <= chaseDistance)
+            if (Vector3.Distance(transform.position, player.position) <= eStats.aggroRng)
             {
                 //Debug.Log("player");
                 currentTarget = player;
-                losePlayer = 2f;
+                losePlayer = eStats.lostRngDur;
             }
             else if (losePlayer < 0)
             {
