@@ -16,23 +16,26 @@ public class GymEnemy_AttackLerp : MonoBehaviour
     private void Start()
     {
 
-        Test();
+        SetupCube();
     }
 
     [ContextMenu("Test")]
-    public void Test()
+    public void SetupCube()
     {
+        // Disable AttackCubes
         foreach (var item in GetComponentsInChildren<GymEnemyAttack_CubeLerp>())
         {
             item.enabled = false;
             item.transform.localPosition = Vector3.zero;
         }
 
+        // Enable VisualCubes
         foreach (var item in GetComponentsInChildren<IndividualCube>())
         {
             item.transform.GetChild(0).gameObject.SetActive(true);
         }
 
+        // Enable AttackCubes
         foreach (var item in attackCubes)
         {
             var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>();
@@ -51,7 +54,7 @@ public class GymEnemy_AttackLerp : MonoBehaviour
 
         public List<GymEnemyAttack_CubeLerp> cubes = new List<GymEnemyAttack_CubeLerp>();
     [ContextMenu(nameof(StartAttack))]
-    public void rawr()
+    public void StartAttacking()
     {
         foreach (var item in attackCubes)
         {
