@@ -8,19 +8,24 @@ public class EnemyStatsManager : MonoBehaviour {
 
     /// Handlers
     private EnemyMovementState enemyMovement;
-
-
+    [SerializeField] private float pwrUpMulti = 1.15f;
+    [SerializeField] private float maxStat = 3f; 
 
     public void PowerUp(EnemyStats eStats) {
         // Increase RegenSpeed, AttackSpeed, MoveSpeed, & AggroRange according to Regen count
         eStats.regen += 1; // int regen
 
-        // eStats.regSpd += or *= or something else entirely; // Regen speed
-        // eStats.atkSpd += ; // Attack speed
-        // eStats.moveSpd += ; // Move speed
-        // eStats.aggroRng += ; // Aggro range
-        // eStats.lostRngDur += ; // Lost Range Duration
+        if (eStats.moveSpd >= maxStat) {
+            eStats.moveSpd = maxStat;
+            eStats.isMaxed = true;
+        }
 
-        Debug.Log("The powerup function needs to be filled!");
+        if (!eStats.isMaxed) {
+            eStats.regSpd *= pwrUpMulti; // Regen speed
+            eStats.atkSpd *= pwrUpMulti; // Attack speed
+            eStats.moveSpd *= pwrUpMulti; // Move speed
+            eStats.aggroRng *= pwrUpMulti; // Aggro range
+            eStats.lostRngDur *= pwrUpMulti; // Lost Range Duration
+        }
     }
 }

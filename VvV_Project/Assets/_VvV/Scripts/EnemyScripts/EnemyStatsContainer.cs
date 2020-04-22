@@ -21,8 +21,6 @@ public class EnemyStatsContainer : MonoBehaviour {
 
     // Call this function when the enemy regens to keep count & power it up;
     public void Regen() {
-        Debug.Log("Regen'd!");
-        //statsManager.PowerUp(stats);
         Toolbox.GetInstance.GetStats().PowerUp(eStats);
     }
 }

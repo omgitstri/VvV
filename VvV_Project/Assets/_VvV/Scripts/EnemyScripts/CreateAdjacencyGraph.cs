@@ -14,6 +14,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
     [SerializeField] private Material white = null;
     [SerializeField] private Material red = null;
+    private EnemyStats eStat = null;
 
     public int direction;
     public int distance;
@@ -45,6 +46,9 @@ public class CreateAdjacencyGraph : MonoBehaviour
         }
     }
 
+    private void Awake() {
+        eStat = GetComponent<EnemyStatsContainer>().eStats;
+    }
 
     void Start()
     {
@@ -215,6 +219,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
     {
         yield return new WaitForSeconds(Random.Range(minimumTimeDelay, maximumTimeDelay));
         RegenManager();
+        Toolbox.GetInstance.GetStats().PowerUp(eStat);
     }
 
 

@@ -19,4 +19,7 @@ public class EnemyStats {
     public float lostRngDur = 2;
     [Space]
     public bool isCrawling = false;
+    [Space]
+    public bool isMaxed = false;
+
 }
