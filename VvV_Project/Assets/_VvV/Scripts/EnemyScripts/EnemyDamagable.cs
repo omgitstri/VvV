@@ -40,6 +40,17 @@ public class EnemyDamagable : Damagable
         }
 
     }
+    private void OnBecameVisible()
+    {
+        //Debug.Log("visible");
+        GetComponent<BoxCollider>().enabled = true;
+    }
+
+    private void OnBecameInvisible()
+    {
+        //Debug.Log("invisible");
+        GetComponent<BoxCollider>().enabled = false;
+    }
 }
 
 

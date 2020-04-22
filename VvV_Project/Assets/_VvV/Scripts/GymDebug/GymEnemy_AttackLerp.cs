@@ -21,7 +21,6 @@ public class GymEnemy_AttackLerp : MonoBehaviour
 
     private void Start()
     {
-
         SetupCube();
     }
 
@@ -47,7 +46,7 @@ public class GymEnemy_AttackLerp : MonoBehaviour
             var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>();
             //cube.enabled = true;
 
-            item.transform.GetChild(0).gameObject.SetActive(false);
+            //item.transform.GetChild(0).gameObject.SetActive(false);
 
             cube.startPos = cube.transform.position;
             cube.start = start;
@@ -62,20 +61,23 @@ public class GymEnemy_AttackLerp : MonoBehaviour
     [ContextMenu(nameof(StartAttack))]
     public void StartAttacking()
     {
+        cubes.Clear();
 
         foreach (var item in attackCubes)
         {
-            cubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>());
+            if (!item.destroyed)
+                cubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>());
         }
         foreach (var item in cubes)
         {
             item.enabled = true;
             item.attack = true;
+            item.GetComponent<MeshRenderer>().enabled = true;
         }
 
         foreach (var item in attackCubes)
         {
-            if (!item.GetComponent<IndividualCube>().destroyed)
+            if (!item.destroyed)
             {
                 var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>();
                 //cube.enabled = true;
@@ -127,12 +129,12 @@ public class GymEnemy_AttackLerp : MonoBehaviour
         {
             item.attack = false;
             item.reverse = false;
+            item.GetComponent<MeshRenderer>().enabled = false;
         }
 
-        foreach (var item in cubes)
+        foreach (var item in attackCubes)
         {
-            item.enabled = false;
-            item.attack = false;
+            item.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 }

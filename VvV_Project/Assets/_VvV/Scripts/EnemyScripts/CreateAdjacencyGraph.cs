@@ -53,7 +53,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
     void Start()
     {
         InitAllCubes();
-
+        GetAttackCubes();
         CreateDictionary(transform);
         CreateAG();
         //InvokeRepeating(nameof(WeakPointFreeWalking), 0f, 0.3f);
@@ -212,8 +212,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
     }
 
-    public float minimumTimeDelay = 0f;
-    public float maximumTimeDelay = 5f;
+    public float minimumTimeDelay = 5f;
+    public float maximumTimeDelay = 10f;
 
     IEnumerator RegenDelay()
     {
@@ -303,6 +303,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
             item.StartCoroutine(nameof(item.RegenAction));
         }
         alive = true;
+        GetComponent<EnemyMovementState>().DeactivateCrawl();
     }
 
 
