@@ -8,7 +8,7 @@ public class EnemyStatsManager : MonoBehaviour {
 
     /// Handlers
     private EnemyMovementState enemyMovement;
-    [SerializeField] private float pwrUpMulti = 1.15f;
+    [SerializeField] private float pwrUpMulti = 0.15f;
     [SerializeField] private float maxStat = 3f; 
 
     public void PowerUp(EnemyStats eStats) {
@@ -21,11 +21,11 @@ public class EnemyStatsManager : MonoBehaviour {
         }
 
         if (!eStats.isMaxed) {
-            eStats.regSpd *= pwrUpMulti; // Regen speed
-            eStats.atkSpd *= pwrUpMulti; // Attack speed
-            eStats.moveSpd *= pwrUpMulti; // Move speed
-            eStats.aggroRng *= pwrUpMulti; // Aggro range
-            eStats.lostRngDur *= pwrUpMulti; // Lost Range Duration
+            eStats.regSpd += pwrUpMulti; // Regen speed
+            eStats.atkSpd -= pwrUpMulti; // Attack speed
+            eStats.moveSpd += pwrUpMulti; // Move speed
+            eStats.aggroRng += pwrUpMulti; // Aggro range
+            eStats.lostRngDur += pwrUpMulti; // Lost Range Duration
         }
     }
 }
