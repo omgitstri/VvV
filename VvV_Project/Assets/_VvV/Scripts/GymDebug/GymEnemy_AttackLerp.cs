@@ -58,7 +58,7 @@ public class GymEnemy_AttackLerp : MonoBehaviour
         }
     }
 
-        public List<GymEnemyAttack_CubeLerp> cubes = new List<GymEnemyAttack_CubeLerp>();
+    public List<GymEnemyAttack_CubeLerp> cubes = new List<GymEnemyAttack_CubeLerp>();
     [ContextMenu(nameof(StartAttack))]
     public void StartAttacking()
     {
@@ -75,17 +75,20 @@ public class GymEnemy_AttackLerp : MonoBehaviour
 
         foreach (var item in attackCubes)
         {
-            var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>();
-            //cube.enabled = true;
+            if (!item.GetComponent<IndividualCube>().destroyed)
+            {
+                var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>();
+                //cube.enabled = true;
 
-            item.transform.GetChild(0).gameObject.SetActive(false);
+                item.transform.GetChild(0).gameObject.SetActive(false);
 
-            cube.startPos = cube.transform.position;
-            cube.start = start;
-            cube.stop = stop;
-            cube.root = this;
-            cube.middle.Clear();
-            cube.middle.AddRange(middle);
+                cube.startPos = cube.transform.position;
+                cube.start = start;
+                cube.stop = stop;
+                cube.root = this;
+                cube.middle.Clear();
+                cube.middle.AddRange(middle);
+            }
         }
 
         //SetupCube();
@@ -124,6 +127,12 @@ public class GymEnemy_AttackLerp : MonoBehaviour
         {
             item.attack = false;
             item.reverse = false;
+        }
+
+        foreach (var item in cubes)
+        {
+            item.enabled = false;
+            item.attack = false;
         }
     }
 }

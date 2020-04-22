@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEditor;
 
-[ExecuteAlways]
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -36,7 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         losePlayer = eStats.lostRngDur;
         player = Entity_Tracker.Instance.PlayerEntity;
-        entities = new List<Transform>(Entity_Tracker.Instance.InteractableEntity);
+        entities = new List<Transform>(Entity_Tracker.Instance.GetAIReference());
         currentTarget = player;
         attackCooldown = eStats.atkSpd;
     }
@@ -80,9 +79,14 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
 
-        if (currentTarget != null && Vector3.Distance(currentTarget.position, transform.position) > 0.01f)
+        if (currentTarget != null && Vector3.Distance(currentTarget.position, transform.position) > eStats.attRng)
         {
+            navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(currentTarget.position);
+        }
+        else
+        {
+            navMeshAgent.isStopped = true;
         }
     }
 

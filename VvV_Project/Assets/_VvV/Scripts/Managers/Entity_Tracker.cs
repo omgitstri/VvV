@@ -12,7 +12,7 @@ public class Entity_Tracker : MonoBehaviour
             if (_instance == null)
             {
                 _instance = new GameObject(nameof(Entity_Tracker)).AddComponent<Entity_Tracker>();
-                DontDestroyOnLoad(_instance);
+                //DontDestroyOnLoad(_instance);
             }
             return _instance;
         }

@@ -10,7 +10,7 @@ public class IndividualCube : MonoBehaviour
     private Collider myCollider = null;
     private Renderer visualMesh = null;
     private Rigidbody physicMesh = null;
-    private bool destroyed = false;
+    public bool destroyed { get; private set; } = false;
 
     List<IndividualCube> neighbours = new List<IndividualCube>();
 
@@ -206,7 +206,7 @@ public class IndividualCube : MonoBehaviour
         {
             foreach (IndividualCube neighbour in nei)
             {
-                if (neighbour.CompareTag( "WeakPoint"))
+                if (neighbour.CompareTag("WeakPoint"))
                 {
                     DestroyParent();
                 }
@@ -240,45 +240,48 @@ public class IndividualCube : MonoBehaviour
 
     public IEnumerator RegenAction()
     {
-        float elapsedTime = 0f;
-        float waitTime = Random.Range(minimumDelay, maximumDelay);
-        Vector3 initPos = physicMesh.transform.localPosition;
-
-        neighbours.Clear();
-
-        physicMesh.isKinematic = true;
-
-        hit = false;
-        
-        while (elapsedTime < waitTime)
+        if (destroyed == true)
         {
-            physicMesh.transform.position = Vector3.Slerp(initPos, transform.position, (elapsedTime / waitTime));
-            elapsedTime += Time.deltaTime;
+            float elapsedTime = 0f;
+            float waitTime = Random.Range(minimumDelay, maximumDelay);
+            Vector3 initPos = physicMesh.transform.localPosition;
 
-            // Yield here
-            yield return null;
+            neighbours.Clear();
+
+            physicMesh.isKinematic = true;
+
+            hit = false;
+
+            while (elapsedTime < waitTime)
+            {
+                physicMesh.transform.position = Vector3.Slerp(initPos, transform.position, (elapsedTime / waitTime));
+                elapsedTime += Time.deltaTime;
+
+                // Yield here
+                yield return null;
+            }
+            // Make sure we got there
+            physicMesh.transform.SetParent(this.transform);
+            physicMesh.transform.localPosition = Vector3.zero;
+            physicMesh.velocity = Vector3.zero;
+            physicMesh.Sleep();
+
+            if (physicMesh.TryGetComponent<Collider>(out Collider col))
+            {
+                col.enabled = true;
+            }
+
+            physicMesh.gameObject.SetActive(false);
+            myCollider.enabled = true;
+            visualMesh.enabled = true;
+            destroyed = false;
+            StopAllCoroutines();
         }
-        // Make sure we got there
-        physicMesh.transform.SetParent(this.transform);
-        physicMesh.transform.localPosition = Vector3.zero;
-        physicMesh.velocity = Vector3.zero;
-        physicMesh.Sleep();
-
-        if (physicMesh.TryGetComponent<Collider>(out Collider col))
-        {
-            col.enabled = true;
-        }
-
-        physicMesh.gameObject.SetActive(false);
-        myCollider.enabled = true;
-        visualMesh.enabled = true;
-        destroyed = false;
-        StopAllCoroutines();
     }
 
     public IEnumerator DelaySetKinematic()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         physicMesh.isKinematic = true;
         physicMesh.GetComponent<Collider>().enabled = false;
     }

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class Damagable : MonoBehaviour
 {
-    public abstract void GetDamaged(float dmg);
+    public abstract void GetDamaged(int dmg);
     
 }

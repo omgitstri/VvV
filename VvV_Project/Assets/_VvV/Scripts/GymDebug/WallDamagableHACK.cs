@@ -15,7 +15,7 @@ public class WallDamagableHACK : Damagable
         
     }
 
-    public override void GetDamaged(float dmg)
+    public override void GetDamaged(int dmg)
     {
         GetComponent<Collider>().enabled = false;
         foreach (var item in rbList)

@@ -6,7 +6,7 @@ public class EnemyRegen : Damagable
 {
     [SerializeField] private List<CreateAdjacencyGraph> graph = new List<CreateAdjacencyGraph>();
 
-    public override void GetDamaged(float dmg)
+    public override void GetDamaged(int dmg)
     {
         //base.GetDamaged();
 

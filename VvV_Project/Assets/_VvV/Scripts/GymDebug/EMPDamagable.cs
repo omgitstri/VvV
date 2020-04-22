@@ -8,7 +8,7 @@ public class EMPDamagable : Damagable
     [SerializeField] GameObject text = null;
     public KillAllEnemiesHACK boss;
 
-    public override void GetDamaged(float dmg)
+    public override void GetDamaged(int dmg)
     {
         if (totalHit > 0)
         {

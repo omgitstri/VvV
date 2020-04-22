@@ -766,6 +766,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 178291111232795937, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: eStats.atkSpd
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 234773397222408150, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: m_IsActive
@@ -3282,7 +3287,6 @@ GameObject:
   - component: {fileID: 2006326347}
   - component: {fileID: 2006326346}
   - component: {fileID: 2006326351}
-  - component: {fileID: 2006326352}
   - component: {fileID: 2006326353}
   m_Layer: 0
   m_Name: Capsule
@@ -3303,10 +3307,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!136 &2006326347
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3394,24 +3398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702cff6405ec78e4d855d9a1ae798984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: {fileID: 2006326352}
-  damageable: 15
-  totalDamageable: 15
-  invulDelay: 0.06
-  invulTime: 1
---- !u!114 &2006326352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006326345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42b05eb90fbf09746aca65fe9ac3babd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 100
+  currentHitPoint: 3
+  maxHitPoint: 3
+  invulnerableDelay: 0
+  invulnerableTime: 1
 --- !u!114 &2006326353
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
     public BoxCollider box = null;
 
 
-    public float dmg = 1f;
+    public int dmg = 1;
 
 
     [ContextMenu(nameof(Start))]
@@ -30,22 +30,16 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
         radius = (Random.insideUnitSphere * 0.25f);
     }
 
-
-
-    //private void OnEnable()
-    //{
-    //    parent = transform.parent;
-    //    transform.SetParent(null);
-    //}
-
-
-
     void Update()
     {
         if (attack)
+        {
             Attack();
+        }
         if (reverse)
+        {
             Return();
+        }
     }
 
     public void Attack()
@@ -53,7 +47,10 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
         if (middle.Count > 0 && start != null && stop != null && root != null)
         {
 
-            if (attack) { ActivateHitbox(); }
+            if (attack)
+            {
+                ActivateHitbox();
+            }
 
             List<Vector3> lerps = new List<Vector3>();
             for (int i = 0; i < middle.Count; i++)
@@ -79,19 +76,23 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
         DeactivateHitbox();
     }
 
-    public IEnumerator ReactivateHitbox() {
+    public IEnumerator ReactivateHitbox()
+    {
         yield return new WaitForSeconds(2f);
         ActivateHitbox();
     }
 
-    public void ActivateHitbox() {
+    public void ActivateHitbox()
+    {
 
         gameObject.layer = 29;
         box.enabled = true;
     }
 
-    public void DeactivateHitbox() {
-        if (box != null) {
+    public void DeactivateHitbox()
+    {
+        if (box != null)
+        {
             box.enabled = false;
         }
         gameObject.layer = 10;
@@ -101,15 +102,18 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Only damage the player if the cubes are in attack mode, this prevents the player from walking into the enemy & losing health
-        if (gameObject.layer == 29) {
-            if (other.TryGetComponent<Damagable>(out Damagable player)) {
+        if (gameObject.layer == 29)
+        {
+            if (other.TryGetComponent<Damagable>(out Damagable player))
+            {
                 DeactivateHitbox();
                 player.GetDamaged(dmg);
 
             }
         }
 
-        else {
+        else
+        {
             return;
         }
     }
