@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -132,6 +132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_v3_Full (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5738099910806368267, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
@@ -202,6 +207,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_v3_Full (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5738099910806368267, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -270,6 +280,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_v3_Full (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5738099910806368267, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
@@ -2052,6 +2067,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 22121442, guid: fbcf259689b68944c9005a0812e5ad98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: m_Name
@@ -2125,6 +2144,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy_v3_Full (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5738099910806368267, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
