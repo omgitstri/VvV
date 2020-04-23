@@ -21,11 +21,11 @@ public class EnemyStatsManager : MonoBehaviour {
         }
 
         if (!eStats.isMaxed) {
-            eStats.regSpd += pwrUpMulti; // Regen speed
-            eStats.atkSpd -= pwrUpMulti; // Attack speed
+            //eStats.regSpd += pwrUpMulti; // Regen speed
+            //eStats.atkSpd -= pwrUpMulti; // Attack speed
             eStats.moveSpd += pwrUpMulti; // Move speed
-            eStats.aggroRng += pwrUpMulti; // Aggro range
-            eStats.lostRngDur += pwrUpMulti; // Lost Range Duration
+            //eStats.aggroRng += pwrUpMulti; // Aggro range
+            //eStats.lostRngDur += pwrUpMulti; // Lost Range Duration
         }
     }
 }
