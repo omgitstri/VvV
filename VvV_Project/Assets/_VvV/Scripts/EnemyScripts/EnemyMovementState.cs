@@ -10,8 +10,6 @@ public class EnemyMovementState : MonoBehaviour
 	// Variables
 	/// Handler reference
     private EnemyStats eStats;
-	[SerializeField] private float currentLevel = 0;
-	[SerializeField] private float nextLevel = 0;
 	private Animator animator = null;
 
 	/// Enemy switch variables
@@ -45,10 +43,7 @@ public class EnemyMovementState : MonoBehaviour
 
 	void Start()
 	{
-		nextLevel = eStats.moveSpd;
-
 		currentMoveState = MoveState.Walk;
-
 	}
 
 	void Update()

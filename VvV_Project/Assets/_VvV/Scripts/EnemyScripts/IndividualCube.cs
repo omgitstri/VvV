@@ -9,8 +9,9 @@ public class IndividualCube : MonoBehaviour
 
     private Collider myCollider = null;
     private Renderer visualMesh = null;
+    private GameObject attackMesh = null;
     private Rigidbody physicMesh = null;
-    public bool destroyed { get; private set; } = false;
+    public bool killed { get; private set; } = false;
 
     List<IndividualCube> neighbours = new List<IndividualCube>();
 
@@ -35,6 +36,7 @@ public class IndividualCube : MonoBehaviour
     {
         visualMesh = transform.GetChild(0).GetComponent<Renderer>();
         physicMesh = transform.GetChild(1).GetComponent<Rigidbody>();
+        attackMesh = transform.GetChild(2).gameObject;
         myCollider = GetComponent<Collider>();
     }
 
@@ -138,7 +140,7 @@ public class IndividualCube : MonoBehaviour
 
     public void DeactivateNeighbours()
     {
-        if (!destroyed)
+        if (!killed)
         {
             GetComponentInParent<CreateAdjacencyGraph>().alive = false;
             if (frontCube != null)
@@ -240,7 +242,7 @@ public class IndividualCube : MonoBehaviour
 
     public IEnumerator RegenAction()
     {
-        if (destroyed == true)
+        if (killed == true)
         {
             float elapsedTime = 0f;
             float waitTime = Random.Range(minimumDelay, maximumDelay);
@@ -274,26 +276,27 @@ public class IndividualCube : MonoBehaviour
             physicMesh.gameObject.SetActive(false);
             myCollider.enabled = true;
             visualMesh.enabled = true;
-            destroyed = false;
+            killed = false;
             StopAllCoroutines();
         }
     }
 
     public IEnumerator DelaySetKinematic()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         physicMesh.isKinematic = true;
         physicMesh.GetComponent<Collider>().enabled = false;
     }
 
     public void DeactivateCube()
     {
-        if (!destroyed)
+        if (!killed)
         {
             myCollider.enabled = false;
             visualMesh.enabled = false;
             physicMesh.gameObject.SetActive(true);
             physicMesh.isKinematic = false;
+            attackMesh.SetActive(false);
 
             if (transform.GetComponentInParent<TriggerCrawl>() != null)
             {
@@ -302,7 +305,7 @@ public class IndividualCube : MonoBehaviour
 
             physicMesh.transform.SetParent(null);
             StartCoroutine(nameof(DelaySetKinematic));
-            destroyed = true;
+            killed = true;
         }
     }
 
