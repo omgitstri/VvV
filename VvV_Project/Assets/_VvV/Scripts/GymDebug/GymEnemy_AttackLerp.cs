@@ -28,9 +28,9 @@ public class GymEnemy_AttackLerp : MonoBehaviour
     public void SetupCube()
     {
         // Disable AttackCubes
-        foreach (var item in GetComponentsInChildren<GymEnemyAttack_CubeLerp>())
+        foreach (var item in GetComponentsInChildren<GymEnemyAttack_CubeLerp>(true))
         {
-            item.enabled = false;
+            //item.enabled = false;
             item.transform.localPosition = Vector3.zero;
         }
 
@@ -43,7 +43,7 @@ public class GymEnemy_AttackLerp : MonoBehaviour
         // Enable AttackCubes
         foreach (var item in attackCubes)
         {
-            var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>();
+            var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>(true);
             //cube.enabled = true;
 
             //item.transform.GetChild(0).gameObject.SetActive(false);
@@ -65,19 +65,18 @@ public class GymEnemy_AttackLerp : MonoBehaviour
 
         foreach (var item in attackCubes)
         {
-            if (!item.destroyed)
-                cubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>());
+            if (!item.killed)
+                cubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>(true));
         }
         foreach (var item in cubes)
         {
-            item.enabled = true;
+            item.gameObject.SetActive(true);
             item.attack = true;
-            item.GetComponent<MeshRenderer>().enabled = true;
         }
 
         foreach (var item in attackCubes)
         {
-            if (!item.destroyed)
+            if (!item.killed)
             {
                 var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>();
                 //cube.enabled = true;
@@ -129,7 +128,7 @@ public class GymEnemy_AttackLerp : MonoBehaviour
         {
             item.attack = false;
             item.reverse = false;
-            item.GetComponent<MeshRenderer>().enabled = false;
+            item.gameObject.SetActive(false);
         }
 
         foreach (var item in attackCubes)

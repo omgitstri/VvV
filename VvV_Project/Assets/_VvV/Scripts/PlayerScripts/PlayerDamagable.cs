@@ -28,16 +28,19 @@ public class PlayerDamagable : Damagable
 
     private void Update()
     {
+        //triggered damage 
         if (invulnerableDelay > 0)
         {
             GetComponent<Renderer>().material.SetColor("_BaseColor", Color.red);
             GetComponent<Renderer>().material.SetColor("_Color", Color.red);
         }
+        //reset vulnerability
         else if(invulnerableDelay < 0 && currentHitPoint > 0)
         {
             GetComponent<Renderer>().material.SetColor("_BaseColor", Color.gray);
             GetComponent<Renderer>().material.SetColor("_Color", Color.gray);
         }
+        //dead
         else
         { 
             GetComponent<Renderer>().material.SetColor("_BaseColor", Color.black);

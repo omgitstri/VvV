@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Events;
 
 public class CreateAdjacencyGraph : MonoBehaviour
 {
-    public Dictionary<Vector3, IndividualCube> Children = new Dictionary<Vector3, IndividualCube>();
+    public UnityEvent DeathEvent = new UnityEvent();
 
-    public List<IndividualCube> allCubes { get; private set; } = new List<IndividualCube>();
+    [HideInInspector] public Dictionary<Vector3, IndividualCube> Children = new Dictionary<Vector3, IndividualCube>();
 
+    [HideInInspector] public List<IndividualCube> allCubes { get; private set; } = new List<IndividualCube>();
 
     private IndividualCube weakPoint = null;
 
@@ -16,8 +18,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
     [SerializeField] private Material red = null;
     private EnemyStats eStat = null;
 
-    public int direction;
-    public int distance;
+    [HideInInspector] public int direction;
+    [HideInInspector] public int distance;
 
     //test
     public int attackCount = 20;
@@ -208,8 +210,13 @@ public class CreateAdjacencyGraph : MonoBehaviour
             }
         }
 
-        StartCoroutine("RegenDelay");
+        //StartCoroutine("RegenDelay");
+        DeathEvent.Invoke();
+    }
 
+    public void StartDelayRegenCoroutine()
+    {
+        StartCoroutine(nameof(RegenDelay));
     }
 
     public float minimumTimeDelay = 5f;

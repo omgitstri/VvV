@@ -121,6 +121,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: bd2e618e5bffa114db37a206b32e0440, type: 2}
+--- !u!1 &17354126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17354127}
+  m_Layer: 0
+  m_Name: spawnspoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &17354127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17354126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &417216088 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
+    type: 3}
+  m_PrefabInstance: {fileID: 1392245463}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &417216098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417216088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07af5a7675e908644a1b540b348cadff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &469970010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -726,6 +774,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!114 &893726866 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+    type: 3}
+  m_PrefabInstance: {fileID: 1392245463}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417216088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65a9ba1ff3b24462a81af42f070c0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &921579238
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,14 +2127,80 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 22121442, guid: fbcf259689b68944c9005a0812e5ad98, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: m_Name
       value: Enemy_v3_Full
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: minimumTimeDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: maximumTimeDelay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 417216098}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TeleportHere
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Transform, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 17354127}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 893726866}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartDelayRegenCoroutine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5738099910806368267, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
@@ -2307,7 +2433,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh4302408
+  m_Name: pb_Mesh72916
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2470,7 +2596,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5399954
+  m_Name: pb_Mesh72902
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

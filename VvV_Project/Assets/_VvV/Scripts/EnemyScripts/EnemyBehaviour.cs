@@ -52,6 +52,10 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (customColorDisplay == true)
         {
+            if(eStats == null)
+            {
+                Awake();
+            }
             Gizmos.DrawSphere(transform.position, eStats.aggroRng);
         }
     }
