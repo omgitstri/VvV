@@ -198,6 +198,10 @@ public class GunController : MonoBehaviour
     {
         while (currentGun.transform.localPosition != currentGun.fineSightOriginPos)
         {
+            if (cam.fieldOfView > 30)
+            {
+                cam.fieldOfView -= 1f;
+            }
             currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, currentGun.fineSightOriginPos, 0.2f);
             yield return null;
         }
@@ -207,6 +211,10 @@ public class GunController : MonoBehaviour
     {
         while (currentGun.transform.localPosition != originPos)
         {
+            if (cam.fieldOfView < 60)
+            {
+                cam.fieldOfView += 1f;
+            }
             currentGun.transform.localPosition = Vector3.Lerp(currentGun.transform.localPosition, originPos, 0.2f);
             yield return null;
         }

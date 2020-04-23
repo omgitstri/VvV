@@ -281,7 +281,7 @@ public class IndividualCube : MonoBehaviour
 
     public IEnumerator DelaySetKinematic()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         physicMesh.isKinematic = true;
         physicMesh.GetComponent<Collider>().enabled = false;
     }

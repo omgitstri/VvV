@@ -121,7 +121,6 @@ public class EnemyBehaviour : MonoBehaviour
                 if (attackCooldown <= 0)
                 {
                     enemyAttack.StartAttacking();
-                    Debug.Log("player");
                     attackCooldown = eStats.atkSpd;
                 }
                 else

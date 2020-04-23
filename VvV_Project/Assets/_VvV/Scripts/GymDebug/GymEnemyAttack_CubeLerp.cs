@@ -27,6 +27,7 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
     private void Start()
     {
         box = this.GetComponent<BoxCollider>();
+        DeactivateHitbox();
         radius = (Random.insideUnitSphere * 0.25f);
     }
 
@@ -72,8 +73,8 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
 
     public void Return()
     {
-        transform.localPosition = Vector3.Slerp(transform.localPosition, Vector3.zero, root.a);
         DeactivateHitbox();
+        transform.localPosition = Vector3.Slerp(transform.localPosition, Vector3.zero, root.a);
     }
 
     public IEnumerator ReactivateHitbox()
@@ -85,36 +86,30 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
     public void ActivateHitbox()
     {
 
-        gameObject.layer = 29;
         box.enabled = true;
     }
 
     public void DeactivateHitbox()
     {
-        if (box != null)
-        {
-            box.enabled = false;
-        }
-        gameObject.layer = 10;
-
+        box.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //Only damage the player if the cubes are in attack mode, this prevents the player from walking into the enemy & losing health
-        if (gameObject.layer == 29)
+        ////Only damage the player if the cubes are in attack mode, this prevents the player from walking into the enemy & losing health
+        //if (gameObject.layer == 29)
+        //{
+        if (other.TryGetComponent<Damagable>(out Damagable player))
         {
-            if (other.TryGetComponent<Damagable>(out Damagable player))
-            {
-                DeactivateHitbox();
-                player.GetDamaged(dmg);
+            DeactivateHitbox();
+            player.GetDamaged(dmg);
 
-            }
         }
+        //}
 
-        else
-        {
-            return;
-        }
+        //else
+        //{
+        //    return;
+        //}
     }
 }
