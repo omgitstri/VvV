@@ -20,7 +20,9 @@ public class EnemyMovementState : MonoBehaviour
 		Walk,
 		Crawl,
 		Run,
-		Idle
+		Idle,
+        Hurt,
+        Dead
 	};
 	public MoveState currentMoveState;
 
@@ -82,6 +84,12 @@ public class EnemyMovementState : MonoBehaviour
 			case MoveState.Idle:
 				EnemyIdle();
 				break;
+            case MoveState.Hurt:
+                EnemyHurt();
+                break;
+            case MoveState.Dead:
+                EnemyDead();
+                break;
 			default:
 				break;
 		}
@@ -114,8 +122,15 @@ public class EnemyMovementState : MonoBehaviour
 	public  void EnemyIdle()
 	{
 		speed = 0; /* eStats.moveSpd; */
-
 	}
+
+    public void EnemyHurt() {
+        speed = 0;
+    }
+
+    public void EnemyDead() {
+        speed = 0;
+    }
 
 	#endregion		<-- BOTTOM
 
