@@ -16,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Transform player = null;
     private EnemyStats eStats = null;
     private float attackCooldown = 1f;
-    private GymEnemy_AttackLerp enemyAttack = null;
+    private Enemy_AttackManager enemyAttack = null;
 
     [Space]
 
@@ -28,7 +28,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         eStats = transform.root.GetComponent<EnemyStatsContainer>().eStats;
-        enemyAttack = transform.root.GetComponent<GymEnemy_AttackLerp>();
+        enemyAttack = transform.root.GetComponent<Enemy_AttackManager>();
     }
 
     private void Start()

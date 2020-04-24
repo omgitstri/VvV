@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 1812194816114955657}
   - component: {fileID: 1827765581}
   - component: {fileID: 1827765582}
+  - component: {fileID: 1476890363}
   m_Layer: 11
   m_Name: PlayerWithGun
   m_TagString: Player
@@ -403,7 +404,7 @@ MonoBehaviour:
   lookSensitivity: 1
   cameraRotationLimit: 45
   theCamera: {fileID: 5359807736815310358}
-  aimer: {fileID: 0}
+  aimer: {fileID: 1472949141}
 --- !u!114 &1812194816114955657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,6 +447,28 @@ MonoBehaviour:
   maxHitPoint: 5
   invulnerableDelay: 0
   invulnerableTime: 3
+--- !u!195 &1476890363
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359807735999837969}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 1
+  m_AutoRepath: 0
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5359807736155540102
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,9 @@ public class CustomTriggerEventEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        //base.OnInspectorGUI();
+        base.OnInspectorGUI();
+
+        EditorGUILayout.Space();
 
         EditorGUILayout.BeginHorizontal(GUILayout.Width(Screen.width * 2 / 3));
         {

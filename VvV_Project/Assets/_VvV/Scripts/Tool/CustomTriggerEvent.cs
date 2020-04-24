@@ -6,40 +6,89 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class CustomTriggerEvent : MonoBehaviour
 {
-    public bool ToggleOnTriggerEnter = false;
-    public bool ToggleOnTriggerExit = false;
-    public bool ToggleOnTriggerStay = false;
+    public LayerMask layerMask = ~0;
+
+    [HideInInspector] public bool ToggleOnTriggerEnter = false;
+    [HideInInspector] public bool ToggleOnTriggerExit = false;
+    [HideInInspector] public bool ToggleOnTriggerStay = false;
 
     [Space]
 
-    public UnityEvent _OnTriggerEnter;
-    public UnityEvent _OnTriggerExit;
-    public UnityEvent _OnTriggerStay;
+    [HideInInspector] public UnityEvent _OnTriggerEnter;
+    [HideInInspector] public UnityEvent _OnTriggerExit;
+    [HideInInspector] public UnityEvent _OnTriggerStay;
+
+    private List<Transform> triggeredObjects = new List<Transform>();
+    private List<Collider> triggeredColliders = new List<Collider>();
+    private float intervals = 1f;
 
     private void OnValidate()
     {
         GetComponent<Collider>().isTrigger = true;
     }
 
+    private void Update()
+    {
+        CheckCollidersInTrigger();
+    }
+
+    private void CheckCollidersInTrigger()
+    {
+        intervals -= Time.deltaTime;
+        if (intervals <= 0)
+        {
+            triggeredColliders.Clear();
+            triggeredColliders.AddRange(Physics.OverlapBox(GetComponent<Collider>().bounds.center, GetComponent<Collider>().bounds.extents, transform.rotation, layerMask));
+
+            if (triggeredObjects.Count != triggeredColliders.Count)
+            {
+                triggeredObjects.Clear();
+                foreach (var item in triggeredColliders)
+                {
+                    triggeredObjects.Add(item.transform);
+                }
+                _OnTriggerExit.Invoke();
+
+            }
+            intervals = 1f;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (ToggleOnTriggerEnter)
+        if (ToggleOnTriggerEnter && layerMask == (layerMask | 1 << other.gameObject.layer))
         {
-            _OnTriggerEnter.Invoke();
+            if (triggeredObjects.Count == 0)
+            {
+                _OnTriggerEnter.Invoke();
+            }
+
+            if (!triggeredObjects.Contains(other.transform))
+            {
+                triggeredObjects.Add(other.transform);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (ToggleOnTriggerExit)
+        if (ToggleOnTriggerExit/* && layerMask == (layerMask | 1 << other.gameObject.layer)*/)
         {
-            _OnTriggerExit.Invoke();
+            if (triggeredObjects.Contains(other.transform))
+            {
+                triggeredObjects.Remove(other.transform);
+            }
+
+            if (triggeredObjects.Count <= 0)
+            {
+                _OnTriggerExit.Invoke();
+            }
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (ToggleOnTriggerStay)
+        if (ToggleOnTriggerStay && layerMask.value == 1 << other.gameObject.layer)
         {
             _OnTriggerStay.Invoke();
         }

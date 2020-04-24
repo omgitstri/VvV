@@ -40,7 +40,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
             }
         }
 
-        if (TryGetComponent<GymEnemy_AttackLerp>(out GymEnemy_AttackLerp comp))
+        if (TryGetComponent<Enemy_AttackManager>(out Enemy_AttackManager comp))
         {
             comp.attackCubes.Clear();
             comp.attackCubes.AddRange(temp);

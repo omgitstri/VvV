@@ -140,4 +140,9 @@ public class EnemyMovementState : MonoBehaviour
 	{
 		currentMoveState = MoveState.Walk;
 	}
+
+    public void EnemyDied()
+    {
+        currentMoveState = MoveState.Dead;
+    }
 }

@@ -243,13 +243,14 @@ public class IndividualCube : MonoBehaviour
     {
         if (killed == true)
         {
+            physicMesh.isKinematic = false;
+
             float elapsedTime = 0f;
             float waitTime = Random.Range(minimumDelay, maximumDelay);
             Vector3 initPos = physicMesh.transform.localPosition;
 
             neighbours.Clear();
 
-            physicMesh.isKinematic = true;
 
             hit = false;
 
@@ -271,6 +272,7 @@ public class IndividualCube : MonoBehaviour
             {
                 col.enabled = true;
             }
+            physicMesh.isKinematic = true;
 
             physicMesh.gameObject.SetActive(false);
             myCollider.enabled = true;
@@ -284,7 +286,7 @@ public class IndividualCube : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         physicMesh.isKinematic = true;
-        physicMesh.GetComponent<Collider>().enabled = false;
+        //physicMesh.GetComponent<Collider>().enabled = false;
     }
 
     public void DeactivateCube()
