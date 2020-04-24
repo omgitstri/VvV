@@ -7,7 +7,7 @@ public class Enemy_AttackManager : MonoBehaviour
     public Transform start, stop;
     public List<Transform> middle = new List<Transform>();
     [HideInInspector] public float a;
-   // [SerializeField] List<Vector3> radius = new List<Vector3>();
+    // [SerializeField] List<Vector3> radius = new List<Vector3>();
     [SerializeField]
     [Header("Modify power with dmg var in GymEnemyAttack_CubeLerp")]
     public List<IndividualCube> attackCubes = new List<IndividualCube>();
@@ -134,6 +134,10 @@ public class Enemy_AttackManager : MonoBehaviour
         foreach (var item in attackCubes)
         {
             item.transform.GetChild(0).gameObject.SetActive(true);
+            //if (item.transform.GetChild(0).TryGetComponent(out MeshRenderer mesh))
+            //{
+            //    mesh.material.SetColor("_Emission", Color.black);
+            //}
         }
     }
 }

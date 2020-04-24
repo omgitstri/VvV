@@ -9,6 +9,9 @@ public class EnemyBehaviour : MonoBehaviour
 {
     //[SerializeField] private float chaseDistance = 10f;
     [SerializeField] private float losePlayer = 0f;
+    [ColorUsageAttribute(true, true)]
+    public Color attackColor = new Color();
+
 
     public Transform currentTarget { get; private set; } = null;
     private NavMeshAgent navMeshAgent = null;
@@ -124,6 +127,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 if (attackCooldown <= 0)
                 {
+                    enemyAttack.stop.position = Entity_Tracker.Instance.PlayerEntity.position + Vector3.up * 0.5f;
                     enemyAttack.StartAttacking();
                     attackCooldown = eStats.atkSpd;
                 }
@@ -131,6 +135,17 @@ public class EnemyBehaviour : MonoBehaviour
                 {
                     attackCooldown -= Time.deltaTime;
                 }
+
+                //if (attackCooldown < 1f)
+                //{
+                //    foreach (var item in enemyAttack.attackCubes)
+                //    {
+                //        if (item.transform.GetChild(0).TryGetComponent(out MeshRenderer mesh))
+                //        {
+                //            mesh.material.SetColor("_Emission", attackColor);
+                //        }
+                //    }
+                //}
             }
         }
 

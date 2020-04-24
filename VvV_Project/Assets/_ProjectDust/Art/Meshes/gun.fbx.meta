@@ -1,61 +1,161 @@
 fileFormatVersion: 2
 guid: 32fed1ade9d981c4ea57bc9ffee1c0d4
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Armature
-    100002: arms
-    100004: Cube
-    100006: Cube.001
-    100008: DownArm.L
-    100010: DownArm.L_end
-    100012: DownArm.R
-    100014: DownArm.R_end
-    100016: Gun
-    100018: //RootNode
-    100020: Gun_end
-    100022: Magazine
-    100024: Magazine_end
-    100026: UpArm.L
-    100028: UpArm.R
-    400000: Armature
-    400002: arms
-    400004: Cube
-    400006: Cube.001
-    400008: DownArm.L
-    400010: DownArm.L_end
-    400012: DownArm.R
-    400014: DownArm.R_end
-    400016: Gun
-    400018: //RootNode
-    400020: Gun_end
-    400022: Magazine
-    400024: Magazine_end
-    400026: UpArm.L
-    400028: UpArm.R
-    2100000: gun.002
-    2100002: Iron.001
-    2100004: Magazine.001
-    2100006: arm
-    2100008: skin
-    4300000: Cube
-    4300002: Cube.001
-    4300004: arms
-    7400000: Gun_Idle
-    7400002: Gun_Walk
-    7400004: Gun_Run
-    7400006: Gun_Reload
-    7400008: Gun_FineSight
-    7400010: Gun_Weapon_Out
-    7400012: Gun_Weapon_In
-    7400014: Gun_Item
-    9500000: //RootNode
-    13700000: arms
-    13700002: Cube
-    13700004: Cube.001
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Armature
+  - first:
+      1: 100002
+    second: arms
+  - first:
+      1: 100004
+    second: Cube
+  - first:
+      1: 100006
+    second: Cube.001
+  - first:
+      1: 100008
+    second: DownArm.L
+  - first:
+      1: 100010
+    second: DownArm.L_end
+  - first:
+      1: 100012
+    second: DownArm.R
+  - first:
+      1: 100014
+    second: DownArm.R_end
+  - first:
+      1: 100016
+    second: Gun
+  - first:
+      1: 100018
+    second: //RootNode
+  - first:
+      1: 100020
+    second: Gun_end
+  - first:
+      1: 100022
+    second: Magazine
+  - first:
+      1: 100024
+    second: Magazine_end
+  - first:
+      1: 100026
+    second: UpArm.L
+  - first:
+      1: 100028
+    second: UpArm.R
+  - first:
+      4: 400000
+    second: Armature
+  - first:
+      4: 400002
+    second: arms
+  - first:
+      4: 400004
+    second: Cube
+  - first:
+      4: 400006
+    second: Cube.001
+  - first:
+      4: 400008
+    second: DownArm.L
+  - first:
+      4: 400010
+    second: DownArm.L_end
+  - first:
+      4: 400012
+    second: DownArm.R
+  - first:
+      4: 400014
+    second: DownArm.R_end
+  - first:
+      4: 400016
+    second: Gun
+  - first:
+      4: 400018
+    second: //RootNode
+  - first:
+      4: 400020
+    second: Gun_end
+  - first:
+      4: 400022
+    second: Magazine
+  - first:
+      4: 400024
+    second: Magazine_end
+  - first:
+      4: 400026
+    second: UpArm.L
+  - first:
+      4: 400028
+    second: UpArm.R
+  - first:
+      21: 2100000
+    second: gun.002
+  - first:
+      21: 2100002
+    second: Iron.001
+  - first:
+      21: 2100004
+    second: Magazine.001
+  - first:
+      21: 2100006
+    second: arm
+  - first:
+      21: 2100008
+    second: skin
+  - first:
+      43: 4300000
+    second: Cube
+  - first:
+      43: 4300002
+    second: Cube.001
+  - first:
+      43: 4300004
+    second: arms
+  - first:
+      74: 7400000
+    second: Gun_Idle
+  - first:
+      74: 7400002
+    second: Gun_Walk
+  - first:
+      74: 7400004
+    second: Gun_Run
+  - first:
+      74: 7400006
+    second: Gun_Reload
+  - first:
+      74: 7400008
+    second: Gun_FineSight
+  - first:
+      74: 7400010
+    second: Gun_Weapon_Out
+  - first:
+      74: 7400012
+    second: Gun_Weapon_In
+  - first:
+      74: 7400014
+    second: Gun_Item
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: arms
+  - first:
+      137: 13700002
+    second: Cube
+  - first:
+      137: 13700004
+    second: Cube.001
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -84,6 +184,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Gun_Idle
       takeName: Armature|ArmatureAction
+      internalID: 0
       firstFrame: 0
       lastFrame: 24
       wrapMode: 0
@@ -112,6 +213,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Gun_Walk
       takeName: Armature|ArmatureAction
+      internalID: 0
       firstFrame: 30
       lastFrame: 54
       wrapMode: 0
@@ -140,6 +242,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Gun_Run
       takeName: Armature|ArmatureAction
+      internalID: 0
       firstFrame: 60
       lastFrame: 70
       wrapMode: 0
@@ -168,6 +271,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Gun_Reload
       takeName: Armature|ArmatureAction
+      internalID: 0
       firstFrame: 90
       lastFrame: 140
       wrapMode: 0
@@ -196,6 +300,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Gun_FineSight
       takeName: Armature|ArmatureAction
+      internalID: 0
       firstFrame: 180
       lastFrame: 190
       wrapMode: 0
@@ -224,6 +329,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Gun_Weapon_Out
       takeName: Armature|ArmatureAction
+      internalID: 0
       firstFrame: 210
       lastFrame: 220
       wrapMode: 0
@@ -252,6 +358,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Gun_Weapon_In
       takeName: Armature|ArmatureAction
+      internalID: 0
       firstFrame: 220
       lastFrame: 230
       wrapMode: 0
@@ -280,6 +387,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Gun_Item
       takeName: Armature|ArmatureAction
+      internalID: 0
       firstFrame: 240
       lastFrame: 250
       wrapMode: 0
@@ -312,6 +420,7 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -319,18 +428,19 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -339,10 +449,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -352,13 +462,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

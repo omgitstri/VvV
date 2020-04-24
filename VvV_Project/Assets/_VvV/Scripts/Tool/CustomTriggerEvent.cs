@@ -58,15 +58,12 @@ public class CustomTriggerEvent : MonoBehaviour
     {
         if (ToggleOnTriggerEnter && layerMask == (layerMask | 1 << other.gameObject.layer))
         {
-            if (triggeredObjects.Count == 0)
-            {
-                _OnTriggerEnter.Invoke();
-            }
-
             if (!triggeredObjects.Contains(other.transform))
             {
                 triggeredObjects.Add(other.transform);
             }
+
+            _OnTriggerEnter.Invoke();
         }
     }
 
