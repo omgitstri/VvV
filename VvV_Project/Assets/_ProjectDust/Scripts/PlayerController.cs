@@ -50,9 +50,9 @@ public class PlayerController : MonoBehaviour
         applySpeed = walkSpeed;
         gunController = FindObjectOfType<GunController>();
         gunPrefab = GameObject.Find("GunHolder");
-        handPrefab = GameObject.Find("HandHolder");
+        //handPrefab = GameObject.Find("HandHolder");
         audioSource = GetComponent<AudioSource>();
-        handPrefab.SetActive(false);
+        //handPrefab.SetActive(false);
     }
 
     void Update()
