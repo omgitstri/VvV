@@ -22,9 +22,8 @@ public class IndividualCube : MonoBehaviour
     public IndividualCube topCube;
     public IndividualCube bottomCube;
 
-    //public bool detached;
-    public float minimumDelay = 0f;
-    public float maximumDelay = 5f;
+    private const float minimumDelay = 0f;
+    private const float maximumDelay = 3f;
 
     public int visit;
     public int layer;
