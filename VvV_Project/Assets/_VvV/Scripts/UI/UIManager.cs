@@ -2,185 +2,178 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /// <summary>
 ///	 Objectives for the Alpha Level
 /// </summary>
 
 public class UIManager : MonoBehaviour
 {
-	//**** Variables
-	public float maxBatteryCharge = 1f;
-	public float currentBatteryCharge = 0f;
-	public float batteryChargeOverTime = 0f;
+    ///***  Variables
+    public float maxBatteryCharge = 1f;
+    public float currentBatteryCharge = 0f;
+    public float batteryChargeOverTime = 0f;
 
-	[SerializeField]
-	private BatteryBar batteryBar = null;
+    public BatteryBar batteryBar = null;
 
-	[SerializeField]
-	private bool batteryActive = false;
-	[SerializeField]
-	private bool serverActive = false;
-	[SerializeField]
-	private bool electricityActive = false;
-	[SerializeField]
-	public bool empActive = false;
+    public bool batteryActive = false;
+    public bool serverActive = false;
+    public bool electricityActive = false;
+    public bool empActive = false;
 
-	private float handOffBatteryCharge = 0f;
+    private float handOffBatteryCharge = 0f;
+
+    #region			<-- TOP
+    ///
 
 
-	void Start()
-	{
-		OnStartDeclaration();
-		OnStartFunction();
-	}
+    #endregion		<-- BOTTOM
 
-	void Update()
-	{
-		OnUpdateFunction();
-	}
+    void Start()
+    {
+        ///  Start Declarations
+        #region			<-- TOP
 
+        batteryBar.SetMaxEMPCharge(maxBatteryCharge);
+        #endregion		<-- BOTTOM
+    }
 
-	//**** OnFrame Call Functions
-	#region <-- TOP
-	//-- One Time Functions
-	void OnStartDeclaration()
-	{
-		batteryBar.SetMaxEMPCharge(maxBatteryCharge);
-	}
+    void Update()
+    {
+        ///  Update Declarations
+        #region			<-- TOP
 
-	void OnStartFunction()
-	{
+        ///
+        AllBuildingsActive();
+        BatteryBuildingsActive();
+        ElectricityBuildingsActive();
+        ServerBuildingsActive();
+        EMPBuildingsActive();
 
-	}
-
-	void OnUpdateFunction()
-	{
-		AllBuildingsActive();
-		TestBuildingStatus();
-	}
-
-	#endregion <-- BOTTOM
+        TestBuildingStatus();
+        #endregion		<-- BOTTOM
+    }
 
 
-	//**** ALPHA TESTING AREA
-	//-- Temp setup for in-game testing and bypassing statements		//-- To delete afterwards
-	#region <-- TOP 
+    ///***  ALPHA TESTING AREA
+    ///  Temp setup for in-game testing and bypassing statements
+    #region <-- TOP 
 
-	//-- Bool building activate state
-	public void AllBuildingsActive()
-	{
-		//-- Testing the Charge
-		if (Input.GetKeyDown(KeyCode.Q))
-		{
-			BoolOnjective();
-		}
-	}
+    ///  Bool activate Test
+    public void AllBuildingsActive()
+    {
+        ///  Testing the Charge
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            BoolOnjective();
+        }
+    }
 
-	//-- Bool building activate state
-	public void BatteryBuildingsActive()
-	{
-		//-- Testing the Charge
-		if (Input.GetKeyDown(KeyCode.W))
-		{
-			BatteryOnjective();
-		}
-	}
+    ///  Bool building activate state
+    public void BatteryBuildingsActive()
+    {
+        ///  Testing the Charge
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            BatteryOnjective();
+        }
+    }
 
-	//-- Bool building activate state
-	public void ElectricityBuildingsActive()
-	{
-		//-- Testing the Charge
-		if (Input.GetKeyDown(KeyCode.E))
-		{
-			ElectricityOnjective();
-		}
-	}
+    ///  Bool building activate state
+    public void ElectricityBuildingsActive()
+    {
+        ///  Testing the Charge
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ElectricityOnjective();
+        }
+    }
 
-	//-- Bool building activate state
-	public void ServerBuildingsActive()
-	{
-		//-- Testing the Charge
-		if (Input.GetKeyDown(KeyCode.R))
-		{
-			ServerOnjective();
-		}
-	}
+    ///  Bool building activate state
+    public void ServerBuildingsActive()
+    {
+        ///  Testing the Charge
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            ServerOnjective();
+        }
+    }
 
-	//-- Bool building activate state
-	public void EMPBuildingsActive()
-	{
-		//-- Testing the Charge
-		if (Input.GetKeyDown(KeyCode.T))
-		{
-			EmpOnjective();
-		}
-	}
+    ///  Bool building activate state
+    public void EMPBuildingsActive()
+    {
+        ///  Testing the Charge
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            EmpOnjective();
+        }
+    }
 
-	public void BoolOnjective()
-	{
-		batteryActive = !batteryActive;
-		serverActive = !serverActive;
-		electricityActive = !electricityActive;
-		empActive = !empActive;
-	}
+    public void BoolOnjective()
+    {
+        batteryActive = !batteryActive;
+        serverActive = !serverActive;
+        electricityActive = !electricityActive;
+        empActive = !empActive;
+    }
 
-	public void BatteryOnjective()
-	{
-		batteryActive = !batteryActive;
-	}
-
-
-	public void ServerOnjective()
-	{
-		serverActive = !serverActive;
-	}
+    public void BatteryOnjective()
+    {
+        batteryActive = !batteryActive;
+    }
 
 
-	private void ElectricityOnjective()
-	{
-		electricityActive = !electricityActive;
-	}
-
-	public void EmpOnjective()
-	{
-		empActive = !empActive;
-	}
+    public void ServerOnjective()
+    {
+        serverActive = !serverActive;
+    }
 
 
-	//-- Testing the battery charge
-	public void ChargingBattery(float iCharge)
-	{
-		currentBatteryCharge += iCharge;
-	}
+    private void ElectricityOnjective()
+    {
+        electricityActive = !electricityActive;
+    }
 
-	//-- Testing battery charge
-	public void ChargeBatteryByTime()
-	{
-		//-- Testing the Charge
-		currentBatteryCharge++;
-	}
+    public void EmpOnjective()
+    {
+        empActive = !empActive;
+    }
 
-	//-- Setting up bypass statements for alpha testing
-	public void TestBuildingStatus()
-	{
-		batteryBar.SetEMPCharge(currentBatteryCharge);
 
-		//-- Testing the Charge
-		if (Input.GetKeyDown(KeyCode.Alpha1) && batteryActive == true)
-		{
-			ChargingBattery(10f);
-			print(currentBatteryCharge);
-		}
+    ///  Testing the battery charge
+    public void ChargingBattery(float iCharge)
+    {
+        currentBatteryCharge += iCharge;
+    }
 
-		//-- Testing the Charge
-		if (Input.GetKey(KeyCode.Alpha2) && batteryActive == true)
-		{
-			ChargeBatteryByTime();
-			ChargingBattery(handOffBatteryCharge);
-		}
+    ///  Testing battery charge
+    public void ChargeBatteryByTime()
+    {
+        ///  Testing the Charge
+        currentBatteryCharge++;
+    }
 
-	}
+    ///  Setting up bypass statements for alpha testing
+    public void TestBuildingStatus()
+    {
+        batteryBar.SetEMPCharge(currentBatteryCharge);
 
-	#endregion <-- BOTTOM
+        ///  Testing the Charge
+        if (Input.GetKeyDown(KeyCode.Alpha9) && batteryActive == true)
+        {
+            ChargingBattery(10f);
+            print(currentBatteryCharge);
+        }
+
+        ///  Testing the Charge
+        if (Input.GetKey(KeyCode.Alpha0) && batteryActive == true)
+        {
+            ChargeBatteryByTime();
+            ChargingBattery(handOffBatteryCharge);
+        }
+
+    }
+
+    #endregion <-- BOTTOM
 
 }

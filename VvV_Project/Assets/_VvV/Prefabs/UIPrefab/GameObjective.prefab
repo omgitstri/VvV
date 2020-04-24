@@ -161,6 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107722168715503337}
   - component: {fileID: 1107722168715503338}
+  - component: {fileID: 1751135714}
   m_Layer: 5
   m_Name: Toggle (3)
   m_TagString: Untagged
@@ -235,7 +236,24 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
+--- !u!114 &1751135714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107722168715503336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54aba363c3ac71742b58f8a7b91cf363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiHandler: {fileID: 0}
+  linkedToEMP: 0
+  linkedToBattery: 0
+  linkedToServer: 0
+  linkedToElectricity: 1
 --- !u!1 &1107722168989173981
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107722168989173982}
   - component: {fileID: 1107722168989173983}
+  - component: {fileID: 2049518266}
   m_Layer: 5
   m_Name: Toggle (2)
   m_TagString: Untagged
@@ -320,7 +339,24 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
+--- !u!114 &2049518266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107722168989173981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54aba363c3ac71742b58f8a7b91cf363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiHandler: {fileID: 0}
+  linkedToEMP: 0
+  linkedToBattery: 0
+  linkedToServer: 1
+  linkedToElectricity: 0
 --- !u!1 &1107722169558523351
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107722169558523336}
   m_Layer: 5
-  m_Name: UIObjective
+  m_Name: GameObjective
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,6 +705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107722170310484117}
   - component: {fileID: 1107722170310484118}
+  - component: {fileID: 332259757}
   m_Layer: 5
   m_Name: Toggle (1)
   m_TagString: Untagged
@@ -743,7 +780,24 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsOn: 1
+  m_IsOn: 0
+--- !u!114 &332259757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107722170310484116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54aba363c3ac71742b58f8a7b91cf363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiHandler: {fileID: 0}
+  linkedToEMP: 0
+  linkedToBattery: 1
+  linkedToServer: 0
+  linkedToElectricity: 0
 --- !u!1 &1107722170350608707
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +1032,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107722170565573058}
   - component: {fileID: 1107722170565573059}
+  - component: {fileID: 1265542818}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -1051,19 +1106,25 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: set_enabled
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  m_IsOn: 1
+      m_Calls: []
+  m_IsOn: 0
+--- !u!114 &1265542818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107722170565573057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54aba363c3ac71742b58f8a7b91cf363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiHandler: {fileID: 0}
+  linkedToEMP: 1
+  linkedToBattery: 0
+  linkedToServer: 0
+  linkedToElectricity: 0
 --- !u!1 &1107722170612259223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1347,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Toggle
+  m_Text: EMP
 --- !u!1001 &1070672765629966527
 PrefabInstance:
   m_ObjectHideFlags: 0
