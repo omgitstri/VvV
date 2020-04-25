@@ -5,14 +5,37 @@ using UnityEngine;
 public class EnemyDamagable : Damagable
 {
     private IndividualCube individualCube = null;
+    Camera cam = null;
+    Collider col = null;
 
     private void Start()
     {
+        cam = Entity_Tracker.Instance.PlayerEntity.GetComponentInChildren<Camera>();
         if (TryGetComponent<IndividualCube>(out IndividualCube cube))
         {
             individualCube = cube;
         }
+        col = GetComponent<Collider>();
     }
+
+    //private void Update()
+    //{
+    //    if (individualCube.killed == false
+    //        && cam.WorldToViewportPoint(transform.position).x > 0.4
+    //        && cam.WorldToViewportPoint(transform.position).x < 0.6
+    //        && cam.WorldToViewportPoint(transform.position).y > 0.4
+    //        && cam.WorldToViewportPoint(transform.position).y < 0.6)
+    //    {
+    //        if (col.enabled == false)
+    //        {
+    //            col.enabled = true;
+    //        }
+    //    }
+    //    else if(col == true)
+    //    {
+    //        col.enabled = false;
+    //    }
+    //}
 
     public override void GetDamaged(int dmg)
     {
@@ -26,7 +49,7 @@ public class EnemyDamagable : Damagable
         if (transform.CompareTag("Enemy"))
         {
             //Have fun~ ( ￣ 3￣)y▂ξ
-            
+
             individualCube.MarkAsHit(2);
 
             if (transform.root.TryGetComponent<CreateAdjacencyGraph>(out CreateAdjacencyGraph weakPoint))
@@ -40,35 +63,25 @@ public class EnemyDamagable : Damagable
         }
 
     }
-    private void OnBecameVisible()
-    {
-        //Debug.Log("visible");
-        GetComponent<BoxCollider>().enabled = true;
-    }
 
-    private void OnBecameInvisible()
-    {
-        //Debug.Log("invisible");
-        GetComponent<BoxCollider>().enabled = false;
-    }
 }
 
 
 
-        //if (transform.CompareTag("WeakPoint"))
-        //{
-        //    individualCube.DestroyParent();
-        //}
+//if (transform.CompareTag("WeakPoint"))
+//{
+//    individualCube.DestroyParent();
+//}
 
-        //if (transform.CompareTag("Enemy"))
-        //{
-        //    //Have fun~ ( ￣ 3￣)y▂ξ
-        //    IndividualCube weakPoint = null;
-        //    weakPoint = transform.root.GetComponent<CreateAdjacencyGraph>().GetWeakPoint();
+//if (transform.CompareTag("Enemy"))
+//{
+//    //Have fun~ ( ￣ 3￣)y▂ξ
+//    IndividualCube weakPoint = null;
+//    weakPoint = transform.root.GetComponent<CreateAdjacencyGraph>().GetWeakPoint();
 
-        //    individualCube.MarkAsHit(2);
-        //    weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyHit();
+//    individualCube.MarkAsHit(2);
+//    weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyHit();
 
-        //    weakPoint.GetComponent<IndividualCube>().CheckDetached();
-        //    weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyDetached();
-        //}
+//    weakPoint.GetComponent<IndividualCube>().CheckDetached();
+//    weakPoint.transform.root.GetComponent<CreateAdjacencyGraph>().DestroyDetached();
+//}

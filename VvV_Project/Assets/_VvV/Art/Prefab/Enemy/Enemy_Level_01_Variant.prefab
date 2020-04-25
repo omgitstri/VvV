@@ -17,10 +17,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+    - target: {fileID: 3889949665911497641, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
-      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5738099910806368267, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}

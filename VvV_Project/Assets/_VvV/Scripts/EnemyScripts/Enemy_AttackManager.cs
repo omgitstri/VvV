@@ -10,7 +10,9 @@ public class Enemy_AttackManager : MonoBehaviour
     // [SerializeField] List<Vector3> radius = new List<Vector3>();
     [SerializeField]
     [Header("Modify power with dmg var in GymEnemyAttack_CubeLerp")]
-    public List<IndividualCube> attackCubes = new List<IndividualCube>();
+    public List<IndividualCube> allIndividualCubes = new List<IndividualCube>();
+    public List<IndividualCube> selectedIndividualCubes = new List<IndividualCube>();
+    public List<GymEnemyAttack_CubeLerp> attackCubes = new List<GymEnemyAttack_CubeLerp>();
     private EnemyStats eStats = null;
 
 
@@ -21,67 +23,75 @@ public class Enemy_AttackManager : MonoBehaviour
 
     private void Start()
     {
+        InitManager();
+
+    }
+
+    [ContextMenu(nameof(InitManager))]
+
+    public void InitManager()
+    {
+        allIndividualCubes.Clear();
+        allIndividualCubes.AddRange(GetComponentsInChildren<IndividualCube>());
+
+        attackCubes.Clear();
+
         SetupCube();
     }
 
-    [ContextMenu(nameof(SetupCube))]
     public void SetupCube()
     {
-        // Disable AttackCubes
-        foreach (var item in GetComponentsInChildren<GymEnemyAttack_CubeLerp>(true))
-        {
-            //item.enabled = false;
-            item.transform.localPosition = Vector3.zero;
-        }
-
-        // Enable VisualCubes
-        foreach (var item in GetComponentsInChildren<IndividualCube>())
-        {
-            item.transform.GetChild(0).gameObject.SetActive(true);
-        }
-
         // Enable AttackCubes
-        foreach (var item in attackCubes)
+        foreach (var item in selectedIndividualCubes)
         {
-            var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>(true);
-            //cube.enabled = true;
+            attackCubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>(true));
+            item.visualMesh.gameObject.SetActive(true);
 
-            //item.transform.GetChild(0).gameObject.SetActive(false);
-
-            cube.startPos = cube.transform.position;
-            cube.start = start;
-            cube.stop = stop;
-            cube.root = this;
-            cube.middle.Clear();
-            cube.middle.AddRange(middle);
+            item.attackMesh.startPos = item.attackMesh.transform.position;
+            item.attackMesh.start = start;
+            item.attackMesh.stop = stop;
+            item.attackMesh.root = this;
+            item.attackMesh.middle.Clear();
+            item.attackMesh.middle.AddRange(middle);
         }
     }
 
     public List<GymEnemyAttack_CubeLerp> cubes = new List<GymEnemyAttack_CubeLerp>();
+
     [ContextMenu(nameof(StartAttack))]
     public void StartAttacking()
     {
         cubes.Clear();
 
-        foreach (var item in attackCubes)
+        foreach (var item in selectedIndividualCubes)
         {
             if (!item.killed)
-                cubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>(true));
+                cubes.Add(item.attackMesh);
         }
         foreach (var item in cubes)
         {
             item.gameObject.SetActive(true);
             item.attack = true;
+
+            ////visual mesh
+            //item.transform.parent.GetChild(0).gameObject.SetActive(false);
+
+            //item.startPos = item.transform.position;
+            //item.start = start;
+            //item.stop = stop;
+            //item.root = this;
+            //item.middle.Clear();
+            //item.middle.AddRange(middle);
         }
 
-        foreach (var item in attackCubes)
+        foreach (var item in selectedIndividualCubes)
         {
             if (!item.killed)
             {
-                var cube = item.transform.GetComponentInChildren<GymEnemyAttack_CubeLerp>();
+                var cube = item.attackMesh;
                 //cube.enabled = true;
 
-                item.transform.GetChild(0).gameObject.SetActive(false);
+                item.visualMesh.gameObject.SetActive(false);
 
                 cube.startPos = cube.transform.position;
                 cube.start = start;
@@ -131,9 +141,9 @@ public class Enemy_AttackManager : MonoBehaviour
             item.gameObject.SetActive(false);
         }
 
-        foreach (var item in attackCubes)
+        foreach (var item in selectedIndividualCubes)
         {
-            item.transform.GetChild(0).gameObject.SetActive(true);
+            item.visualMesh.gameObject.SetActive(true);
             //if (item.transform.GetChild(0).TryGetComponent(out MeshRenderer mesh))
             //{
             //    mesh.material.SetColor("_Emission", Color.black);

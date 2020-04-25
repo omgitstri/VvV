@@ -134,11 +134,13 @@ public class EnemyMovementState : MonoBehaviour
 	public void ActivateCrawl()
 	{
 		currentMoveState = MoveState.Crawl;
+        eStats.isCrawling = true;
 	}
 
 	public void DeactivateCrawl()
 	{
 		currentMoveState = MoveState.Walk;
+        eStats.isCrawling = false;
 	}
 
     public void EnemyDied()

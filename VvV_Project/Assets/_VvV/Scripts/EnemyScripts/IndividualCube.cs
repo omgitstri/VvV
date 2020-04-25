@@ -8,8 +8,8 @@ public class IndividualCube : MonoBehaviour
     public Vector3 voxelLocalPosition;
 
     private Collider myCollider = null;
-    private Renderer visualMesh = null;
-    private GameObject attackMesh = null;
+    public Renderer visualMesh { get; private set; } = null;
+    public GymEnemyAttack_CubeLerp attackMesh { get; private set; } = null;
     private Rigidbody physicMesh = null;
     public bool killed { get; private set; } = false;
 
@@ -35,7 +35,8 @@ public class IndividualCube : MonoBehaviour
     {
         visualMesh = transform.GetChild(0).GetComponent<Renderer>();
         physicMesh = transform.GetChild(1).GetComponent<Rigidbody>();
-        attackMesh = transform.GetChild(2).gameObject;
+        attackMesh = transform.GetChild(2).GetComponent<GymEnemyAttack_CubeLerp>();
+        attackMesh.parent = this;
         myCollider = GetComponent<Collider>();
     }
 
@@ -238,13 +239,14 @@ public class IndividualCube : MonoBehaviour
         }
         return curr;
     }
-
+    
     public IEnumerator RegenAction()
     {
         if (killed == true)
         {
-            physicMesh.isKinematic = false;
 
+            physicMesh.isKinematic = true;
+            physicMesh.GetComponent<Collider>().enabled = false;
             float elapsedTime = 0f;
             float waitTime = Random.Range(minimumDelay, maximumDelay);
             Vector3 initPos = physicMesh.transform.localPosition;
@@ -266,13 +268,13 @@ public class IndividualCube : MonoBehaviour
             physicMesh.transform.SetParent(this.transform);
             physicMesh.transform.localPosition = Vector3.zero;
             physicMesh.velocity = Vector3.zero;
+            physicMesh.isKinematic = false;
             physicMesh.Sleep();
 
             if (physicMesh.TryGetComponent<Collider>(out Collider col))
             {
                 col.enabled = true;
             }
-            physicMesh.isKinematic = true;
 
             physicMesh.gameObject.SetActive(false);
             myCollider.enabled = true;
@@ -297,7 +299,7 @@ public class IndividualCube : MonoBehaviour
             visualMesh.enabled = false;
             physicMesh.gameObject.SetActive(true);
             physicMesh.isKinematic = false;
-            attackMesh.SetActive(false);
+            attackMesh.gameObject.SetActive(false);
 
             if (transform.GetComponentInParent<TriggerCrawl>() != null)
             {

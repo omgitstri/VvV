@@ -13,19 +13,16 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
 
     public Vector3 startPos;
 
-    public Transform parent;
+    public IndividualCube parent;
 
     public bool attack = false;
     public bool reverse = false;
-    //public BoxCollider box = null;
 
 
     public int dmg = 1;
 
     private void Start()
     {
-        //box = this.GetComponent<BoxCollider>();
-        //DeactivateHitbox();
         radius = (Random.insideUnitSphere * 0.25f);
     }
 
@@ -39,75 +36,53 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
         {
             Return();
         }
+
+        //if(parent.killed)
+        //{
+        //    transform.position = parent.transform.position;
+        //    transform.rotation = parent.transform.rotation;
+        //    transform.SetParent(parent.transform);
+        //    gameObject.SetActive(false);
+        //}
     }
 
     public void Attack()
     {
         if (middle.Count > 0 && start != null && stop != null && root != null)
         {
-
-            //if (attack)
+            transform.SetParent(null);
+            //List<Vector3> lerps = new List<Vector3>();
+            //for (int i = 0; i < middle.Count; i++)
             //{
-            //    ActivateHitbox();
+            //    if (i == 0)
+            //    {
+            //        lerps.Clear();
+            //        lerps.Add(Vector3.Slerp(startPos, middle[i].position + radius, root.a));
+            //    }
+            //    else
+            //    {
+            //        lerps.Add(Vector3.Slerp(lerps[i - 1], middle[i].position + radius, root.a));
+            //    }
             //}
 
-            List<Vector3> lerps = new List<Vector3>();
-            for (int i = 0; i < middle.Count; i++)
-            {
-                if (i == 0)
-                {
-                    lerps.Clear();
-                    lerps.Add(Vector3.Slerp(startPos, middle[i].position + radius, root.a));
-                }
-                else
-                {
-                    lerps.Add(Vector3.Slerp(lerps[i - 1], middle[i].position + radius, root.a));
-                }
-            }
-
-            transform.position = Vector3.Slerp(lerps[lerps.Count - 1], stop.position + radius, root.a);
+            //transform.position = Vector3.Slerp(lerps[lerps.Count - 1], stop.position + radius, root.a);
+            var lerp = Vector3.Slerp(start.position, middle[Random.Range(0, middle.Count)].position + radius, root.a);
+            transform.position = Vector3.Slerp(lerp, stop.position + radius, root.a);
         }
     }
 
     public void Return()
     {
-       // DeactivateHitbox();
+        transform.SetParent(parent.transform, true);
         transform.localPosition = Vector3.Slerp(transform.localPosition, Vector3.zero, root.a);
     }
 
-    //public IEnumerator ReactivateHitbox()
-    //{
-    //    yield return new WaitForSeconds(2f);
-    //    ActivateHitbox();
-    //}
-
-    //public void ActivateHitbox()
-    //{
-
-    //    box.enabled = true;
-    //}
-
-    //public void DeactivateHitbox()
-    //{
-    //    box.enabled = false;
-    //}
-
     private void OnTriggerEnter(Collider other)
     {
-        ////Only damage the player if the cubes are in attack mode, this prevents the player from walking into the enemy & losing health
-        //if (gameObject.layer == 29)
-        //{
         if (other.TryGetComponent<PlayerDamagable>(out PlayerDamagable player))
         {
-            //DeactivateHitbox();
             player.GetDamaged(dmg);
 
         }
-        //}
-
-        //else
-        //{
-        //    return;
-        //}
     }
 }

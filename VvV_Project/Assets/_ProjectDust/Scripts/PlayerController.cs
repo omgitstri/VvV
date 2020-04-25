@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private GunController gunController = null;
 
     GameObject gunPrefab = null;
-    GameObject handPrefab = null;
+    //GameObject handPrefab = null;
 
     public Image aimer = null;
 
@@ -120,7 +120,8 @@ public class PlayerController : MonoBehaviour
 
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
 
-        myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
+        transform.position += _velocity * Time.deltaTime;
+        //myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
         if (aimer != null)
         {
             if (gunController.isFineSightMode || isNearEnemy)

@@ -42,8 +42,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
         if (TryGetComponent<Enemy_AttackManager>(out Enemy_AttackManager comp))
         {
-            comp.attackCubes.Clear();
-            comp.attackCubes.AddRange(temp);
+            comp.selectedIndividualCubes.Clear();
+            comp.selectedIndividualCubes.AddRange(temp);
 
         }
     }
