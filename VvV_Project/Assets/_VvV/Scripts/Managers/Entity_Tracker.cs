@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class Entity_Tracker : MonoBehaviour
@@ -20,11 +19,6 @@ public class Entity_Tracker : MonoBehaviour
     }
 
     public Transform PlayerEntity { get; private set; } = null;
-
-    private void Awake()
-    {
-        Toolbox.GetInstance.GetUI();
-    }
 
     public void SetPlayer(Transform _transform)
     {
