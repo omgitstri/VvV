@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     [Header("SYSTEM SFX")]
     #region - - - - - SYSTEM SFX - - - - -
 
-    public AudioClip menuScroll;
+    public AudioClip menuHover;
     public AudioClip menuConfirm;
     public AudioClip menuCancel;
     public AudioClip start;
@@ -20,7 +20,6 @@ public class SoundManager : MonoBehaviour
     [Header("PLAYER SFX")]
     #region - - - - - PLAYER SFX - - - - - 
     public AudioClip shoot;
-    public AudioClip empty;
     public AudioClip hit;
     public AudioClip reload;
     public AudioClip step;
@@ -40,9 +39,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip eAggro;
     public AudioClip eStep;
     public AudioClip eRun;
-    public AudioClip eSprint;
     public AudioClip eCrawl;
-    public AudioClip eDrop;
+    public AudioClip eRegen;
     public AudioClip eHurt;
     public AudioClip eDeath;
 
@@ -54,16 +52,16 @@ public class SoundManager : MonoBehaviour
 
     [Header("EVENT SFX")]
     #region - - - - - EVENT SFX - - - - -
-    public AudioClip startWave;
-    public AudioClip endWave;
-    public AudioClip trapNormal;
-    public AudioClip trapFire;
-    public AudioClip trapElect;
+    public AudioClip startLvl;
+    public AudioClip victory;
     public AudioClip npcGrunt;
-    public AudioClip pickup1;
-    public AudioClip pickup2;
-    public AudioClip pickup3;
+    public AudioClip pickup;
     public AudioClip gameOver;
+    [Space]
+    public AudioClip switchsfx;
+    public AudioClip doorOpen;
+    public AudioClip doorClose;
+    public AudioClip destroy;
     #endregion
 
 }

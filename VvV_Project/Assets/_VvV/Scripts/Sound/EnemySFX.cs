@@ -100,7 +100,6 @@ public class EnemySFX : MonoBehaviour
     // MOVEMENT SOUNDS FUNCTIONS - SOURCE 0
     public void Walk() { PlaySound(0, soundManager.eStep, minMaxStart);    }
     public void Run()   { PlaySound(0, soundManager.eRun, minMaxStart);    }
-    public void Sprint(){ PlaySound(0, soundManager.eSprint, minMaxStart); }
     public void Crawl() { PlaySound(0, soundManager.eCrawl, minMaxStart);  }
     public void StopMove() { StopSound(0); }
 
@@ -140,7 +139,14 @@ public class EnemySFX : MonoBehaviour
         }
         // Play DEATH CRY & CUBE DROP
         PlaySound(0, soundManager.eDeath, 0F);
-        PlaySound(1, soundManager.eDrop, 0F);
+    }
+
+    public void Regen() {
+        for (int i = 0; i < audioSources.Count; i++) {
+            audioSources[i].Pause();
+        }
+
+        PlaySound(0, soundManager.eRegen, 0F);
     }
     public void StopOther() { StopSound(2); }
 

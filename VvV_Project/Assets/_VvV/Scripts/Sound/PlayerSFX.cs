@@ -68,7 +68,6 @@ public class PlayerSFX : MonoBehaviour
     public void Attack() { PlaySound(1, soundManager.melee, 0f);  }
     public void Shoot()  { PlaySound(1, soundManager.shoot, 0f);  }
     public void Reload() { PlaySound(1, soundManager.reload, 0f); }
-    public void Empty()  { PlaySound(1, soundManager.empty, 0f);  }
     public void StopAttack() { StopSound(1); }
 
     // PASSIVE SOUNDS FUNCTIONS - SOURCE 2
