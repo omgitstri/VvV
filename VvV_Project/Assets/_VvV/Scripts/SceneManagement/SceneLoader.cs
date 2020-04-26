@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
     //Call Toolbox.GetInstance().GetScene().LoadScene(*Add scene name*); in other scripts
+    public string currentScene;
+
+
+    public void ReloadScene() {
+        currentScene = SceneManager.GetActiveScene().name;
+        Debug.Log(currentScene);
+        LoadScene(currentScene);
+    }
 
     public void LoadScene(string scene) {
         SceneManager.LoadScene(scene);

@@ -48,5 +48,14 @@ public class PlayerDamagable : Damagable
         }
 
         invulnerableDelay -= Time.deltaTime;
+        PlayerDeath();
+    }
+
+    private void PlayerDeath() {
+
+        if (currentHitPoint <= 0) {
+            Toolbox.GetInstance.GetScene().ReloadScene();
+        }
+
     }
 }
