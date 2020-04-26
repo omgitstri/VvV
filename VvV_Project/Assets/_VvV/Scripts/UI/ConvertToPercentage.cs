@@ -11,7 +11,7 @@ using UnityEngine.UI;
 
 public class ConvertToPercentage : MonoBehaviour
 {
-	//**** Variables
+	///***  Variables
 	private Text percentValue;
 
 
@@ -21,7 +21,7 @@ public class ConvertToPercentage : MonoBehaviour
 	}
 
 
-	//-- Convert Percentage to Text		//-- Add "* 100* to value if value is not normalized
+	///  Convert Percentage to Text		///  Add "* 100* to value if value is not normalized
 	public void ImageToTextPercentage(float iValue)
 	{
 		percentValue.text = Mathf.RoundToInt(iValue) + "%";

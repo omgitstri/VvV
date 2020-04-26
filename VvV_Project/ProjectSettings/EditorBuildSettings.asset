@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/_VvV/Scene/Gyms/PlayerGym.unity
     guid: 9cc7d0bb83c30c342a16a57e9fa49d19
   - enabled: 1
-    path: Assets/_VvV/Scene/LevelDesign 2.unity
+    path: Assets/_VvV/Scene/_Archive/LevelDesign 2.unity
     guid: b8417270bfad1014d9c6fe5f0cc4cb2f
   - enabled: 1
     path: Assets/_VvV/Scene/Options.unity

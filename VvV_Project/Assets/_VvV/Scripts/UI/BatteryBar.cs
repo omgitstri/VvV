@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class BatteryBar : MonoBehaviour
 {
-	//**** Variables
+	///  Variables
 	[SerializeField]
 	private Slider batterySlider = null;
 	[SerializeField]
@@ -18,61 +18,22 @@ public class BatteryBar : MonoBehaviour
 	private Image fill = null;
 
 
-	void Start()
-	{
-		OnStartDeclaration();
-		OnStartFunction();
-	}
-
-	void Update()
-	{
-		OnUpdateFunction();
-	}
-
-
-	//**** OnFrame Functions
-	#region <-- TOP
-	//-- One Time Functions
-	void OnStartDeclaration()
-	{
-
-	}
-
-	void OnStartFunction()
-	{
-
-	}
-
-	void OnUpdateFunction()
-	{
-
-	}
-
-
-	//-- Summary
-	void EmptyFunctionDeclaration()
-	{
-
-	}
-	#endregion <-- BOTTOM
-
-
-	//**** Function
-	//-- Associated to the EMP Bar
+	///***  Function
+	///  Associated to the EMP Bar
 	#region <-- TOP 
-	//-- Set max health and value
-	public void SetMaxEMPCharge(float iEmpCharge)
+	///  Receive max health and value
+	public void SetMaxEMPCharge(float incomingValue)
 	{
-		batterySlider.maxValue = iEmpCharge;
-		batterySlider.value = iEmpCharge;
+		batterySlider.maxValue = incomingValue;
+		batterySlider.value = incomingValue;
 
 		fill.color = gradientColour.Evaluate(batterySlider.normalizedValue);
 	}
 
-	//-- Fetching the Slider
-	public void SetEMPCharge(float iEmpCharge)
+	///  Fetching the Slider
+	public void SetEMPCharge(float incomingValue)
 	{
-		batterySlider.value = iEmpCharge;
+		batterySlider.value = incomingValue;
 
 		fill.color = gradientColour.Evaluate(batterySlider.normalizedValue);
 	}

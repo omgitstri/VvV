@@ -150,7 +150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Toggle
+  m_Text: LinkedText
 --- !u!1 &1107722168715503336
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,11 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54aba363c3ac71742b58f8a7b91cf363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiHandler: {fileID: 0}
-  linkedToEMP: 0
-  linkedToBattery: 0
-  linkedToServer: 0
-  linkedToElectricity: 1
+  uIHandler: {fileID: 0}
+  linkedObjective: 4
 --- !u!1 &1107722168989173981
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,11 +349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54aba363c3ac71742b58f8a7b91cf363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiHandler: {fileID: 0}
-  linkedToEMP: 0
-  linkedToBattery: 0
-  linkedToServer: 1
-  linkedToElectricity: 0
+  uIHandler: {fileID: 0}
+  linkedObjective: 3
 --- !u!1 &1107722169558523351
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,7 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107722169558523336}
   m_Layer: 5
-  m_Name: GameObjective
+  m_Name: GameObjectives
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -694,7 +688,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Toggle
+  m_Text: LinkedText
 --- !u!1 &1107722170310484116
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,11 +787,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54aba363c3ac71742b58f8a7b91cf363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiHandler: {fileID: 0}
-  linkedToEMP: 0
-  linkedToBattery: 1
-  linkedToServer: 0
-  linkedToElectricity: 0
+  uIHandler: {fileID: 0}
+  linkedObjective: 2
 --- !u!1 &1107722170350608707
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +865,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Toggle
+  m_Text: LinkedText
 --- !u!1 &1107722170361848720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,11 +1111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54aba363c3ac71742b58f8a7b91cf363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiHandler: {fileID: 0}
-  linkedToEMP: 1
-  linkedToBattery: 0
-  linkedToServer: 0
-  linkedToElectricity: 0
+  uIHandler: {fileID: 0}
+  linkedObjective: 1
 --- !u!1 &1107722170612259223
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,7 +1335,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: EMP
+  m_Text: LinkedText
 --- !u!1001 &1070672765629966527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1473,7 +1461,7 @@ PrefabInstance:
     - target: {fileID: 8862981178398468139, guid: e92357dbf2a117941bfebc9c19d15cfc,
         type: 3}
       propertyPath: m_Name
-      value: UIBatteryBar
+      value: BatteryBar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92357dbf2a117941bfebc9c19d15cfc, type: 3}

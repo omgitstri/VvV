@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using System.Threading.Tasks;
 
 /// <summary>
 ///	 Objectives for the Alpha Level
@@ -10,170 +11,204 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     ///***  Variables
-    public float maxBatteryCharge = 1f;
-    public float currentBatteryCharge = 0f;
-    public float batteryChargeOverTime = 0f;
-
-    public BatteryBar batteryBar = null;
-
+    [Header("Objective bool check")]
     public bool batteryActive = false;
     public bool serverActive = false;
     public bool electricityActive = false;
     public bool empActive = false;
 
+    [Header("Battery Feedback")]
+    public bool testBatteryUI = false;
+    public BatteryBar batteryUI = null;
+    public float maxBatteryCharge = 100f;
+    public float currentBatteryCharge = 0f;
+    //private float batteryChargeOverTime = 0f;
     private float handOffBatteryCharge = 0f;
 
-    #region			<-- TOP
-    ///
-
-
-    #endregion		<-- BOTTOM
+    [Header("Health Feedback")]
+    public bool testPlayerHealthUI = false;
+    [SerializeField]
+    private Transform playerPrefab = null;
+    public Slider healthUI = null;
+    private UIPlayerHealthDisplay healthUIScript;
+    private GameObject healthUIGO;
+    public float playerMaxHealthChild = 5f;
+    public float currentPlayerHealthChild = 5f;
+    public int damageTest = 1;
+    public BlinkUIHealth blinkUIHealth = null;
 
     void Start()
     {
-        ///  Start Declarations
+        ///  Awake Declarations
         #region			<-- TOP
+        /// Linked to Battery functions
+        batteryUI.SetMaxEMPCharge(maxBatteryCharge);
 
-        batteryBar.SetMaxEMPCharge(maxBatteryCharge);
+        /// Linked to Player functions
+        if (playerPrefab == null)
+        {
+            playerPrefab = Entity_Tracker.Instance.PlayerEntity;
+        }
+
+        healthUIScript = healthUI.GetComponent<UIPlayerHealthDisplay>();
+        healthUIScript.SetMaxPlayerHealth(playerMaxHealthChild);
+
+
+        healthUI.gameObject.SetActive(false);
         #endregion		<-- BOTTOM
     }
 
     void Update()
     {
-        ///  Update Declarations
-        #region			<-- TOP
-
-        ///
-        AllBuildingsActive();
-        BatteryBuildingsActive();
-        ElectricityBuildingsActive();
-        ServerBuildingsActive();
-        EMPBuildingsActive();
-
-        TestBuildingStatus();
-        #endregion		<-- BOTTOM
+        /// Functions for testing UI
+        DeleteFunctionsAfterBuildingTestingIsComplete();
+        DeleteFunctionsAfterPlayerHPTestingIsComplete();
     }
 
 
-    ///***  ALPHA TESTING AREA
-    ///  Temp setup for in-game testing and bypassing statements
-    #region <-- TOP 
-
-    ///  Bool activate Test
-    public void AllBuildingsActive()
+    ///***  GAME OBJECTIVES TEST: Activate bool with keycode for UI tests
+    #region			<-- TOP
+    /// Turn on Test: for building
+    private void DeleteFunctionsAfterBuildingTestingIsComplete()
     {
-        ///  Testing the Charge
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (testBatteryUI == true)
         {
-            BoolOnjective();
+            ///  Activate all Objectives via bool
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                batteryActive = !batteryActive;
+                serverActive = !serverActive;
+                electricityActive = !electricityActive;
+                empActive = !empActive;
+            }
+
+            ///  Test: the Charge
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                empActive = !empActive;
+            }
+
+            ///  Test: the Charge
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                batteryActive = !batteryActive;
+            }
+
+            ///  Test: the Charge
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                serverActive = !serverActive;
+            }
+
+            ///  Test: the Charge
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                electricityActive = !electricityActive;
+            }
+
+            TestBatteryCharging();
+        }
+
+    }
+    #endregion		<-- BOTTOM
+
+    public void BatteryIsMaxed()
+    {
+        if (maxBatteryCharge == currentBatteryCharge)
+        {
+            // Change text to EMP Ready when it reaches 100%
         }
     }
 
-    ///  Bool building activate state
-    public void BatteryBuildingsActive()
+
+    ///***  BATTERY TEST: charge and color change
+    #region			<-- TOP
+    public void TestBatteryCharging()
     {
-        ///  Testing the Charge
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            BatteryOnjective();
-        }
-    }
+        batteryUI.SetEMPCharge(currentBatteryCharge);
 
-    ///  Bool building activate state
-    public void ElectricityBuildingsActive()
-    {
-        ///  Testing the Charge
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ElectricityOnjective();
-        }
-    }
-
-    ///  Bool building activate state
-    public void ServerBuildingsActive()
-    {
-        ///  Testing the Charge
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            ServerOnjective();
-        }
-    }
-
-    ///  Bool building activate state
-    public void EMPBuildingsActive()
-    {
-        ///  Testing the Charge
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            EmpOnjective();
-        }
-    }
-
-    public void BoolOnjective()
-    {
-        batteryActive = !batteryActive;
-        serverActive = !serverActive;
-        electricityActive = !electricityActive;
-        empActive = !empActive;
-    }
-
-    public void BatteryOnjective()
-    {
-        batteryActive = !batteryActive;
-    }
-
-
-    public void ServerOnjective()
-    {
-        serverActive = !serverActive;
-    }
-
-
-    private void ElectricityOnjective()
-    {
-        electricityActive = !electricityActive;
-    }
-
-    public void EmpOnjective()
-    {
-        empActive = !empActive;
-    }
-
-
-    ///  Testing the battery charge
-    public void ChargingBattery(float iCharge)
-    {
-        currentBatteryCharge += iCharge;
-    }
-
-    ///  Testing battery charge
-    public void ChargeBatteryByTime()
-    {
-        ///  Testing the Charge
-        currentBatteryCharge++;
-    }
-
-    ///  Setting up bypass statements for alpha testing
-    public void TestBuildingStatus()
-    {
-        batteryBar.SetEMPCharge(currentBatteryCharge);
-
-        ///  Testing the Charge
         if (Input.GetKeyDown(KeyCode.Alpha9) && batteryActive == true)
         {
             ChargingBattery(10f);
-            print(currentBatteryCharge);
         }
 
-        ///  Testing the Charge
         if (Input.GetKey(KeyCode.Alpha0) && batteryActive == true)
         {
             ChargeBatteryByTime();
             ChargingBattery(handOffBatteryCharge);
         }
-
     }
 
-    #endregion <-- BOTTOM
+    ///***  Battery charge logic        /// Practicing parameters
+    public void ChargingBattery(float iCharge)
+    {
+        currentBatteryCharge += iCharge;
+    }
+
+    ///  Test: battery charge
+    public void ChargeBatteryByTime()
+    {
+        currentBatteryCharge++;
+    }
+    #endregion		<-- BOTTOM
+
+
+    ///***  PLAYER HEALTH TEST: display and blinking
+    public void DeleteFunctionsAfterPlayerHPTestingIsComplete()
+    {
+        print(currentPlayerHealthChild.ToString());
+
+        if (testPlayerHealthUI == true)
+        {
+            /// Add bypass functions here
+            TestPlayerHealthUI();
+        }
+    }
+
+    public void TestPlayerHealthUI()
+    {
+        healthUIScript.SetPlayerHealth(currentPlayerHealthChild);
+
+        ///  Test: the Charge
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            TestHealthDamage(damageTest);
+            healthUI.gameObject.SetActive(true);
+
+        }
+
+        ///  Test: the Charge
+        if (Input.GetKey(KeyCode.Alpha0))
+        {
+            TestHealthDamage(playerMaxHealthChild);
+            healthUI.gameObject.SetActive(true);
+
+        }
+    }
+
+    public void TestHealthDamage(float damagesent)
+    {
+        healthUI.gameObject.SetActive(false);
+        currentPlayerHealthChild = currentPlayerHealthChild - damagesent;
+
+        if (currentPlayerHealthChild >= 0)
+        {
+            blinkUIHealth.BlinkingSlider(healthUI.gameObject, 1f);
+            blinkUIHealth.isBlinking = true;
+        }
+
+        if (currentPlayerHealthChild <= 0)
+        {
+            PlayerIsDead();
+
+        }
+    }
+
+    public void PlayerIsDead()
+    {
+
+        print("Dead");
+    }
+
 
 }
