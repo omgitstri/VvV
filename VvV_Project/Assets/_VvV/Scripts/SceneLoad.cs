@@ -12,7 +12,7 @@ public class SceneLoad : MonoBehaviour
 
     public void Update() {
         if(Input.GetKeyDown(KeyCode.Space)) {
-            ChangeScene();
+            Application.Quit();
         } 
     }
 }
