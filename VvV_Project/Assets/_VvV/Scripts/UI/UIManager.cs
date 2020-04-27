@@ -177,7 +177,6 @@ public class UIManager : MonoBehaviour
     {
         currentPlayerHealthChild = playerPrefab.GetComponent<PlayerDamagable>().currentHitPoint;
         healthUIScript.SetPlayerHealth(currentPlayerHealthChild);
-
     }
 
     //public void TestPlayerHealthUI()

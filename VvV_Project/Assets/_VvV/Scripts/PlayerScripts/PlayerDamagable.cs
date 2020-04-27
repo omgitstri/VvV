@@ -19,9 +19,10 @@ public class PlayerDamagable : Damagable
 
     public override void GetDamaged(int dmg)
     {
+
+        Toolbox.GetInstance.GetUI().UpdatePlayerHP(currentHitPoint);
         if (currentHitPoint > 0 && invulnerableDelay <= 0)
         {
-            Toolbox.GetInstance.GetUI().UpdatePlayerHP(currentHitPoint);
             currentHitPoint -= dmg;
             invulnerableDelay = invulnerableTime;
         }
