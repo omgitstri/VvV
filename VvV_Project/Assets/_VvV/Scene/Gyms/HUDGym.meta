@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:VvV_Project/Assets/_VvV/Scene/Gyms/HUDGym.meta
 guid: cd0708890bd0b7642adc925455ecefd4
 folderAsset: yes
 DefaultImporter:
+=======
+guid: 37fe1dc52e65e6e46bfc27958634ad2c
+PrefabImporter:
+>>>>>>> 53d91369dee6856025f6fdf8deadcdbd36079cf5:VvV_Project/Assets/_VvV/Art/Prefab/Enemy/Enemy_Level_02 Variant.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

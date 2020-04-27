@@ -50,6 +50,10 @@ public class CustomTriggerEvent : MonoBehaviour
                 _OnTriggerExit.Invoke();
 
             }
+            else if (triggeredObjects.Count > 0)
+            {
+                _OnTriggerEnter.Invoke();
+            }
             intervals = 1f;
         }
     }
