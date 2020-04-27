@@ -18,10 +18,10 @@ public class EndGameScript : MonoBehaviour
         if (layer == (layer | 1 << other.gameObject.layer))
         {
             triggeredCount -= 1;
-        }
-        if (triggeredCount <= 0)
-        {
-            Toolbox.GetInstance.GetScene().LoadScene("Victory");
+            if (triggeredCount <= 0)
+            {
+                Toolbox.GetInstance.GetScene().LoadScene("Victory");
+            }
         }
     }
 
