@@ -9,4 +9,10 @@ public class SceneLoad : MonoBehaviour
     public void ChangeScene() {
         Toolbox.GetInstance.GetScene().LoadScene(sceneName);
     }
+
+    public void Update() {
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            ChangeScene();
+        } 
+    }
 }

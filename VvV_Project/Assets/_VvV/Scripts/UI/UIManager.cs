@@ -31,8 +31,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Transform playerPrefab = null;
     public Slider healthUI = null;
-    private UIPlayerHealth healthUIScript;
-    private GameObject healthUIGO;
+    private UIPlayerHealth healthUIScript = null;
+    private GameObject healthUIGO = null;
     public float playerMaxHealthChild = 5f;
     public float currentPlayerHealthChild = 5f;
     public int damageTest = 1;
@@ -58,8 +58,10 @@ public class UIManager : MonoBehaviour
             playerPrefab = Entity_Tracker.Instance.PlayerEntity;
         }
 
-        healthUIScript = playerPrefab.GetComponent<PlayerHUD>().hudGO.GetComponent<UIPlayerHealth>();
-        healthUIScript.SetMaxPlayerHealth(playerMaxHealthChild);
+        if (playerPrefab != null) {
+            healthUIScript = playerPrefab.GetComponent<PlayerHUD>().hudGO.GetComponent<UIPlayerHealth>();
+            healthUIScript.SetMaxPlayerHealth(playerMaxHealthChild);
+        }
 
 
         //healthUIScript.gameObject.SetActive(false);
