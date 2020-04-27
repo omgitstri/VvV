@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDamagable : Damagable
 {
 
-    [SerializeField] private int currentHitPoint = 5;
+    public int currentHitPoint = 5;
     [SerializeField] private int maxHitPoint = 5;
 
     [SerializeField] private float invulnerableDelay = 0;
@@ -21,6 +21,7 @@ public class PlayerDamagable : Damagable
     {
         if (currentHitPoint > 0 && invulnerableDelay <= 0)
         {
+            Toolbox.GetInstance.GetUI().UpdatePlayerHP(currentHitPoint);
             currentHitPoint -= dmg;
             invulnerableDelay = invulnerableTime;
         }
