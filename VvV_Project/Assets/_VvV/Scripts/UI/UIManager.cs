@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using UnityEditor;
 
 /// <summary>
 ///	 Objectives for the Alpha Level
@@ -19,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Battery Feedback")]
     public bool testBatteryUI = false;
-    public BatteryBar batteryUI = null;
+    public HUDBatteryBar batteryUI = null;
     public float maxBatteryCharge = 100f;
     public float currentBatteryCharge = 0f;
     //private float batteryChargeOverTime = 0f;
@@ -36,6 +37,13 @@ public class UIManager : MonoBehaviour
     public float currentPlayerHealthChild = 5f;
     public int damageTest = 1;
     public BlinkUIHealth blinkUIHealth = null;
+    public PlayerDamagable damageDeltScript;
+    public int somethingDamage = 0;
+
+    private void Awake()
+    {
+        
+    }
 
     void Start()
     {
@@ -56,6 +64,7 @@ public class UIManager : MonoBehaviour
 
         healthUI.gameObject.SetActive(false);
         #endregion		<-- BOTTOM
+        
     }
 
     void Update()
@@ -156,8 +165,6 @@ public class UIManager : MonoBehaviour
     ///***  PLAYER HEALTH TEST: display and blinking
     public void DeleteFunctionsAfterPlayerHPTestingIsComplete()
     {
-        print(currentPlayerHealthChild.ToString());
-
         if (testPlayerHealthUI == true)
         {
             /// Add bypass functions here
@@ -191,11 +198,10 @@ public class UIManager : MonoBehaviour
         healthUI.gameObject.SetActive(false);
         currentPlayerHealthChild = currentPlayerHealthChild - damagesent;
 
-        if (currentPlayerHealthChild >= 0)
-        {
+
+            damageDeltScript.GetDamaged(damageTest);
             blinkUIHealth.BlinkingSlider(healthUI.gameObject, 1f);
             blinkUIHealth.isBlinking = true;
-        }
 
         if (currentPlayerHealthChild <= 0)
         {
@@ -207,7 +213,7 @@ public class UIManager : MonoBehaviour
     public void PlayerIsDead()
     {
 
-        print("Dead");
+        print("DeadUI");
     }
 
 

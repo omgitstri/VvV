@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_VvV/Scene/Options.unity
     guid: aca6b21c115158d488c9fcf39902d60f
+  - enabled: 1
+    path: Assets/_VvV/Scene/Gyms/HUDHealth.unity
+    guid: 82e55eb339ddd39458eaa358990631a0
   m_configObjects: {}
