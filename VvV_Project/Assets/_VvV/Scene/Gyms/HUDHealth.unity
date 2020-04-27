@@ -503,25 +503,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 592427328, guid: 862560c03cf29ac41970cf1ad838ea0b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1062322108054605824, guid: 862560c03cf29ac41970cf1ad838ea0b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2534650648915023829, guid: 862560c03cf29ac41970cf1ad838ea0b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2534650648915023829, guid: 862560c03cf29ac41970cf1ad838ea0b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 5359807735999837967, guid: 862560c03cf29ac41970cf1ad838ea0b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -581,26 +562,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerWithGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 6135301530554395538, guid: 862560c03cf29ac41970cf1ad838ea0b,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6135301530554395538, guid: 862560c03cf29ac41970cf1ad838ea0b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8140965770476470017, guid: 862560c03cf29ac41970cf1ad838ea0b,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8140965770476470017, guid: 862560c03cf29ac41970cf1ad838ea0b,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 862560c03cf29ac41970cf1ad838ea0b, type: 3}
