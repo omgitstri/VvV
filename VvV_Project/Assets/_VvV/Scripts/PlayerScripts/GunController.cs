@@ -88,7 +88,7 @@ public class GunController : MonoBehaviour
 
     private void Hit()
     {
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, currentGun.range))
+        if (Physics.Raycast(cam.transform.position + cam.transform.forward * 0.1f, cam.transform.forward, out hitInfo, currentGun.range))
         {
             GameObject hitEffect = Instantiate(hitEffectPrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));
             Destroy(hitEffect, 2f);
