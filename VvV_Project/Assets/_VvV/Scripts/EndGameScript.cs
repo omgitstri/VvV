@@ -20,9 +20,14 @@ public class EndGameScript : MonoBehaviour
             triggeredCount -= 1;
             if (triggeredCount <= 0)
             {
-                Toolbox.GetInstance.GetScene().LoadScene("Victory");
+                Invoke(nameof(TriggerEndGame), 3f);
             }
         }
+    }
+
+    private void TriggerEndGame()
+    {
+        Toolbox.GetInstance.GetScene().LoadScene("Victory");
     }
 
     private void OnTriggerExit(Collider other)

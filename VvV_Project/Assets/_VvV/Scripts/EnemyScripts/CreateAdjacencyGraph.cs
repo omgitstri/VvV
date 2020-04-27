@@ -48,7 +48,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
         }
     }
 
-    private void Awake() {
+    private void Awake()
+    {
         eStat = GetComponent<EnemyStatsContainer>().eStats;
     }
 
@@ -206,7 +207,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
         {
             if (child != null)
             {
-                child.DeactivateCube();
+                child.Invoke(nameof(child.DeactivateCube), Random.Range(0, 0.05f));
             }
         }
 

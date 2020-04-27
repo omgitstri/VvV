@@ -168,7 +168,7 @@ public class IndividualCube : MonoBehaviour
                 bottomCube.topCube = null;
             }
 
-            DeactivateCube();
+            Invoke(nameof(DeactivateCube), Random.Range(0, 0.05f));
         }
     }
 
@@ -239,7 +239,7 @@ public class IndividualCube : MonoBehaviour
         }
         return curr;
     }
-    
+
     public IEnumerator RegenAction()
     {
         if (killed == true)

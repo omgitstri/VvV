@@ -9,7 +9,6 @@ using UnityEngine.AI;
 
 public class TeleportThisToSetDestination : MonoBehaviour
 {
-
     public void TeleportHere(Transform destination)
     {
         if (TryGetComponent(out NavMeshAgent nav))
