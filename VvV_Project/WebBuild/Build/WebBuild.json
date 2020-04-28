@@ -1,0 +1,18 @@
+{
+"companyName": "Unity",
+"productName": "VvVvVvVvV_TheGame",
+"productVersion": "1.1",
+"dataUrl": "WebBuild.data.unityweb",
+"asmCodeUrl": "WebBuild.asm.code.unityweb",
+"asmMemoryUrl": "WebBuild.asm.memory.unityweb",
+"asmFrameworkUrl": "WebBuild.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.3.3f1"
+}
