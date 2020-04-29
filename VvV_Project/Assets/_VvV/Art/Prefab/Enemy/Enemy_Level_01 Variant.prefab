@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: m_Name
-      value: Enemy_Level_01_Variant (1)
+      value: Enemy_Level_01 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1442723012318392187, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
@@ -24,32 +24,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
-      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 5523864273861222458}
-    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
-        type: 3}
-      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: TeleportHere
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
-        type: 3}
       propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
-        type: 3}
-      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Transform, UnityEngine
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3889949665911497641, guid: fbcf259689b68944c9005a0812e5ad98,
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 887889697468276582}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: UseDelay
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5738099910806368267, guid: fbcf259689b68944c9005a0812e5ad98,
@@ -109,15 +109,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbcf259689b68944c9005a0812e5ad98, type: 3}
---- !u!114 &5523864273861222458 stripped
+--- !u!114 &887889697468276582 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1583849707, guid: fbcf259689b68944c9005a0812e5ad98,
+  m_CorrespondingSourceObject: {fileID: 4682300725882838967, guid: fbcf259689b68944c9005a0812e5ad98,
     type: 3}
   m_PrefabInstance: {fileID: 5523864272546791633}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07af5a7675e908644a1b540b348cadff, type: 3}
+  m_Script: {fileID: 11500000, guid: f7d370cff36a0a8439dee97d52cb8494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &171064526923808778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171064526923808788}
+  - component: {fileID: 171064526923808779}
+  - component: {fileID: -7723183715914216494}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &171064526923808788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171064526923808778}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.11125, z: -0.027894333}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &171064526923808779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171064526923808778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1000cc7d696a9454cb6a0cb39a640590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuHover: {fileID: 8300000, guid: f360df48660dd6e4589cc9dc0e3e9ee1, type: 3}
+  menuConfirm: {fileID: 8300000, guid: 80514dc6705ae0d4e99dcd7a7d0cb103, type: 3}
+  menuCancel: {fileID: 8300000, guid: e2ccba3a6586b5a47bb4abbd416c2209, type: 3}
+  start: {fileID: 8300000, guid: a0eef619752ca3941844fd23fadf7e10, type: 3}
+  pause: {fileID: 8300000, guid: 1399ec7bf8362724392ba2870a046a97, type: 3}
+  shoot: {fileID: 8300000, guid: f8c1bc696b4dc19419ff30c090b851c3, type: 3}
+  hit: {fileID: 0}
+  reload: {fileID: 8300000, guid: 4c89315b50659754abeedde34c01b68e, type: 3}
+  step: {fileID: 8300000, guid: e6d67832537cc2a4cbb9bb55fc8cbf4d, type: 3}
+  sprint: {fileID: 8300000, guid: 7a831ac89e209a74bbe3893528f6859b, type: 3}
+  hurt:
+  - {fileID: 8300000, guid: 98ab22677c5f1dc41bdc1cfcd47486f8, type: 3}
+  death: {fileID: 8300000, guid: 67d92a1c10c07aa48a1369160ec0f1a1, type: 3}
+  melee: {fileID: 8300000, guid: f471cba79ade50d4db4ecc790688d7ce, type: 3}
+  eGrunts:
+  - {fileID: 8300000, guid: 5a72420ba09083540a6b4ad7dc3b9c98, type: 3}
+  eAttack: {fileID: 8300000, guid: 96791ba70fdcb174aa46a05e54d113b7, type: 3}
+  eAggro: {fileID: 8300000, guid: 51ae9e45cd297654b812fa1d30921c1f, type: 3}
+  eStep: {fileID: 8300000, guid: 22cb21856d7d1fb4bbf4bde986954f4d, type: 3}
+  eRun: {fileID: 8300000, guid: e1e9adaa10ca1fd4c9abe93bf1f4da83, type: 3}
+  eCrawl: {fileID: 8300000, guid: 44605d1725df9ea43b05449678eba011, type: 3}
+  eRegen: {fileID: 8300000, guid: 6270bd87c62e00e46924f33b27ec17bf, type: 3}
+  eHurt: {fileID: 8300000, guid: c6a5ea497254db042b527e15a5314e6f, type: 3}
+  eDeath: {fileID: 8300000, guid: 5b32d239a37187f41ae82b7b412ffcf4, type: 3}
+  eSounds: []
+  startLvl: {fileID: 0}
+  victory: {fileID: 0}
+  npcGrunt: {fileID: 0}
+  pickup: {fileID: 0}
+  gameOver: {fileID: 0}
+  switchsfx: {fileID: 8300000, guid: b92ed324077ae684fb1e8e894b79cf05, type: 3}
+  doorOpen: {fileID: 8300000, guid: f4c3d97563b5cb64ea4d025f723826ff, type: 3}
+  doorClose: {fileID: 8300000, guid: 53dbdd785dd65f544bb4cfd503967865, type: 3}
+  destroy: {fileID: 8300000, guid: b065d7ae749da4e47954271569f6fa78, type: 3}
+--- !u!114 &-7723183715914216494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171064526923808778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07a62a72b210654da506e046a41c610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  main: {fileID: 0}
+  begin: {fileID: 0}
+  wave: {fileID: 0}
+  down: {fileID: 0}
