@@ -10,6 +10,7 @@ public class PlayerHUD : MonoBehaviour
 {
 	// Variables
 	public GameObject hudGO = null;
+    public GameObject hudAmmo = null;
 
 	///***  Section
 	#region		<-- TOP

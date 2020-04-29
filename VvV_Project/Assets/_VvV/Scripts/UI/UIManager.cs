@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 using UnityEditor;
+using TMPro;
 
 /// <summary>
 ///	 Objectives for the Alpha Level
@@ -40,6 +41,9 @@ public class UIManager : MonoBehaviour
     public PlayerDamagable damageDeltScript;
     public int somethingDamage = 0;
 
+    [Space]
+    public Text ammoText;
+
     private void Awake()
     {
        
@@ -61,6 +65,9 @@ public class UIManager : MonoBehaviour
         if (playerPrefab != null) {
             healthUIScript = playerPrefab.GetComponent<PlayerHUD>().hudGO.GetComponent<UIPlayerHealth>();
             healthUIScript.SetMaxPlayerHealth(playerMaxHealthChild);
+
+            ammoText = playerPrefab.GetComponent<PlayerHUD>().hudAmmo.GetComponent<Text>();
+
         }
 
 
@@ -179,6 +186,12 @@ public class UIManager : MonoBehaviour
     {
         currentPlayerHealthChild = playerPrefab.GetComponent<PlayerDamagable>().currentHitPoint;
         healthUIScript.SetPlayerHealth(currentPlayerHealthChild);
+    }
+
+    public void UpdateAmmo(int ammoCount) {
+
+        //ammoText.SetText(ammoCount.ToString());
+        ammoText.text = ammoCount.ToString(); 
     }
 
     //public void TestPlayerHealthUI()

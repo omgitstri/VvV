@@ -32,6 +32,7 @@ public class GunController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+
     private void OnEnable()
     {
         isReload = false;
@@ -55,6 +56,7 @@ public class GunController : MonoBehaviour
 
     private void TryFire()
     {
+        Toolbox.GetInstance.GetUI().UpdateAmmo(currentGun.currentBulletCount);
         if (Input.GetButton("Fire1") && currentFireRate <= 0 && !isReload)
         {
             Fire();

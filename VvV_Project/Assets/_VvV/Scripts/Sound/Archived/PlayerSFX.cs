@@ -33,7 +33,8 @@ public class PlayerSFX : MonoBehaviour
      */
 
     public SoundManager soundManager;
-    private List<AudioSource> audioSources = new List<AudioSource>();     // [0] Movement sounds // [1] Active sounds // [2] Passive sounds
+    private List<AudioSource> audioSources = new List<AudioSource>();     
+    // [0] Movement sounds // [1] Active sounds // [2] Passive sounds
     float minMaxStart = 0f;
 
     void Start()
