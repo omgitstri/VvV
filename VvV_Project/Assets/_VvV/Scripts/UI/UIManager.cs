@@ -57,18 +57,25 @@ public class UIManager : MonoBehaviour
         //batteryUI.SetMaxEMPCharge(maxBatteryCharge);
 
         /// Linked to Player functions
-        if (playerPrefab == null)
-        {
-            playerPrefab = Entity_Tracker.Instance.PlayerEntity;
-        }
+        //if (playerPrefab == null)
+        //{
+        //    playerPrefab = Entity_Tracker.Instance.PlayerEntity;
+        //}
 
+//<<<<<<< HEAD
         if (playerPrefab != null) {
-            healthUIScript = playerPrefab.GetComponent<PlayerHUD>().hudGO.GetComponent<UIPlayerHealth>();
-            healthUIScript.SetMaxPlayerHealth(playerMaxHealthChild);
+        //   healthUIScript = playerPrefab.GetComponent<PlayerHUD>().hudGO.GetComponent<UIPlayerHealth>();
+        //   healthUIScript.SetMaxPlayerHealth(playerMaxHealthChild);
 
             ammoText = playerPrefab.GetComponent<PlayerHUD>().hudAmmo.GetComponent<Text>();
 
         }
+//=======
+        //if (playerPrefab != null) {
+        //    healthUIScript = playerPrefab.GetComponent<PlayerHUD>().hudGO.GetComponent<UIPlayerHealth>();
+        //    //healthUIScript.SetMaxPlayerHealth(playerMaxHealthChild);
+        //}
+//>>>>>>> a0949a9a1136a3b3912398bf9eb9f94a08f314b2
 
 
         //healthUIScript.gameObject.SetActive(false);
@@ -184,8 +191,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePlayerHP(int playerHP)
     {
-        currentPlayerHealthChild = playerPrefab.GetComponent<PlayerDamagable>().currentHitPoint;
-        healthUIScript.SetPlayerHealth(currentPlayerHealthChild);
+        //currentPlayerHealthChild = playerPrefab.GetComponent<PlayerDamagable>().currentHitPoint;
+        //healthUIScript.SetPlayerHealth(currentPlayerHealthChild);
     }
 
     public void UpdateAmmo(int ammoCount) {
