@@ -57,19 +57,20 @@ public class UIManager : MonoBehaviour
         //batteryUI.SetMaxEMPCharge(maxBatteryCharge);
 
         /// Linked to Player functions
-        //if (playerPrefab == null)
-        //{
-        //    playerPrefab = Entity_Tracker.Instance.PlayerEntity;
-        //}
+        if (playerPrefab == null)
+        {
+            playerPrefab = Entity_Tracker.Instance.PlayerEntity;
+        }
+
+        if (playerPrefab != null) {
+            ammoText = playerPrefab.GetComponent<PlayerHUD>().hudAmmo.GetComponent<Text>();
+        }
 
 //<<<<<<< HEAD
-        if (playerPrefab != null) {
+        //if (playerPrefab != null) {
         //   healthUIScript = playerPrefab.GetComponent<PlayerHUD>().hudGO.GetComponent<UIPlayerHealth>();
         //   healthUIScript.SetMaxPlayerHealth(playerMaxHealthChild);
-
-            ammoText = playerPrefab.GetComponent<PlayerHUD>().hudAmmo.GetComponent<Text>();
-
-        }
+        //}
 //=======
         //if (playerPrefab != null) {
         //    healthUIScript = playerPrefab.GetComponent<PlayerHUD>().hudGO.GetComponent<UIPlayerHealth>();

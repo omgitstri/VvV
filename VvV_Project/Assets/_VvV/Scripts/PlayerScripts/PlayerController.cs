@@ -135,6 +135,9 @@ public class PlayerController : MonoBehaviour
         }
         if((Input.GetButton("Horizontal") || Input.GetButton("Vertical"))&& !audioSource.isPlaying)
         {
+            if (audioSource.clip != Toolbox.GetInstance.GetSound().step) {
+                audioSource.clip = Toolbox.GetInstance.GetSound().step;
+            }
             audioSource.Play();
         }
 
