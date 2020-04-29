@@ -10497,7 +10497,7 @@ MonoBehaviour:
   runSpeed: 12
   jumpForce: 5
   lookSensitivity: 1
-  cameraRotationLimit: 45
+  cameraRotationLimit: 60
   theCamera: {fileID: 7459758345296945519}
   aimer: {fileID: 3307821411806026988}
 --- !u!114 &3801473050910417648
@@ -12079,7 +12079,7 @@ PrefabInstance:
     - target: {fileID: 1635956696992617369, guid: c7110dbdabc225b4e91fcc702b727667,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.000022888195
       objectReference: {fileID: 0}
     - target: {fileID: 1635956696992617369, guid: c7110dbdabc225b4e91fcc702b727667,
         type: 3}
@@ -12124,12 +12124,12 @@ PrefabInstance:
     - target: {fileID: 1635956696992617369, guid: c7110dbdabc225b4e91fcc702b727667,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 18
+      value: 18.99939
       objectReference: {fileID: 0}
     - target: {fileID: 1635956696992617369, guid: c7110dbdabc225b4e91fcc702b727667,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 16.3125
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1635956696992617369, guid: c7110dbdabc225b4e91fcc702b727667,
         type: 3}

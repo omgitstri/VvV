@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_VvV/Scene/StartMenu.unity
+    guid: 18a0c9289d59188458a68ce750099627
+  - enabled: 1
     path: Assets/_VvV/Scene/Levels/02.unity
     guid: a7866ccfadc6455409332dbfa2afe767
   - enabled: 1
@@ -17,9 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_VvV/Scene/Gyms/SceneLoadingGym.unity
     guid: f1b0513cc28b0c1489a5966e77a41511
-  - enabled: 1
-    path: Assets/_VvV/Scene/StartMenu.unity
-    guid: 18a0c9289d59188458a68ce750099627
   - enabled: 1
     path: Assets/_VvV/Scene/Gyms/AudioGym.unity
     guid: aa247c6363ada7543b4c2f68609267cb

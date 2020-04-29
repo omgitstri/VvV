@@ -219,13 +219,10 @@ public class CreateAdjacencyGraph : MonoBehaviour
     {
         StartCoroutine(nameof(RegenDelay));
     }
-
-    public float minimumTimeDelay = 5f;
-    public float maximumTimeDelay = 10f;
-
+    
     IEnumerator RegenDelay()
     {
-        yield return new WaitForSeconds(Random.Range(minimumTimeDelay, maximumTimeDelay));
+        yield return new WaitForSeconds(Random.Range(eStat.minRegenSpeed, eStat.maxRegSpeed));
         RegenManager();
         Toolbox.GetInstance.GetStats().PowerUp(eStat);
     }

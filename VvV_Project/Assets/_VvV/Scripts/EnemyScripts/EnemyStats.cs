@@ -10,7 +10,8 @@ public class EnemyStats {
     public int regen = 0;
     public int hp = 1;
     [Space]
-    public float regSpd = 1;
+    public float minRegenSpeed = 1;
+    public float maxRegSpeed = 5;
     public float atkSpd = 3;
     public float attRng = 2;
     public float crawlSpd = 1;
