@@ -20,7 +20,7 @@ public class CustomTriggerEvent : MonoBehaviour
 
     private List<Transform> triggeredObjects = new List<Transform>();
     private List<Collider> triggeredColliders = new List<Collider>();
-    private float intervals = 1f;
+    private float intervals = 0.5f;
 
     private void OnValidate()
     {
@@ -40,7 +40,7 @@ public class CustomTriggerEvent : MonoBehaviour
             triggeredColliders.Clear();
             triggeredColliders.AddRange(Physics.OverlapBox(GetComponent<Collider>().bounds.center, GetComponent<Collider>().bounds.extents, transform.rotation, layerMask));
 
-            if (triggeredObjects.Count != triggeredColliders.Count)
+            if (triggeredColliders.Count <= 0)
             {
                 triggeredObjects.Clear();
                 foreach (var item in triggeredColliders)
@@ -80,7 +80,7 @@ public class CustomTriggerEvent : MonoBehaviour
                 triggeredObjects.Remove(other.transform);
             }
 
-            if (triggeredObjects.Count <= 0)
+            if (/*triggeredObjects.Count <= 0 && */triggeredColliders.Count <= 0)
             {
                 _OnTriggerExit.Invoke();
             }

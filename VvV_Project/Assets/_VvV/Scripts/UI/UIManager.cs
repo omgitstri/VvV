@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     private Transform playerPrefab = null;
     public Slider healthUI = null;
     private UIPlayerHealth healthUIScript = null;
-    private GameObject healthUIGO = null;
+    //private GameObject healthUIGO = null;
     public float playerMaxHealthChild = 5f;
     public float currentPlayerHealthChild = 5f;
     public int damageTest = 1;

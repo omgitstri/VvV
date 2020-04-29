@@ -20,11 +20,11 @@ public class AnimateDoor : MonoBehaviour
     {
         if(opened)
         {
-            a += Time.deltaTime;
+            a += Time.deltaTime * 2f;
         }
         else
         {
-            a -= Time.deltaTime;
+            a -= Time.deltaTime * 2f;
         }
 
         a = Mathf.Clamp(a, 0, 1);
