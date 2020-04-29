@@ -53,15 +53,15 @@ public class UIManager : MonoBehaviour
         //batteryUI.SetMaxEMPCharge(maxBatteryCharge);
 
         /// Linked to Player functions
-        if (playerPrefab == null)
-        {
-            playerPrefab = Entity_Tracker.Instance.PlayerEntity;
-        }
+        //if (playerPrefab == null)
+        //{
+        //    playerPrefab = Entity_Tracker.Instance.PlayerEntity;
+        //}
 
-        if (playerPrefab != null) {
-            healthUIScript = playerPrefab.GetComponent<PlayerHUD>().hudGO.GetComponent<UIPlayerHealth>();
-            healthUIScript.SetMaxPlayerHealth(playerMaxHealthChild);
-        }
+        //if (playerPrefab != null) {
+        //    healthUIScript = playerPrefab.GetComponent<PlayerHUD>().hudGO.GetComponent<UIPlayerHealth>();
+        //    //healthUIScript.SetMaxPlayerHealth(playerMaxHealthChild);
+        //}
 
 
         //healthUIScript.gameObject.SetActive(false);
@@ -177,8 +177,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePlayerHP(int playerHP)
     {
-        currentPlayerHealthChild = playerPrefab.GetComponent<PlayerDamagable>().currentHitPoint;
-        healthUIScript.SetPlayerHealth(currentPlayerHealthChild);
+        //currentPlayerHealthChild = playerPrefab.GetComponent<PlayerDamagable>().currentHitPoint;
+        //healthUIScript.SetPlayerHealth(currentPlayerHealthChild);
     }
 
     //public void TestPlayerHealthUI()

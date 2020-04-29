@@ -10,32 +10,79 @@ using UnityEngine.UI;
 public class UIPlayerHealth : MonoBehaviour
 {
     //// Variables
-    public Slider healthSlider = null;
     [SerializeField]
     private Gradient gradientColour = null;
     [SerializeField]
     private Image fill = null;
+    [SerializeField]
+    private Image invulnable = null;
+    private float currentAmount = 1;
+
+    private PlayerDamagable playerDamagable = null;
+    private float invulnerabilityTime = 0;
 
     ///***  Function
     ///  Associated to the EMP Bar
     #region <-- TOP 
-    ///  Set max health and value
-    public void SetMaxPlayerHealth(float incomingValue)
+    private void Awake()
     {
-        healthSlider.maxValue = incomingValue;
-        healthSlider.value = incomingValue;
-
-        fill.color = gradientColour.Evaluate(healthSlider.normalizedValue);
+        playerDamagable = GetComponentInParent<PlayerDamagable>();
     }
 
 
-    ///  Fetching the Slider
-    public void SetPlayerHealth(float incomingValue)
+    private void Start()
     {
-        healthSlider.value = incomingValue;
-
-        fill.color = gradientColour.Evaluate(healthSlider.normalizedValue);
+        StartCoroutine(nameof(HealthBarStatus));
+        invulnerabilityTime = playerDamagable.GetInvulnerableTime();
     }
+
+    IEnumerator HealthBarStatus()
+    {
+        while (true)
+        {
+            if (playerDamagable.GetInvulnerableDelay() < 0)
+            {
+                currentAmount = playerDamagable.HealthPercentage();
+            }
+            else
+            {
+                invulnable.fillAmount = Mathf.Lerp(playerDamagable.HealthPercentage(), currentAmount, playerDamagable.GetInvulnerableDelay() / playerDamagable.GetInvulnerableTime());
+            }
+            HealthBarColor();
+            HealthBarValue();
+            yield return null;
+        }
+    }
+
+    private void HealthBarValue()
+    {
+        fill.fillAmount = playerDamagable.HealthPercentage();
+    }
+
+    private void HealthBarColor()
+    {
+        if (playerDamagable.GetInvulnerableDelay() < 0)
+        {
+            if (playerDamagable.HealthPercentage() < 0.3f)
+            {
+                fill.color = Color.red;
+            }
+            else if (playerDamagable.HealthPercentage() < 0.7f)
+            {
+                fill.color = Color.yellow;
+            }
+            else
+            {
+                fill.color = Color.green;
+            }
+        }
+        else
+        {
+            fill.color = Color.gray;
+        }
+    }
+
+
     #endregion		<-- BOTTOM
 
 

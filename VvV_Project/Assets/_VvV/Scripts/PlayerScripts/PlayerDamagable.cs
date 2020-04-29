@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDamagable : Damagable
 {
 
-    public int currentHitPoint = 5;
+    [SerializeField] private int currentHitPoint = 5;
     [SerializeField] private int maxHitPoint = 5;
 
     [SerializeField] private float invulnerableDelay = 0;
@@ -15,6 +15,21 @@ public class PlayerDamagable : Damagable
     private void Start()
     {
         currentHitPoint = maxHitPoint;
+    }
+
+    public float HealthPercentage()
+    {
+        return (float)currentHitPoint / (float)maxHitPoint;
+    }
+
+    public float GetInvulnerableDelay()
+    {
+        return invulnerableDelay;
+    }
+
+    public float GetInvulnerableTime()
+    {
+        return invulnerableTime;
     }
 
     public override void GetDamaged(int dmg)
