@@ -199,7 +199,9 @@ public class UIManager : MonoBehaviour
     public void UpdateAmmo(int ammoCount) {
 
         //ammoText.SetText(ammoCount.ToString());
-        ammoText.text = ammoCount.ToString(); 
+        if (ammoText != null) {
+            ammoText.text = ammoCount.ToString();
+        }
     }
 
     //public void TestPlayerHealthUI()
