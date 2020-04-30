@@ -79,9 +79,15 @@ public class PlayerDamagable : Damagable
     private void PlayerDeath() {
 
         if (currentHitPoint <= 0) {
+
             sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().death, false);
-            Toolbox.GetInstance.GetScene().ReloadScene();
+            StartCoroutine(Death());
         }
+    }
+
+    public IEnumerator Death() {
+        yield return new WaitForSeconds(1f);
+        Toolbox.GetInstance.GetScene().ReloadScene();
 
     }
 }
