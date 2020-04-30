@@ -24,12 +24,14 @@ public class GunController : MonoBehaviour
 
     [SerializeField]
     private GameObject hitEffectPrefab = null;
+    private SoundFX sfx = null;
 
     void Start()
     {
         originPos = Vector3.zero;
         cam = FindObjectOfType<Camera>();
         audioSource = GetComponent<AudioSource>();
+        sfx = player.gameObject.GetComponent<SoundFX>();
     }
 
 
@@ -81,7 +83,8 @@ public class GunController : MonoBehaviour
     {
         currentGun.currentBulletCount--;
         currentFireRate = currentGun.fireRate;
-        PlaySE(currentGun.fire_Sound);
+        //PlaySE(currentGun.fire_Sound);
+        sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().shoot, true);
         currentGun.muzzleFlash.Play();
         Hit();
         StopAllCoroutines();
@@ -137,8 +140,8 @@ public class GunController : MonoBehaviour
         {
             isReload = true;
 
-            PlaySE(currentGun.reload_Sound);
-
+            //PlaySE(currentGun.reload_Sound);
+            sfx.PlaySound(audioSource, currentGun.reload_Sound, true);
             currentGun.anim.SetTrigger("Reload");
 
             currentGun.carryBulletCount += currentGun.currentBulletCount;
@@ -261,9 +264,11 @@ public class GunController : MonoBehaviour
         }
     }
 
+    /*
     private void PlaySE(AudioClip _clip)
     {
         audioSource.clip = _clip;
         audioSource.Play();
     }
+    */
 }

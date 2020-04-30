@@ -72,7 +72,7 @@ public class PlayerSFX : MonoBehaviour
     public void StopAttack() { StopSound(1); }
 
     // PASSIVE SOUNDS FUNCTIONS - SOURCE 2
-    public void Hurt()
+    /*public void Hurt()
     {
         //randomize grunts
         var hurtIndex = Random.Range(0, soundManager.hurt.Count);
@@ -93,7 +93,7 @@ public class PlayerSFX : MonoBehaviour
                 }
             }
         }
-    }
+    }*/ 
     public void Death()
     {
         // Pause ALL Sounds

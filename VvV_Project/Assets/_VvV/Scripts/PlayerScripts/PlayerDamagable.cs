@@ -10,11 +10,15 @@ public class PlayerDamagable : Damagable
 
     [SerializeField] private float invulnerableDelay = 0;
     [SerializeField] private float invulnerableTime = 3;
+    private SoundFX sfx;
+    private AudioSource audioSource;
 
 
     private void Start()
     {
         currentHitPoint = maxHitPoint;
+        sfx = GetComponent<SoundFX>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public float HealthPercentage()
@@ -40,6 +44,10 @@ public class PlayerDamagable : Damagable
         {
             currentHitPoint -= dmg;
             invulnerableDelay = invulnerableTime;
+
+            if (audioSource != null) {
+                sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().hurt, true);
+            }
         }
     }
 
@@ -71,6 +79,7 @@ public class PlayerDamagable : Damagable
     private void PlayerDeath() {
 
         if (currentHitPoint <= 0) {
+            sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().death, false);
             Toolbox.GetInstance.GetScene().ReloadScene();
         }
 

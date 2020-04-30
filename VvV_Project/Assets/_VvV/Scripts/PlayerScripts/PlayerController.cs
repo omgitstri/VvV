@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     bool isNearEnemy = false;
 
     private AudioSource audioSource = null;
+    private SoundFX sfx = null;
 
     void Start()
     {
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
         gunPrefab = GameObject.Find("GunHolder");
         //handPrefab = GameObject.Find("HandHolder");
         audioSource = GetComponent<AudioSource>();
+        sfx = GetComponent<SoundFX>();
         //handPrefab.SetActive(false);
     }
 
@@ -135,15 +137,22 @@ public class PlayerController : MonoBehaviour
         }
         if((Input.GetButton("Horizontal") || Input.GetButton("Vertical"))&& !audioSource.isPlaying)
         {
-            if (audioSource.clip != Toolbox.GetInstance.GetSound().step) {
+            if (audioSource != null) {
+                sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().step, true);
+            }
+
+            /*if (audioSource.clip != Toolbox.GetInstance.GetSound().step) {
                 audioSource.clip = Toolbox.GetInstance.GetSound().step;
             }
-            audioSource.Play();
+            audioSource.Play();*/
         }
 
         if(Input.GetButtonUp("Horizontal")|| Input.GetButtonUp("Vertical"))
         {
-            audioSource.Stop();
+            if (audioSource != null) {
+                sfx.StopSound(audioSource);
+            }
+            //audioSource.Stop();
         }
     }
 

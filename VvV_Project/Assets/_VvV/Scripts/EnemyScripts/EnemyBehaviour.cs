@@ -20,18 +20,25 @@ public class EnemyBehaviour : MonoBehaviour
     private EnemyStats eStats = null;
     private float attackCooldown = 1f;
     private Enemy_AttackManager enemyAttack = null;
-
     [Space]
 
+    #region - Sound variables, plz ignore, it's disgusting -
+    private SoundFX sfx = null;
+    [SerializeField]private AudioSource audioSource = null;
+    [SerializeField] private AudioSource audioSource1 = null;
+    [SerializeField] private AudioSource audioSource2 = null;
+    #endregion
+
+    [Space]
     [SerializeField] private bool customColorDisplay = true;
     [SerializeField] private Color gizmoColor = new Color(1f, 0f, 0f, 0.2f);
-
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         eStats = transform.root.GetComponent<EnemyStatsContainer>().eStats;
         enemyAttack = transform.root.GetComponent<Enemy_AttackManager>();
+        sfx = GetComponent<SoundFX>();
     }
 
     private void Start()
@@ -90,10 +97,21 @@ public class EnemyBehaviour : MonoBehaviour
         {
             navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(currentTarget.position);
+
+            if (audioSource != null) {
+                if (!audioSource.isPlaying) {
+                    //sfx.PlaySound(audioSource1, Toolbox.GetInstance.GetSound().eStep, false);
+                }
+            }
         }
         else
         {
             navMeshAgent.isStopped = true;
+            if (audioSource != null) {
+                if (audioSource.isPlaying) {
+                    //sfx.StopSound(audioSource1);
+                }
+            }
         }
     }
 
@@ -130,6 +148,9 @@ public class EnemyBehaviour : MonoBehaviour
                     enemyAttack.stop.position = Entity_Tracker.Instance.PlayerEntity.position + Vector3.up * 0.5f;
                     enemyAttack.StartAttacking();
                     attackCooldown = eStats.atkSpd;
+                    if (audioSource != null) {
+                        sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eAttack, true);
+                    }
                 }
                 else
                 {

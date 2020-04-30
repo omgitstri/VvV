@@ -24,7 +24,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip reload;
     public AudioClip step;
     public AudioClip sprint;
-    public List<AudioClip> hurt;
+    public AudioClip hurt;
     public AudioClip death;
     public AudioClip melee;
     //public AudioClip vault;
