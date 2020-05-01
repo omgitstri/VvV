@@ -133,6 +133,7 @@ public class EnemyMovementState : MonoBehaviour
 
     public void EnemyDead() {
         speed = 0;
+        sfx.StopSound(audioSource);
     }
 
 	#endregion		<-- BOTTOM

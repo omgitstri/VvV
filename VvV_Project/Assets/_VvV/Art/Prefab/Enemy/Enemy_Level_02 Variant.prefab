@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 832271760, guid: fbcf259689b68944c9005a0812e5ad98, type: 3}
+      propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1583849707, guid: fbcf259689b68944c9005a0812e5ad98, type: 3}
       propertyPath: teleportPoint.x
       value: -5.7829585
@@ -18,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: m_Name
-      value: Enemy_Level 02
+      value: Enemy_Level_02 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1442723012318392187, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
