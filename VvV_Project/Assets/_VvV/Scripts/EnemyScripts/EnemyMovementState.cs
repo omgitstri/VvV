@@ -28,7 +28,8 @@ public class EnemyMovementState : MonoBehaviour
 	[SerializeField]
 	private float speed = 1f;
 	private NavMeshAgent navMesh;
-
+    [SerializeField]private AudioSource audioSource = null;
+    private SoundFX sfx = null;
 	 // On frame
 	void Awake()
 	{
@@ -39,6 +40,7 @@ public class EnemyMovementState : MonoBehaviour
 		navMesh = GetComponent<NavMeshAgent>();
 
 		animator = GetComponent<Animator>();
+        sfx = GetComponent<SoundFX>();
 	}
 
 	void Start()
@@ -100,14 +102,19 @@ public class EnemyMovementState : MonoBehaviour
 		speed = eStats.moveSpd;
 		animator.SetBool("isCrawling", false);
 
-	}
+        if (audioSource != null) {
+            //sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eStep, true);
+            sfx.LoopSound(audioSource, Toolbox.GetInstance.GetSound().eStep);
+        }
+    }
 
 	public  void EnemyCrawl()
 	{
 		speed = eStats.crawlSpd;
 		animator.SetBool("isCrawling", true);
+        sfx.LoopSound(audioSource, Toolbox.GetInstance.GetSound().eCrawl);
 
-	}
+    }
 
 	public  void EnemyRun()
 	{
@@ -117,6 +124,7 @@ public class EnemyMovementState : MonoBehaviour
 	public  void EnemyIdle()
 	{
 		speed = 0; /* eStats.moveSpd; */
+        sfx.StopSound(audioSource);
 	}
 
     public void EnemyHurt() {

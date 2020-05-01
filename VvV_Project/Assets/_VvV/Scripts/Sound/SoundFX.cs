@@ -14,11 +14,24 @@ public class SoundFX : MonoBehaviour
         source.pitch = minMaxPitch;
         }
 
+
         source.clip = sound;
         source.Play();
     }
     public void StopSound(AudioSource source) {
         if (source != null && source.isPlaying)
             source.Pause();
+    }
+
+    public void LoopSound(AudioSource source, AudioClip sound) {
+
+        if (source.clip == null || source.clip != sound) {
+            source.clip = sound;
+            source.Play();
+        }
+
+        else if (!source.isPlaying) {
+            source.Play();
+        }
     }
 }

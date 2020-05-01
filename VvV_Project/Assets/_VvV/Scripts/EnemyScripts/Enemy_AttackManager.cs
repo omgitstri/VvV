@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_AttackManager : MonoBehaviour
-{
+public class Enemy_AttackManager : MonoBehaviour {
     public Transform start, stop;
     public List<Transform> middle = new List<Transform>();
     [HideInInspector] public float a;
@@ -14,23 +13,25 @@ public class Enemy_AttackManager : MonoBehaviour
     public List<IndividualCube> selectedIndividualCubes = new List<IndividualCube>();
     public List<GymEnemyAttack_CubeLerp> attackCubes = new List<GymEnemyAttack_CubeLerp>();
     private EnemyStats eStats = null;
+    [Space]
+    private SoundFX sfx = null;
+    [SerializeField]private AudioSource audioSource = null;
 
 
-    private void Awake()
-    {
+
+    private void Awake() {
         eStats = GetComponent<EnemyStatsContainer>().eStats;
+        sfx = GetComponent<SoundFX>();
     }
 
-    private void Start()
-    {
+    private void Start() {
         InitManager();
 
     }
 
     [ContextMenu(nameof(InitManager))]
 
-    public void InitManager()
-    {
+    public void InitManager() {
         allIndividualCubes.Clear();
         allIndividualCubes.AddRange(GetComponentsInChildren<IndividualCube>());
 
@@ -39,11 +40,9 @@ public class Enemy_AttackManager : MonoBehaviour
         SetupCube();
     }
 
-    public void SetupCube()
-    {
+    public void SetupCube() {
         // Enable AttackCubes
-        foreach (var item in selectedIndividualCubes)
-        {
+        foreach (var item in selectedIndividualCubes) {
             attackCubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>(true));
             item.visualMesh.gameObject.SetActive(true);
 
@@ -59,17 +58,16 @@ public class Enemy_AttackManager : MonoBehaviour
     public List<GymEnemyAttack_CubeLerp> cubes = new List<GymEnemyAttack_CubeLerp>();
 
     [ContextMenu(nameof(StartAttack))]
-    public void StartAttacking()
-    {
+    public void StartAttacking() {
         cubes.Clear();
-
-        foreach (var item in selectedIndividualCubes)
-        {
+        if (audioSource != null) {
+            sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eAttack, true);
+        }
+        foreach (var item in selectedIndividualCubes) {
             if (!item.killed)
                 cubes.Add(item.attackMesh);
         }
-        foreach (var item in cubes)
-        {
+        foreach (var item in cubes) {
             item.gameObject.SetActive(true);
             item.attack = true;
 
@@ -84,10 +82,8 @@ public class Enemy_AttackManager : MonoBehaviour
             //item.middle.AddRange(middle);
         }
 
-        foreach (var item in selectedIndividualCubes)
-        {
-            if (!item.killed)
-            {
+        foreach (var item in selectedIndividualCubes) {
+            if (!item.killed) {
                 var cube = item.attackMesh;
                 //cube.enabled = true;
 
@@ -105,12 +101,10 @@ public class Enemy_AttackManager : MonoBehaviour
         //SetupCube();
         StartCoroutine(nameof(StartAttack));
     }
-    private IEnumerator StartAttack()
-    {
+    private IEnumerator StartAttack() {
         float elapsedTime = 0f;
         float _waitTime = eStats.atkSpd * 0.5f;
-        while (elapsedTime < _waitTime)
-        {
+        while (elapsedTime < _waitTime) {
             elapsedTime += Time.deltaTime;
             a = elapsedTime;
             yield return null;
@@ -118,15 +112,13 @@ public class Enemy_AttackManager : MonoBehaviour
 
         a = 1;
 
-        foreach (var item in cubes)
-        {
+        foreach (var item in cubes) {
             item.attack = false;
             item.reverse = true;
         }
 
         elapsedTime = 0f;
-        while (elapsedTime < _waitTime)
-        {
+        while (elapsedTime < _waitTime) {
             elapsedTime += Time.deltaTime;
             a = elapsedTime;
             yield return null;
@@ -134,15 +126,13 @@ public class Enemy_AttackManager : MonoBehaviour
 
         a = 1;
 
-        foreach (var item in cubes)
-        {
+        foreach (var item in cubes) {
             item.attack = false;
             item.reverse = false;
             item.gameObject.SetActive(false);
         }
 
-        foreach (var item in selectedIndividualCubes)
-        {
+        foreach (var item in selectedIndividualCubes) {
             item.visualMesh.gameObject.SetActive(true);
             //if (item.transform.GetChild(0).TryGetComponent(out MeshRenderer mesh))
             //{

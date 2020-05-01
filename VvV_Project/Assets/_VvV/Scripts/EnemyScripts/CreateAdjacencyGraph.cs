@@ -20,9 +20,12 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
     [HideInInspector] public int direction;
     [HideInInspector] public int distance;
-
     //test
     public int attackCount = 20;
+    [Space]
+    [SerializeField] private AudioSource audioSource = null;
+    private SoundFX sfx = null;
+
     [ContextMenu(nameof(GetAttackCubes))]
     public void GetAttackCubes()
     {
@@ -51,6 +54,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
     private void Awake()
     {
         eStat = GetComponent<EnemyStatsContainer>().eStats;
+        sfx = GetComponent<SoundFX>();
     }
 
     void Start()
@@ -184,6 +188,9 @@ public class CreateAdjacencyGraph : MonoBehaviour
             {
                 //Children.Remove(kvp.Key);
                 kvp.Value.DeactivateNeighbours();
+                if (audioSource != null) {
+                    sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eHurt, true);
+                }
             }
         }
     }
@@ -208,6 +215,9 @@ public class CreateAdjacencyGraph : MonoBehaviour
             if (child != null)
             {
                 child.Invoke(nameof(child.DeactivateCube), Random.Range(0, 0.05f));
+                if (audioSource != null) {
+                    sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eDeath, true);
+                }
             }
         }
 
