@@ -7,12 +7,14 @@ using UnityEngine.Events;
 public class CreateAdjacencyGraph : MonoBehaviour
 {
     public UnityEvent DeathEvent = new UnityEvent();
+    public UnityEvent RegenEvent = new UnityEvent();
 
     [HideInInspector] public Dictionary<Vector3, IndividualCube> Children = new Dictionary<Vector3, IndividualCube>();
 
     [HideInInspector] public List<IndividualCube> allCubes { get; private set; } = new List<IndividualCube>();
 
     private IndividualCube weakPoint = null;
+    [SerializeField] private bool useWeakpoint = true;
 
     [SerializeField] private Material white = null;
     [SerializeField] private Material red = null;
@@ -99,7 +101,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
     void InitAllCubes()
     {
         allCubes.AddRange(GetComponentsInChildren<IndividualCube>());
-        weakPoint = allCubes[Random.Range(0, allCubes.Count)];
+        if (useWeakpoint)
+            weakPoint = allCubes[Random.Range(0, allCubes.Count)];
     }
 
 
@@ -188,7 +191,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
             {
                 //Children.Remove(kvp.Key);
                 kvp.Value.DeactivateNeighbours();
-                if (audioSource != null) {
+                if (audioSource != null)
+                {
                     sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eHurt, true);
                 }
             }
@@ -225,14 +229,20 @@ public class CreateAdjacencyGraph : MonoBehaviour
         DeathEvent.Invoke();
     }
 
+    [ContextMenu(nameof(StartDelayRegenCoroutine))]
     public void StartDelayRegenCoroutine()
     {
         StartCoroutine(nameof(RegenDelay));
     }
-    
+
     IEnumerator RegenDelay()
     {
-        yield return new WaitForSeconds(Random.Range(eStat.minRegenSpeed, eStat.maxRegSpeed));
+        var delay = Random.Range(eStat.minRegenSpeed, eStat.maxRegSpeed);
+        while (delay > 0)
+        {
+            delay -= Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
         RegenManager();
         Toolbox.GetInstance.GetStats().PowerUp(eStat);
     }
@@ -319,6 +329,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
         }
         alive = true;
         GetComponent<EnemyMovementState>().DeactivateCrawl();
+        RegenEvent.Invoke();
     }
 
 

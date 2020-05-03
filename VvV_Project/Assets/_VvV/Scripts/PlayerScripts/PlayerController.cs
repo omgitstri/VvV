@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private Camera theCamera = null;
     private Rigidbody myRigid = null;
     private GunController gunController = null;
+    private NavMeshAgent agent = null;
 
     GameObject gunPrefab = null;
     //GameObject handPrefab = null;
@@ -41,6 +43,12 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource audioSource = null;
     private SoundFX sfx = null;
+
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        
+    }
 
     void Start()
     {

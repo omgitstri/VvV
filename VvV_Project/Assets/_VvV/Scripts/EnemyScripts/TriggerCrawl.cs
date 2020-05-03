@@ -20,7 +20,6 @@ public class TriggerCrawl : MonoBehaviour
     {
         if (crawlTrigger)
         {
-            eStats.isCrawling = true;
             enemyMovement.ActivateCrawl();
         }
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6703238365895053987}
   - component: {fileID: 1280474563836589577}
   - component: {fileID: 657693970483143259}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Enemy_Voxel_Physics
   m_TagString: Enemy
   m_Icon: {fileID: 0}

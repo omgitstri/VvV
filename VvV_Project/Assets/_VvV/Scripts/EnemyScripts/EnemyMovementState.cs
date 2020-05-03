@@ -25,8 +25,8 @@ public class EnemyMovementState : MonoBehaviour
 	public MoveState currentMoveState;
 
 	///  Enemy movement variables
-	[SerializeField]
-	private float speed = 1f;
+	//[SerializeField]
+	//private float speed = 1f;
 	private NavMeshAgent navMesh;
     [SerializeField]private AudioSource audioSource = null;
     private SoundFX sfx = null;
@@ -55,7 +55,6 @@ public class EnemyMovementState : MonoBehaviour
 			DeactivateCrawl();
 		}
 		MoveStateSwitch();
-		navMesh.speed = speed;
 	}
 
 
@@ -99,7 +98,7 @@ public class EnemyMovementState : MonoBehaviour
 
 	public void EnemyWalk()
 	{
-		speed = eStats.moveSpd;
+        navMesh.speed = eStats.moveSpd;
 		animator.SetBool("isCrawling", false);
 
         if (audioSource != null) {
@@ -110,7 +109,7 @@ public class EnemyMovementState : MonoBehaviour
 
 	public  void EnemyCrawl()
 	{
-		speed = eStats.crawlSpd;
+        navMesh.speed = eStats.crawlSpd;
 		animator.SetBool("isCrawling", true);
         sfx.LoopSound(audioSource, Toolbox.GetInstance.GetSound().eCrawl);
 
@@ -118,33 +117,36 @@ public class EnemyMovementState : MonoBehaviour
 
 	public  void EnemyRun()
 	{
-		speed = eStats.moveSpd * 2;
+        navMesh.speed = eStats.moveSpd * 2;
 	}
 
 	public  void EnemyIdle()
 	{
-		speed = 0; /* eStats.moveSpd; */
+        navMesh.speed = 0; /* eStats.moveSpd; */
         sfx.StopSound(audioSource);
 	}
 
     public void EnemyHurt() {
-        speed = 0;
+        navMesh.speed = 0;
     }
 
     public void EnemyDead() {
-        speed = 0;
+        navMesh.speed = 0;
         sfx.StopSound(audioSource);
     }
 
-	#endregion		<-- BOTTOM
+    #endregion		<-- BOTTOM
 
-	#endregion		<-- BOTTOM
+    #endregion		<-- BOTTOM
 
-	public void ActivateCrawl()
-	{
-		currentMoveState = MoveState.Crawl;
-        eStats.isCrawling = true;
-	}
+    public void ActivateCrawl()
+    {
+        if (currentMoveState != MoveState.Dead)
+        {
+            currentMoveState = MoveState.Crawl;
+            eStats.isCrawling = true;
+        }
+    }
 
 	public void DeactivateCrawl()
 	{

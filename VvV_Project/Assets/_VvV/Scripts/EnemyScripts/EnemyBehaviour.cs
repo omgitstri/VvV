@@ -126,7 +126,8 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 if (attackCooldown <= 0)
                 {
-                    enemyAttack.stop.position = Entity_Tracker.Instance.PlayerEntity.position + Vector3.up * 0.5f;
+                    //enemyAttack.stop.position = Entity_Tracker.Instance.PlayerEntity.position + Vector3.up * 0.5f;
+                    enemyAttack.stop.position = currentTarget.position + Vector3.up * 0.5f;
                     enemyAttack.StartAttacking();
                     attackCooldown = eStats.atkSpd;
                 }

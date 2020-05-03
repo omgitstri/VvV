@@ -10,8 +10,8 @@ using UnityEngine.UI;
 public class UIPlayerHealth : MonoBehaviour
 {
     //// Variables
-    [SerializeField]
-    private Gradient gradientColour = null;
+    //[SerializeField]
+    //private Gradient gradientColour = null;
     [SerializeField]
     private Image fill = null;
     [SerializeField]

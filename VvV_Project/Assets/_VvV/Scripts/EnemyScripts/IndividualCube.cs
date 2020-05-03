@@ -142,7 +142,7 @@ public class IndividualCube : MonoBehaviour
     {
         if (!killed)
         {
-            GetComponentInParent<CreateAdjacencyGraph>().alive = false;
+            //GetComponentInParent<CreateAdjacencyGraph>().alive = false;
             if (frontCube != null)
             {
                 frontCube.backCube = null;
@@ -168,7 +168,7 @@ public class IndividualCube : MonoBehaviour
                 bottomCube.topCube = null;
             }
 
-            Invoke(nameof(DeactivateCube), Random.Range(0, 0.05f));
+            Invoke(nameof(DeactivateCube), Random.Range(0, 2f));
         }
     }
 

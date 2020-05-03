@@ -136,7 +136,7 @@ public class GunController : MonoBehaviour
 
     IEnumerator ReloadCoroutine()
     {
-        if (currentGun.carryBulletCount > 0)
+        if (true)
         {
             isReload = true;
 
@@ -149,22 +149,28 @@ public class GunController : MonoBehaviour
 
             yield return new WaitForSeconds(currentGun.reloadTime);
 
-            if (currentGun.carryBulletCount >= currentGun.reloadBulletCount)
+            if (true)
             {
                 currentGun.currentBulletCount = currentGun.reloadBulletCount;
                 currentGun.carryBulletCount -= currentGun.reloadBulletCount;
             }
-            else
-            {
-                currentGun.currentBulletCount = currentGun.carryBulletCount;
-                currentGun.carryBulletCount = 0;
-            }
+
+            //if (currentGun.carryBulletCount >= currentGun.reloadBulletCount)
+            //{
+            //    currentGun.currentBulletCount = currentGun.reloadBulletCount;
+            //    currentGun.carryBulletCount -= currentGun.reloadBulletCount;
+            //}
+            //else
+            //{
+            //    currentGun.currentBulletCount = currentGun.carryBulletCount;
+            //    currentGun.carryBulletCount = 0;
+            //}
             isReload = false;
         }
-        else
-        {
-            print("No Bullet");
-        }
+        //else
+        //{
+        //    print("No Bullet");
+        //}
     }
 
     private void TryFineSight()
