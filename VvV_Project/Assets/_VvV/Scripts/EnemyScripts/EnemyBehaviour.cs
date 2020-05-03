@@ -23,6 +23,7 @@ public class EnemyBehaviour : MonoBehaviour
     [Space]
     [SerializeField] private bool customColorDisplay = true;
     [SerializeField] private Color gizmoColor = new Color(1f, 0f, 0f, 0.2f);
+    public List<float> distances = new List<float>();
 
     private void Awake()
     {
@@ -38,6 +39,7 @@ public class EnemyBehaviour : MonoBehaviour
         entities = new List<Transform>(Entity_Tracker.Instance.GetAIReference());
         currentTarget = player;
         attackCooldown = eStats.atkSpd;
+        navMeshAgent.SetDestination(currentTarget.position);
     }
 
     void Update()
@@ -52,7 +54,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (customColorDisplay == true)
         {
-            if(eStats == null)
+            if (eStats == null)
             {
                 Awake();
             }
@@ -83,18 +85,18 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
 
-        if (currentTarget != null && Vector3.Distance(currentTarget.position, transform.position) > eStats.attRng)
+        if (currentTarget != null)
         {
             navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(currentTarget.position);
-
-
+            Debug.Log(navMeshAgent.remainingDistance);
         }
         else
         {
             navMeshAgent.isStopped = true;
         }
     }
+
 
     private Transform ReturnClosestTarget()
     {
