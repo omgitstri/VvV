@@ -32,9 +32,9 @@ public class Entity_Tracker : MonoBehaviour
         InteractableEntity.Add(_transform);
     }
 
-    public List<GameObject> EnemyEntity { get; private set; } = new List<GameObject>(); 
-    public void AddEnemy(GameObject go) {
-        go.name = "Enemy " + EnemyEntity.Count;
+    public List<GameObject> EnemyEntity { get; private set; } = new List<GameObject>();
+    public void AddEnemy(GameObject go)
+    {
         EnemyEntity.Add(go);
 
     }

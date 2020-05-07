@@ -20,16 +20,22 @@ public class EnemyBehaviour : MonoBehaviour
     private EnemyStats eStats = null;
     private float attackCooldown = 1f;
     private Enemy_AttackManager enemyAttack = null;
+    private CreateAdjacencyGraph graph = null;
     [Space]
     [SerializeField] private bool customColorDisplay = true;
     [SerializeField] private Color gizmoColor = new Color(1f, 0f, 0f, 0.2f);
     public List<float> distances = new List<float>();
+
+    public List<IndividualCube> remainingCubes = new List<IndividualCube>();
+    public float maxCubes = 0;
+    float deathTimer = 1f;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         eStats = transform.root.GetComponent<EnemyStatsContainer>().eStats;
         enemyAttack = transform.root.GetComponent<Enemy_AttackManager>();
+        graph = transform.root.GetComponent<CreateAdjacencyGraph>();
     }
 
     private void Start()
@@ -40,12 +46,35 @@ public class EnemyBehaviour : MonoBehaviour
         currentTarget = player;
         attackCooldown = eStats.atkSpd;
         navMeshAgent.SetDestination(currentTarget.position);
+        deathTimer = eStats.deathPercentageTimer;
     }
 
     void Update()
     {
+        if ((float)remainingCubes.Count / maxCubes <= eStats.deathPercentage)
+        {
+            if (deathTimer < 0)
+            {
+                graph.DestroyAll();
+
+                deathTimer = eStats.deathPercentageTimer;
+            }
+            else
+            {
+                deathTimer -= Time.deltaTime;
+            }
+        }
+
         ChaseTarget();
         AttackTarget();
+    }
+
+    [ContextMenu(nameof(Setup))]
+    public void Setup()
+    {
+        remainingCubes.Clear();
+        remainingCubes.AddRange(GetComponentsInChildren<IndividualCube>());
+        maxCubes = remainingCubes.Count;
     }
 
     private void OnDrawGizmos()

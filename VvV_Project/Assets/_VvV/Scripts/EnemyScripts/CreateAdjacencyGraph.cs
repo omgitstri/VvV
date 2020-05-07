@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 public class CreateAdjacencyGraph : MonoBehaviour
 {
     public UnityEvent DeathEvent = new UnityEvent();
     public UnityEvent RegenEvent = new UnityEvent();
+    public UnityEvent RespawnEvent = new UnityEvent();
 
     [SerializeField] private float criticalMovementDelay = 0.05f;
 
@@ -29,6 +31,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
     [Space]
     [SerializeField] private AudioSource audioSource = null;
     private SoundFX sfx = null;
+
+    private NavMeshAgent agent = null;
 
     [ContextMenu(nameof(GetAttackCubes))]
     public void GetAttackCubes()
@@ -57,6 +61,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
     private void Awake()
     {
+        agent = GetComponent<NavMeshAgent>();
         eStat = GetComponent<EnemyStatsContainer>().eStats;
         sfx = GetComponent<SoundFX>();
     }
@@ -323,7 +328,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
         InitSetupAdjacency();
         var cubes = new List<IndividualCube>();
 
-        cubes.AddRange(GetComponentsInChildren<IndividualCube>());
+        //cubes.AddRange(GetComponentsInChildren<IndividualCube>());
+        cubes.AddRange(allCubes);
 
         foreach (var item in cubes)
         {

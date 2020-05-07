@@ -23,6 +23,17 @@ public class TeleportThisToSetDestination : MonoBehaviour
             transform.position = teleportPoint;
         }
     }
+    public void TeleportTarget(Transform _target)
+    {
+        if (TryGetComponent(out NavMeshAgent nav))
+        {
+            nav.Warp(_target.position);
+        }
+        else
+        {
+            transform.position = _target.position;
+        }
+    }
 
 
 }

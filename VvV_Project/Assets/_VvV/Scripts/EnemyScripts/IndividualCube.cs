@@ -13,6 +13,8 @@ public class IndividualCube : MonoBehaviour
     private Rigidbody physicMesh = null;
     public bool killed { get; private set; } = false;
 
+    private EnemyBehaviour enemyBehaviour = null;
+
     List<IndividualCube> neighbours = new List<IndividualCube>();
 
     public IndividualCube frontCube;
@@ -38,6 +40,7 @@ public class IndividualCube : MonoBehaviour
         attackMesh = transform.GetChild(2).GetComponent<GymEnemyAttack_CubeLerp>();
         attackMesh.parent = this;
         myCollider = GetComponent<Collider>();
+        enemyBehaviour = transform.root.GetComponent<EnemyBehaviour>();
     }
 
     void Start()
@@ -280,6 +283,7 @@ public class IndividualCube : MonoBehaviour
             myCollider.enabled = true;
             visualMesh.enabled = true;
             killed = false;
+            enemyBehaviour.remainingCubes.Add(this);
             StopAllCoroutines();
         }
     }
@@ -309,8 +313,10 @@ public class IndividualCube : MonoBehaviour
             physicMesh.transform.SetParent(null);
             StartCoroutine(nameof(DelaySetKinematic));
             killed = true;
+            enemyBehaviour.remainingCubes.Remove(this);
         }
     }
+
 
     //private void OnDestroy()
     //{

@@ -9,6 +9,9 @@ public class EnemyStats {
     [Header("Enemy Stats")]
     public int regen = 0;
     public int hp = 1;
+    public float deathPercentage = 0.25f;
+    public float deathPercentageTimer = 5f;
+
     [Space]
     public float minRegenSpeed = 1;
     public float maxRegSpeed = 5;
@@ -22,5 +25,10 @@ public class EnemyStats {
     public bool isCrawling = false;
     [Space]
     public bool isMaxed = false;
+
+    public Transform currentTransform = null;
+
+    public float powerUpCooldown = 4;
+    public bool cooldown = false;
 
 }
