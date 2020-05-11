@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-///      Disable Mesh of product on Start
+///      Disable this.gameObject Mesh on Start
 /// </summary>
 
-public class Trigger_DisableMesh : MonoBehaviour
+public class DisableMesh : MonoBehaviour
 {
     // Variables
-    public MeshRenderer rend;
-    public bool disableMesh = true;
+    public bool disableMeshOnStart = true;
+    private MeshRenderer rend;
 
 
     void Start()
     {
-        if (disableMesh == true)
+        if (disableMeshOnStart == true)
         {
             rend = GetComponent<MeshRenderer>();
             rend.enabled = false;
         }
-
-
     }
-
 }
