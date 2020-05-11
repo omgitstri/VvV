@@ -7,7 +7,7 @@ using UnityEngine;
 ///		NOTE: we might need to cutout a hole for the Entrance Zone
 ///	</summary>
 
-public class TriggerEvent_DoorDisappear : MonoBehaviour
+public class Trigger_GameObjectDisappear : MonoBehaviour
 {
     // Variables
     [SerializeField]

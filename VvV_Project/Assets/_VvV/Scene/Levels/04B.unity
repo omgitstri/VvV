@@ -19661,6 +19661,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e52a238e6fb02748bba432a8386bdca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  door1: {fileID: 0}
+  door2: {fileID: 0}
 --- !u!43 &493613936
 Mesh:
   m_ObjectHideFlags: 0
@@ -20404,7 +20407,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-40172
+  m_Name: pb_Mesh86236
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28909,6 +28912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdb75b124fc6914aa61f71cf9b20593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyInstead: 0
+  entrance: {fileID: 1363390595}
 --- !u!43 &713355722
 Mesh:
   m_ObjectHideFlags: 0
@@ -37377,7 +37382,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-46864
+  m_Name: pb_Mesh86122
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
