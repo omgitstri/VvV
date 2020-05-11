@@ -11,16 +11,15 @@ public class EnemyStats {
     public int hp = 1;
     public float deathPercentage = 0.25f;
     public float deathPercentageTimer = 5f;
-
     [Space]
     public float minRegenSpeed = 1;
-    public float maxRegSpeed = 5;
-    public float atkSpd = 3;
-    public float attRng = 2;
-    public float crawlSpd = 1;
-    public float moveSpd = 2;
-    public float aggroRng = 10;
-    public float lostRngDur = 2;
+    public float maxRegenSpeed = 5;
+    public float atkSpeed = 2;
+    public float attRange = 4;
+    public float crawlSpeed = 1;
+    public float moveSpeed = 2;
+    public float aggroRange = 10;
+    public float lostRangDuration = 0;
     [Space]
     public bool isCrawling = false;
     [Space]
@@ -30,5 +29,4 @@ public class EnemyStats {
 
     public float powerUpCooldown = 4;
     public bool cooldown = false;
-
 }

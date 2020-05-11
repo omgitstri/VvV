@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3542532923776398894}
   - component: {fileID: 6947462801282396118}
   - component: {fileID: 6703238365895053987}
-  - component: {fileID: 1280474563836589577}
+  - component: {fileID: -629086576030343628}
   - component: {fileID: 657693970483143259}
   m_Layer: 10
   m_Name: Enemy_Voxel_Physics
@@ -81,7 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1280474563836589577
+--- !u!65 &-629086576030343628
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,8 +92,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.02}
-  m_Center: {x: -0.000002861023, y: -0.00000047683716, z: -0.00000166893}
+  m_Size: {x: 0.019049998, y: 0.019049998, z: 0.019049998}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &657693970483143259
 Rigidbody:
   m_ObjectHideFlags: 0

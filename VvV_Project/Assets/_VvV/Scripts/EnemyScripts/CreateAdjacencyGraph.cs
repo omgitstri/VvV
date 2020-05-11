@@ -263,7 +263,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
 
     IEnumerator RegenDelay()
     {
-        var delay = Random.Range(eStat.minRegenSpeed, eStat.maxRegSpeed);
+        var delay = Random.Range(eStat.minRegenSpeed, eStat.maxRegenSpeed);
         while (delay > 0)
         {
             delay -= Time.deltaTime;
