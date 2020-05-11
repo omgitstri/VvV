@@ -21,9 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
     private float attackCooldown = 1f;
     private Enemy_AttackManager enemyAttack = null;
     private CreateAdjacencyGraph graph = null;
-    [Space]
-    [SerializeField] private bool customColorDisplay = true;
-    [SerializeField] private Color gizmoColor = new Color(1f, 0f, 0f, 0.2f);
+
     public List<float> distances = new List<float>();
 
     public List<IndividualCube> remainingCubes = new List<IndividualCube>();
@@ -55,7 +53,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if (deathTimer < 0)
             {
-                graph.DestroyAll();
+                graph.RespawnAll();
 
                 deathTimer = eStats.deathPercentageTimer;
             }
@@ -76,23 +74,6 @@ public class EnemyBehaviour : MonoBehaviour
         remainingCubes.AddRange(GetComponentsInChildren<IndividualCube>());
         maxCubes = remainingCubes.Count;
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = gizmoColor;
-
-        if (customColorDisplay == true)
-        {
-            if (eStats == null)
-            {
-                Awake();
-            }
-            Gizmos.DrawSphere(transform.position, eStats.aggroRng);
-        }
-    }
-
-
-
 
     private void ChaseTarget()
     {
@@ -118,7 +99,6 @@ public class EnemyBehaviour : MonoBehaviour
         {
             navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(currentTarget.position);
-            Debug.Log(navMeshAgent.remainingDistance);
         }
         else
         {

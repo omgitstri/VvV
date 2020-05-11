@@ -8,6 +8,7 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
 
     public Transform start, stop;
     public List<Transform> middle = new List<Transform>();
+    public Vector3 lastPosition = Vector3.zero;
     public Vector3 radius = Vector3.zero;
     public Enemy_AttackManager root = null;
 
@@ -36,14 +37,6 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
         {
             Return();
         }
-
-        //if(parent.killed)
-        //{
-        //    transform.position = parent.transform.position;
-        //    transform.rotation = parent.transform.rotation;
-        //    transform.SetParent(parent.transform);
-        //    gameObject.SetActive(false);
-        //}
     }
 
     public void Attack()
@@ -73,8 +66,8 @@ public class GymEnemyAttack_CubeLerp : MonoBehaviour
 
     public void Return()
     {
-        transform.SetParent(parent.transform, true);
-        transform.localPosition = Vector3.Slerp(transform.localPosition, Vector3.zero, root.a);
+        //transform.SetParent(parent.transform, true);
+        transform.position = Vector3.Slerp(lastPosition, parent.transform.position, root.a);
     }
 
     private void OnTriggerEnter(Collider other)

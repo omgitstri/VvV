@@ -2,50 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_AttackManager : MonoBehaviour {
+public class Enemy_AttackManager : MonoBehaviour
+{
     public Transform start, stop;
     public List<Transform> middle = new List<Transform>();
-    [HideInInspector] public float a;
-    // [SerializeField] List<Vector3> radius = new List<Vector3>();
-    [SerializeField]
-    [Header("Modify power with dmg var in GymEnemyAttack_CubeLerp")]
     public List<IndividualCube> allIndividualCubes = new List<IndividualCube>();
     public List<IndividualCube> selectedIndividualCubes = new List<IndividualCube>();
-    public List<GymEnemyAttack_CubeLerp> attackCubes = new List<GymEnemyAttack_CubeLerp>();
+    //public List<GymEnemyAttack_CubeLerp> totalAttackCubes = new List<GymEnemyAttack_CubeLerp>();
+    public List<GymEnemyAttack_CubeLerp> activeAttackCubes = new List<GymEnemyAttack_CubeLerp>();
+
+    [SerializeField] private AudioSource audioSource = null;
+
+    [HideInInspector] public float a;
+
     private EnemyStats eStats = null;
-    [Space]
     private SoundFX sfx = null;
-    [SerializeField]private AudioSource audioSource = null;
 
 
 
-    private void Awake() {
+    private void Awake()
+    {
         eStats = GetComponent<EnemyStatsContainer>().eStats;
         sfx = GetComponent<SoundFX>();
     }
 
-    private void Start() {
+    private void Start()
+    {
         InitManager();
-
     }
 
     [ContextMenu(nameof(InitManager))]
-
-    public void InitManager() {
-        allIndividualCubes.Clear();
-        allIndividualCubes.AddRange(GetComponentsInChildren<IndividualCube>());
-
-        attackCubes.Clear();
-
+    public void InitManager()
+    {
+        if (allIndividualCubes.Count <= 0)
+        {
+            allIndividualCubes.Clear();
+            allIndividualCubes.AddRange(GetComponentsInChildren<IndividualCube>());
+        }
         SetupCube();
     }
 
-    public void SetupCube() {
-        // Enable AttackCubes
-        foreach (var item in selectedIndividualCubes) {
-            attackCubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>(true));
+    public void SetupCube()
+    {
+        //totalAttackCubes.Clear();
+        foreach (var item in selectedIndividualCubes)
+        {
+            //totalAttackCubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>(true));
             item.visualMesh.gameObject.SetActive(true);
-
+            item.attackMesh.parent = item;
             item.attackMesh.startPos = item.attackMesh.transform.position;
             item.attackMesh.start = start;
             item.attackMesh.stop = stop;
@@ -55,41 +59,36 @@ public class Enemy_AttackManager : MonoBehaviour {
         }
     }
 
-    public List<GymEnemyAttack_CubeLerp> cubes = new List<GymEnemyAttack_CubeLerp>();
-
     [ContextMenu(nameof(StartAttack))]
-    public void StartAttacking() {
-        cubes.Clear();
-        if (audioSource != null) {
+    public void StartAttacking()
+    {
+        activeAttackCubes.Clear();
+        if (audioSource != null)
+        {
             sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eAttack, true);
         }
-        foreach (var item in selectedIndividualCubes) {
+
+        foreach (var item in selectedIndividualCubes)
+        {
             if (!item.killed)
-                cubes.Add(item.attackMesh);
+                activeAttackCubes.Add(item.attackMesh);
         }
-        foreach (var item in cubes) {
+        foreach (var item in activeAttackCubes)
+        {
             item.gameObject.SetActive(true);
             item.attack = true;
-
-            ////visual mesh
-            //item.transform.parent.GetChild(0).gameObject.SetActive(false);
-
-            //item.startPos = item.transform.position;
-            //item.start = start;
-            //item.stop = stop;
-            //item.root = this;
-            //item.middle.Clear();
-            //item.middle.AddRange(middle);
         }
 
-        foreach (var item in selectedIndividualCubes) {
-            if (!item.killed) {
+        foreach (var item in selectedIndividualCubes)
+        {
+            if (!item.killed)
+            {
                 var cube = item.attackMesh;
                 //cube.enabled = true;
 
                 item.visualMesh.gameObject.SetActive(false);
 
-                cube.startPos = cube.transform.position;
+                cube.startPos = cube.parent.transform.position;
                 cube.start = start;
                 cube.stop = stop;
                 cube.root = this;
@@ -98,46 +97,53 @@ public class Enemy_AttackManager : MonoBehaviour {
             }
         }
 
-        //SetupCube();
         StartCoroutine(nameof(StartAttack));
     }
-    private IEnumerator StartAttack() {
+    private IEnumerator StartAttack()
+    {
         float elapsedTime = 0f;
         float _waitTime = eStats.atkSpd * 0.5f;
-        while (elapsedTime < _waitTime) {
+
+        //attack
+        while (elapsedTime < _waitTime)
+        {
             elapsedTime += Time.deltaTime;
-            a = elapsedTime;
+
+            a = (elapsedTime + 0.001f) / _waitTime;
             yield return null;
         }
 
         a = 1;
 
-        foreach (var item in cubes) {
+        //reverse
+        foreach (var item in activeAttackCubes)
+        {
+            item.lastPosition = item.transform.position;
             item.attack = false;
             item.reverse = true;
         }
 
         elapsedTime = 0f;
-        while (elapsedTime < _waitTime) {
+        while (elapsedTime < _waitTime)
+        {
             elapsedTime += Time.deltaTime;
-            a = elapsedTime;
+            a = (elapsedTime + 0.001f) / _waitTime;
             yield return null;
         }
 
         a = 1;
 
-        foreach (var item in cubes) {
-            item.attack = false;
-            item.reverse = false;
-            item.gameObject.SetActive(false);
-        }
 
-        foreach (var item in selectedIndividualCubes) {
+        //completed
+        foreach (var item in selectedIndividualCubes)
+        {
+            item.attackMesh.attack = false;
+            item.attackMesh.reverse = false;
+            item.attackMesh.transform.SetParent(item.attackMesh.parent.transform);
+            item.attackMesh.transform.localPosition = Vector3.zero;
+            item.attackMesh.gameObject.SetActive(false);
+
             item.visualMesh.gameObject.SetActive(true);
-            //if (item.transform.GetChild(0).TryGetComponent(out MeshRenderer mesh))
-            //{
-            //    mesh.material.SetColor("_Emission", Color.black);
-            //}
         }
     }
 }

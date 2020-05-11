@@ -237,6 +237,24 @@ public class CreateAdjacencyGraph : MonoBehaviour
         DeathEvent.Invoke();
     }
 
+    public void RespawnAll()
+    {
+        foreach (var child in allCubes)
+        {
+            if (child != null)
+            {
+                child.Invoke(nameof(child.DeactivateCube), Random.Range(0, 2f));
+                //if (audioSource != null)
+                //{
+                //    sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eDeath, true);
+                //}
+            }
+        }
+
+        //StartCoroutine("RegenDelay");
+        DeathEvent.Invoke();
+    }
+
     [ContextMenu(nameof(StartDelayRegenCoroutine))]
     public void StartDelayRegenCoroutine()
     {
