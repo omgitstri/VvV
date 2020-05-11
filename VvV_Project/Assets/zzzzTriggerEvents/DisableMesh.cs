@@ -13,7 +13,7 @@ public class DisableMesh : MonoBehaviour
     private MeshRenderer rend;
 
 
-    void Start()
+    void Awake()
     {
         if (disableMeshOnStart == true)
         {
