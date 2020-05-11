@@ -98,7 +98,7 @@ public class EnemyMovementState : MonoBehaviour
 
 	public void EnemyWalk()
 	{
-        navMesh.speed = eStats.moveSpd;
+        navMesh.speed = eStats.moveSpeed;
 		animator.SetBool("isCrawling", false);
 
         if (audioSource != null) {
@@ -109,7 +109,7 @@ public class EnemyMovementState : MonoBehaviour
 
 	public  void EnemyCrawl()
 	{
-        navMesh.speed = eStats.crawlSpd;
+        navMesh.speed = eStats.crawlSpeed;
 		animator.SetBool("isCrawling", true);
         sfx.LoopSound(audioSource, Toolbox.GetInstance.GetSound().eCrawl);
 
@@ -117,7 +117,7 @@ public class EnemyMovementState : MonoBehaviour
 
 	public  void EnemyRun()
 	{
-        navMesh.speed = eStats.moveSpd * 2;
+        navMesh.speed = eStats.moveSpeed * 2;
 	}
 
 	public  void EnemyIdle()

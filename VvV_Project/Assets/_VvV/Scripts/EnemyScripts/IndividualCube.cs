@@ -249,7 +249,10 @@ public class IndividualCube : MonoBehaviour
         {
 
             physicMesh.isKinematic = true;
-            physicMesh.GetComponent<Collider>().enabled = false;
+            if (physicMesh.TryGetComponent<Collider>(out Collider col))
+            {
+                col.enabled = false;
+            }
             float elapsedTime = 0f;
             float waitTime = Random.Range(minimumDelay, maximumDelay);
             Vector3 initPos = physicMesh.transform.localPosition;
@@ -274,11 +277,10 @@ public class IndividualCube : MonoBehaviour
             physicMesh.isKinematic = false;
             physicMesh.Sleep();
 
-            if (physicMesh.TryGetComponent<Collider>(out Collider col))
+            if (physicMesh.TryGetComponent<Collider>(out Collider col2))
             {
-                col.enabled = true;
+                col2.enabled = true;
             }
-
             physicMesh.gameObject.SetActive(false);
             myCollider.enabled = true;
             visualMesh.enabled = true;

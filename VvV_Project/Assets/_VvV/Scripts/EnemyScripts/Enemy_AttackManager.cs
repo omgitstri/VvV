@@ -50,7 +50,7 @@ public class Enemy_AttackManager : MonoBehaviour
             //totalAttackCubes.Add(item.GetComponentInChildren<GymEnemyAttack_CubeLerp>(true));
             item.visualMesh.gameObject.SetActive(true);
             item.attackMesh.parent = item;
-            item.attackMesh.startPos = item.attackMesh.transform.position;
+            item.attackMesh.startPos = item.attackMesh.parent.transform.position;
             item.attackMesh.start = start;
             item.attackMesh.stop = stop;
             item.attackMesh.root = this;
@@ -62,38 +62,29 @@ public class Enemy_AttackManager : MonoBehaviour
     [ContextMenu(nameof(StartAttack))]
     public void StartAttacking()
     {
-        activeAttackCubes.Clear();
         if (audioSource != null)
         {
             sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eAttack, true);
         }
 
-        foreach (var item in selectedIndividualCubes)
-        {
-            if (!item.killed)
-                activeAttackCubes.Add(item.attackMesh);
-        }
-        foreach (var item in activeAttackCubes)
-        {
-            item.gameObject.SetActive(true);
-            item.attack = true;
-        }
-
+        activeAttackCubes.Clear();
         foreach (var item in selectedIndividualCubes)
         {
             if (!item.killed)
             {
-                var cube = item.attackMesh;
-                //cube.enabled = true;
+                activeAttackCubes.Add(item.attackMesh);
+
+                item.attackMesh.gameObject.SetActive(true);
+                item.attackMesh.attack = true;
 
                 item.visualMesh.gameObject.SetActive(false);
 
-                cube.startPos = cube.parent.transform.position;
-                cube.start = start;
-                cube.stop = stop;
-                cube.root = this;
-                cube.middle.Clear();
-                cube.middle.AddRange(middle);
+                item.attackMesh.startPos = item.attackMesh.parent.transform.position;
+                item.attackMesh.start = start;
+                item.attackMesh.stop = stop;
+                item.attackMesh.root = this;
+                item.attackMesh.middle.Clear();
+                item.attackMesh.middle.AddRange(middle);
             }
         }
 
@@ -102,7 +93,7 @@ public class Enemy_AttackManager : MonoBehaviour
     private IEnumerator StartAttack()
     {
         float elapsedTime = 0f;
-        float _waitTime = eStats.atkSpd * 0.5f;
+        float _waitTime = eStats.atkSpeed * 0.5f;
 
         //attack
         while (elapsedTime < _waitTime)

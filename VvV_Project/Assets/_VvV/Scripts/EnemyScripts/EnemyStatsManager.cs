@@ -39,7 +39,7 @@ public class EnemyStatsManager : MonoBehaviour
             {
                 eStats.minRegenSpeed += pwrUpMulti; // Regen speed
                                                     //eStats.atkSpd -= pwrUpMulti; // Attack speed
-                eStats.moveSpd += pwrUpMulti; // Move speed
+                eStats.moveSpeed += pwrUpMulti; // Move speed
                                               //eStats.aggroRng += pwrUpMulti; // Aggro range
                                               //eStats.lostRngDur += pwrUpMulti; // Lost Range Duration
             }

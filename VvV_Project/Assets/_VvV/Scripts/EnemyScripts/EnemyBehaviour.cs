@@ -9,7 +9,7 @@ public class EnemyBehaviour : MonoBehaviour
 {
     //[SerializeField] private float chaseDistance = 10f;
     [SerializeField] private float losePlayer = 0f;
-    [ColorUsageAttribute(true, true)]
+    [ColorUsage(true, true)]
     public Color attackColor = new Color();
 
 
@@ -38,11 +38,11 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Start()
     {
-        losePlayer = eStats.lostRngDur;
+        losePlayer = eStats.lostRangDuration;
         player = Entity_Tracker.Instance.PlayerEntity;
         entities = new List<Transform>(Entity_Tracker.Instance.GetAIReference());
         currentTarget = player;
-        attackCooldown = eStats.atkSpd;
+        attackCooldown = eStats.atkSpeed;
         navMeshAgent.SetDestination(currentTarget.position);
         deathTimer = eStats.deathPercentageTimer;
     }
@@ -79,11 +79,11 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (player != null)
         {
-            if (Vector3.Distance(transform.position, player.position) <= eStats.aggroRng)
+            if (Vector3.Distance(transform.position, player.position) <= eStats.aggroRange)
             {
                 //Debug.Log("player");
                 currentTarget = player;
-                losePlayer = eStats.lostRngDur;
+                losePlayer = eStats.lostRangDuration;
             }
             else if (losePlayer < 0)
             {
@@ -99,10 +99,20 @@ public class EnemyBehaviour : MonoBehaviour
         {
             navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(currentTarget.position);
+
         }
         else
         {
             navMeshAgent.isStopped = true;
+        }
+
+        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
+        {
+            GetComponent<Animator>().SetBool("isWalking", false);
+        }
+        else
+        {
+            GetComponent<Animator>().SetBool("isWalking", true);
         }
     }
 
@@ -133,30 +143,38 @@ public class EnemyBehaviour : MonoBehaviour
         if (Application.isPlaying == true)
         {
             // distance
-            if (Vector3.Distance(currentTarget.position, transform.position) <= eStats.attRng)
+            if (Vector3.Distance(currentTarget.position, transform.position) <= eStats.attRange)
             {
                 if (attackCooldown <= 0)
                 {
                     //enemyAttack.stop.position = Entity_Tracker.Instance.PlayerEntity.position + Vector3.up * 0.5f;
                     enemyAttack.stop.position = currentTarget.position + Vector3.up * 0.5f;
                     enemyAttack.StartAttacking();
-                    attackCooldown = eStats.atkSpd;
+                    attackCooldown = eStats.atkSpeed;
                 }
                 else
                 {
                     attackCooldown -= Time.deltaTime;
                 }
+            }
+            else
+            {
+                if (attackCooldown > eStats.atkSpeed)
+                {
+                    attackCooldown = eStats.atkSpeed;
+                }
+                else if(attackCooldown < eStats.atkSpeed)
+                {
+                    attackCooldown += Time.deltaTime;
+                }
+            }
 
-                //if (attackCooldown < 1f)
-                //{
-                //    foreach (var item in enemyAttack.attackCubes)
-                //    {
-                //        if (item.transform.GetChild(0).TryGetComponent(out MeshRenderer mesh))
-                //        {
-                //            mesh.material.SetColor("_Emission", attackColor);
-                //        }
-                //    }
-                //}
+            foreach (var item in enemyAttack.selectedIndividualCubes)
+            {
+                if (item.transform.GetChild(0).TryGetComponent(out MeshRenderer mesh))
+                {
+                    mesh.material.SetColor("_Emission", Color.Lerp(Color.black, attackColor, (eStats.atkSpeed - attackCooldown) / eStats.atkSpeed));
+                }
             }
         }
 
