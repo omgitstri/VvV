@@ -14,12 +14,13 @@ GameObject:
   - component: {fileID: 2184131799115119474}
   - component: {fileID: 2184131799115119477}
   - component: {fileID: 6113250129424069801}
+  - component: {fileID: 4316669147338230386}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2184131799115119473
 Transform:
@@ -326,8 +327,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2184131799115119476}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ad6ed3bbbee1a4409069c1a1084179b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &4316669147338230386
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184131799115119476}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.2500002, y: 2.5, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 3.2500002, y: 2.5, z: -0.25}
+  m_TimeToStationary: 0.5
