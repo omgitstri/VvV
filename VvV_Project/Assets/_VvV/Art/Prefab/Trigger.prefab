@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a5b49ce0f7ddfa64d9947edbbe22cee3, type: 2}
+  - {fileID: 2100000, guid: c21d7abeac020e1409f9069b7b568e2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -305,10 +305,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4573340238171332016}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!114 &3955044896445748658
@@ -323,5 +323,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0a3afc1a9bb7274fbc5c9702c37de50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rend: {fileID: 0}
-  disableMesh: 1
+  disableMeshOnStart: 1
