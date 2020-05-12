@@ -25,6 +25,7 @@ public class CustomTriggerEvent : MonoBehaviour
     private void OnValidate()
     {
         GetComponent<Collider>().isTrigger = true;
+        gameObject.layer = (1 << 1);
     }
 
     private void Update()
