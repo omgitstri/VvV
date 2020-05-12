@@ -64,4 +64,13 @@ public class SoundManager : MonoBehaviour
     public AudioClip destroy;
     #endregion
 
+    [Header("EMP SFX")]
+    #region - - - - - EMP SFX - - - - - 
+    public AudioClip empDown;
+    public AudioClip empUp;
+    public AudioClip empCharge;
+    public AudioClip empBlast;
+    #endregion
+
+
 }

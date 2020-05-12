@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SoundFX : MonoBehaviour
 {
+    public AudioSource chosenSource;
+    public AudioClip chosenSound;
+    public string soundName;
+
     public void PlaySound(AudioSource source, AudioClip sound, bool changeVP) {
         //TESTING VALUES
         if (changeVP) {
@@ -32,6 +36,34 @@ public class SoundFX : MonoBehaviour
 
         else if (!source.isPlaying) {
             source.Play();
+        }
+    }
+
+    public void ChangeSound(string soundName) {
+
+        switch(soundName) {
+            case "hover":
+                chosenSound = Toolbox.GetInstance.GetSound().menuHover;
+                break;
+            case "confirm":
+                chosenSound = Toolbox.GetInstance.GetSound().menuConfirm;
+                break;
+            case "cancel":
+                chosenSound = Toolbox.GetInstance.GetSound().menuCancel;
+                break;
+
+        }
+
+        if (chosenSource.clip != chosenSound) {
+            chosenSource.clip = chosenSound;
+        }
+
+        ManualPlay();
+    }
+
+    public void ManualPlay() {
+        if (chosenSource != null) {
+            chosenSource.Play();
         }
     }
 }
