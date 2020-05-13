@@ -77,6 +77,10 @@ MonoBehaviour:
   doorOpen: {fileID: 8300000, guid: f4c3d97563b5cb64ea4d025f723826ff, type: 3}
   doorClose: {fileID: 8300000, guid: 53dbdd785dd65f544bb4cfd503967865, type: 3}
   destroy: {fileID: 8300000, guid: b065d7ae749da4e47954271569f6fa78, type: 3}
+  empDown: {fileID: 8300000, guid: f30420eecfb79354bb623b5d26857f23, type: 3}
+  empUp: {fileID: 8300000, guid: f8fa5737a75bb9c48b79207d33816390, type: 3}
+  empCharge: {fileID: 8300000, guid: f30420eecfb79354bb623b5d26857f23, type: 3}
+  empBlast: {fileID: 8300000, guid: 2312567a59bf8b04a806ae160345d5e0, type: 3}
 --- !u!114 &-7723183715914216494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +94,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   main: {fileID: 8300000, guid: b97426c98b69a6745acb6f063d86592f, type: 3}
-  begin: {fileID: 0}
-  wave: {fileID: 0}
-  down: {fileID: 0}
+  begin: {fileID: 8300000, guid: 93dec0f6818c29b47b973bcc17cc5f1f, type: 3}
+  wave: {fileID: 8300000, guid: e57bddcdaf2e7ea4b96c38242c276536, type: 3}
+  down: {fileID: 8300000, guid: 0cfdd2edda87f1e4c986ddd682afe532, type: 3}

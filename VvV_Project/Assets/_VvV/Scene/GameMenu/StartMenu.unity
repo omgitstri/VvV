@@ -681,17 +681,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1618194156}
-        m_MethodName: QuitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 02
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 584888848}
         m_MethodName: ChangeSound
         m_Mode: 5
@@ -701,6 +690,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: confirm
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1618194156}
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &584888846
@@ -1841,6 +1841,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 171064526923808779, guid: f34209d0561bc2e4a9e50a80268c9563,
+        type: 3}
+      propertyPath: empDown
+      value: 
+      objectReference: {fileID: 8300000, guid: 211ffca5a4206794b87f3475ba81f1f4, type: 3}
+    - target: {fileID: 171064526923808779, guid: f34209d0561bc2e4a9e50a80268c9563,
+        type: 3}
+      propertyPath: empUp
+      value: 
+      objectReference: {fileID: 8300000, guid: f8fa5737a75bb9c48b79207d33816390, type: 3}
+    - target: {fileID: 171064526923808779, guid: f34209d0561bc2e4a9e50a80268c9563,
+        type: 3}
+      propertyPath: empCharge
+      value: 
+      objectReference: {fileID: 8300000, guid: f30420eecfb79354bb623b5d26857f23, type: 3}
     - target: {fileID: 171064526923808788, guid: f34209d0561bc2e4a9e50a80268c9563,
         type: 3}
       propertyPath: m_LocalPosition.x
