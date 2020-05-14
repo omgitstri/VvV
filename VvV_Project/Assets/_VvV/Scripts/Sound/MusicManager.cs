@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    //[SerializeField] private AudioSource targetAudio;
-    //[SerializeField] private float plusVol = 0.01f;
-    //[SerializeField] private float targetVolume = 1f;
-    //[SerializeField] private bool decrease = false;
+    private AudioSource audioSource;
+    [SerializeField] private float increment = 0.0167f;
 
     [Header("MUSIC SFX")]
     #region - - - - - MUSIC - - - - - 
@@ -18,25 +16,41 @@ public class MusicManager : MonoBehaviour
     #endregion
 
     void Start() {
-        /*
-        if (targetAudio == null) {
-            targetAudio = new AudioSource();
-            targetAudio.loop = true;
-        }*/
+
+        if (audioSource == null) {
+            audioSource = GetComponent<AudioSource>();
+            audioSource.loop = true;
+        }
     }
 
+    private void Update() {
 
+    }
 
     #region - - - - MUSIC FUNCTIONS - - - -
-    public void FadeIn(float delay, float maxVol, AudioClip clip) {
-        // delay is for how long the fadein takes until it reaches maximum volume
-        // 
+    public void FadeIn(AudioClip aClip, float targetVol) {
+        float curVol = audioSource.volume;
+        audioSource.clip = aClip;
 
-        //targetAudio.clip = clip;
+        if (!audioSource.isPlaying) {
+            audioSource.Play();
+        }
+
+        for (curVol = 0; curVol < targetVol; curVol += Time.fixedTime) {
+            audioSource.volume += increment;
+        }
+        
     }
 
-    public void FadeOut(float delay ) {
-        // delay is for how long the fadein takes until it reaches minimum volume
+    public void FadeOut(float delay) {
+        float curVol = audioSource.volume;
+        for (curVol = audioSource.volume ; curVol > 0; curVol += Time.fixedTime) {
+            audioSource.volume += increment;
+        }
+
+        if (audioSource.volume <= 0) {
+            audioSource.Stop();
+        }
     }
 
     public void StopMusic(float delay) {
@@ -47,29 +61,4 @@ public class MusicManager : MonoBehaviour
     public void PlayMain() {
 
     }
-
-    /*
-    void ChangeVol() {
-
-        // - - - DECREASING VOLUME
-        if (triggered && targetAudio.volume > targetVolume && decrease)
-            targetAudio.volume -= incrementVol;
-
-        else if (decrease && targetAudio.volume < targetVolume) {
-            targetAudio.volume = targetVolume;
-            return;
-        }
-
-
-        // - - - - INCREASING VOLUME
-        if (triggered && targetAudio.volume < targetVolume && !decrease)
-            targetAudio.volume += incrementVol;
-
-        else if (!decrease && targetAudio.volume > targetVolume) {
-            targetAudio.volume = targetVolume;
-            return;
-        }
-
-    }
-    */
 }

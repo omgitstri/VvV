@@ -22,6 +22,7 @@ public class Toolbox : MonoBehaviour
     [SerializeField] private EnemyStatsManager statsManager = null;
     [SerializeField] private GameObject soundManager = null;
     [SerializeField] private GameObject uIManager = null;
+    [SerializeField] private MusicManager musicManager = null;
 
 
     void Awake()
@@ -53,6 +54,14 @@ public class Toolbox : MonoBehaviour
             soundManager.transform.parent = this.gameObject.transform;
         }
 
+        if (musicManager == null) {
+            if (soundManager != null) {
+                musicManager = soundManager.GetComponent<MusicManager>();
+            }
+        }
+
+
+
         if (uIManager == null)
         {
             uIManager = Instantiate(Resources.Load(nameof(UIManager), typeof(GameObject)) as GameObject);
@@ -73,6 +82,10 @@ public class Toolbox : MonoBehaviour
     public SoundManager GetSound()
     {
         return soundManager.GetComponent<SoundManager>();
+    }
+
+    public MusicManager GetMusic() {
+        return musicManager.GetComponent<MusicManager>();
     }
 
     public UIManager GetUI()
