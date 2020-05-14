@@ -99,6 +99,7 @@ public class EnemyMovementState : MonoBehaviour
 	public void EnemyWalk()
 	{
         navMesh.speed = eStats.moveSpeed;
+		animator.SetBool("isWalking", true);
 		animator.SetBool("isCrawling", false);
 
         if (audioSource != null) {
@@ -122,6 +123,7 @@ public class EnemyMovementState : MonoBehaviour
 
 	public  void EnemyIdle()
 	{
+        animator.SetBool("isWalking", false);
         navMesh.speed = 0; /* eStats.moveSpd; */
         sfx.StopSound(audioSource);
 	}

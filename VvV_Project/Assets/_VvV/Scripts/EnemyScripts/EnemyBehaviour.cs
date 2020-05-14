@@ -108,11 +108,11 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
         {
-            GetComponent<Animator>().SetBool("isWalking", false);
+            GetComponent<EnemyMovementState>().EnemyIdle();
         }
         else
         {
-            GetComponent<Animator>().SetBool("isWalking", true);
+            GetComponent<EnemyMovementState>().EnemyWalk();
         }
     }
 

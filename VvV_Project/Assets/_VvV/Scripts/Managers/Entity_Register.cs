@@ -19,7 +19,7 @@ public class Entity_Register : MonoBehaviour
                 Entity_Tracker.Instance.AddInteractable(this.transform);
                 break;
             case EEntities.enemy:
-                Entity_Tracker.Instance.AddEnemy(this.gameObject);
+                Entity_Tracker.Instance.AddEnemy(this.transform);
                 break;
             default:
                 break;

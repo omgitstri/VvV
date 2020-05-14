@@ -83,7 +83,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
         if (timer <= 0 && alive)
         {
             WeakPointFreeWalking();
-           // timer = Random.Range(0f, 0.3f);
+            // timer = Random.Range(0f, 0.3f);
             timer = Random.Range(0f, criticalMovementDelay);
         }
         else
@@ -227,7 +227,8 @@ public class CreateAdjacencyGraph : MonoBehaviour
             if (child != null)
             {
                 child.Invoke(nameof(child.DeactivateCube), Random.Range(0, 2f));
-                if (audioSource != null) {
+                if (audioSource != null)
+                {
                     sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eDeath, true);
                 }
             }
@@ -258,7 +259,9 @@ public class CreateAdjacencyGraph : MonoBehaviour
     [ContextMenu(nameof(StartDelayRegenCoroutine))]
     public void StartDelayRegenCoroutine()
     {
-        StartCoroutine(nameof(RegenDelay));
+        //StartCoroutine(nameof(RegenDelay));
+        RegenManager();
+
     }
 
     IEnumerator RegenDelay()

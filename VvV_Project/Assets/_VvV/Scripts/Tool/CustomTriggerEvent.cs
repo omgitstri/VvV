@@ -23,14 +23,14 @@ public class CustomTriggerEvent : MonoBehaviour
     private List<Collider> triggeredColliders = new List<Collider>();
     private float intervals = 0.5f;
 
-    private void OnValidate()
-    {
-        GetComponent<Collider>().isTrigger = true;
-        if (ignoreRaycastLayer == true)
-        {
-            gameObject.layer = (1 << 1);
-        }
-    }
+    //private void OnValidate()
+    //{
+    //    GetComponent<Collider>().isTrigger = true;
+    //    if (ignoreRaycastLayer == true)
+    //    {
+    //        gameObject.layer = (1 << 1);
+    //    }
+    //}
 
     private void Update()
     {
