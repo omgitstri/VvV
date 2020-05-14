@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 4573340238171332046}
   - component: {fileID: 4573340238171332047}
   - component: {fileID: 3955044896445748658}
-  m_Layer: 0
+  - component: {fileID: 582323456504182619}
+  - component: {fileID: 4275641389449486880}
+  m_Layer: 2
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,4 +325,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0a3afc1a9bb7274fbc5c9702c37de50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableMeshOnStart: 1
+  onAwake: 1
+--- !u!114 &582323456504182619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573340238171332016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e21543f0eeef924cb8e69e7df91ea0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreRaycastLayer: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  ToggleOnTriggerEnter: 0
+  ToggleOnTriggerExit: 0
+  ToggleOnTriggerStay: 0
+  _OnTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  _OnTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  _OnTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4275641389449486880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573340238171332016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d370cff36a0a8439dee97d52cb8494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callBack:
+    m_PersistentCalls:
+      m_Calls: []

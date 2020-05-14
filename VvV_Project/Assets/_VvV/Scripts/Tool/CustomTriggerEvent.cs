@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class CustomTriggerEvent : MonoBehaviour
 {
+    public bool ignoreRaycastLayer = true;
     public LayerMask layerMask = ~0;
 
     [HideInInspector] public bool ToggleOnTriggerEnter = false;
@@ -25,7 +26,10 @@ public class CustomTriggerEvent : MonoBehaviour
     private void OnValidate()
     {
         GetComponent<Collider>().isTrigger = true;
-        gameObject.layer = (1 << 1);
+        if (ignoreRaycastLayer == true)
+        {
+            gameObject.layer = (1 << 1);
+        }
     }
 
     private void Update()
