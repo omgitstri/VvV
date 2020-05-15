@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum mState { inactive, active }
+
 public class MusicManager : MonoBehaviour
 {
     private AudioSource audioSource;
-    [SerializeField] private float increment = 0.0167f;
+    private float targetVol = 1;
+    float targetDelay;
+    public bool fadeIn = false;
+    public bool fadeOut = false;
+    public mState state;
+
 
     [Header("MUSIC SFX")]
     #region - - - - - MUSIC - - - - - 
     public AudioClip main = null;
     public AudioClip begin = null;
     public AudioClip wave = null;
-    public AudioClip down = null;
+    public AudioClip end = null;
     #endregion
 
     void Start() {
@@ -24,41 +31,51 @@ public class MusicManager : MonoBehaviour
     }
 
     private void Update() {
+        if (fadeIn && state == mState.active) {
+            audioSource.volume += 0.001f;
 
+            if (audioSource.volume >= targetVol) {
+                audioSource.volume = targetVol;
+                state = mState.inactive;
+            }
+        }
+
+
+        else if (fadeOut && state == mState.active) {
+            audioSource.volume -= 0.001f;
+            if (audioSource.volume <= 0f) {
+                audioSource.Stop();
+                audioSource.volume = targetVol;
+                state = mState.inactive;
+            }
+        } 
+
+        else if (state == mState.inactive) {
+            return;
+        }
     }
 
     #region - - - - MUSIC FUNCTIONS - - - -
-    public void FadeIn(AudioClip aClip, float targetVol) {
-        float curVol = audioSource.volume;
-        audioSource.clip = aClip;
+    public void FadeIn(AudioClip audioClip, float vol) {
+        audioSource.clip = audioClip;
+        audioSource.Play();
 
-        if (!audioSource.isPlaying) {
-            audioSource.Play();
-        }
+        state = mState.active;
+        targetVol = vol;
+        fadeIn = true;
+        fadeOut = false;
+        Debug.Log("Activating FadeIn");
 
-        for (curVol = 0; curVol < targetVol; curVol += Time.fixedTime) {
-            audioSource.volume += increment;
-        }
-        
     }
 
-    public void FadeOut(float delay) {
-        float curVol = audioSource.volume;
-        for (curVol = audioSource.volume ; curVol > 0; curVol += Time.fixedTime) {
-            audioSource.volume += increment;
-        }
+    public void FadeOut(float vol) {
 
-        if (audioSource.volume <= 0) {
-            audioSource.Stop();
-        }
-    }
-
-    public void StopMusic(float delay) {
+        targetVol = 0f;
+        state = mState.active;
+        fadeIn = false;
+        fadeOut = true;
+        Debug.Log("Activating FadeOut");
 
     }
     #endregion
-
-    public void PlayMain() {
-
-    }
 }

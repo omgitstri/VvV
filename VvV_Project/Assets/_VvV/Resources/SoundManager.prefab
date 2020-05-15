@@ -94,11 +94,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07a62a72b210654da506e046a41c610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increment: 0.0167
+  fadeIn: 0
+  fadeOut: 0
+  state: 0
   main: {fileID: 8300000, guid: b97426c98b69a6745acb6f063d86592f, type: 3}
   begin: {fileID: 8300000, guid: 93dec0f6818c29b47b973bcc17cc5f1f, type: 3}
   wave: {fileID: 8300000, guid: e57bddcdaf2e7ea4b96c38242c276536, type: 3}
-  down: {fileID: 8300000, guid: 0cfdd2edda87f1e4c986ddd682afe532, type: 3}
+  end: {fileID: 8300000, guid: 0cfdd2edda87f1e4c986ddd682afe532, type: 3}
 --- !u!82 &6627306489934567736
 AudioSource:
   m_ObjectHideFlags: 0
