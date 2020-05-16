@@ -28,6 +28,9 @@ public class EnemyBehaviour : MonoBehaviour
     public float maxCubes = 0;
     float deathTimer = 1f;
 
+    public AudioSource source;
+    public bool isAggro = false;
+
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -77,6 +80,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void ChaseTarget()
     {
+
+        
         if (player != null)
         {
             if (Vector3.Distance(transform.position, player.position) <= eStats.aggroRange)
@@ -84,10 +89,20 @@ public class EnemyBehaviour : MonoBehaviour
                 //Debug.Log("player");
                 currentTarget = player;
                 losePlayer = eStats.lostRangDuration;
+                if (!isAggro) {
+                    isAggro = true;
+                    SoundFX sfx = GetComponent<SoundFX>();
+                    sfx.PlaySound(sfx.chosenSource, Toolbox.GetInstance.GetSound().eAggro, true, 0.4f, 0.5f, 0.90f, 1.10f);
+                }
+
+
             }
             else if (losePlayer < 0)
             {
                 currentTarget = ReturnClosestTarget();
+
+                if (isAggro) 
+                    isAggro = false;
             }
             else
             {
