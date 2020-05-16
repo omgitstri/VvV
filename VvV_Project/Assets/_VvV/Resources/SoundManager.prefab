@@ -54,7 +54,7 @@ MonoBehaviour:
   hit: {fileID: 0}
   reload: {fileID: 8300000, guid: 50e96efbf99c5de4ba4e4691244c4c12, type: 3}
   step: {fileID: 8300000, guid: e6d67832537cc2a4cbb9bb55fc8cbf4d, type: 3}
-  sprint: {fileID: 8300000, guid: 7a831ac89e209a74bbe3893528f6859b, type: 3}
+  sprint: {fileID: 8300000, guid: e6b0e11755c9ce0449d5c28fc7a80018, type: 3}
   hurt: {fileID: 8300000, guid: 98ab22677c5f1dc41bdc1cfcd47486f8, type: 3}
   death: {fileID: 8300000, guid: 7932cfa2507e98c44b9a007dce36c651, type: 3}
   melee: {fileID: 8300000, guid: f471cba79ade50d4db4ecc790688d7ce, type: 3}

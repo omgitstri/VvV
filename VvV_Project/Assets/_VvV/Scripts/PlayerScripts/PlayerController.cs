@@ -151,7 +151,11 @@ public class PlayerController : MonoBehaviour
         if((Input.GetButton("Horizontal") || Input.GetButton("Vertical"))&& !audioSource.isPlaying)
         {
             if (audioSource != null) {
-                sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().step, true, 0.1f, 0.25f, 0.85f, 1.15f);
+                if (applySpeed == walkSpeed) {
+                    sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().step, true, 0.1f, 0.25f, 0.85f, 1.15f);
+                } else if (applySpeed == runSpeed) {
+                    sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().sprint, true, 0.1f, 0.25f, 0.85f, 1.15f);
+                }
             }
 
             /*if (audioSource.clip != Toolbox.GetInstance.GetSound().step) {
