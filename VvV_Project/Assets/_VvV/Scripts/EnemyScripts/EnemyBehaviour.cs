@@ -18,7 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
     private List<Transform> entities = new List<Transform>();
     private Transform player = null;
     private EnemyStats eStats = null;
-    private float attackCooldown = 1f;
+    public float attackCooldown = 1f;
     private Enemy_AttackManager enemyAttack = null;
     private CreateAdjacencyGraph graph = null;
 
@@ -150,7 +150,7 @@ public class EnemyBehaviour : MonoBehaviour
                     //enemyAttack.stop.position = Entity_Tracker.Instance.PlayerEntity.position + Vector3.up * 0.5f;
                     enemyAttack.stop.position = currentTarget.position + Vector3.up * 0.5f;
                     enemyAttack.StartAttacking();
-                    attackCooldown = eStats.atkSpeed;
+                    attackCooldown = eStats.atkSpeed + 500;
                 }
                 else
                 {

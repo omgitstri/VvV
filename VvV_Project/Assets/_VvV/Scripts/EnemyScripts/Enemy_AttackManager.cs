@@ -136,5 +136,6 @@ public class Enemy_AttackManager : MonoBehaviour
 
             item.visualMesh.gameObject.SetActive(true);
         }
+        GetComponent<EnemyBehaviour>().attackCooldown = eStats.atkSpeed;
     }
 }
