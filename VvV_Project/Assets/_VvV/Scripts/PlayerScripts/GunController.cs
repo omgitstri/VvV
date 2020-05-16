@@ -141,7 +141,7 @@ public class GunController : MonoBehaviour
             isReload = true;
 
             //PlaySE(currentGun.reload_Sound);
-            sfx.PlaySound(audioSource, currentGun.reload_Sound, true, 0.2f, 0.3f, 0.9f, 1.15f);
+            sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().reload, true, 0.25f, 0.3f, 0.9f, 1f);
             currentGun.anim.SetTrigger("Reload");
 
             currentGun.carryBulletCount += currentGun.currentBulletCount;

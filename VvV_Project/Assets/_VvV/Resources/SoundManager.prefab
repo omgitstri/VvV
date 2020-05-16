@@ -52,7 +52,7 @@ MonoBehaviour:
   pause: {fileID: 8300000, guid: 1399ec7bf8362724392ba2870a046a97, type: 3}
   shoot: {fileID: 8300000, guid: f8c1bc696b4dc19419ff30c090b851c3, type: 3}
   hit: {fileID: 0}
-  reload: {fileID: 8300000, guid: 4c89315b50659754abeedde34c01b68e, type: 3}
+  reload: {fileID: 8300000, guid: eed59baf7bf666348b9519cddef9b44b, type: 3}
   step: {fileID: 8300000, guid: e6d67832537cc2a4cbb9bb55fc8cbf4d, type: 3}
   sprint: {fileID: 8300000, guid: 7a831ac89e209a74bbe3893528f6859b, type: 3}
   hurt: {fileID: 8300000, guid: 98ab22677c5f1dc41bdc1cfcd47486f8, type: 3}
