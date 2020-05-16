@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource = null;
     private SoundFX sfx = null;
 
+    // ** - TEMPORARY JUST TO STOP THE MOVEMENT ON DEATH - ** // - KEN
+    public bool canMove = true;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -70,7 +73,9 @@ public class PlayerController : MonoBehaviour
         IsGround();
         TryJump();
         TryRun();
-        Move();
+        if (canMove) {
+            Move();
+        }
         CameraRotation();
         CharacterRotation();
     }
@@ -146,7 +151,7 @@ public class PlayerController : MonoBehaviour
         if((Input.GetButton("Horizontal") || Input.GetButton("Vertical"))&& !audioSource.isPlaying)
         {
             if (audioSource != null) {
-                sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().step, true);
+                sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().step, true, 0.1f, 0.25f, 0.85f, 1.15f);
             }
 
             /*if (audioSource.clip != Toolbox.GetInstance.GetSound().step) {

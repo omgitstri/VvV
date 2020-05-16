@@ -10,6 +10,7 @@ public class MusicContainer : MonoBehaviour
     public AudioClip audioClip;
     public float targetVol;
     public MusicState state;
+    public bool m_Play = false;
 
 
     private void Start() {
@@ -20,19 +21,19 @@ public class MusicContainer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N)) {
             ChangeState();
 
+        if (!m_Play) {
             if (source.isPlaying) {
                 Toolbox.GetInstance.GetMusic().FadeOut(0f);
             }
+        }
 
-
+        if (m_Play) {
             if (!source.isPlaying) {
                 Toolbox.GetInstance.GetMusic().FadeIn(audioClip, targetVol);
             }
         }
-
     }
 
     public void ChangeState() {

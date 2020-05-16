@@ -84,7 +84,7 @@ public class GunController : MonoBehaviour
         currentGun.currentBulletCount--;
         currentFireRate = currentGun.fireRate;
         //PlaySE(currentGun.fire_Sound);
-        sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().shoot, true);
+        sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().shoot, true, 0.20f, 0.30f, 0.85f, 1.25f);
         currentGun.muzzleFlash.Play();
         Hit();
         StopAllCoroutines();
@@ -141,7 +141,7 @@ public class GunController : MonoBehaviour
             isReload = true;
 
             //PlaySE(currentGun.reload_Sound);
-            sfx.PlaySound(audioSource, currentGun.reload_Sound, true);
+            sfx.PlaySound(audioSource, currentGun.reload_Sound, true, 0.2f, 0.3f, 0.9f, 1.15f);
             currentGun.anim.SetTrigger("Reload");
 
             currentGun.carryBulletCount += currentGun.currentBulletCount;
@@ -270,11 +270,4 @@ public class GunController : MonoBehaviour
         }
     }
 
-    /*
-    private void PlaySE(AudioClip _clip)
-    {
-        audioSource.clip = _clip;
-        audioSource.Play();
-    }
-    */
 }

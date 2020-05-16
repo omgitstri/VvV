@@ -41,7 +41,7 @@ public class MusicManager : MonoBehaviour
         }
 
 
-        else if (fadeOut && state == mState.active) {
+        if (fadeOut && state == mState.active) {
             audioSource.volume -= 0.001f;
             if (audioSource.volume <= 0f) {
                 audioSource.Stop();
@@ -49,10 +49,6 @@ public class MusicManager : MonoBehaviour
                 state = mState.inactive;
             }
         } 
-
-        else if (state == mState.inactive) {
-            return;
-        }
     }
 
     #region - - - - MUSIC FUNCTIONS - - - -

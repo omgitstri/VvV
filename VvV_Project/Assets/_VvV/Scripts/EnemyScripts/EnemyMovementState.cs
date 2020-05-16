@@ -104,15 +104,16 @@ public class EnemyMovementState : MonoBehaviour
 
         if (audioSource != null) {
             //sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eStep, true);
-            sfx.LoopSound(audioSource, Toolbox.GetInstance.GetSound().eStep);
+            sfx.LoopSound(audioSource, Toolbox.GetInstance.GetSound().eStep, true, 0.4f, 6f, 0.75f, 1.25f);
         }
     }
 
 	public  void EnemyCrawl()
 	{
         navMesh.speed = eStats.crawlSpeed;
-		animator.SetBool("isCrawling", true);
-        sfx.LoopSound(audioSource, Toolbox.GetInstance.GetSound().eCrawl);
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isCrawling", true);
+        sfx.LoopSound(audioSource, Toolbox.GetInstance.GetSound().eCrawl, true, 0.4f, 6f, 0.75f, 1.25f);
 
     }
 

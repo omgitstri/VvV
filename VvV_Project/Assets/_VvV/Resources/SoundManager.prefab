@@ -56,7 +56,7 @@ MonoBehaviour:
   step: {fileID: 8300000, guid: e6d67832537cc2a4cbb9bb55fc8cbf4d, type: 3}
   sprint: {fileID: 8300000, guid: 7a831ac89e209a74bbe3893528f6859b, type: 3}
   hurt: {fileID: 8300000, guid: 98ab22677c5f1dc41bdc1cfcd47486f8, type: 3}
-  death: {fileID: 8300000, guid: 67d92a1c10c07aa48a1369160ec0f1a1, type: 3}
+  death: {fileID: 8300000, guid: 7932cfa2507e98c44b9a007dce36c651, type: 3}
   melee: {fileID: 8300000, guid: f471cba79ade50d4db4ecc790688d7ce, type: 3}
   eGrunts:
   - {fileID: 8300000, guid: 5a72420ba09083540a6b4ad7dc3b9c98, type: 3}
@@ -64,7 +64,7 @@ MonoBehaviour:
   eAggro: {fileID: 8300000, guid: 51ae9e45cd297654b812fa1d30921c1f, type: 3}
   eStep: {fileID: 8300000, guid: 22cb21856d7d1fb4bbf4bde986954f4d, type: 3}
   eRun: {fileID: 8300000, guid: e1e9adaa10ca1fd4c9abe93bf1f4da83, type: 3}
-  eCrawl: {fileID: 8300000, guid: 44605d1725df9ea43b05449678eba011, type: 3}
+  eCrawl: {fileID: 8300000, guid: 22cb21856d7d1fb4bbf4bde986954f4d, type: 3}
   eRegen: {fileID: 8300000, guid: 44ff6e7b1cfd33e4eb390431b5e9fd42, type: 3}
   eHurt: {fileID: 8300000, guid: c6a5ea497254db042b527e15a5314e6f, type: 3}
   eDeath: {fileID: 8300000, guid: 5b32d239a37187f41ae82b7b412ffcf4, type: 3}
@@ -113,7 +113,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0

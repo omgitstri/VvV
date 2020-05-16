@@ -64,7 +64,7 @@ public class Enemy_AttackManager : MonoBehaviour
     {
         if (audioSource != null)
         {
-            sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eAttack, true);
+            sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eAttack, true, 0.15f, 0.40f, 0.75f, 1f);
         }
 
         activeAttackCubes.Clear();

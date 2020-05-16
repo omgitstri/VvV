@@ -8,11 +8,11 @@ public class SoundFX : MonoBehaviour
     public AudioClip chosenSound;
     public string soundName;
 
-    public void PlaySound(AudioSource source, AudioClip sound, bool changeVP) {
+    public void PlaySound(AudioSource source, AudioClip sound, bool changeVP, float minVol, float maxVol, float minPitch, float maxPitch) {
         //TESTING VALUES
         if (changeVP) {
-            float minMaxVol = Random.Range(0.5f, 0.80f);
-            float minMaxPitch = Random.Range(0.8f, 1.25f);
+            float minMaxVol = Random.Range(minVol, maxVol);
+            float minMaxPitch = Random.Range(minPitch, maxPitch);
 
         source.volume = minMaxVol;
         source.pitch = minMaxPitch;
@@ -27,12 +27,26 @@ public class SoundFX : MonoBehaviour
             source.Pause();
     }
 
-    public void LoopSound(AudioSource source, AudioClip sound) {
+    public void LoopSound(AudioSource source, AudioClip sound, bool changeVP, float minVol, float maxVol, float minPitch, float maxPitch) {
 
-        if (source.clip == null || source.clip != sound) {
+        if (changeVP) {
+            float minMaxVol = Random.Range(minVol, maxVol);
+            float minMaxPitch = Random.Range(minPitch, maxPitch);
+        }
+            if (source.clip == null || source.clip != sound) {
             source.clip = sound;
             source.Play();
+
+            for (float sec=0; sec < 1f; sec += Time.deltaTime) {
+                if (sec == 1f) {
+                    float minMaxVol = Random.Range(minVol, maxVol);
+                    float minMaxPitch = Random.Range(minPitch, maxPitch);
+                    break;
+                }
+            }
         }
+
+
 
         else if (!source.isPlaying) {
             source.Play();

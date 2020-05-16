@@ -46,7 +46,7 @@ public class PlayerDamagable : Damagable
             invulnerableDelay = invulnerableTime;
 
             if (audioSource != null) {
-                sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().hurt, true);
+                sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().hurt, true, 0.75f, 1f, 1f, 2f);
             }
         }
     }
@@ -79,14 +79,17 @@ public class PlayerDamagable : Damagable
     private void PlayerDeath() {
 
         if (currentHitPoint <= 0) {
+            if (audioSource.clip != Toolbox.GetInstance.GetSound().death) {
+                sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().death, false, 0.75f, 0.75f, 1f, 1f);
+            }
 
-            sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().death, false);
             StartCoroutine(Death());
         }
     }
 
     public IEnumerator Death() {
-        yield return new WaitForSeconds(1f);
+        this.GetComponent<PlayerController>().canMove = false;     // ** - TEMPORARY JUST TO STOP THE MOVEMENT ON DEATH - ** // - KEN
+        yield return new WaitForSeconds(audioSource.clip.length);
         Toolbox.GetInstance.GetScene().ReloadScene();
 
     }

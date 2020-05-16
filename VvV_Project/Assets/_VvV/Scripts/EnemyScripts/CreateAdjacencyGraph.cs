@@ -201,7 +201,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
                 kvp.Value.DeactivateNeighbours();
                 if (audioSource != null)
                 {
-                    sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eHurt, true);
+                    sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eHurt, true, 0.5f, 0.75f, 0.75f, 1.25f);
                 }
             }
         }
@@ -229,7 +229,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
                 child.Invoke(nameof(child.DeactivateCube), Random.Range(0, 2f));
                 if (audioSource != null)
                 {
-                    sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eDeath, true);
+                    sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().eDeath, true, 0.15f, 0.3f, 0.75f, 1f);
                 }
             }
         }

@@ -915,6 +915,7 @@ MonoBehaviour:
   audioClip: {fileID: 0}
   targetVol: 1
   state: 1
+  m_Play: 1
 --- !u!1 &911126635
 GameObject:
   m_ObjectHideFlags: 0
