@@ -203,7 +203,6 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    
     public void SetVisibility(bool _toggle)
     {
         isVisible = _toggle;

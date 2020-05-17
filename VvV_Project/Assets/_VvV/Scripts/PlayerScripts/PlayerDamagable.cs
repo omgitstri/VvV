@@ -93,4 +93,5 @@ public class PlayerDamagable : Damagable
         Toolbox.GetInstance.GetScene().ReloadScene();
 
     }
+
 }

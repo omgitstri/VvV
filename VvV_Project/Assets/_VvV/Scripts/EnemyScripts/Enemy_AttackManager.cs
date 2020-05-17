@@ -138,4 +138,5 @@ public class Enemy_AttackManager : MonoBehaviour
         }
         GetComponent<EnemyBehaviour>().attackCooldown = eStats.atkSpeed;
     }
+
 }

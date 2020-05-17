@@ -104,4 +104,5 @@ public class Toolbox : MonoBehaviour
             manager.GetComponent<SceneLoader>().LoadScene("SceneLoadingGym");
         }    
     }
+
 }

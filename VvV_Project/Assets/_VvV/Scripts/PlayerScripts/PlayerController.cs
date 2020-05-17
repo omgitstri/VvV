@@ -190,6 +190,7 @@ public class PlayerController : MonoBehaviour
         theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
     }
 
+
     //private void OnTriggerStay(Collider other)
     //{
     //    if (other.gameObject.tag == "Enemy"&& !isNearEnemy)

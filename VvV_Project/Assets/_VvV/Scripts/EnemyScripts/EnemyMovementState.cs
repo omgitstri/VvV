@@ -161,4 +161,6 @@ public class EnemyMovementState : MonoBehaviour
     {
         currentMoveState = MoveState.Dead;
     }
+
+
 }
