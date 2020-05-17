@@ -83,7 +83,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
         if (timer <= 0 && alive)
         {
             WeakPointFreeWalking();
-            // timer = Random.Range(0f, 0.3f);
+           // timer = Random.Range(0f, 0.3f);
             timer = Random.Range(0f, criticalMovementDelay);
         }
         else
@@ -259,9 +259,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
     [ContextMenu(nameof(StartDelayRegenCoroutine))]
     public void StartDelayRegenCoroutine()
     {
-        //StartCoroutine(nameof(RegenDelay));
-        RegenManager();
-
+        StartCoroutine(nameof(RegenDelay));
     }
 
     IEnumerator RegenDelay()
@@ -380,5 +378,4 @@ public class CreateAdjacencyGraph : MonoBehaviour
         }
     }
 #endif
-
 }

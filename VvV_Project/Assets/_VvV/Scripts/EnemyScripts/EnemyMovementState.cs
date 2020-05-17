@@ -124,7 +124,6 @@ public class EnemyMovementState : MonoBehaviour
 
 	public  void EnemyIdle()
 	{
-        animator.SetBool("isWalking", false);
         navMesh.speed = 0; /* eStats.moveSpd; */
         sfx.StopSound(audioSource);
 	}
@@ -161,6 +160,4 @@ public class EnemyMovementState : MonoBehaviour
     {
         currentMoveState = MoveState.Dead;
     }
-
-
 }

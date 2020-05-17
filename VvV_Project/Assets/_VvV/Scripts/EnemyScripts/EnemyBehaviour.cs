@@ -81,7 +81,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void ChaseTarget()
     {
-
         if (player != null)
         {
             if (Vector3.Distance(transform.position, player.position) <= eStats.aggroRange)
@@ -187,7 +186,7 @@ public class EnemyBehaviour : MonoBehaviour
                 {
                     attackCooldown = eStats.atkSpeed;
                 }
-                else if (attackCooldown < eStats.atkSpeed)
+                else if(attackCooldown < eStats.atkSpeed)
                 {
                     attackCooldown += Time.deltaTime;
                 }
