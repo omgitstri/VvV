@@ -12,6 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     [ColorUsage(true, true)]
     public Color attackColor = new Color();
 
+    public bool isVisible = false;
 
     public Transform currentTarget { get; private set; } = null;
     private NavMeshAgent navMeshAgent = null;
@@ -81,7 +82,6 @@ public class EnemyBehaviour : MonoBehaviour
     private void ChaseTarget()
     {
 
-        
         if (player != null)
         {
             if (Vector3.Distance(transform.position, player.position) <= eStats.aggroRange)
@@ -89,7 +89,8 @@ public class EnemyBehaviour : MonoBehaviour
                 //Debug.Log("player");
                 currentTarget = player;
                 losePlayer = eStats.lostRangDuration;
-                if (!isAggro) {
+                if (!isAggro)
+                {
                     isAggro = true;
                     SoundFX sfx = GetComponent<SoundFX>();
                     sfx.PlaySound(sfx.chosenSource, Toolbox.GetInstance.GetSound().eAggro, true, 0.4f, 0.5f, 0.90f, 1.10f);
@@ -101,12 +102,14 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 currentTarget = ReturnClosestTarget();
 
-                if (isAggro) 
+                if (isAggro)
+                {
                     isAggro = false;
+                }
             }
             else
             {
-                losePlayer -= Time.deltaTime;
+                losePlayer -= Time.deltaTime * 2f;
             }
         }
 
@@ -126,13 +129,15 @@ public class EnemyBehaviour : MonoBehaviour
             GetComponent<EnemyMovementState>().EnemyIdle();
         }
 
-        else if (GetComponent<EnemyMovementState>().currentMoveState == EnemyMovementState.MoveState.Crawl) {
+        else if (GetComponent<EnemyMovementState>().currentMoveState == EnemyMovementState.MoveState.Crawl)
+        {
             GetComponent<EnemyMovementState>().EnemyCrawl();
         }
 
-        else {
+        else
+        {
             GetComponent<EnemyMovementState>().EnemyWalk();
-        } 
+        }
     }
 
 
@@ -182,7 +187,7 @@ public class EnemyBehaviour : MonoBehaviour
                 {
                     attackCooldown = eStats.atkSpeed;
                 }
-                else if(attackCooldown < eStats.atkSpeed)
+                else if (attackCooldown < eStats.atkSpeed)
                 {
                     attackCooldown += Time.deltaTime;
                 }
@@ -196,7 +201,12 @@ public class EnemyBehaviour : MonoBehaviour
                 }
             }
         }
+    }
 
+    
+    public void SetVisibility(bool _toggle)
+    {
+        isVisible = _toggle;
     }
 
 }
