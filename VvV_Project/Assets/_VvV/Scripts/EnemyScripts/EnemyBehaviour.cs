@@ -31,6 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public AudioSource source;
     public bool isAggro = false;
+    private bool isAttacking = false;
 
     private void Awake()
     {
@@ -67,6 +68,11 @@ public class EnemyBehaviour : MonoBehaviour
             }
         }
 
+        if (isAttacking)
+        {
+            attackCooldown -= Time.deltaTime;
+        }
+
         ChaseTarget();
         AttackTarget();
     }
@@ -81,36 +87,34 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void ChaseTarget()
     {
-        if (player != null)
+        if (Vector3.Distance(transform.position, player.position) <= eStats.aggroRange)
         {
-            if (Vector3.Distance(transform.position, player.position) <= eStats.aggroRange)
+            //Debug.Log("player");
+            currentTarget = player;
+            losePlayer = eStats.lostRangDuration;
+            if (!isAggro)
             {
-                //Debug.Log("player");
-                currentTarget = player;
-                losePlayer = eStats.lostRangDuration;
-                if (!isAggro)
-                {
-                    isAggro = true;
-                    SoundFX sfx = GetComponent<SoundFX>();
-                    sfx.PlaySound(sfx.chosenSource, Toolbox.GetInstance.GetSound().eAggro, true, 0.4f, 0.5f, 0.90f, 1.10f);
-                }
-
-
+                isAggro = true;
+                SoundFX sfx = GetComponent<SoundFX>();
+                sfx.PlaySound(sfx.chosenSource, Toolbox.GetInstance.GetSound().eAggro, true, 0.4f, 0.5f, 0.90f, 1.10f);
             }
-            else if (losePlayer < 0)
-            {
-                currentTarget = ReturnClosestTarget();
 
-                if (isAggro)
-                {
-                    isAggro = false;
-                }
-            }
-            else
+
+        }
+        else if (losePlayer < 0)
+        {
+            currentTarget = ReturnClosestTarget();
+
+            if (isAggro)
             {
-                losePlayer -= Time.deltaTime * 2f;
+                isAggro = false;
             }
         }
+        else
+        {
+            losePlayer -= Time.deltaTime * 2f;
+        }
+
 
         if (currentTarget != null)
         {
@@ -163,41 +167,27 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void AttackTarget()
     {
-        if (Application.isPlaying == true)
+        // distance
+        if (Vector3.Distance(currentTarget.position, transform.position) <= eStats.attRange)
         {
-            // distance
-            if (Vector3.Distance(currentTarget.position, transform.position) <= eStats.attRange)
-            {
-                if (attackCooldown <= 0)
-                {
-                    //enemyAttack.stop.position = Entity_Tracker.Instance.PlayerEntity.position + Vector3.up * 0.5f;
-                    enemyAttack.stop.position = currentTarget.position + Vector3.up * 0.5f;
-                    enemyAttack.StartAttacking();
-                    attackCooldown = eStats.atkSpeed + 500;
-                }
-                else
-                {
-                    attackCooldown -= Time.deltaTime;
-                }
-            }
-            else
-            {
-                if (attackCooldown > eStats.atkSpeed)
-                {
-                    attackCooldown = eStats.atkSpeed;
-                }
-                else if(attackCooldown < eStats.atkSpeed)
-                {
-                    attackCooldown += Time.deltaTime;
-                }
-            }
+            isAttacking = true;
+        }
 
-            foreach (var item in enemyAttack.selectedIndividualCubes)
+        if (attackCooldown <= 0)
+        {
+            isAttacking = false;
+            //enemyAttack.stop.position = Entity_Tracker.Instance.PlayerEntity.position + Vector3.up * 0.5f;
+            //enemyAttack.stop.position = currentTarget.position + Vector3.up * 0.5f;
+            enemyAttack.stop.position = (transform.position + ((currentTarget.position) - transform.position).normalized * eStats.attRange) + Vector3.up * 0.5f;
+            enemyAttack.StartAttacking();
+            attackCooldown = eStats.atkSpeed + 500;
+        }
+
+        foreach (var item in enemyAttack.selectedIndividualCubes)
+        {
+            if (item.transform.GetChild(0).TryGetComponent(out MeshRenderer mesh))
             {
-                if (item.transform.GetChild(0).TryGetComponent(out MeshRenderer mesh))
-                {
-                    mesh.material.SetColor("_Emission", Color.Lerp(Color.black, attackColor, (eStats.atkSpeed - attackCooldown) / eStats.atkSpeed));
-                }
+                mesh.material.SetColor("_Emission", Color.Lerp(Color.black, attackColor, (eStats.atkSpeed - attackCooldown) / eStats.atkSpeed));
             }
         }
     }
