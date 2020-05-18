@@ -16,6 +16,7 @@ public class PlayerDamagable : Damagable
     [SerializeField]private CameraShake camShake;
     [SerializeField] private float shakeDuration;
     [SerializeField] private float shakeMagnitude;
+    [SerializeField] private DamageSplash dmgSplash;
 
 
     private void Start()
@@ -49,6 +50,7 @@ public class PlayerDamagable : Damagable
             currentHitPoint -= dmg;
             invulnerableDelay = invulnerableTime;
             StartCoroutine(camShake.Shake(shakeDuration, shakeMagnitude));
+            dmgSplash.Splash();
 
             if (audioSource != null) {
                 sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().hurt, true, 0.75f, 1f, 1f, 2f);
@@ -97,7 +99,8 @@ public class PlayerDamagable : Damagable
     public IEnumerator Death() {
         this.GetComponent<PlayerController>().canMove = false;     // ** - TEMPORARY JUST TO STOP THE MOVEMENT ON DEATH - ** // - KEN
         StartCoroutine(camShake.Shake(audioSource.clip.length, shakeMagnitude * 1.15f));
-        Toolbox.GetInstance.GetFade().FadeOut();
+        //Toolbox.GetInstance.GetFade().FadeOut();
+        dmgSplash.DeathSplash();
         Toolbox.GetInstance.GetMusic().FadeOut(0f);
         yield return new WaitForSeconds(audioSource.clip.length);
         Toolbox.GetInstance.GetScene().ReloadScene();

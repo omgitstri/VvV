@@ -73,8 +73,10 @@ public class EnemyBehaviour : MonoBehaviour
             attackCooldown -= Time.deltaTime;
         }
 
-        ChaseTarget();
-        AttackTarget();
+        if (player.GetComponent<PlayerController>().canMove) {
+            ChaseTarget();
+            AttackTarget();
+        }
     }
 
     [ContextMenu(nameof(Setup))]

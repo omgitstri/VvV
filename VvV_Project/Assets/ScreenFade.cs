@@ -24,7 +24,7 @@ public class ScreenFade : MonoBehaviour
 
     public void FadeIn() {
         anim.SetTrigger("FadeIn");
-        StartCoroutine(ToggleCanvas());   
+        StartCoroutine(ToggleCanvas());  
     }
 
     public void FadeOut() {
