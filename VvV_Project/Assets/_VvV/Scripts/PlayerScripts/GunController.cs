@@ -44,10 +44,12 @@ public class GunController : MonoBehaviour
 
     void Update()
     {
-        GunFireRateCalc();
-        TryFire();
-        TryReload();
-        TryFineSight();
+        if (player.canMove) {
+            GunFireRateCalc();
+            TryFire();
+            TryReload();
+            TryFineSight();
+        }
     }
 
     private void GunFireRateCalc()

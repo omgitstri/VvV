@@ -57,4 +57,10 @@ public class ScreenFade : MonoBehaviour
         }
 
     }
+
+    public void ResetTriggers() {
+        anim.ResetTrigger("FadeIn");
+        anim.ResetTrigger("FadeOut");
+        anim.ResetTrigger("FadeGreen");
+    }
 }

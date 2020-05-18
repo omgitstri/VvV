@@ -11,13 +11,15 @@ public class SceneLoader : MonoBehaviour {
 
     public void ReloadScene() {
         currentScene = SceneManager.GetActiveScene().name;
-        Toolbox.GetInstance.GetFade().FadeOut();
+        //Toolbox.GetInstance.GetFade().FadeOut();
         LoadScene(currentScene);
 
     }
 
     public void LoadScene(string scene) {
+
         Toolbox.GetInstance.GetFade().FadeGreen();
+        Toolbox.GetInstance.GetFade().ResetTriggers();
         StartCoroutine(DelayLoad(scene));
 
     }
