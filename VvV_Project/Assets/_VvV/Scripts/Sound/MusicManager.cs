@@ -66,7 +66,7 @@ public class MusicManager : MonoBehaviour
 
     public void FadeOut(float vol) {
 
-        targetVol = 0f;
+        targetVol = vol;
         state = mState.active;
         fadeIn = false;
         fadeOut = true;

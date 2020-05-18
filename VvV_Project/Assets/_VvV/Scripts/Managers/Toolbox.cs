@@ -23,6 +23,7 @@ public class Toolbox : MonoBehaviour
     [SerializeField] private GameObject soundManager = null;
     [SerializeField] private GameObject uIManager = null;
     [SerializeField] private MusicManager musicManager = null;
+    [SerializeField] private GameObject screenFade = null;
 
 
     void Awake()
@@ -60,12 +61,15 @@ public class Toolbox : MonoBehaviour
             }
         }
 
-
-
         if (uIManager == null)
         {
             uIManager = Instantiate(Resources.Load(nameof(UIManager), typeof(GameObject)) as GameObject);
             uIManager.transform.parent = this.gameObject.transform;
+        }
+        
+        if (screenFade == null) {
+            screenFade = Instantiate(Resources.Load(nameof(ScreenFade), typeof(GameObject)) as GameObject);
+            screenFade.transform.parent = this.gameObject.transform;
         }
 
     }
@@ -93,9 +97,9 @@ public class Toolbox : MonoBehaviour
         return uIManager.GetComponent<UIManager>();
     }
 
-    /*public MusicManager GetMusic() {
-        return soundManager.GetComponent<MusicManager>();
-    }*/
+    public ScreenFade GetFade() {
+        return screenFade.GetComponent<ScreenFade>();
+    }
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.F1)) {

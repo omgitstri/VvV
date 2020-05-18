@@ -71,13 +71,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         IsGround();
-        TryJump();
-        TryRun();
         if (canMove) {
+            TryJump();
+            TryRun();
+
             Move();
+            CameraRotation();
+            CharacterRotation();
         }
-        CameraRotation();
-        CharacterRotation();
     }
 
     private void IsGround()
@@ -150,7 +151,7 @@ public class PlayerController : MonoBehaviour
         }
         if((Input.GetButton("Horizontal") || Input.GetButton("Vertical"))&& !audioSource.isPlaying)
         {
-            if (audioSource != null) {
+            if (audioSource != null && isGround) {
                 if (applySpeed == walkSpeed) {
                     sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().step, true, 0.1f, 0.25f, 0.85f, 1.15f);
                 } else if (applySpeed == runSpeed) {

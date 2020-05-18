@@ -89,6 +89,7 @@ public class PlayerDamagable : Damagable
 
     public IEnumerator Death() {
         this.GetComponent<PlayerController>().canMove = false;     // ** - TEMPORARY JUST TO STOP THE MOVEMENT ON DEATH - ** // - KEN
+        Toolbox.GetInstance.GetMusic().FadeOut(0f);
         yield return new WaitForSeconds(audioSource.clip.length);
         Toolbox.GetInstance.GetScene().ReloadScene();
 
