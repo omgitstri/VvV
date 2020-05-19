@@ -766,7 +766,10 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Build: 0
     Collab: 1
+    ErrorHub: 0
+    Hub: 0
     UNet: 1
   luminIcon:
     m_Name: 
@@ -780,9 +783,9 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 3
-  cloudProjectId: ef6ec81f-7509-4f81-b9e1-f3c23e88759a
+  cloudProjectId: 973cf36e-e5cd-4a2a-b7c5-836ef32211cb
   framebufferDepthMemorylessMode: 0
-  projectName: UnityPhysicsExamples
+  projectName: VvVvVvVvV_TheGame
   organizationId: zigieinc
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 1
