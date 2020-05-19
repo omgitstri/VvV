@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class ScreenFade : MonoBehaviour
 {
-    [SerializeField] private Animator anim;
-    [SerializeField] private bool isActive = true;
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private CanvasScaler cScaler;
-    [SerializeField] private GraphicRaycaster gRay;
+    private Animator anim;
+    private bool isActive = true;
+    private Canvas canvas;
+    private CanvasScaler cScaler;
+    private GraphicRaycaster gRay;
 
 
 
