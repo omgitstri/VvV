@@ -7,7 +7,6 @@ public class CameraShake : MonoBehaviour {
 
     private void Start() {
         originalPos = transform.localPosition;
-        Debug.Log("pos before shake " + originalPos);
     }
 
     public IEnumerator Shake(float duration, float magnitude) {
@@ -26,6 +25,5 @@ public class CameraShake : MonoBehaviour {
 
     private void ResetPos() {
         transform.localPosition = originalPos;
-        Debug.Log("pos after shake" + transform.localPosition);
     }
 }
