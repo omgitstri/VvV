@@ -9,7 +9,7 @@ public class Enemy_AttackManager : MonoBehaviour
     public List<IndividualCube> allIndividualCubes = new List<IndividualCube>();
     public List<IndividualCube> selectedIndividualCubes = new List<IndividualCube>();
     //public List<GymEnemyAttack_CubeLerp> totalAttackCubes = new List<GymEnemyAttack_CubeLerp>();
-    public List<GymEnemyAttack_CubeLerp> activeAttackCubes = new List<GymEnemyAttack_CubeLerp>();
+    public List<EnemyAttackCube_Intepolation> activeAttackCubes = new List<EnemyAttackCube_Intepolation>();
 
     [SerializeField] private AudioSource audioSource = null;
 

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Entity_Register : MonoBehaviour
 {
-    private enum EEntities { Player, EMP, enemy};
+    private enum EEntities { Player, EMP, Enemy, EnemyPart};
 
-    [SerializeField] private EEntities entityType = EEntities.enemy;
+    [SerializeField] private EEntities entityType = EEntities.Enemy;
 
     private void Awake()
     {
@@ -18,8 +18,11 @@ public class Entity_Register : MonoBehaviour
             case EEntities.EMP:
                 Entity_Tracker.Instance.AddInteractable(this.transform);
                 break;
-            case EEntities.enemy:
+            case EEntities.Enemy:
                 Entity_Tracker.Instance.AddEnemy(this.transform);
+                break;
+            case EEntities.EnemyPart:
+                Entity_Tracker.Instance.RegisterEnemyPart(this.transform);
                 break;
             default:
                 break;

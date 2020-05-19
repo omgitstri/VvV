@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 178291111232795937, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: eStats.dropPartPercentage
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 850434854322751546, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: m_Name

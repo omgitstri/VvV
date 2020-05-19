@@ -9,7 +9,7 @@ public class IndividualCube : MonoBehaviour
 
     private Collider myCollider = null;
     public Renderer visualMesh { get; private set; } = null;
-    public GymEnemyAttack_CubeLerp attackMesh { get; private set; } = null;
+    public EnemyAttackCube_Intepolation attackMesh { get; private set; } = null;
     private Rigidbody physicMesh = null;
     public bool killed { get; private set; } = false;
 
@@ -37,7 +37,7 @@ public class IndividualCube : MonoBehaviour
     {
         visualMesh = transform.GetChild(0).GetComponent<Renderer>();
         physicMesh = transform.GetChild(1).GetComponent<Rigidbody>();
-        attackMesh = transform.GetChild(2).GetComponent<GymEnemyAttack_CubeLerp>();
+        attackMesh = transform.GetChild(2).GetComponent<EnemyAttackCube_Intepolation>();
         attackMesh.parent = this;
         myCollider = GetComponent<Collider>();
         enemyBehaviour = transform.root.GetComponent<EnemyBehaviour>();

@@ -12,6 +12,8 @@ public class EnemyStats {
     public float deathPercentage = 0.25f;
     public float deathPercentageTimer = 5f;
     [Space]
+    public float dropPartPercentage = 0.1f;
+    [Space]
     public float minRegenSpeed = 1;
     public float maxRegenSpeed = 5;
     public float atkSpeed = 2;

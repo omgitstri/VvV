@@ -46,4 +46,11 @@ public class Entity_Tracker : MonoBehaviour
         tempList.Add(PlayerEntity);
         return tempList;
     }
+
+    public Transform enemyPart { get; private set; } = null;
+
+    public void RegisterEnemyPart(Transform _parts)
+    {
+        enemyPart = _parts;
+    }
 }
