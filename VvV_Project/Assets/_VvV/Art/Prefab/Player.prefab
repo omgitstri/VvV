@@ -10848,6 +10848,10 @@ MonoBehaviour:
   weaponHolder: {fileID: 7459758346821365780}
   idleSpeed: {x: 0.01, y: 0.01, z: 0.01}
   movementSpeed: {x: 0.1, y: 0.1, z: 0.1}
+  walkMultiplier: 4
+  runMultiplier: 6
+  walkBob: 1
+  runBob: 2
 --- !u!1 &7459758346821365781
 GameObject:
   m_ObjectHideFlags: 0
