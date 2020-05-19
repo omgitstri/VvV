@@ -10527,6 +10527,7 @@ GameObject:
   - component: {fileID: 3862967526963793201}
   - component: {fileID: 7251525758075075520}
   - component: {fileID: 5296412961589295450}
+  - component: {fileID: 8608544386097393047}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -10741,11 +10742,13 @@ MonoBehaviour:
   walkSpeed: 7
   runSpeed: 12
   jumpForce: 5
+  isRun: 0
   lookSensitivity: 1
   cameraRotationLimit: 60
   theCamera: {fileID: 7459758345296945519}
   aimer: {fileID: 3307821411806026988}
   canMove: 1
+  isMoving: 0
 --- !u!114 &3801473050910417648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10830,6 +10833,21 @@ MonoBehaviour:
   chosenSource: {fileID: 0}
   chosenSound: {fileID: 0}
   soundName: 
+--- !u!114 &8608544386097393047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7459758346078470248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacbc17bb55ed444190453bb03d888b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponHolder: {fileID: 7459758346821365780}
+  idleSpeed: {x: 0.01, y: 0.01, z: 0.01}
+  movementSpeed: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!1 &7459758346821365781
 GameObject:
   m_ObjectHideFlags: 0

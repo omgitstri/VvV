@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce = 0;
 
-    //private bool isRun = false;
+    public bool isRun = false;
     private bool isGround = true;
 
     private CapsuleCollider capsuleCollider = null;
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     // ** - TEMPORARY JUST TO STOP THE MOVEMENT ON DEATH - ** // - KEN
     public bool canMove = true;
+    public bool isMoving = false;
 
     private void Awake()
     {
@@ -116,13 +117,13 @@ public class PlayerController : MonoBehaviour
     {
 //        gunController.CancelFineSight();
 
-        //isRun = true;
+        isRun = true;
         applySpeed = runSpeed;
     }
 
     public void RunningCancel()
     {
-        //isRun = false;
+        isRun = false;
         applySpeed = walkSpeed;
     }
 
@@ -138,6 +139,13 @@ public class PlayerController : MonoBehaviour
 
         transform.position += _velocity * Time.deltaTime;
         //myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
+
+        if (_moveDirX != 0 || _moveDirZ != 0) {
+            isMoving = true;
+        } else {
+            isMoving = false;
+        }
+
         if (aimer != null)
         {
             if (gunController.isFineSightMode || isNearEnemy)
@@ -149,6 +157,7 @@ public class PlayerController : MonoBehaviour
                 aimer.enabled = true;
             }
         }
+
         if((Input.GetButton("Horizontal") || Input.GetButton("Vertical"))&& !audioSource.isPlaying)
         {
             if (audioSource != null && isGround) {
@@ -158,11 +167,6 @@ public class PlayerController : MonoBehaviour
                     sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().sprint, true, 0.1f, 0.25f, 0.85f, 1.15f);
                 }
             }
-
-            /*if (audioSource.clip != Toolbox.GetInstance.GetSound().step) {
-                audioSource.clip = Toolbox.GetInstance.GetSound().step;
-            }
-            audioSource.Play();*/
         }
 
         if(Input.GetButtonUp("Horizontal")|| Input.GetButtonUp("Vertical"))
@@ -170,7 +174,6 @@ public class PlayerController : MonoBehaviour
             if (audioSource != null) {
                 sfx.StopSound(audioSource);
             }
-            //audioSource.Stop();
         }
     }
 
