@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    public AudioSource source;
 
     [Header("SYSTEM SFX")]
     #region - - - - - SYSTEM SFX - - - - -
@@ -20,7 +21,6 @@ public class SoundManager : MonoBehaviour
     [Header("PLAYER SFX")]
     #region - - - - - PLAYER SFX - - - - - 
     public AudioClip shoot;
-    public AudioClip hit;
     public AudioClip reload;
     public AudioClip step;
     public AudioClip sprint;
@@ -52,16 +52,18 @@ public class SoundManager : MonoBehaviour
 
     [Header("EVENT SFX")]
     #region - - - - - EVENT SFX - - - - -
-    public AudioClip startLvl;
     public AudioClip victory;
-    public AudioClip npcGrunt;
     public AudioClip pickup;
-    public AudioClip gameOver;
     [Space]
     public AudioClip switchsfx;
     public AudioClip doorOpen;
     public AudioClip doorClose;
     public AudioClip destroy;
+    [Space]
+    public AudioClip teleportAppear;
+    public AudioClip teleportIn;
+    public AudioClip teleportOut;
+    public AudioClip wallBreak;
     #endregion
 
     [Header("EMP SFX")]

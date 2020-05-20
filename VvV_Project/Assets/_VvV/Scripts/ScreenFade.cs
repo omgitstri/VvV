@@ -10,20 +10,34 @@ public class ScreenFade : MonoBehaviour
     private Canvas canvas;
     private CanvasScaler cScaler;
     private GraphicRaycaster gRay;
-
+    private AudioSource source;
+    private SoundFX sfx;
 
 
     void Awake() {
         //anim = GetComponent<Animator>();
-        FadeIn();
+
         canvas = GetComponent<Canvas>();
         cScaler = GetComponent<CanvasScaler>();
         gRay = GetComponent<GraphicRaycaster>();
     }
 
+    private void Start() {
+        source = Toolbox.GetInstance.GetSound().source;
+        sfx = source.GetComponent<SoundFX>();
+        LateStart();
+    }
+
+    private void LateStart() {
+        FadeIn();
+    }
 
     public void FadeIn() {
+        if (source != null && sfx != null) {
+            sfx.PlaySound(source, Toolbox.GetInstance.GetSound().teleportIn, false, 1f, 1f, 1f, 1f);
+        }
         anim.SetTrigger("FadeIn");
+
         StartCoroutine(ToggleCanvas());  
     }
 

@@ -7,12 +7,19 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour {
     //Call Toolbox.GetInstance().GetScene().LoadScene(*Add scene name*); in other scripts
     public string currentScene;
+    private AudioSource source;
+    private SoundFX sfx;
 
+    void Start() {
+        source = Toolbox.GetInstance.GetSound().source;
+        if (source != null) {
+            sfx = source.GetComponent<SoundFX>();
+        }
+    }
 
     public void ReloadScene() {
         currentScene = SceneManager.GetActiveScene().name;
         LoadScene(currentScene);
-
     }
 
     public void LoadScene(string scene) {
@@ -23,6 +30,9 @@ public class SceneLoader : MonoBehaviour {
     }
 
     public IEnumerator DelayLoad(string scene) {
+        if (source != null && sfx != null) {
+            sfx.PlaySound(source, Toolbox.GetInstance.GetSound().teleportOut, false, 1f, 1f, 1f, 1f);
+        }
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(scene);
     }

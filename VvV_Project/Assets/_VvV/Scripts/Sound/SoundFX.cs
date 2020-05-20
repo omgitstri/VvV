@@ -65,7 +65,12 @@ public class SoundFX : MonoBehaviour
             case "cancel":
                 chosenSound = Toolbox.GetInstance.GetSound().menuCancel;
                 break;
-
+            case "doorOpen":
+                chosenSound = Toolbox.GetInstance.GetSound().doorOpen;
+                break;
+            case "doorClose":
+                chosenSound = Toolbox.GetInstance.GetSound().doorClose;
+                break;
         }
 
         if (chosenSource.clip != chosenSound) {

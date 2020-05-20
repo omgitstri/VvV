@@ -8,12 +8,17 @@ public class AnimateDoor : MonoBehaviour
     private Vector3 positionClose = Vector3.zero;
     private Vector3 positionOpen = Vector3.zero;
     private float a = 0;
+    private AudioSource source;
+    private SoundFX sfx;
 
     private void Start()
     {
         positionClose = transform.position;
         positionOpen = transform.position;
         positionOpen.y += 6;
+
+        source = GetComponent<AudioSource>();
+        sfx = GetComponent<SoundFX>();
     }
 
     void Update()
@@ -34,11 +39,18 @@ public class AnimateDoor : MonoBehaviour
 
     public void OpenDoor()
     {
-        opened = true;
+        if (!opened) {
+            opened = true;
+            sfx.PlaySound(source, Toolbox.GetInstance.GetSound().doorOpen, false, 1f, 1f, 1f, 1f);
+        }
+        
     }
 
     public void CloseDoor()
     {
-        opened = false;
+        if (opened) {
+            opened = false;
+            sfx.PlaySound(source, Toolbox.GetInstance.GetSound().doorClose, false, 1f, 1f, 1f, 1f);
+        }
     }
 }
