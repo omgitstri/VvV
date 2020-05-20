@@ -32,36 +32,36 @@ public class CustomTriggerEvent : MonoBehaviour
     //    }
     //}
 
-    private void Update()
-    {
-        CheckCollidersInTrigger();
-    }
+    //private void Update()
+    //{
+    //    CheckCollidersInTrigger();
+    //}
 
-    private void CheckCollidersInTrigger()
-    {
-        intervals -= Time.deltaTime;
-        if (intervals <= 0)
-        {
-            triggeredColliders.Clear();
-            triggeredColliders.AddRange(Physics.OverlapBox(GetComponent<Collider>().bounds.center, GetComponent<Collider>().bounds.extents, transform.rotation, layerMask));
+    //private void CheckCollidersInTrigger()
+    //{
+    //    intervals -= Time.deltaTime;
+    //    if (intervals <= 0)
+    //    {
+    //        triggeredColliders.Clear();
+    //        triggeredColliders.AddRange(Physics.OverlapBox(GetComponent<Collider>().bounds.center, GetComponent<Collider>().bounds.extents, transform.rotation, layerMask));
 
-            if (triggeredColliders.Count <= 0)
-            {
-                triggeredObjects.Clear();
-                foreach (var item in triggeredColliders)
-                {
-                    triggeredObjects.Add(item.transform);
-                }
-                _OnTriggerExit.Invoke();
+    //        if (triggeredColliders.Count <= 0)
+    //        {
+    //            triggeredObjects.Clear();
+    //            foreach (var item in triggeredColliders)
+    //            {
+    //                triggeredObjects.Add(item.transform);
+    //            }
+    //            _OnTriggerExit.Invoke();
 
-            }
-            else if (triggeredObjects.Count > 0)
-            {
-                _OnTriggerEnter.Invoke();
-            }
-            intervals = 1f;
-        }
-    }
+    //        }
+    //        else if (triggeredObjects.Count > 0)
+    //        {
+    //            _OnTriggerEnter.Invoke();
+    //        }
+    //        intervals = 1f;
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
