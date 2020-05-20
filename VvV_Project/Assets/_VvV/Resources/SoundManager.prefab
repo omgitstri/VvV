@@ -70,12 +70,12 @@ MonoBehaviour:
   eHurt: {fileID: 8300000, guid: c6a5ea497254db042b527e15a5314e6f, type: 3}
   eDeath: {fileID: 8300000, guid: 5b32d239a37187f41ae82b7b412ffcf4, type: 3}
   eSounds: []
-  victory: {fileID: 0}
-  pickup: {fileID: 0}
+  objective: {fileID: 8300000, guid: 4f19e1b4347bf5b469197baa2831dd57, type: 3}
+  pickup: {fileID: 8300000, guid: a79757326bc3a744caf499bb4584ffb1, type: 3}
+  drop: {fileID: 8300000, guid: c3e2085f2898e0f47851c14856ce91b1, type: 3}
   switchsfx: {fileID: 8300000, guid: b92ed324077ae684fb1e8e894b79cf05, type: 3}
   doorOpen: {fileID: 8300000, guid: f4c3d97563b5cb64ea4d025f723826ff, type: 3}
   doorClose: {fileID: 8300000, guid: 53dbdd785dd65f544bb4cfd503967865, type: 3}
-  destroy: {fileID: 8300000, guid: b065d7ae749da4e47954271569f6fa78, type: 3}
   teleportAppear: {fileID: 8300000, guid: 508f667a8292c374c8362af6062dd3d4, type: 3}
   teleportIn: {fileID: 8300000, guid: ec2a3e5b303dcb74488bf8fd15cb8756, type: 3}
   teleportOut: {fileID: 8300000, guid: e66a23440f220d448bca2f35621cd782, type: 3}
@@ -83,7 +83,7 @@ MonoBehaviour:
   empDown: {fileID: 8300000, guid: f30420eecfb79354bb623b5d26857f23, type: 3}
   empUp: {fileID: 8300000, guid: f8fa5737a75bb9c48b79207d33816390, type: 3}
   empCharge: {fileID: 8300000, guid: f30420eecfb79354bb623b5d26857f23, type: 3}
-  empBlast: {fileID: 8300000, guid: 2312567a59bf8b04a806ae160345d5e0, type: 3}
+  empBlast: {fileID: 8300000, guid: ba190a96390b0c74dba250660da02376, type: 3}
 --- !u!114 &-7723183715914216494
 MonoBehaviour:
   m_ObjectHideFlags: 0

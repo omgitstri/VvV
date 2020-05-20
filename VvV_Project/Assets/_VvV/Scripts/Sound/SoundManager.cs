@@ -52,13 +52,13 @@ public class SoundManager : MonoBehaviour
 
     [Header("EVENT SFX")]
     #region - - - - - EVENT SFX - - - - -
-    public AudioClip victory;
+    public AudioClip objective;
     public AudioClip pickup;
+    public AudioClip drop;
     [Space]
     public AudioClip switchsfx;
     public AudioClip doorOpen;
     public AudioClip doorClose;
-    public AudioClip destroy;
     [Space]
     public AudioClip teleportAppear;
     public AudioClip teleportIn;

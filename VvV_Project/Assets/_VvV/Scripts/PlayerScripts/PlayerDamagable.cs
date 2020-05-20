@@ -13,10 +13,10 @@ public class PlayerDamagable : Damagable
     private SoundFX sfx;
     private AudioSource audioSource;
     [Space]
-    [SerializeField]private CameraShake camShake;
-    [SerializeField] private float shakeDuration;
-    [SerializeField] private float shakeMagnitude;
-    [SerializeField] private DamageSplash dmgSplash;
+    [SerializeField]private CameraShake camShake = null;
+    [SerializeField] private float shakeDuration = 0;
+    [SerializeField] private float shakeMagnitude = 0;
+    [SerializeField] private DamageSplash dmgSplash = null;
 
 
     private void Start()

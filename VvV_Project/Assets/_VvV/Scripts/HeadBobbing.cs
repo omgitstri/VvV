@@ -5,7 +5,7 @@ using UnityEngine;
 public class HeadBobbing : MonoBehaviour
 {
 
-    [SerializeField]private Transform weaponHolder;
+    [SerializeField]private Transform weaponHolder = null;
     private Vector3 weaponHolderOrigin;
     private float movementCounter;
     private float idleCounter;
@@ -13,10 +13,10 @@ public class HeadBobbing : MonoBehaviour
     [Space]
     [SerializeField]private Vector3 idleSpeed;
     [SerializeField]private Vector3 movementSpeed;
-    [SerializeField] private float walkMultiplier;
-    [SerializeField] private float runMultiplier;
-    [SerializeField] private float walkBob;
-    [SerializeField] private float runBob;
+    [SerializeField] private float walkMultiplier=0;
+    [SerializeField] private float runMultiplier=0;
+    [SerializeField] private float walkBob = 0;
+    [SerializeField] private float runBob = 0;
     private Vector3 targetBobPos;
 
     private void Start() {
