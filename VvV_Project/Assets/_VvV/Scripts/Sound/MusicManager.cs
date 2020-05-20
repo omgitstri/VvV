@@ -19,6 +19,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip main = null;
     public AudioClip begin = null;
     public AudioClip wave = null;
+    public AudioClip climax = null;
     public AudioClip end = null;
     #endregion
 
@@ -60,7 +61,6 @@ public class MusicManager : MonoBehaviour
         targetVol = vol;
         fadeIn = true;
         fadeOut = false;
-        Debug.Log("Activating FadeIn");
 
     }
 
@@ -70,8 +70,6 @@ public class MusicManager : MonoBehaviour
         state = mState.active;
         fadeIn = false;
         fadeOut = true;
-        Debug.Log("Activating FadeOut");
-
     }
     #endregion
 

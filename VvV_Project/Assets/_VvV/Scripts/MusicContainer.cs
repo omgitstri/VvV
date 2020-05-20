@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MusicState {none, main, begin, wave, end}
+public enum MusicState {none, main, begin, wave, climax, end}
 
 public class MusicContainer : MonoBehaviour
 {
@@ -49,6 +49,9 @@ public class MusicContainer : MonoBehaviour
                 break;
             case MusicState.wave:
                 audioClip = Toolbox.GetInstance.GetMusic().wave;
+                break;
+            case MusicState.climax:
+                audioClip = Toolbox.GetInstance.GetMusic().climax;
                 break;
             case MusicState.end:
                 audioClip = Toolbox.GetInstance.GetMusic().end;

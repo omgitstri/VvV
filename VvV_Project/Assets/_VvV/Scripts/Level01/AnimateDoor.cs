@@ -41,7 +41,9 @@ public class AnimateDoor : MonoBehaviour
     {
         if (!opened) {
             opened = true;
-            sfx.PlaySound(source, Toolbox.GetInstance.GetSound().doorOpen, false, 1f, 1f, 1f, 1f);
+            if (source != null && sfx != null) {
+                sfx.PlaySound(source, Toolbox.GetInstance.GetSound().doorOpen, false, 1f, 1f, 1f, 1f);
+            }
         }
         
     }
@@ -50,7 +52,9 @@ public class AnimateDoor : MonoBehaviour
     {
         if (opened) {
             opened = false;
-            sfx.PlaySound(source, Toolbox.GetInstance.GetSound().doorClose, false, 1f, 1f, 1f, 1f);
+            if (source != null && sfx != null) {
+                sfx.PlaySound(source, Toolbox.GetInstance.GetSound().doorClose, false, 1f, 1f, 1f, 1f);
+            }
         }
     }
 }
