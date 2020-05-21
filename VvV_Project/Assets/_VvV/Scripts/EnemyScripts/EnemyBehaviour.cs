@@ -31,7 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public AudioSource source;
     public bool isAggro = false;
-    private bool isAttacking = false;
+    [SerializeField]private bool isAttacking = false;
 
     private void Awake()
     {
@@ -70,6 +70,8 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (isAttacking)
         {
+            //navMeshAgent.isStopped = true;
+            navMeshAgent.speed = 0f;
             attackCooldown -= Time.deltaTime;
         }
 
@@ -120,8 +122,10 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (currentTarget != null)
         {
-            navMeshAgent.isStopped = false;
-            navMeshAgent.SetDestination(currentTarget.position);
+            if (GetComponent<EnemyMovementState>().currentMoveState != EnemyMovementState.MoveState.Idle) {
+                navMeshAgent.isStopped = false;
+                navMeshAgent.SetDestination(currentTarget.position);
+            }
 
         }
         else
@@ -129,13 +133,11 @@ public class EnemyBehaviour : MonoBehaviour
             navMeshAgent.isStopped = true;
         }
 
-        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
-        {
+        if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance || isAttacking) {
             GetComponent<EnemyMovementState>().EnemyIdle();
         }
 
-        else if (GetComponent<EnemyMovementState>().currentMoveState == EnemyMovementState.MoveState.Crawl)
-        {
+        else if (GetComponent<EnemyMovementState>().currentMoveState == EnemyMovementState.MoveState.Crawl) {
             GetComponent<EnemyMovementState>().EnemyCrawl();
         }
 
@@ -177,12 +179,13 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (attackCooldown <= 0)
         {
-            isAttacking = false;
+            //isAttacking = false;
             //enemyAttack.stop.position = Entity_Tracker.Instance.PlayerEntity.position + Vector3.up * 0.5f;
             //enemyAttack.stop.position = currentTarget.position + Vector3.up * 0.5f;
             enemyAttack.stop.position = (transform.position + ((currentTarget.position) - transform.position).normalized * eStats.attRange) + Vector3.up * 0.5f;
             enemyAttack.StartAttacking();
             attackCooldown = eStats.atkSpeed + 500;
+            StartCoroutine(ReturnToChase());
         }
 
         foreach (var item in enemyAttack.selectedIndividualCubes)
@@ -192,6 +195,13 @@ public class EnemyBehaviour : MonoBehaviour
                 mesh.material.SetColor("_Emission", Color.Lerp(Color.black, attackColor, (eStats.atkSpeed - attackCooldown) / eStats.atkSpeed));
             }
         }
+    }
+
+    public IEnumerator ReturnToChase() {
+        yield return new WaitForSeconds(1f);
+        isAttacking = false;
+
+
     }
 
     public void SetVisibility(bool _toggle)

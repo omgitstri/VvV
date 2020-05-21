@@ -125,6 +125,8 @@ public class EnemyMovementState : MonoBehaviour
 	public  void EnemyIdle()
 	{
         navMesh.speed = 0; /* eStats.moveSpd; */
+        animator.SetBool("isWalking", false);
+        animator.SetTrigger("isAttacking");
         sfx.StopSound(audioSource);
 	}
 
