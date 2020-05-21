@@ -27504,17 +27504,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1406451187646392693}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!1 &8773398980506598169
 GameObject:
   m_ObjectHideFlags: 0
@@ -27600,13 +27589,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8773398980506598169}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19a5d6cf22da79149bd22e20996f291a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _if: 'ERROR: EMP requires a Voxel Core'
-  _else: Press 'E' to Place Voxel Core
+  _if: 'ERROR: Charge the EMP'
+  _else: We Win
   _partAcquired:
     m_PersistentCalls:
       m_Calls:
@@ -27710,6 +27699,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9148870585713673445, guid: 83ea87411c2537c42a1d2366b3138de0,
         type: 3}
+      propertyPath: _OnTriggerExit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148870585713673445, guid: 83ea87411c2537c42a1d2366b3138de0,
+        type: 3}
       propertyPath: ToggleOnTriggerEnter
       value: 1
       objectReference: {fileID: 0}
@@ -27743,10 +27737,40 @@ PrefabInstance:
       propertyPath: _OnTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9148870585713673445, guid: 83ea87411c2537c42a1d2366b3138de0,
+        type: 3}
+      propertyPath: ToggleOnTriggerExit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148870585713673445, guid: 83ea87411c2537c42a1d2366b3138de0,
+        type: 3}
+      propertyPath: _OnTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148870585713673445, guid: 83ea87411c2537c42a1d2366b3138de0,
+        type: 3}
+      propertyPath: _OnTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148870585713673445, guid: 83ea87411c2537c42a1d2366b3138de0,
+        type: 3}
+      propertyPath: _OnTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8773398980506598169}
+    - target: {fileID: 9148870585713673445, guid: 83ea87411c2537c42a1d2366b3138de0,
+        type: 3}
+      propertyPath: _OnTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148870585713673445, guid: 83ea87411c2537c42a1d2366b3138de0,
+        type: 3}
+      propertyPath: _OnTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9148870585713673447, guid: 83ea87411c2537c42a1d2366b3138de0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9148870586559317196, guid: 83ea87411c2537c42a1d2366b3138de0,
         type: 3}
@@ -27830,12 +27854,6 @@ GameObject:
 --- !u!23 &1406451188524138142 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 9148870585370350348, guid: 83ea87411c2537c42a1d2366b3138de0,
-    type: 3}
-  m_PrefabInstance: {fileID: 7886901034917637522}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1406451187646392693 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9148870585713673447, guid: 83ea87411c2537c42a1d2366b3138de0,
     type: 3}
   m_PrefabInstance: {fileID: 7886901034917637522}
   m_PrefabAsset: {fileID: 0}
@@ -28504,6 +28522,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8116577862702157812}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &7050251897966300512 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1257742549492646548, guid: 192dc3df5dbd5584f8831676ad1357b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 8116577862702157812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7050251896813101215 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1257742548071935851, guid: 192dc3df5dbd5584f8831676ad1357b7,
@@ -28516,9 +28540,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d370cff36a0a8439dee97d52cb8494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7050251897966300512 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1257742549492646548, guid: 192dc3df5dbd5584f8831676ad1357b7,
-    type: 3}
-  m_PrefabInstance: {fileID: 8116577862702157812}
-  m_PrefabAsset: {fileID: 0}
