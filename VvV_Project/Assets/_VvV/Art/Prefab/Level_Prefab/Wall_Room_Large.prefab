@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8519930400500730008}
   - component: {fileID: 8519930400500730015}
   - component: {fileID: 8519930400500730014}
-  - component: {fileID: 8519930400500730013}
+  - component: {fileID: 4418854116647943796}
   m_Layer: 0
   m_Name: Wall_Room_Large
   m_TagString: Untagged
@@ -304,8 +304,8 @@ MonoBehaviour:
   - a: 19
     b: 18
   m_SelectedVertices: 10000000110000001200000013000000
---- !u!64 &8519930400500730013
-MeshCollider:
+--- !u!65 &4418854116647943796
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -314,7 +314,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 10.000036, y: 5, z: 0.500009}
+  m_Center: {x: -5.000042, y: 2.5, z: 0.25000957}
