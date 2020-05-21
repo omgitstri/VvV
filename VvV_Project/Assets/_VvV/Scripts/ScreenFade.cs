@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class ScreenFade : MonoBehaviour
 {
+    /* Used for fading the screen in & out with different effects
+        This primarily uses an animator for its states to play the intended effect
+     */
+
     [SerializeField] private Animator anim = null;
     private bool isActive = true;
     private Canvas canvas;
@@ -32,6 +36,7 @@ public class ScreenFade : MonoBehaviour
         FadeIn();
     }
 
+    // Used to fade from black to a visible screen
     public void FadeIn() {
         if (source != null && sfx != null) {
             sfx.PlaySound(source, Toolbox.GetInstance.GetSound().teleportIn, false, 1f, 1f, 1f, 1f);
@@ -41,6 +46,7 @@ public class ScreenFade : MonoBehaviour
         StartCoroutine(ToggleCanvas());  
     }
 
+    // Used to fade from a visible to a black screen
     public void FadeOut() {
         gRay.enabled = true;
 
@@ -48,6 +54,7 @@ public class ScreenFade : MonoBehaviour
         StartCoroutine(ToggleCanvas());
     }
 
+    // Used as a transitional effect when entering a teleport
     public void FadeGreen() {
         gRay.enabled = true;
 

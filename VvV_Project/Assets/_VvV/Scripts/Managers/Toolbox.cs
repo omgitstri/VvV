@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Toolbox : MonoBehaviour
 {
+    /* The toolbox used to reference & call most managers by using Toolbox.GetInstance.[class name]().functionName();
+        
+        - Available class references are shown after the Awake function
+        
+     */
 
     private static Toolbox _instance = null;
 

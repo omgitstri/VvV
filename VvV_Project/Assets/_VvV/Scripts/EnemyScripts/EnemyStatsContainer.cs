@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemyStatsContainer : MonoBehaviour
 {
+    /* 
+        Contains enemy stats, including death/revive to power them up;
+    */
+
     public EnemyStats eStats;
     public Entity_Register entityReg;
 

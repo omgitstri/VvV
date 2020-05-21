@@ -4,9 +4,26 @@ using UnityEngine;
 
 public class SoundFX : MonoBehaviour
 {
+    /* This script is used to change, play, stop, & loop sound effects on a single AudioSource
+        To use it in a specific script, add it to a gameobject with the script that uses it and declare 
+        private SoundFX sfx = null;
+        sfx = GetComponent<SoundFX>();
+      
+        And then call the appropriate function by using sfx.FunctionName(parameters);
+        Assign a source, a clip, and play the audiosource - PlaySound(AudioSource, AudioClip, Bool to change volume & pitch, minimum Volume, maximum Volume, minimum Pitch, maximum Pitch);
+        Stop the audiosource - StopSound(AudioSource);
+        Play a sound that needs to be looped - LoopSound(AudioSource, AudioClip, Bool to change volume & pitch, minimum Volume, maximum Volume, minimum Pitch, maximum Pitch);
+        Change to a specific sound using a string - ChangeSound(String name);
+        Play whatever sound is already set on it without changes - ManualPlay();
+     */
+
+    // Use of these variables is optional, if you wish to directly assign a single sound on an object, using ManualPlay();
     public AudioSource chosenSource;
     public AudioClip chosenSound;
     public string soundName;
+
+
+
 
     public void PlaySound(AudioSource source, AudioClip sound, bool changeVP, float minVol, float maxVol, float minPitch, float maxPitch) {
         //TESTING VALUES

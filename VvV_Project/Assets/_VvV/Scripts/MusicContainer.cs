@@ -6,6 +6,10 @@ public enum MusicState {none, main, begin, wave, climax, end}
 
 public class MusicContainer : MonoBehaviour
 {
+    /*
+        A container to control music being played on the scene
+     */
+
     public AudioSource source;
     public AudioClip audioClip;
     public float targetVol;

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioSource source;
+    /* This script contains all the SFX in the game, use it in tandem with SoundFX.cs to switch to the soundclip needed
+     
+        *** Employ it using Toolbox.GetInstance.GetSound().[soundName] to assign an audio source with a new soundclip 
+        
+    */
+
+    public AudioSource source; // AudioSource is used for general system sounds (2D sounds)
 
     [Header("SYSTEM SFX")]
     #region - - - - - SYSTEM SFX - - - - -

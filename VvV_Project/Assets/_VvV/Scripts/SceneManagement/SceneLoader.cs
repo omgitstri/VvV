@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 
 public class SceneLoader : MonoBehaviour {
-    //Call Toolbox.GetInstance().GetScene().LoadScene(*Add scene name*); in other scripts
+
+    /* Used to load scenes
+     
+         *** Call Toolbox.GetInstance().GetScene().LoadScene(*Add scene name*); in other scripts */
+
     public string currentScene;
     private AudioSource source;
     private SoundFX sfx;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ManualTrigger : MonoBehaviour
 {
+    // Dummy fix for problematic custom triggers that repeat sound effects
+
     SoundFX sfx = null;
     AudioSource source = null;
 

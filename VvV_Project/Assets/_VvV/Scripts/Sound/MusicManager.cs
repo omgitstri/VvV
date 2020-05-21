@@ -6,6 +6,13 @@ public enum mState { inactive, active }
 
 public class MusicManager : MonoBehaviour
 {
+    /* Script that manages music, use it to fade in & fade out music for transitions, or simply start/stop the music playing
+     mState is used to check whether the script will activate or not 
+
+        *** Use FadeIn() or FadeOut() to activate the required functions by employing Toolbox.GetInstance.GetMusic().[functionName](parameters);
+
+         */
+
     private AudioSource audioSource;
     private float targetVol = 1;
     float targetDelay;

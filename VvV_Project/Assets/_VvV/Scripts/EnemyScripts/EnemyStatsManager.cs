@@ -6,6 +6,8 @@ using UnityEditor;
 // - - - - - SCRIPT TO MANAGE ENEMY STATS - - - - - 
 public class EnemyStatsManager : MonoBehaviour
 {
+    // Script that triggers power ups in enemies & puts a cap on power ups
+
 
     /// Handlers
     private EnemyMovementState enemyMovement;

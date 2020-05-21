@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class HeadBobbing : MonoBehaviour
 {
+    /* Used for camera & weapon bobbing 
+        Put it on an object you wish to bob & drag the object into its open Transform slot 
+        This is made to track the player's movement states to match the parameters needed for visual feedback    
+    */
+
 
     [SerializeField]private Transform weaponHolder = null;
     private Vector3 weaponHolderOrigin;

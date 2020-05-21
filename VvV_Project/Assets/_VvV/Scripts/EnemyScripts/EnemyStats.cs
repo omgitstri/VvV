@@ -14,13 +14,13 @@ public class EnemyStats {
     [Space]
     public float dropPartPercentage = 0.1f;
     [Space]
-    public float minRegenSpeed = 1;
-    public float maxRegenSpeed = 5;
-    public float atkSpeed = 2;
-    public float attRange = 4;
-    public float crawlSpeed = 1;
-    public float moveSpeed = 2;
-    public float aggroRange = 10;
+    public float minRegenSpeed = 1;  // Starting/minimum regeneration speed upon death
+    public float maxRegenSpeed = 5;  // Maximum regeneration speed upon death
+    public float atkSpeed = 2;       // Overall attack speed of the enemy
+    public float attRange = 4;       // Attack Range
+    public float crawlSpeed = 1;     // The speed at which they move while crawling
+    public float moveSpeed = 2;      // ^^ while walking
+    public float aggroRange = 10;    // Range at which the enemy becomes aggressive to the player
     public float lostRangDuration = 0;
     [Space]
     public bool isCrawling = false;
