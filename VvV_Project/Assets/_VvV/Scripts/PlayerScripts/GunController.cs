@@ -171,6 +171,7 @@ public class GunController : MonoBehaviour
         }
         else
         {
+            currentGun.carryBulletCount = currentGun.maxBulletCount;
             print("No Bullet");
         }
     }
