@@ -10742,7 +10742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 7
   runSpeed: 12
-  jumpForce: 5
+  jumpForce: 0
   isRun: 0
   lookSensitivity: 1
   cameraRotationLimit: 60
@@ -11123,8 +11123,8 @@ MonoBehaviour:
   reloadTime: 1.5
   reloadBulletCount: 35
   currentBulletCount: 35
-  maxBulletCount: 0
-  carryBulletCount: 0
+  maxBulletCount: 210
+  carryBulletCount: 210
   retroActionForce: 0.3
   retroActionFineSightForce: 0.6
   fineSightOriginPos: {x: 0.15, y: 0.55, z: -0.29}

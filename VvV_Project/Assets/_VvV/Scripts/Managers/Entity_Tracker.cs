@@ -53,4 +53,11 @@ public class Entity_Tracker : MonoBehaviour
     {
         enemyPart = _parts;
     }
+
+    public Gun playerGun { get; private set; } = null;
+
+    public void RegisterGun(Gun _gun)
+    {
+        playerGun = _gun;
+    }
 }

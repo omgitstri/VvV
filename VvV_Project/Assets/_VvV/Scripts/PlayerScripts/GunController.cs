@@ -102,7 +102,7 @@ public class GunController : MonoBehaviour
 
             var hit = hitInfo.transform.GetComponent<Damagable>();
 
-            if(hit != null)
+            if(hit != null && !hit.gameObject.CompareTag("Player"))
             {
                 hit.GetDamaged(0);
             }
@@ -138,8 +138,8 @@ public class GunController : MonoBehaviour
 
     IEnumerator ReloadCoroutine()
     {
-        if (true)
-        {
+        if (currentGun.carryBulletCount > 0)
+            {
             isReload = true;
 
             //PlaySE(currentGun.reload_Sound);
@@ -151,28 +151,28 @@ public class GunController : MonoBehaviour
 
             yield return new WaitForSeconds(currentGun.reloadTime);
 
-            if (true)
-            {
-                currentGun.currentBulletCount = currentGun.reloadBulletCount;
-                currentGun.carryBulletCount -= currentGun.reloadBulletCount;
-            }
-
-            //if (currentGun.carryBulletCount >= currentGun.reloadBulletCount)
+            //if (true)
             //{
             //    currentGun.currentBulletCount = currentGun.reloadBulletCount;
             //    currentGun.carryBulletCount -= currentGun.reloadBulletCount;
             //}
-            //else
-            //{
-            //    currentGun.currentBulletCount = currentGun.carryBulletCount;
-            //    currentGun.carryBulletCount = 0;
-            //}
+
+            if (currentGun.carryBulletCount >= currentGun.reloadBulletCount)
+            {
+                currentGun.currentBulletCount = currentGun.reloadBulletCount;
+                currentGun.carryBulletCount -= currentGun.reloadBulletCount;
+            }
+            else
+            {
+                currentGun.currentBulletCount = currentGun.carryBulletCount;
+                currentGun.carryBulletCount = 0;
+            }
             isReload = false;
         }
-        //else
-        //{
-        //    print("No Bullet");
-        //}
+        else
+        {
+            print("No Bullet");
+        }
     }
 
     private void TryFineSight()
@@ -206,6 +206,7 @@ public class GunController : MonoBehaviour
             StartCoroutine(FineSightDeactivateCoroutine());
         }
     }
+
 
     IEnumerator FineSightActivateCoroutine()
     {

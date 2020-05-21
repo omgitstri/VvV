@@ -25,6 +25,7 @@ public class Gun : MonoBehaviour
     public AudioClip reload_Sound;
 
     private void Start() {
+        Entity_Tracker.Instance.RegisterGun(this);
         fire_Sound = Toolbox.GetInstance.GetSound().shoot;
         //reload_Sound = Toolbox.GetInstance.GetSound().reload;
     }
