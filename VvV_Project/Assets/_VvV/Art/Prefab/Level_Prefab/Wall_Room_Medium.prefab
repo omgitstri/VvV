@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8519930400500730008}
   - component: {fileID: 8519930400500730015}
   - component: {fileID: 8519930400500730014}
-  - component: {fileID: 8519930400500730013}
+  - component: {fileID: 2915953028875731805}
   m_Layer: 0
   m_Name: Wall_Room_Medium
   m_TagString: Untagged
@@ -296,8 +296,8 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!64 &8519930400500730013
-MeshCollider:
+--- !u!65 &2915953028875731805
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -306,7 +306,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 5.000029, y: 5, z: 0.5000078}
+  m_Center: {x: -2.500038, y: 2.5, z: 0.25001016}

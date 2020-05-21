@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2639492810317091626}
   - component: {fileID: 1889992525796731640}
   - component: {fileID: 7362035043273474225}
-  - component: {fileID: 8425925745489986717}
-  - component: {fileID: 879817025874651987}
+  - component: {fileID: 8407208512939118416}
   - component: {fileID: 3532111623280477926}
+  - component: {fileID: 879817025874651987}
+  - component: {fileID: 2940796326937185872}
   m_Layer: 0
   m_Name: Trigger_EnemySpawner
   m_TagString: Untagged
@@ -214,55 +215,55 @@ MonoBehaviour:
   - m_Vertices: 0b0000000e00000012000000
   m_SharedTextures: []
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 1, y: 0, z: 0}
-  - {x: 0, y: 1, z: 0}
-  - {x: 1, y: 1, z: 0}
-  - {x: 1, y: 0, z: 0}
-  - {x: 1, y: 0, z: -1}
-  - {x: 1, y: 1, z: 0}
-  - {x: 1, y: 1, z: -1}
-  - {x: 1, y: 0, z: -1}
-  - {x: 0, y: 0, z: -1}
-  - {x: 1, y: 1, z: -1}
-  - {x: 0, y: 1, z: -1}
-  - {x: 0, y: 0, z: -1}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 1, z: -1}
-  - {x: 0, y: 1, z: 0}
-  - {x: 0, y: 1, z: 0}
-  - {x: 1, y: 1, z: 0}
-  - {x: 0, y: 1, z: -1}
-  - {x: 1, y: 1, z: -1}
-  - {x: 0, y: 0, z: -1}
-  - {x: 1, y: 0, z: -1}
-  - {x: 0, y: 0, z: 0}
-  - {x: 1, y: 0, z: 0}
+  - {x: -0.5, y: 0, z: 0.5}
+  - {x: 2.75, y: 0, z: 0.5}
+  - {x: -0.5, y: 2, z: 0.5}
+  - {x: 2.75, y: 2, z: 0.5}
+  - {x: 2.75, y: 0, z: 0.5}
+  - {x: 2.75, y: 0, z: -1.5}
+  - {x: 2.75, y: 2, z: 0.5}
+  - {x: 2.75, y: 2, z: -1.5}
+  - {x: 2.75, y: 0, z: -1.5}
+  - {x: -0.5, y: 0, z: -1.5}
+  - {x: 2.75, y: 2, z: -1.5}
+  - {x: -0.5, y: 2, z: -1.5}
+  - {x: -0.5, y: 0, z: -1.5}
+  - {x: -0.5, y: 0, z: 0.5}
+  - {x: -0.5, y: 2, z: -1.5}
+  - {x: -0.5, y: 2, z: 0.5}
+  - {x: -0.5, y: 2, z: 0.5}
+  - {x: 2.75, y: 2, z: 0.5}
+  - {x: -0.5, y: 2, z: -1.5}
+  - {x: 2.75, y: 2, z: -1.5}
+  - {x: -0.5, y: 0, z: -1.5}
+  - {x: 2.75, y: 0, z: -1.5}
+  - {x: -0.5, y: 0, z: 0.5}
+  - {x: 2.75, y: 0, z: 0.5}
   m_Textures0:
-  - {x: 0, y: 0}
-  - {x: -1, y: 0}
-  - {x: 0, y: 1}
-  - {x: -1, y: 1}
-  - {x: 0, y: 0}
-  - {x: -1, y: 0}
-  - {x: 0, y: 1}
-  - {x: -1, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 1, y: 1}
-  - {x: 0, y: 1}
-  - {x: 1, y: 0}
-  - {x: 0, y: 0}
-  - {x: 1, y: 1}
-  - {x: 0, y: 1}
-  - {x: 0, y: 0}
-  - {x: 1, y: 0}
-  - {x: 0, y: -1}
-  - {x: 1, y: -1}
-  - {x: 0, y: -1}
-  - {x: -1, y: -1}
-  - {x: 0, y: 0}
-  - {x: -1, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: -2.75, y: 0}
+  - {x: 0.5, y: 2}
+  - {x: -2.75, y: 2}
+  - {x: 0.5, y: 0}
+  - {x: -1.5, y: 0}
+  - {x: 0.5, y: 2}
+  - {x: -1.5, y: 2}
+  - {x: 2.75, y: 0}
+  - {x: -0.5, y: 0}
+  - {x: 2.75, y: 2}
+  - {x: -0.5, y: 2}
+  - {x: 1.5, y: 0}
+  - {x: -0.5, y: 0}
+  - {x: 1.5, y: 2}
+  - {x: -0.5, y: 2}
+  - {x: -0.5, y: 0.5}
+  - {x: 2.75, y: 0.5}
+  - {x: -0.5, y: -1.5}
+  - {x: 2.75, y: -1.5}
+  - {x: 0.5, y: -1.5}
+  - {x: -2.75, y: -1.5}
+  - {x: 0.5, y: 0.5}
+  - {x: -2.75, y: 0.5}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -302,8 +303,8 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!64 &8425925745489986717
-MeshCollider:
+--- !u!65 &8407208512939118416
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -312,10 +313,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 3.25, y: 2, z: 2}
+  m_Center: {x: 1.125, y: 1, z: -0.5}
+--- !u!114 &3532111623280477926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330368915397683678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a3afc1a9bb7274fbc5c9702c37de50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onAwake: 1
 --- !u!114 &879817025874651987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +353,43 @@ MonoBehaviour:
   spawnEnemy: 1
   minValidDistance: 0
   maxValidDistance: 20
---- !u!114 &3532111623280477926
+  _onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2940796326937185872}
+        m_MethodName: UseDelay
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 4
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2940796326937185872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,10 +398,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 330368915397683678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a3afc1a9bb7274fbc5c9702c37de50, type: 3}
+  m_Script: {fileID: 11500000, guid: f7d370cff36a0a8439dee97d52cb8494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAwake: 1
+  callBack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: DestroyColliders
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 8
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4867709811639986997
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867709811639986997}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 1}
+  m_LocalPosition: {x: 4, y: 0, z: 1}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 5689401469090652741}
@@ -465,7 +527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867709812216538140}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 4, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 5689401469090652741}
@@ -550,7 +612,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867709812845989880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: -2}
+  m_LocalPosition: {x: 4, y: 0, z: -2}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 5689401469090652741}
@@ -596,7 +658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867709812874771258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: -1}
+  m_LocalPosition: {x: 4, y: 0, z: -1}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 5689401469090652741}
