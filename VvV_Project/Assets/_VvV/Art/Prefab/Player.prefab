@@ -2138,21 +2138,21 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
-        key2: {r: 1, g: 1, b: 0, a: 0}
-        key3: {r: 1, g: 1, b: 0, a: 0}
-        key4: {r: 1, g: 1, b: 1, a: 0}
-        key5: {r: 1, g: 1, b: 1, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0.8396226, g: 0.9266846, b: 1, a: 1}
+        key1: {r: 0.8, g: 0.7058824, b: 1, a: 0}
+        key2: {r: 0.84449965, g: 0.5529412, b: 1, a: 0}
+        key3: {r: 0.5219778, g: 0.270401, b: 0.85300004, a: 0}
+        key4: {r: 1, g: 0.745283, b: 0.99393535, a: 0}
+        key5: {r: 0.84313726, g: 0.92941177, b: 1, a: 0}
+        key6: {r: 0.84313726, g: 0.92941177, b: 1, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 14071
-        ctime2: 24287
-        ctime3: 32960
-        ctime4: 40092
+        ctime1: 13261
+        ctime2: 22486
+        ctime3: 29020
+        ctime4: 42088
         ctime5: 65535
-        ctime6: 0
+        ctime6: 65535
         ctime7: 0
         atime0: 32768
         atime1: 65535
@@ -7056,19 +7056,19 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
-        key2: {r: 1, g: 1, b: 0, a: 0}
-        key3: {r: 1, g: 1, b: 0, a: 0}
-        key4: {r: 1, g: 1, b: 1, a: 0}
-        key5: {r: 1, g: 1, b: 1, a: 0}
+        key0: {r: 0.8392157, g: 0.9254902, b: 1, a: 1}
+        key1: {r: 0.7991429, g: 0.704, b: 1, a: 0}
+        key2: {r: 0.86149347, g: 0.5529412, b: 1, a: 0}
+        key3: {r: 0.5254902, g: 0.27058825, b: 0.85490197, a: 0}
+        key4: {r: 1, g: 0.74509805, b: 0.99215686, a: 0}
+        key5: {r: 0.84313726, g: 0.92941177, b: 1, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 14071
-        ctime2: 24287
+        ctime2: 23147
         ctime3: 32960
-        ctime4: 40092
+        ctime4: 43056
         ctime5: 65535
         ctime6: 0
         ctime7: 0
