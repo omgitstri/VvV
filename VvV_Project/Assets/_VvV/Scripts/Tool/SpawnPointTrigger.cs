@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider)), DisallowMultipleComponent, ExecuteAlways]
+[RequireComponent(typeof(Collider)), DisallowMultipleComponent]
 public class SpawnPointTrigger : MonoBehaviour
 {
     public List<SpawnPointEntity> spawnPointEntities = new List<SpawnPointEntity>();
