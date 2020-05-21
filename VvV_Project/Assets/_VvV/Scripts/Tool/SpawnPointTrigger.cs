@@ -23,6 +23,7 @@ public class SpawnPointTrigger : MonoBehaviour
     private void Awake()
     {
         GetComponent<Collider>().isTrigger = true;
+
         foreach (Transform child in transform)
         {
             if (!child.TryGetComponent(out SpawnPointEntity entity))
@@ -50,15 +51,11 @@ public class SpawnPointTrigger : MonoBehaviour
         spawnPointEntities.AddRange(GetComponentsInChildren<SpawnPointEntity>());
     }
 
-    private void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (layerMask == (layerMask | 1 << other.gameObject.layer))
         {
+            Debug.Log("test");
             TeleportEnemy();
             _onTriggerEnter.Invoke();
         }

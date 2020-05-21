@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        
+
     }
 
     void Start()
@@ -72,7 +72,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         IsGround();
-        if (canMove) {
+        if (canMove)
+        {
             TryJump();
             TryRun();
 
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void Running()
     {
-//        gunController.CancelFineSight();
+        //        gunController.CancelFineSight();
 
         isRun = true;
         applySpeed = runSpeed;
@@ -137,12 +138,17 @@ public class PlayerController : MonoBehaviour
 
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
 
-        transform.position += _velocity * Time.deltaTime;
-        //myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
+        //transform.position += _velocity * Time.deltaTime;
+        myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
+        //agent.Move(transform.position + _velocity);
 
-        if (_moveDirX != 0 || _moveDirZ != 0) {
+
+        if (_moveDirX != 0 || _moveDirZ != 0)
+        {
             isMoving = true;
-        } else {
+        }
+        else
+        {
             isMoving = false;
         }
 
@@ -158,20 +164,25 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if((Input.GetButton("Horizontal") || Input.GetButton("Vertical"))&& !audioSource.isPlaying)
+        if ((Input.GetButton("Horizontal") || Input.GetButton("Vertical")) && !audioSource.isPlaying)
         {
-            if (audioSource != null && isGround) {
-                if (applySpeed == walkSpeed) {
+            if (audioSource != null && isGround)
+            {
+                if (applySpeed == walkSpeed)
+                {
                     sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().step, true, 0.1f, 0.25f, 0.85f, 1.15f);
-                } else if (applySpeed == runSpeed) {
+                }
+                else if (applySpeed == runSpeed)
+                {
                     sfx.PlaySound(audioSource, Toolbox.GetInstance.GetSound().sprint, true, 0.1f, 0.25f, 0.85f, 1.15f);
                 }
             }
         }
 
-        if(Input.GetButtonUp("Horizontal")|| Input.GetButtonUp("Vertical"))
+        if (Input.GetButtonUp("Horizontal") || Input.GetButtonUp("Vertical"))
         {
-            if (audioSource != null) {
+            if (audioSource != null)
+            {
                 sfx.StopSound(audioSource);
             }
         }
