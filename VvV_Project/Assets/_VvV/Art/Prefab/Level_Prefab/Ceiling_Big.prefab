@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8606307931441780729}
   - component: {fileID: 8606307931441780728}
   m_Layer: 0
-  m_Name: Ceiling
+  m_Name: Ceiling_Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8606307931441780730}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.70710677}
   m_LocalPosition: {x: 50, y: 5, z: -29.999983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!33 &8606307931441780679
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -60,7 +60,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d81699dd2892c945bb147b017bc458f, type: 2}
+  - {fileID: 2100000, guid: 4c3d02c3428a1b5459da2d388fe6ac4e, type: 2}
+  - {fileID: 2100000, guid: 6364ab21021409f48b3c70f04d56a7eb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -176,7 +177,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 0
+    m_SubmeshIndex: 1
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
