@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_VvV/Scene/StartMenu.unity
+    path: Assets/_VvV/Scene/Levels/04Beta.unity
+    guid: ab957d1fdf66d3b468910f42f81d21f6
+  - enabled: 1
+    path: Assets/_VvV/Scene/GameMenu/StartMenu.unity
     guid: 18a0c9289d59188458a68ce750099627
   - enabled: 1
     path: Assets/_VvV/Scene/Levels/03.unity
@@ -18,13 +21,13 @@ EditorBuildSettings:
     path: Assets/_VvV/Scene/Levels/02.unity
     guid: a7866ccfadc6455409332dbfa2afe767
   - enabled: 1
-    path: Assets/_VvV/Scene/Victory.unity
+    path: Assets/_VvV/Scene/GameMenu/Victory.unity
     guid: e54669c043cb6b14c8861207e72beec0
   - enabled: 1
-    path: Assets/_VvV/Scene/Statistics.unity
+    path: Assets/_VvV/Scene/GameMenu/Statistics.unity
     guid: f6135c8f38f445941bffb8099320ce82
   - enabled: 1
-    path: Assets/_VvV/Scene/Options.unity
+    path: Assets/_VvV/Scene/GameMenu/Options.unity
     guid: aca6b21c115158d488c9fcf39902d60f
   - enabled: 1
     path: Assets/_VvV/Scene/Gyms/SceneLoadingGym.unity
