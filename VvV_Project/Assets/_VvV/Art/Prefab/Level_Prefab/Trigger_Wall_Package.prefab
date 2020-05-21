@@ -94560,7 +94560,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &6742332852824056163
@@ -94870,7 +94870,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &7621473171877159248
@@ -94919,7 +94919,6 @@ GameObject:
   - component: {fileID: 7937607185986390545}
   - component: {fileID: 7937607185986390544}
   - component: {fileID: 7937607185986390547}
-  - component: {fileID: 697808168714545840}
   - component: {fileID: 7937607185986390541}
   m_Layer: 0
   m_Name: Destructable_Wall
@@ -95217,56 +95216,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 0.5, z: 3}
   m_Center: {x: 1.5, y: -0.25, z: 1.5}
---- !u!114 &697808168714545840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7937607185986390540}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e21543f0eeef924cb8e69e7df91ea0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ignoreRaycastLayer: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  ToggleOnTriggerEnter: 1
-  ToggleOnTriggerExit: 0
-  ToggleOnTriggerStay: 0
-  _OnTriggerEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5762952142320163943}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 7937607185986390540}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _OnTriggerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  _OnTriggerStay:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!208 &7937607185986390541
 NavMeshObstacle:
   m_ObjectHideFlags: 0
