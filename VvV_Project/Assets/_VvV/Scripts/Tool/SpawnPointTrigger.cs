@@ -55,7 +55,6 @@ public class SpawnPointTrigger : MonoBehaviour
     {
         if (layerMask == (layerMask | 1 << other.gameObject.layer))
         {
-            Debug.Log("test");
             TeleportEnemy();
             _onTriggerEnter.Invoke();
         }

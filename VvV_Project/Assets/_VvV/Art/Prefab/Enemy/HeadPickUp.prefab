@@ -2539,6 +2539,7 @@ GameObject:
   - component: {fileID: 1565307969466624183}
   - component: {fileID: 166422040109154372}
   - component: {fileID: 1189392717435951259}
+  - component: {fileID: 7446003921572062563}
   m_Layer: 0
   m_Name: HeadPickUp
   m_TagString: Untagged
@@ -2586,6 +2587,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityType: 3
+--- !u!65 &7446003921572062563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000016821166577354}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2008182198686913160
 GameObject:
   m_ObjectHideFlags: 0

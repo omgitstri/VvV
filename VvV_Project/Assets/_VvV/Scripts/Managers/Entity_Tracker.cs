@@ -60,4 +60,6 @@ public class Entity_Tracker : MonoBehaviour
     {
         playerGun = _gun;
     }
+
+    public bool collectedPart { get; set; } = false;
 }
