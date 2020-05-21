@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8519930400500730008}
   - component: {fileID: 8519930400500730015}
   - component: {fileID: 8519930400500730014}
+  - component: {fileID: 6786035988829054661}
   m_Layer: 0
   m_Name: Wall_Room_Medium
   m_TagString: Untagged
@@ -295,3 +296,16 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &6786035988829054661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8519930400500730012}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9999835, y: 5, z: 0.5000077}
+  m_Center: {x: -0.50001514, y: 2.5, z: 0.2500101}
