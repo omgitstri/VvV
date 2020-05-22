@@ -44,20 +44,20 @@ public class Toolbox : MonoBehaviour
 
         if (manager == null) {
             var go = new GameObject(nameof(manager));
-            go.transform.parent = this.gameObject.transform;
+            go.transform.SetParent(transform);
             manager = go.AddComponent<SceneLoader>();
         }
 
         if (statsManager == null) {
             var go = new GameObject(nameof(statsManager));
-            go.transform.parent = this.gameObject.transform;
+            go.transform.SetParent(transform);
             statsManager = go.AddComponent<EnemyStatsManager>();
         }
 
         if (soundManager == null)
         {
             soundManager = Instantiate(Resources.Load(nameof(SoundManager), typeof(GameObject)) as GameObject);
-            soundManager.transform.parent = this.gameObject.transform;
+            soundManager.transform.SetParent(transform);
         }
 
         if (musicManager == null) {
@@ -69,12 +69,12 @@ public class Toolbox : MonoBehaviour
         if (uIManager == null)
         {
             uIManager = Instantiate(Resources.Load(nameof(UIManager), typeof(GameObject)) as GameObject);
-            uIManager.transform.parent = this.gameObject.transform;
+            uIManager.transform.SetParent(transform);
         }
         
         if (screenFade == null) {
             screenFade = Instantiate(Resources.Load(nameof(ScreenFade), typeof(GameObject)) as GameObject);
-            screenFade.transform.parent = this.gameObject.transform;
+            screenFade.transform.SetParent(transform);
         }
 
     }

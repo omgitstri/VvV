@@ -16,7 +16,6 @@ public class ManualTrigger : MonoBehaviour
 
 
     public void OnTriggerEnter(Collider other) {
-        Debug.Log("Switch");
         if (sfx != null && source != null) {
             sfx.PlaySound(source, Toolbox.GetInstance.GetSound().switchsfx, false, 1f, 1f, 1f, 1f);
         }

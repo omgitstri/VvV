@@ -57,6 +57,16 @@ PrefabInstance:
       propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6559462958017428355}
+    - target: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+        type: 3}
+      propertyPath: DeathEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartDelayRegenCoroutine
+      objectReference: {fileID: 0}
     - target: {fileID: 5738099910806368267, guid: fbcf259689b68944c9005a0812e5ad98,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -114,6 +124,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbcf259689b68944c9005a0812e5ad98, type: 3}
+--- !u!114 &6559462958017428355 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1706672413345430354, guid: fbcf259689b68944c9005a0812e5ad98,
+    type: 3}
+  m_PrefabInstance: {fileID: 5523864272546791633}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65a9ba1ff3b24462a81af42f070c0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &887889697468276582 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4682300725882838967, guid: fbcf259689b68944c9005a0812e5ad98,
