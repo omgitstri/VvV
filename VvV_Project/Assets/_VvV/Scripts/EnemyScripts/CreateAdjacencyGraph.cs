@@ -253,7 +253,7 @@ public class CreateAdjacencyGraph : MonoBehaviour
         }
 
         //StartCoroutine("RegenDelay");
-        DeathEvent.Invoke();
+        RespawnEvent.Invoke();
     }
 
     [ContextMenu(nameof(StartDelayRegenCoroutine))]

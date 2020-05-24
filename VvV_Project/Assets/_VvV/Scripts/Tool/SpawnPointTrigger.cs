@@ -52,7 +52,7 @@ public class SpawnPointTrigger : MonoBehaviour
         spawnPointEntities.AddRange(GetComponentsInChildren<SpawnPointEntity>());
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (layerMask == (layerMask | 1 << other.gameObject.layer))
         {
