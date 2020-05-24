@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LerpGeneric : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class LerpGeneric : MonoBehaviour
     [HideInInspector] public Color lerpColorB;
 
     public float a = 0f;
+
+    public UnityEvent CompletedLerp = null;
     private MeshRenderer meshrender = null;
 
     void Start()
@@ -49,6 +52,8 @@ public class LerpGeneric : MonoBehaviour
             meshrender.material.SetTextureOffset("_BaseMap", Vector2.Lerp(lerpVector2A, lerpVector2B, a / lerpDuration));
             yield return new WaitForEndOfFrame();
         }
+
+        CompletedLerp.Invoke();
     }
 
 }
