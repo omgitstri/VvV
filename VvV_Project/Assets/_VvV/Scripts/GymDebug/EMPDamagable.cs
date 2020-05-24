@@ -4,24 +4,35 @@ using UnityEngine;
 
 public class EMPDamagable : Damagable
 {
-    private int totalHit = 3;
-    [SerializeField] GameObject text = null;
-    public KillAllEnemiesHACK boss;
+    [SerializeField] LerpGeneric pipe = null;
+    [SerializeField] float _invulnerable = 5f;
+    float invulnerable = 5f;
+    bool damaged = false;
+
+    private void Start()
+    {
+        invulnerable = _invulnerable;
+    }
+
+    private void Update()
+    {
+        if (damaged)
+        {
+            invulnerable -= Time.deltaTime;
+            if (invulnerable <= 0)
+            {
+                damaged = false;
+                invulnerable = _invulnerable;
+            }
+        }
+    }
 
     public override void GetDamaged(int dmg)
     {
-        if (totalHit > 0)
+        if (!damaged)
         {
-            totalHit -= 1;
-        }
-        else
-        {
-            if (TryGetComponent<Renderer>(out Renderer render))
-            {
-                text.SetActive(true);
-                boss.TriggerActivated();
-                render.material.SetColor("_BaseColor", Color.green);
-            }
+            pipe.a -= 5f;
+            damaged = true;
         }
     }
 }

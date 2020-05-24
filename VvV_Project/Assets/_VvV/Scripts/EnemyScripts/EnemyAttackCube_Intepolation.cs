@@ -75,5 +75,10 @@ public class EnemyAttackCube_Intepolation : MonoBehaviour
             player.GetDamaged(dmg);
 
         }
+
+        if(other.TryGetComponent(out EMPDamagable emp))
+        {
+            emp.GetDamaged(dmg);
+        }
     }
 }

@@ -20,6 +20,7 @@ public class SpawnPointTrigger : MonoBehaviour
 
     public UnityEvent _onTriggerEnter = null;
 
+    [ContextMenu(nameof(Awake))]
     private void Awake()
     {
         GetComponent<Collider>().isTrigger = true;
@@ -127,6 +128,7 @@ public class SpawnPointTrigger : MonoBehaviour
             {
                 if (activeSpawnPoints.Count > 0)
                 {
+                    Entity_Tracker.Instance.EnemyEntities[enemyIndex].GetComponent<CreateAdjacencyGraph>().RegenManager();
                     agent.Warp(activeSpawnPoints[Random.Range(0, activeSpawnPoints.Count - 1)].position);
                 }
             }

@@ -44,10 +44,11 @@ public class LerpGeneric : MonoBehaviour
     {
         while (a < lerpDuration)
         {
-            a += Time.deltaTime / lerpDuration;
-            meshrender.material.SetTextureOffset("_BaseMap", Vector2.Lerp(lerpVector2A, lerpVector2B, a));
+            a = Mathf.Clamp(a, 0, lerpDuration);
+            a += Time.deltaTime;
+            meshrender.material.SetTextureOffset("_BaseMap", Vector2.Lerp(lerpVector2A, lerpVector2B, a / lerpDuration));
             yield return new WaitForEndOfFrame();
         }
     }
-    
+
 }
