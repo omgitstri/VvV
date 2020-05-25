@@ -12,10 +12,15 @@ public class EnemyPickup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Entity_Tracker.Instance.collectedPart = true;
-            gameObject.SetActive(false);
-
             pickUpEvent.Invoke();
         }
+    }
+
+    public void DisablePickup()
+    {
+
+        Entity_Tracker.Instance.collectedPart = true;
+        gameObject.SetActive(false);
+
     }
 }

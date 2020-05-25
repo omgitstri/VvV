@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EMPDamagable : Damagable
 {
+    public UnityEvent GetHitEvent = null;
     [SerializeField] LerpGeneric pipe = null;
     [SerializeField] float _invulnerable = 5f;
     float invulnerable = 5f;
@@ -33,6 +35,7 @@ public class EMPDamagable : Damagable
         {
             pipe.a -= 5f;
             damaged = true;
+            GetHitEvent.Invoke();
         }
     }
 }
