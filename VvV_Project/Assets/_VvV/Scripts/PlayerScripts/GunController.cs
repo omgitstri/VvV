@@ -29,7 +29,7 @@ public class GunController : MonoBehaviour
     void Start()
     {
         originPos = Vector3.zero;
-        cam = FindObjectOfType<Camera>();
+        cam = Camera.main;
         audioSource = GetComponent<AudioSource>();
         sfx = player.gameObject.GetComponent<SoundFX>();
     }
