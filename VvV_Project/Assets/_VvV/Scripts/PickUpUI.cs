@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PickUpUI : MonoBehaviour
 {
     [SerializeField] private RawImage img = null;
     public bool placedPickup { get; set; } = false;
+    public UnityEvent PickedUpEvent = null;
 
     void Update()
     {
@@ -19,6 +21,7 @@ public class PickUpUI : MonoBehaviour
             else if (Entity_Tracker.Instance.enemyPart != null && Entity_Tracker.Instance.collectedPart)
             {
                 img.color = Color.green;
+                PickedUpEvent.Invoke();
             }
         }
         else
