@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     public bool isVisible = false;
 
-    public Transform currentTarget { get; private set; } = null;
+    public Transform currentTarget { get; set; } = null;
     private NavMeshAgent navMeshAgent = null;
     private List<Transform> entities = new List<Transform>();
     private Transform player = null;
