@@ -189,7 +189,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if (item.transform.GetChild(0).TryGetComponent(out MeshRenderer mesh))
             {
-                mesh.material.SetColor("_Emission", Color.Lerp(Color.black, attackColor, (eStats.atkSpeed - attackCooldown) / eStats.atkSpeed));
+                mesh.sharedMaterial.SetColor("_Emission", Color.Lerp(Color.black, attackColor, (eStats.atkSpeed - attackCooldown) / eStats.atkSpeed));
             }
         }
     }

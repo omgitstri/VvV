@@ -106,12 +106,5 @@ public class Toolbox : MonoBehaviour
         return screenFade.GetComponent<ScreenFade>();
     }
 
-    void Update() {
-        //if (Input.GetKeyDown(KeyCode.F1)) {
-        //    Cursor.lockState = CursorLockMode.None;
-        //    Cursor.visible = true;
-        //    manager.GetComponent<SceneLoader>().LoadScene("SceneLoadingGym");
-        //}    
-    }
 
 }

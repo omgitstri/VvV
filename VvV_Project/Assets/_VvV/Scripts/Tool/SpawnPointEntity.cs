@@ -74,11 +74,11 @@ public class SpawnPointEntity : MonoBehaviour
         isInvisible = false;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Debug.Log(isInvisible);
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Alpha4))
+    //     {
+    //         Debug.Log(isInvisible);
+    //     }
+    // }
 }

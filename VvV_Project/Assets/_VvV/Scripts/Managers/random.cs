@@ -11,21 +11,10 @@ public class random : MonoBehaviour
 	// Variables
 	public GameObject something23455465 = null;
 
-	
-	void Awake()
-	{
-		
-	}
-
 	void Start()
 	{
 		something23455465 = Entity_Tracker.Instance.InteractableEntity[0].gameObject;
 		Bypasssomething();
-	}
-
-	void Update()
-	{
-
 	}
 
 	public void Bypasssomething()
