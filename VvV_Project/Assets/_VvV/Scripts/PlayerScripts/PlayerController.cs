@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        myRigid.velocity = transform.up * jumpForce;
+        myRigid.linearVelocity = transform.up * jumpForce;
     }
 
     private void TryRun()

@@ -273,7 +273,7 @@ public class IndividualCube : MonoBehaviour
             // Make sure we got there
             physicMesh.transform.SetParent(this.transform);
             physicMesh.transform.localPosition = Vector3.zero;
-            physicMesh.velocity = Vector3.zero;
+            physicMesh.linearVelocity = Vector3.zero;
             physicMesh.isKinematic = false;
             physicMesh.Sleep();
 
